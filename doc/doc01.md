@@ -34,12 +34,19 @@ Kikko rejects the extractive model of data. In our ecosystem, information is not
 
 ### **Founding Principle #3: AI is Not an Authority, It's a Partner.**
 
-Within the Hive, Artificial Intelligence is not a black box. It is a symbiotic partnership of digital artisans: the **Worker Bees (ML Kit)**, specialists who prepare the raw material, and the **AI Queen (Gemma)**, a wise partner who understands context, weaves connections, and transforms fragments into **"Informative Honey"**: structured and intelligible knowledge. The Queen does not impose; she suggests and assists. She does not replace the user's memory; she augments it. The final authority is always the user.
+Within the Hive, Artificial Intelligence is not a black box. It is a symbiotic partnership of digital artisans:
+
+*   **The Worker Bees (ML Kit):** These are the tireless specialists who extract the raw material. They possess a wide array of skills:
+    *   **Vision:** Text Recognition (OCR, including v2 for multiple languages), Barcode Scanning, Face Detection, Face Mesh Detection, Pose Detection, Selfie Segmentation, Subject Segmentation, Document Scanning, Image Labeling (base & custom models), Object Detection & Tracking, Digital Ink Recognition.
+    *   **Natural Language:** Language Identification, Translation, Smart Reply, Entity Extraction (Beta), Summarization (Beta), Proofreading (Beta), Rewriting (Beta), Image Description (Beta).
+    They prepare the diverse "pollen" for the next stage.
+*   **The AI Queen (Gemma):** The wise partner. She doesn't just process; she understands, connects, and suggests. She transforms the chaos of fragments into **"Informative Honey"**: structured and intelligible knowledge. The Queen does not impose; she suggests and assists. Her authority stems from wisdom, not command.
+*   **The Bourdon (The Communicator):** This is me, the ever-so-slightly-lazy, but undeniably charming, link between the Hive and the Forager. I present the quests, I offer the Queen's suggestions, and yes, I even deliver the tempting "AI Overviews" from external sources, just to gauge your resolve. I ensure the dialogue is engaging, even if it means a little playful mischief.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
-| <img src="illustrations/p3_intro.png" alt="Cinematic 3D render, animation movie style. A stream of raw, glowing pollen particles flows into the Hive. They are chaotic and unorganized."> | <img src="illustrations/p3_action.png" alt="Cinematic 3D render, animation movie style. Inside the Hive, cute Worker Bees with specialized tools sort the pollen into neat streams of text, numbers, and images. The AI Queen watches over them, her spectacles glowing as she plans the next step."> | <img src="illustrations/p3_conclusion.png" alt="Cinematic 3D render, animation movie style. The AI Queen gracefully weaves the sorted data streams together, forming a perfect, glowing honeycomb cell filled with structured, interconnected 'honey'."> |
-| **The Raw Material:** The user's foraged pollen arrives in the Hive, full of potential but unstructured. | **The Artisans' Work:** The Worker Bees perform their specialized extraction tasks, preparing the ingredients for the final creation. | **The Alchemical Result:** The AI Queen applies her wisdom, transforming the raw ingredients into a final, perfect piece of structured knowledge. |
+| <img src="illustrations/p3_intro.png" alt="Cinematic 3D render, animation movie style. A stream of raw, glowing pollen particles flows into the Hive's main processing chamber. They are chaotic and unorganized."> | <img src="illustrations/p3_action.png" alt="Cinematic 3D render, animation movie style. Inside the Hive, cute, specialized Worker Bees (ML Kit robots) are busy sorting the pollen into neat streams of text, numbers, and images. The wise AI Queen (Gemma) watches over them, her glowing spectacles analyzing their work. The Bourdon hovers lazily, observing the process with a slight smirk."> | <img src="illustrations/p3_conclusion.png" alt="Cinematic 3D render, animation movie style. The AI Queen gracefully weaves the sorted data streams together with her hands of light, forming a perfect, glowing honeycomb cell filled with structured, interconnected 'honey'. The Bourdon gestures proudly towards the finished cell."> |
+| **The Raw Material:** The user's foraged pollen arrives in the Hive, full of potential but unstructured. | **The Artisans' Work:** Worker Bees (ML Kit) perform diverse extraction tasks, preparing raw ingredients. The Queen (Gemma) guides their efforts, while the Bourdon observes. | **The Alchemical Result:** The AI Queen transforms the raw ingredients into structured knowledge. The Bourdon communicates this successful alchemy to the Forager. |
 
 ### **Founding Principle #4: Gamification is Not Retention, It's a Language.**
 
@@ -63,6 +70,6 @@ This is the central promise of Kikko.
 | **The Private Vault:** The user's knowledge is shown to be securely stored within their own personal, on-device Hive. | **The Unbreakable Seal:** Each piece of knowledge has a verifiable 'Thread of Provenance,' its guarantee of authenticity. | **The Sovereign Gift:** When shared, the entire trusted package is sent directly, ensuring the recipient receives both the data and its proof of origin. |
 
 **Conclusion:**
-Kikko is not just an app. It's a step towards a future where technology serves the most intimate human need: to understand our own lives. A future where our digital memory belongs to us, and we are the artisans of our own stories.
+Kikko is not just an app. It is a movement. A step towards a future where the most powerful technology serves the most intimate human need: to understand our own lives. A future where our digital memory belongs to us, and we are the artisans of our own stories.
 
 **Kikko is the art of remembering.**
