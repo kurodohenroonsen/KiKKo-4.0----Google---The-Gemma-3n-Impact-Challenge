@@ -41,22 +41,22 @@ At the heart of Kikko is a constant, playful dialogue between you, the Forager, 
 
 ---
 
-### **3. The Architecture of Trust**
+### **3. The Architecture of Trust: Your Truth in an Age of AI**
 
-Trust is the foundation of Kikko. Your memory is precious, and it must remain yours.
+In an age of powerful cloud AIs offering instant answers, a new question arises: **Can we trust an answer if we don't know its story?** Kikko is built on a foundation of absolute trust and transparency. Your memory is your truth, and you should always be able to verify it.
 
 *   **100% On-Device:** Everything resides on your device. Your pollen, your honey, and the AI models. Your personal Hive is a digital sanctuary, never uploaded to a central cloud.
-*   **The Thread of Provenance:** Every piece of "honey" is bundled with its own verifiable history, a "Seal of Trust" against opaque algorithms.
-*   **Decentralized Sharing:** Sharing is peer-to-peer (via **WebTorrent**), from one Hive to another, fostering a sovereign and resilient community.
+*   **The Thread of Provenance:** Every piece of "honey" is bundled with its own verifiable history, a "Seal of Trust" that tells the story of its creation—from your photo to the Queen's reasoning.
+*   **The Hornet's Dilemma:** Kikko acknowledges the convenience of cloud AI. At times, a **"Hornet"** might offer a pre-packaged answer from the cloud. This presents a core choice: do you accept the quick, opaque answer, or do you forage your own, verifiable truth?
 
 *   [**Document 04: The Alchemy of Honey - The Role of the AIs**](./doc/doc04.md)
-*   [**Document 05: The Daemons of Obscurity - Antagonists and Challenges**](./doc/doc05.md)
+*   [**Document 05: The Hornet's Dilemma - The Temptation of Opaque Knowledge**](./doc/doc05.md)
 *   [**Document 06: The Thread of Provenance - The Seal of Trust**](./doc/doc06.md)
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
-| <img src="illustrations/s3_intro.png" alt="Cinematic 3D render, animation movie style. A glowing honeycomb cell of 'honey' is shown. A small, intricate hexagonal seal of golden wax is being imprinted on its surface by the AI Queen."> | <img src="illustrations/s3_action.png" alt="Cinematic 3D render, animation movie style. A finger touches the seal, which elegantly unfolds into a holographic scroll (emakimono), revealing a beautiful infographic of the data's journey."> | <img src="illustrations/s3_conclusion.png" alt="Cinematic 3D render, animation movie style. Two phones are shown side-by-side. A swarm of golden data-bees flies from one screen to the other, reforming into a honeycomb cell with its seal of trust clearly visible."> |
-| **3.1 The Seal:** Every piece of structured data is marked with a "Seal of Provenance." | **3.2 The Unveiling:** The user can inspect this seal at any time to see the "Thread of Provenance"—the complete, transparent history. | **3.3 The Trusted Share:** When sharing, this entire trusted package is sent, ensuring the recipient can verify its authenticity. |
+| <img src="illustrations/s3_revised_intro.png" alt="Cinematic 3D render, animation movie style. On Hiro's phone screen, a sleek, chrome hornet icon appears, offering a pre-packaged 'AI Overview' with a tempting 'Instant Answer' button. It represents the lure of easy, opaque cloud AI."> | <img src="illustrations/s3_revised_action.png" alt="Cinematic 3D render, animation movie style. Hiro's finger decisively bypasses the hornet's offer and presses the golden honeycomb 'Forage' button on a real-world object, choosing to create his own knowledge."> | <img src="illustrations/s3_revised_conclusion.png" alt="Cinematic 3D render, animation movie style. The newly created honeycomb cell glows with an intricate 'Seal of Trust'. Hiro smiles, satisfied with the authentic, verifiable knowledge he has created himself."> |
+| **3.1 The Temptation:** The Hornet offers a quick, easy answer from the cloud, but it lacks a story, a "Thread of Provenance." | **3.2 The Conscious Choice:** Hiro chooses the path of personal discovery, trusting his own observation over the Hornet's opaque information. | **3.3 The Sovereign Reward:** His self-foraged "honey" is marked with a Seal of Trust, a symbol of authentic, verifiable knowledge that is truly his. |
 
 ---
 
@@ -68,7 +68,7 @@ This project leverages Google's on-device AI power (**Gemma** and **ML Kit**) to
 
 *   [**Document 07: The Augmented Memory - Long-Term Utility**](./doc/doc07.md)
 *   [**Document 08: The Global Swarm - Decentralized Sharing & Community**](./doc/doc08.md)
-*   [**Document 09: The Economics of Trust - Ethical Monetization**](./doc/doc09.md)
+*   [**Document 09: The Philosophy of Gifting - A Non-Commercial Vision**](./doc/doc09.md)
 *   [**Document 10: The Google Competition Synopsis & Pitch**](./doc/doc10.md)
 
 | Introduction | Action | Conclusion |
