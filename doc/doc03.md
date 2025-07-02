@@ -1,52 +1,62 @@
-# Document 2/10: The World of Kikko - The UI as a Window
+# Document 3/10: A Forager's Life - The Core Gameplay Loop
 
-**Title:** The World of Kikko: The Interface as a Window to Knowledge
+**Title:** A Forager's Life: The Core Gameplay Loop of Kikko
 
-**Objective:** To define the fundamental principles of Kikko's User Interface (UI) and User Experience (UX), emphasizing simplicity, immersion, and non-verbal communication.
+**Objective:** To define the primary mechanics of the game, detailing the "Foraging" process from the initial quest to the final reward, and establishing the core loop that drives user engagement.
 
 ---
 
-### **Core Philosophy: The Anti-App**
+### **Core Philosophy: From Chore to Quest**
 
-Kikko's interface is designed around a radical principle: **it should not feel like an application**. We reject complex menus, endless lists, and data-entry forms. The experience must be fluid, intuitive, and almost invisible, acting as a layer of understanding superimposed on the real world, not as a destination in itself.
+The fundamental gameplay loop of Kikko is designed to transform the mundane act of data entry into an exciting and rewarding **Quest for Knowledge**. The user is not "filling out a form"; they are assisting their AI companion on a mission of discovery. This re-framing is crucial for maintaining long-term engagement. The loop is simple, satisfying, and cyclical: **Quest -> Forage -> Process -> Reward.**
 
-Our goal is to erase the boundary between the user's physical world and their digital memory hive. The smartphone is no longer a portal to another place (cyberspace), but a **magical lens** to better see and understand the place one already is.
+### **1. The Quest: The Call from the Hive**
 
-### **Component 1: The Great Bay Window (The Augmented Camera View)**
+The loop begins when the AI Queen identifies an opportunity to learn more about the user's world. This "call to action" is presented as a Quest.
 
-Kikko's "default mode" is the camera view. This is the heart of the experience, the Hive's window to the world.
-
-*   **Augmented Transparency:** By default, the camera view is active but subtly enhanced. Colors are slightly richer, light is warmer. The interface does not impose itself; it beautifies.
-*   **Contextual Overlays:** The Hive communicates visually by superimposing minimalist, translucent graphic elements onto real-world objects.
-    *   **The Quest Honeycomb:** When a new foraging opportunity is detected, a simple, glowing hexagon with a '?' icon appears and "latches" onto the object of interest (a book, a plant, a poster). It is an unobtrusive call to action.
-    *   **The Thread of Light:** When the Queen makes a connection between two memories, a golden, animated thread of light may briefly connect two objects in the camera's field of view, materializing the invisible link the AI has just created.
-*   **Full Transparency:** The Bay Window only becomes perfectly crystal-clear when the user engages a capture action, as if telling their Hive: "Look closely at this."
+*   **Proactive Quests:** The Hive can be proactive. Using on-device sensors (location, time, or even subtle visual cues from the camera feed), it can generate quests.
+    *   *Example:* "We are in a new place, Forager! The 'pollen' of this location is unknown. Shall we capture its coordinates?"
+    *   *Example:* "I detect text on that sign. Its meaning is a mystery to me. Can you forage it with a photo?"
+*   **User-Initiated Quests:** The user can initiate a quest at any time by simply pointing their device at an object and tapping the "Forage" button. This is equivalent to telling the Hive, "This is important to me. Learn about it."
+*   **Quest Interface:** A quest is presented visually as a translucent, glowing hexagonal frame that overlays the object of interest in the "Great Bay Window" (the camera view). It contains a simple icon representing the type of pollen needed (e.g., a camera icon for visual pollen, a microphone for auditory pollen).
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
-| <img src="illustrations/ui_intro.png" alt="Cinematic 3D render. A first-person view through a smartphone screen. The screen is an almost invisible window onto a sunlit wooden desk. A single, stylized golden honeycomb `kenji` floats discreetly in a corner."> | <img src="illustrations/ui_action.png" alt="Cinematic 3D render. The same view, but now a translucent quest honeycomb with a '?' icon has overlaid a coffee cup on the desk, inviting interaction."> | <img src="illustrations/ui_conclusion.png" alt="Cinematic 3D render. The user's finger touches the honeycomb. The Bay Window becomes perfectly transparent, revealing the coffee cup in hyper-detail, ready to be 'foraged'."> |
-| **The Calm:** The default interface is minimal, a quiet window onto the user's world. | **The Call:** The Hive suggests an action by overlaying a quest directly onto a real-world object. | **The Focus:** User interaction makes the window fully transparent, signaling the Hive to focus on the quest's subject. |
+| <img src="illustrations/gp_intro.png" alt="Cinematic 3D render. The Hive's UI overlays the real world. A translucent honeycomb with a '?' icon hovers over a bottle of wine on a restaurant table, signifying a new quest."> | <img src="illustrations/gp_action.png" alt="Cinematic 3D render. Hiro's thumb presses the quest honeycomb on the screen. The UI confirms the action with a gentle flash of light."> | <img src="illustrations/gp_conclusion.png" alt="Cinematic 3D render. The view transitions to the 'Inner Hive' where a new, empty, pulsing honeycomb cell appears, ready to receive the pollen from the quest."> |
+| **The Call:** The Queen identifies a learning opportunity and presents it as a simple, visual quest. | **The Acceptance:** The user accepts the quest with a single, simple tap. | **The Preparation:** Inside the Hive, a new memory cell is prepared, creating a sense of anticipation. |
 
-### **Component 2: The Inner Hive (The Memory Management Space)**
+### **2. The Foraging: Capturing the Pollen**
 
-With a simple gesture (e.g., a swipe from the hive icon), the user can transition from the "window" to a view of the "inner Hive." This is where they manage their memory.
+This is the central action performed by the user. "Foraging" is the act of capturing raw, unstructured information from the real world.
 
-*   **The Honeycomb Library:** Memories are not a list of files. They are glowing honeycombs, organized in a large, 3D hive structure. The user can navigate this space intuitively.
-*   **Connection Visualization:** Honeycombs related by common subjects (e.g., all memories related to "Japan," or "Craftsmanship") are connected by golden threads of light. The more a topic is explored, the denser and brighter its network of connections becomes.
-*   **Direct Interaction:** By tapping on a honeycomb, the user can view the "Informative Honey" (the structured data) and its "Seal of Trust" (the Thread of Provenance).
+*   **Multimodal Input:** The user chooses their "foraging tool" based on the nature of the information:
+    *   **The Camera (Visual Pollen):** The primary tool. Used for capturing photos of objects, text on labels (OCR), barcodes, or even short video clips.
+    *   **The Microphone (Auditory Pollen):** For dictating notes, descriptions, or recording ambient sounds associated with a memory.
+    *   **Sensors (Contextual Pollen):** The Hive can automatically gather GPS location, timestamps, and other sensor data to add rich context to every piece of pollen.
+*   **The "Pollen" Metaphor:** The captured data is visualized as beautiful, glowing particles of light that are "sucked" into the Hive icon. This transforms a technical process (uploading a file) into a magical and organic one. The color of the pollen can even vary based on its type (e.g., golden for visual, cyan for auditory).
+
+### **3. The Process: The Alchemy of the Worker Bees**
+
+This phase is automated and happens inside the Hive, providing a moment of spectacle and feedback for the user.
+
+*   **Extraction:** The Worker Bees (ML Kit) get to work. The OCR Bee extracts text, the Barcode Bee decodes symbols, the Voice Bee transcribes audio. This is visualized as the bees "dissecting" the pollen particles.
+*   **Reasoning:** The processed data is sent to the AI Queen (Gemma). This is the most critical step. The Queen analyzes the fragments, cross-references them with its existing knowledge of schemas (Schema.org, GS1), and understands the context.
+    *   *Example:* If OCR extracts "13.5% vol" and "750ml", the Queen knows these correspond to `alcoholPercentage` and `netContent`. If the user says "un vin rouge de Bordeaux", the Queen maps this to `category` and `origin`.
+*   **Structuring:** The Queen assembles the fragments into a coherent, structured piece of data—the "Informative Honey."
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
-| <img src="illustrations/hive_intro.png" alt="Cinematic 3D render. An interior view of the Hive. Hundreds of hexagonal cells filled with glowing golden honey float in a dark, high-tech space."> | <img src="illustrations/hive_action.png" alt="Cinematic 3D render. A holographic child's finger touches a honeycomb cell. Threads of golden light instantly illuminate, connecting it to several other cells in the hive."> | <img src="illustrations/hive_conclusion.png" alt="Cinematic 3D render. A close-up on a single honey cell. It opens to reveal its content: an elegant data card and the trust seal of the Thread of Provenance."> |
-| **The Visual Memory:** The user's memory collection is a beautiful, explorable data landscape. | **Revealing the Links:** Interacting with a memory highlights its hidden connections to other moments in the user's life. | **Access to Truth:** Each individual memory is transparent, displaying both the structured data and its proof of origin. |
+| <img src="illustrations/process_intro.png" alt="Cinematic 3D render. Inside the Hive, a glowing orb of golden pollen floats. Cute robot bees with specialized tools (a lens, a soundwave antenna) swarm around it."> | <img src="illustrations/process_action.png" alt="Cinematic 3D render. Close-up on one robot bee projecting a light beam that scans the pollen, breaking it down into smaller, organized data streams of text and numbers."> | <img src="illustrations/process_conclusion.png" alt="Cinematic 3D render. The processed data streams flow towards the AI Queen, who elegantly weaves them together into a single, shimmering thread of structured knowledge."> |
+| **The Raw Material:** The user's captured pollen arrives in the Hive, ready for processing. | **The Workers' Craft:** Specialized AI agents (ML Kit) extract raw information from the pollen. | **The Queen's Wisdom:** The orchestrator AI (Gemma) understands, connects, and structures the information. |
 
-### **Component 3: The Dialogue (Human-AI Communication)**
+### **4. The Reward: The Sweet Taste of Knowledge**
 
-All text or voice communication occurs through a minimalist, non-intrusive dialogue interface.
+This is the final, crucial step of the loop, designed to provide positive reinforcement and a clear sense of accomplishment.
 
-*   **Ephemeral Bubbles:** The Queen's questions and Hiro's responses appear as clean, semi-transparent text bubbles that overlay the camera view, then gently fade away.
-*   **Voice-First Commands:** The primary interaction is vocal. There is no permanently visible text input field. Listening is activated by a keyword ("Hey, Kikko") or a simple gesture.
-*   **Contextual Visual Choices:** When the Queen needs clarification or offers a choice (e.g., "Is this object a `schema:Book` or a `schema:Magazine`?"), simple, beautiful choice cards appear at the bottom of the screen, allowing for a quick, single-tap response.
+*   **Filling the Honeycomb:** On the user's screen, the empty quest honeycomb animates, filling up with shimmering, golden liquid honey. This provides immediate, non-verbal feedback that the quest is complete.
+*   **Data Unveiling:** The raw data is replaced by its structured form. "750ml" becomes a clean field labeled "Net Content".
+*   **Points & Badges:** The user is awarded "Honey Points" for their contribution. Completing certain types of quests or a series of related quests unlocks stylish Badges (e.g., "Sommelier in Training," "Librarian's Apprentice," "Urban Explorer").
+*   **Augmented Memory:** The most important reward. The new piece of knowledge is now part of the user's personal memory graph, ready to be recalled, connected, and used to answer future questions.
 
 **Conclusion:**
-Kikko's UI/UX serves immersion and simplicity. By treating the screen as a window and not a page, and by favoring visual and vocal communication, we create an experience where technology fades into the background, leaving a natural interaction between a Forager and their personal Hive, with the shared goal of enriching their understanding of their own world.
+The gameplay loop of Kikko is a virtuous cycle. By gamifying the act of observation and data collection, we encourage the user to be more present and curious about their own world. Each completed loop not only provides a satisfying reward but also makes the user's personal AI companion smarter and more useful, creating a powerful incentive to embark on the next quest.
