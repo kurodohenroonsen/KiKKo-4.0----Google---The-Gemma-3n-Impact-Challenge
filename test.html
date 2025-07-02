@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<img id="myImage" src="" alt="Base64 Image" style="display:none;">
+
+<script>
+  function searchByImage(imageFile) {
+    var reader = new FileReader();
+    reader.onloadend = function() {
+      var base64data = reader.result;
+      var encodedImage = base64data.replace(/^data:image\/(png|jpeg|gif);base64,/, ""); // Remove data URL prefix
+
+      // Construct the POST request (example using fetch API)
+      fetch('https://www.google.com/searchbyimage/upload', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'encoded_image=' + encodeURIComponent(encodedImage)
+      })
+      .then(response => {
+        if (response.redirected) {
+          window.location.href = response.url; // Redirect to search results
+        }
+      })
+      .catch(error => console.error('Error:', error));
+    }
+    reader.readAsDataURL(imageFile);
+  }
+
+  // Example usage:
+  var fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = 'image/*';
+  fileInput.onchange = e => {
+    searchByImage(e.target.files[0]);
+  }
+  fileInput.click(); // Trigger file selection dialog
+</script>
+
+</body>
+</html>
