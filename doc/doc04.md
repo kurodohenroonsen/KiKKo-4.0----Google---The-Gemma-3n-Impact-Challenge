@@ -24,14 +24,14 @@ The Worker Bees are the first to interact with the raw "pollen" brought back by 
     *   **Output:** A standardized code string. Example: `"gtin": "314159265359"`
 *   **The Listener Bee (ML Kit Speech Recognition):**
     *   **Function:** To transcribe. When the Forager provides auditory pollen (a voice note), this bee converts the soundwaves into text.
-    *   **Output:** A raw transcription. Example: `"Ce vin a un goût de cerise et se marie bien avec le fromage."`
+    *   **Output:** A raw transcription. Example: `"This wine tastes like cherry and pairs well with cheese."`
 *   **The Identifier Bee (ML Kit Language ID & Entity Extraction):**
     *   **Function:** To pre-sort. This bee can analyze the text produced by other workers to identify the language and extract basic, pre-defined entities like addresses, dates, or phone numbers.
-    *   **Output:** Tagged text fragments. Example: `{ "ADDRESS": "123 Rue du Pèlerin", "PHONE": "0123456789" }`
+    *   **Output:** Tagged text fragments. Example: `{ "ADDRESS": "123 Forager Lane", "PHONE": "555-0123" }`
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
-| <img src="illustrations/mlkit_intro.png" alt="Cinematic 3D render. A glowing orb of 'pollen' (a photo of a wine label) floats inside the Hive. A team of cute, specialized robot bees with different tools (a lens, a barcode scanner) surrounds it."> | <img src="illustrations/mlkit_action.png" alt="Cinematic 3D render. One robot bee projects a beam of light, extracting glowing text strings from the pollen. Another bee extracts a barcode string. The data is still raw and disconnected."> | <img src="illustrations/mlkit_conclusion.png" alt="Cinematic 3D render. The worker bees present their findings—neat streams of raw text and numbers—to the AI Queen, who waits patiently at the center of the Hive."> |
+| <img src="illustrations/mlkit_intro.png" alt="Cinematic 3D render, animation movie style. A glowing orb of 'pollen' (a photo of a wine label) floats inside the Hive. A team of cute, specialized robot bees with different tools (a lens, a barcode scanner) surrounds it."> | <img src="illustrations/mlkit_action.png" alt="Cinematic 3D render, animation movie style. One robot bee projects a beam of light, extracting glowing text strings from the pollen. Another bee extracts a barcode string. The data is still raw and disconnected."> | <img src="illustrations/mlkit_conclusion.png" alt="Cinematic 3D render, animation movie style. The worker bees present their findings—neat streams of raw text and numbers—to the AI Queen, who waits patiently at the center of the Hive."> |
 | **The Raw Pollen:** An unstructured piece of information from the user's world arrives in the Hive. | **The Specialists' Work:** The Worker Bees (ML Kit) perform their specific tasks, converting the raw pollen into digital text and codes. | **The Prepared Ingredients:** The workers deliver the extracted, but still un-contextualized, data to the Queen for the next stage. |
 
 ### **2. The AI Queen: The Weaver of Context and Meaning (Gemma)**
@@ -50,17 +50,17 @@ The AI Queen is the orchestrator, the brain of the Hive. She receives the simple
 
 *   **Function 3: Structuring Complex Information:**
     *   The Queen understands nested structures. When the Identifier Bee extracts an address, the Queen knows how to format it as a `schema:PostalAddress` object.
-    *   **Example Prompt:** `Structure the following address for a 'schema:PostalAddress' object: {"123 Rue du Pèlerin 75001 Paris France"}.`
-    *   **Output:** `{ "address": { "@type": "PostalAddress", "streetAddress": "123 Rue du Pèlerin", "postalCode": "75001", "addressLocality": "Paris", "addressCountry": "FR" } }`
+    *   **Example Prompt:** `Structure the following address for a 'schema:PostalAddress' object: {"123 Forager Lane 90210 Beverly Hills CA"}.`
+    *   **Output:** `{ "address": { "@type": "PostalAddress", "streetAddress": "123 Forager Lane", "postalCode": "90210", "addressLocality": "Beverly Hills", "addressRegion": "CA" } }`
 
 *   **Function 4: Dialogue and Clarification:**
     *   If the data is ambiguous, the Queen formulates the next question for the Forager.
     *   **Example Logic:** If OCR extracts "Expires 12/25," the Queen knows this is ambiguous.
-    *   **Output for UI:** `Ask user: "Does '12/25' refer to December 2025 or the 12th of the month in 2025?" Provide choice cards: ["December 2025", "12th of the Month, 2025"].`
+    *   **Output for UI:** `Ask user: "Does '12/25' refer to December 2025 or the 12th of the Month, 2025?" Provide choice cards: ["December 2025", "12th of the Month, 2025"].`
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
-| <img src="illustrations/gemma_intro.png" alt="Cinematic 3D render. The wise AI Queen contemplates the streams of raw data flowing from her worker bees. Her glowing spectacles analyze the information."> | <img src="illustrations/gemma_action.png" alt="Cinematic 3D render. The Queen gracefully weaves the data streams together with her hands of light. The streams snap into place within a holographic, hexagonal data structure (a JSON object)."> | <img src="illustrations/gemma_conclusion.png" alt="Cinematic 3D render. The Queen holds up a finished, shimmering honeycomb cell. Inside, the data is perfectly structured and organized. She looks satisfied with her work."> |
+| <img src="illustrations/gemma_intro.png" alt="Cinematic 3D render, animation movie style. The wise AI Queen contemplates the streams of raw data flowing from her worker bees. Her glowing spectacles analyze the information."> | <img src="illustrations/gemma_action.png" alt="Cinematic 3D render, animation movie style. The Queen gracefully weaves the data streams together with her hands of light. The streams snap into place within a holographic, hexagonal data structure (a JSON object)."> | <img src="illustrations/gemma_conclusion.png" alt="Cinematic 3D render, animation movie style. The Queen holds up a finished, shimmering honeycomb cell. Inside, the data is perfectly structured and organized. She looks satisfied with her work."> |
 | **The Unstructured Data:** The Queen receives the raw, digitized information from her workers. | **The Act of Reasoning:** She uses her knowledge of schemas to classify the entity, map data to properties, and structure complex information. | **The Informative Honey:** The final output is a perfectly structured, context-rich piece of knowledge, ready to be stored in the user's memory. |
 
 **Conclusion:**

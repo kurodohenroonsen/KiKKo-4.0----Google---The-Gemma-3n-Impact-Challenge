@@ -22,7 +22,7 @@ To achieve true decentralization and privacy, Kikko uses **WebTorrent** as its c
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
-| <img src="illustrations/share_intro.png" alt="Cinematic 3D render. A glowing, completed honeycomb cell is shown on Hiro's phone screen. A prominent, friendly 'Share' button is highlighted next to it."> | <img src="illustrations/share_action.png" alt="Cinematic 3D render. As Hiro taps 'Share', the honeycomb cell dissolves into a beautiful swarm of golden data-bees. A QR code materializes on his screen."> | <img src="illustrations/share_conclusion.png" alt="Cinematic 3D render. An abstract view of a decentralized network. The swarm of data-bees is shown traveling directly from one phone icon to another, without passing through a central server cloud."> |
+| <img src="illustrations/share_intro.png" alt="Cinematic 3D render, animation movie style. A glowing, completed honeycomb cell is shown on Hiro's phone screen. A prominent, friendly 'Share' button is highlighted next to it."> | <img src="illustrations/share_action.png" alt="Cinematic 3D render, animation movie style. As Hiro taps 'Share', the honeycomb cell dissolves into a beautiful swarm of golden data-bees. A QR code materializes on his screen."> | <img src="illustrations/share_conclusion.png" alt="Cinematic 3D render, animation movie style. An abstract view of a decentralized network. The swarm of data-bees is shown traveling directly from one phone icon to another, without passing through a central server cloud."> |
 | **The Intent:** The user makes a conscious decision to share a specific piece of knowledge from their Hive. | **The Packet of Trust:** The app bundles the data and its full "Thread of Provenance" into a single, shareable package and generates a simple QR code or link. | **The Direct Path:** Using WebTorrent, the package is sent directly peer-to-peer, ensuring privacy and bypassing central servers entirely. |
 
 ### **2. The "Trusted Package": More Than Just Data**
@@ -34,6 +34,11 @@ As defined in Document 6, what is shared is not just a JSON-LD file. It's a "Tru
 *   **The Original Pollen (The Why):** A folder containing the raw, source materials (e.g., `image_001.jpg`) that the user initially foraged.
 
 When a user receives this package, their own Hive can **independently verify** the entire process. It can check if the final honey is a logical result of the original pollen and the AI deliberations. This creates a chain of trust that is cryptographically sound in spirit, even if not in implementation initially.
+
+| Introduction | Action | Conclusion |
+| :---: | :---: | :---: |
+| <img src="illustrations/package_intro.png" alt="Cinematic 3D render, animation movie style. A single 'Trusted Package' is shown as a beautiful, crystalline hexagonal container. Inside, one can see the 'Honey' (data), the 'Thread' (provenance scroll), and the 'Pollen' (raw files)."> | <img src="illustrations/package_action.png" alt="Cinematic 3D render, animation movie style. The recipient's Hive receives the package. Its AI Queen is shown inspecting the 'Thread of Provenance' scroll with a holographic magnifying glass, verifying its authenticity."> | <img src="illustrations/package_conclusion.png" alt="Cinematic 3D render, animation movie style. The package is accepted. The new honeycomb cell integrates seamlessly into the recipient's own Hive, glowing with the same trusted golden light as their own memories."> |
+| **The Complete Gift:** A shared memory is not just a piece of data, but a complete, self-contained package of knowledge and its history. | **The Verification:** The recipient's Hive automatically verifies the integrity of the package by checking its 'Thread of Provenance' against the included raw pollen. | **The Trusted Integration:** Once verified, the new knowledge is seamlessly integrated into the recipient's personal memory graph, enriching their own Hive. |
 
 ### **3. The Emergent Community: The Global Swarm**
 
