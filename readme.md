@@ -1,5 +1,3 @@
---- START OF FILE readme.md ---
-
 # Kikko: Your Personal Memory Hive
 
 <p align="center">
@@ -79,4 +77,3 @@ This project leverages Google's on-device AI power (**Gemma** and **ML Kit**) to
 | :---: | :---: | :---: |
 | <img src="illustrations/s4_intro.png" alt="Cinematic 3D render, animation movie style. Inside the Hive, a vast, glowing 3D constellation of interconnected golden honeycomb cells (pure memories) represents Hiro's rich personal knowledge graph, all bearing the Seal of Trust."> | <img src="illustrations/s4_action.png" alt="Cinematic 3D render, animation movie style. Hiro asks his phone a question about something he previously foraged, for example, 'What's that interesting plant I found in the garden last summer?'. Inside the Hive, the AI Queen analyzes the pure knowledge graph, and a thread of light traces a path between two seemingly unrelated, verified memories (e.g., the plant's forage data and a book on local flora)."> | <img src="illustrations/s4_conclusion.png" alt="Cinematic 3D render, animation movie style. Hiro looks at his phone with a smile of deep understanding. The Hive has provided him with a profound, personal insight by connecting the verified dots of his own life, for example, showing him that the 'weed' he pulled out was actually the host plant for a specific type of butterfly he loves."> |
 | **4.1 The Living Library:** Over time, Hiro's Hive becomes a complex, living map of his life and interests, built from pure knowledge. | **4.2 The Spark of Insight:** The AI Queen actively navigates this pure knowledge map, identifying patterns and connections that Hiro himself may not have realized. | **4.3 The Augmented Self:** The Hive's true power is revealed: it uses these verifiable insights to provide timely, personalized, and genuinely useful assistance. |
---- END OF FILE readme.md ---
