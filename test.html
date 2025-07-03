@@ -1,43 +1,762 @@
 <!DOCTYPE html>
-<html>
-<body>
-
-<img id="myImage" src="" alt="Base64 Image" style="display:none;">
-
-<script>
-  function searchByImage(imageFile) {
-    var reader = new FileReader();
-    reader.onloadend = function() {
-      var base64data = reader.result;
-      var encodedImage = base64data.replace(/^data:image\/(png|jpeg|gif);base64,/, ""); // Remove data URL prefix
-
-      // Construct the POST request (example using fetch API)
-      fetch('https://www.google.com/searchbyimage/upload', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'encoded_image=' + encodeURIComponent(encodedImage)
-      })
-      .then(response => {
-        if (response.redirected) {
-          window.location.href = response.url; // Redirect to search results
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kikko - Démo Interactive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      })
-      .catch(error => console.error('Error:', error));
-    }
-    reader.readAsDataURL(imageFile);
-  }
 
-  // Example usage:
-  var fileInput = document.createElement('input');
-  fileInput.type = 'file';
-  fileInput.accept = 'image/*';
-  fileInput.onchange = e => {
-    searchByImage(e.target.files[0]);
-  }
-  fileInput.click(); // Trigger file selection dialog
-</script>
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
 
+        .phone-container {
+            width: 375px;
+            height: 667px;
+            background: #000;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .status-bar {
+            height: 44px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .app-header {
+            height: 80px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .hive-icon {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scan-area {
+            width: 100%;
+            height: 300px;
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .scan-area.scanning {
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .scan-area.detected {
+            border-color: #28a745;
+            background: rgba(40, 167, 69, 0.1);
+        }
+
+        .radar-circle {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #ffd700;
+            border-radius: 50%;
+            position: absolute;
+            animation: radar 3s linear infinite;
+            opacity: 0;
+        }
+
+        .radar-circle.active {
+            opacity: 1;
+        }
+
+        @keyframes radar {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .device-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .device-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .device-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .device-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .device-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .device-info p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .collection-preview {
+            display: flex;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .preview-item {
+            width: 60px;
+            height: 60px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .preview-item.downloading {
+            border-color: #ffd700;
+            animation: downloading 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes downloading {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #ffd700;
+            color: #333;
+        }
+
+        .btn-secondary {
+            background: #e9ecef;
+            color: #495057;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd700, #ffed4e);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .verification-panel {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .verification-panel.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .verification-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .verification-icon {
+            width: 40px;
+            height: 40px;
+            background: #28a745;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        .similarity-score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .bee-narrator {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(45deg, #333, #555);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        .bee-avatar {
+            width: 60px;
+            height: 60px;
+            background: #ffd700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-right: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .bee-message {
+            flex: 1;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .typing {
+            display: inline-block;
+            animation: typing 1s ease-in-out infinite;
+        }
+
+        @keyframes typing {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .notification {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            transform: translateY(-100px);
+            opacity: 0;
+            transition: all 0.5s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .floating-bees {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-bee {
+            position: absolute;
+            font-size: 20px;
+            animation: floatAcross 4s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes floatAcross {
+            0% { 
+                transform: translateX(-50px) translateY(0px);
+                opacity: 0;
+            }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { 
+                transform: translateX(400px) translateY(-20px);
+                opacity: 0;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <div class="screen">
+            <div class="status-bar">
+                <span>9:41</span>
+                <span>🔋 85%</span>
+            </div>
+            
+            <div class="app-header">
+                <div class="logo">Kikko</div>
+                <div class="hive-icon">🐝</div>
+            </div>
+
+            <div class="main-content">
+                <div class="floating-bees"></div>
+                
+                <!-- Étape 1: Scan BLE -->
+                <div id="scan-phase" class="phase">
+                    <div class="scan-area" id="scanArea">
+                        <div class="radar-circle" id="radarCircle"></div>
+                        <h3>🔍 Recherche de ruches proches...</h3>
+                        <p>Bluetooth activé - Scan en cours</p>
+                    </div>
+                </div>
+
+                <!-- Étape 2: Détection d'une ruche -->
+                <div id="detection-phase" class="phase hidden">
+                    <div class="device-card" id="detectedDevice">
+                        <div class="device-header">
+                            <div class="device-avatar">MB</div>
+                            <div class="device-info">
+                                <h3>Marie_BookLover</h3>
+                                <p>📚 Collectionneuse de livres • ⭐ 4.8/5</p>
+                            </div>
+                        </div>
+                        <div class="collection-preview">
+                            <div class="preview-item">📚</div>
+                            <div class="preview-item">☕</div>
+                            <div class="preview-item">🎨</div>
+                            <div class="preview-item">🍕</div>
+                            <div class="preview-item">📸</div>
+                        </div>
+                        <p><strong>247 collections disponibles</strong></p>
+                        <p>🎯 12 correspondent à vos intérêts</p>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" id="exchangeBtn">🔄 Échanger</button>
+                            <button class="btn btn-secondary">⏰ Plus tard</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Étape 3: Téléchargement -->
+                <div id="download-phase" class="phase hidden">
+                    <h3>📸 Téléchargement des previews...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="downloadProgress"></div>
+                    </div>
+                    <div class="collection-preview">
+                        <div class="preview-item downloading">📚</div>
+                        <div class="preview-item downloading">☕</div>
+                        <div class="preview-item downloading">🎨</div>
+                    </div>
+                    <p id="downloadStatus">Réception des magnets...</p>
+                </div>
+
+                <!-- Étape 4: Vérification -->
+                <div id="verification-phase" class="phase hidden">
+                    <div class="verification-panel">
+                        <div class="verification-header">
+                            <div class="verification-icon">🔬</div>
+                            <div>
+                                <h3>Laboratoire de Vérification</h3>
+                                <p>Reproduction de l'inférence...</p>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="verificationProgress"></div>
+                        </div>
+                        <div class="similarity-score" id="similarityScore">Analyse en cours...</div>
+                        <p id="verificationStatus">🐝 Worker Bees actifs...</p>
+                    </div>
+                </div>
+
+                <!-- Étape 5: Résultat -->
+                <div id="result-phase" class="phase hidden">
+                    <div class="verification-panel">
+                        <div class="verification-header">
+                            <div class="verification-icon">✅</div>
+                            <div>
+                                <h3>Miel Vérifié !</h3>
+                                <p>Authenticité confirmée</p>
+                            </div>
+                        </div>
+                        <div class="similarity-score">95% de similarité</div>
+                        <p>🍯 <strong>3 nouveaux miels</strong> ajoutés à votre collection</p>
+                        <p>⭐ Qualité excellente - Créateur fiable</p>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary">👀 Explorer</button>
+                            <button class="btn btn-secondary">🏆 Remercier</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications -->
+                <div class="notification" id="notification"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Narrateur abeille -->
+    <div class="bee-narrator">
+        <div class="bee-avatar">🐝</div>
+        <div class="bee-message">
+            <span class="typing" id="beeMessage">Bonjour ! Je suis votre guide Kikko. Observez la magie de la pollinisation numérique !</span>
+        </div>
+    </div>
+
+    <script>
+        class KikkoDemo {
+            constructor() {
+                this.currentPhase = 0;
+                this.phases = [
+                    'scan-phase',
+                    'detection-phase', 
+                    'download-phase',
+                    'verification-phase',
+                    'result-phase'
+                ];
+                this.messages = [
+                    "Bonjour ! Je suis votre guide Kikko. Observez la magie de la pollinisation numérique !",
+                    "🔍 Votre téléphone recherche automatiquement d'autres ruches Kikko via Bluetooth. C'est discret et économe en batterie !",
+                    "🎯 Excellente nouvelle ! Marie_BookLover est détectée à proximité. Son profil montre qu'elle partage vos passions !",
+                    "🤝 Échange automatique des catalogues en cours ! Vos appareils négocient discrètement les meilleures collections à partager.",
+                    "📸 Téléchargement intelligent des previews ! Seulement les contenus pertinents selon vos intérêts. Malin, non ?",
+                    "🔬 Voici LA révolution ! Votre ruche reproduit l'expérience de création pour vérifier l'authenticité. Science décentralisée !",
+                    "✅ Miel authentique confirmé ! Vos Worker Bees et votre Queen AI ont validé la qualité. Confiance totale !",
+                    "🎉 Mission accomplie ! Vous avez enrichi votre savoir sans effort. La pollinisation numérique fonctionne parfaitement !"
+                ];
+                this.init();
+            }
+
+            init() {
+                this.showMessage(0);
+                setTimeout(() => this.startDemo(), 2000);
+            }
+
+            showMessage(index) {
+                const messageEl = document.getElementById('beeMessage');
+                messageEl.innerHTML = '<span class="typing">' + this.messages[index] + '</span>';
+            }
+
+            showNotification(text) {
+                const notification = document.getElementById('notification');
+                notification.textContent = text;
+                notification.classList.add('show');
+                setTimeout(() => notification.classList.remove('show'), 3000);
+            }
+
+            addFloatingBee() {
+                const container = document.querySelector('.floating-bees');
+                const bee = document.createElement('div');
+                bee.className = 'floating-bee';
+                bee.textContent = '🐝';
+                bee.style.top = Math.random() * 300 + 'px';
+                bee.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(bee);
+                
+                setTimeout(() => bee.remove(), 4000);
+            }
+
+            async startDemo() {
+                // Phase 1: Scan BLE
+                this.showMessage(1);
+                document.getElementById('radarCircle').classList.add('active');
+                document.getElementById('scanArea').classList.add('scanning');
+                
+                await this.wait(3000);
+                
+                // Phase 2: Détection
+                this.showMessage(2);
+                this.showPhase(1);
+                document.getElementById('scanArea').classList.add('detected');
+                this.showNotification('🐝 Ruche détectée à proximité !');
+                document.getElementById('detectedDevice').classList.add('visible');
+                
+                await this.wait(4000);
+                
+                // Simulation du clic sur Échanger
+                this.showMessage(3);
+                document.getElementById('exchangeBtn').style.background = '#28a745';
+                document.getElementById('exchangeBtn').textContent = '✅ Échange...';
+                this.addFloatingBee();
+                
+                await this.wait(2000);
+                
+                // Phase 3: Téléchargement
+                this.showMessage(4);
+                this.showPhase(2);
+                this.animateProgress('downloadProgress', 3000);
+                this.updateDownloadStatus();
+                
+                await this.wait(4000);
+                
+                // Phase 4: Vérification
+                this.showMessage(5);
+                this.showPhase(3);
+                document.querySelector('.verification-panel').classList.add('visible');
+                this.animateProgress('verificationProgress', 4000);
+                this.updateVerificationStatus();
+                
+                await this.wait(5000);
+                
+                // Phase 5: Résultat
+                this.showMessage(6);
+                this.showPhase(4);
+                this.showNotification('✅ 3 nouveaux miels ajoutés !');
+                
+                await this.wait(3000);
+                
+                // Message final
+                this.showMessage(7);
+                
+                // Relance de la démo
+                setTimeout(() => this.restartDemo(), 8000);
+            }
+
+            showPhase(phaseIndex) {
+                // Cacher toutes les phases
+                this.phases.forEach(phase => {
+                    document.getElementById(phase).classList.add('hidden');
+                });
+                
+                // Montrer la phase courante
+                document.getElementById(this.phases[phaseIndex]).classList.remove('hidden');
+            }
+
+            animateProgress(elementId, duration) {
+                const progressBar = document.getElementById(elementId);
+                let progress = 0;
+                const increment = 100 / (duration / 50);
+                
+                const interval = setInterval(() => {
+                    progress += increment;
+                    progressBar.style.width = Math.min(progress, 100) + '%';
+                    
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                    }
+                }, 50);
+            }
+
+            updateDownloadStatus() {
+                const statusEl = document.getElementById('downloadStatus');
+                const statuses = [
+                    'Réception des magnets...',
+                    'Validation des signatures...',
+                    'Téléchargement des previews...',
+                    'Assemblage des collections...'
+                ];
+                
+                let index = 0;
+                const interval = setInterval(() => {
+                    statusEl.textContent = statuses[index];
+                    index++;
+                    if (index >= statuses.length) {
+                        clearInterval(interval);
+                        statusEl.textContent = 'Téléchargement terminé !';
+                    }
+                }, 1000);
+            }
+
+            updateVerificationStatus() {
+                const statusEl = document.getElementById('verificationStatus');
+                const scoreEl = document.getElementById('similarityScore');
+                const statuses = [
+                    '🐝 Worker Bees actifs...',
+                    '👑 Queen AI analyse...',
+                    '🔬 Reproduction en cours...',
+                    '📊 Comparaison des résultats...',
+                    '✅ Vérification complète !'
+                ];
+                
+                let index = 0;
+                const interval = setInterval(() => {
+                    statusEl.textContent = statuses[index];
+                    
+                    if (index === 1) scoreEl.textContent = '🧠 Analyse...';
+                    if (index === 2) scoreEl.textContent = '🔄 65%';
+                    if (index === 3) scoreEl.textContent = '📈 89%';
+                    if (index === 4) scoreEl.textContent = '95% de similarité';
+                    
+                    index++;
+                    if (index >= statuses.length) {
+                        clearInterval(interval);
+                    }
+                }, 1000);
+
+                // Ajouter des abeilles pendant la vérification
+                setTimeout(() => this.addFloatingBee(), 1000);
+                setTimeout(() => this.addFloatingBee(), 2500);
+                setTimeout(() => this.addFloatingBee(), 4000);
+            }
+
+            async restartDemo() {
+                this.showMessage(0);
+                
+                // Reset de l'interface
+                document.getElementById('scanArea').classList.remove('scanning', 'detected');
+                document.getElementById('radarCircle').classList.remove('active');
+                document.getElementById('detectedDevice').classList.remove('visible');
+                document.querySelector('.verification-panel').classList.remove('visible');
+                document.getElementById('exchangeBtn').style.background = '#ffd700';
+                document.getElementById('exchangeBtn').textContent = '🔄 Échanger';
+                
+                // Reset des barres de progression
+                document.getElementById('downloadProgress').style.width = '0%';
+                document.getElementById('verificationProgress').style.width = '0%';
+                
+                // Retour à la phase 1
+                this.showPhase(0);
+                
+                await this.wait(3000);
+                this.startDemo();
+            }
+
+            wait(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        }
+
+        // Démarrage de la démo
+        document.addEventListener('DOMContentLoaded', () => {
+            new KikkoDemo();
+        });
+
+        // Ajouter des abeilles aléatoirement
+        setInterval(() => {
+            if (Math.random() < 0.3) {
+                const container = document.querySelector('.floating-bees');
+                if (container) {
+                    const bee = document.createElement('div');
+                    bee.className = 'floating-bee';
+                    bee.textContent = '🐝';
+                    bee.style.top = Math.random() * 300 + 'px';
+                    bee.style.animationDelay = '0s';
+                    container.appendChild(bee);
+                    setTimeout(() => bee.remove(), 4000);
+                }
+            }
+        }, 3000);
+    </script>
 </body>
 </html>
