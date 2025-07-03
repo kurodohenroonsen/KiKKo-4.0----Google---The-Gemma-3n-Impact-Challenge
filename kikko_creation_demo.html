@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kikko - Création de Microsite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #2E8B57 0%, #228B22 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .phone-container {
+            width: 375px;
+            height: 667px;
+            background: #000;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .status-bar {
+            height: 44px;
+            background: linear-gradient(45deg, #32CD32, #228B22);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .app-header {
+            height: 80px;
+            background: linear-gradient(45deg, #32CD32, #228B22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .camera-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .camera-view {
+            width: 100%;
+            height: 300px;
+            background: #000;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+        }
+
+        .capture-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 70px;
+            background: white;
+            border: 4px solid #32CD32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 24px;
+        }
+
+        .capture-btn:hover {
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .hornet-offer {
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.5s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .hornet-offer.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .hornet-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .hornet-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .choice-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-hornet {
+            background: rgba(255,255,255,0.9);
+            color: #FF6B35;
+        }
+
+        .btn-kikko {
+            background: #32CD32;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .hive-work {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .hive-work.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .worker-section {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .worker-icon {
+            width: 40px;
+            height: 40px;
+            background: #32CD32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        .worker-icon.working {
+            animation: working 1s ease-in-out infinite;
+        }
+
+        @keyframes working {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .worker-progress {
+            flex: 1;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #32CD32, #228B22);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .question-panel {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .question-panel.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .question-options {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .option-btn {
+            padding: 15px;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .option-btn:hover {
+            border-color: #32CD32;
+            background: rgba(50, 205, 50, 0.1);
+        }
+
+        .option-btn.selected {
+            border-color: #32CD32;
+            background: rgba(50, 205, 50, 0.2);
+        }
+
+        .microsite-preview {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .microsite-preview.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .microsite-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .plant-image {
+            width: 150px;
+            height: 150px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect fill="%23228B22" width="200" height="200"/><circle fill="%2332CD32" cx="100" cy="80" r="30"/><circle fill="%2390EE90" cx="80" cy="100" r="25"/><circle fill="%2390EE90" cx="120" cy="100" r="25"/><rect fill="%23654321" x="95" y="120" width="10" height="60"/><text x="100" y="190" text-anchor="middle" fill="white" font-size="16">🌿</text></svg>') center/cover;
+            border-radius: 15px;
+            margin: 0 auto 15px;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 8px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .lang-btn {
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
+        }
+
+        .lang-btn.active {
+            background: #32CD32;
+            color: white;
+            border-color: #32CD32;
+        }
+
+        .microsite-content {
+            text-align: left;
+        }
+
+        .property-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f3f4;
+        }
+
+        .property-row:last-child {
+            border-bottom: none;
+        }
+
+        .bee-narrator {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(45deg, #2E8B57, #228B22);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        .bee-avatar {
+            width: 60px;
+            height: 60px;
+            background: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-right: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .bee-message {
+            flex: 1;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .typing {
+            display: inline-block;
+            animation: typing 1s ease-in-out infinite;
+        }
+
+        @keyframes typing {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .trust-seal {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #333;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-bee {
+            position: absolute;
+            font-size: 16px;
+            animation: floatAround 3s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatAround {
+            0% { 
+                transform: translateX(-30px) translateY(20px);
+                opacity: 0;
+            }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.8; }
+            100% { 
+                transform: translateX(350px) translateY(-10px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <div class="screen">
+            <div class="status-bar">
+                <span>10:23</span>
+                <span>🔋 92%</span>
+            </div>
+            
+            <div class="app-header">
+                <div class="logo">Kikko Creator</div>
+                <div class="camera-icon">📸</div>
+            </div>
+
+            <div class="main-content">
+                <div class="floating-elements"></div>
+                
+                <!-- Étape 1: Camera -->
+                <div id="camera-phase" class="phase">
+                    <div class="camera-view">
+                        <div class="photo-overlay" id="photoOverlay"></div>
+                        <div class="capture-btn" id="captureBtn">📸</div>
+                    </div>
+                    <p style="text-align: center; color: #666; font-size: 14px;">
+                        Pointez vers une plante pour créer un microsite
+                    </p>
+                </div>
+
+                <!-- Étape 2: Offre du Frelon -->
+                <div id="hornet-phase" class="phase hidden">
+                    <div class="hornet-offer">
+                        <div class="hornet-header">
+                            <div class="hornet-icon">🐝</div>
+                            <div>
+                                <h3>AI Overview Rapide</h3>
+                                <p>Réponse instantanée disponible</p>
+                            </div>
+                        </div>
+                        <div id="hornetText">
+                            <p><strong>AI Overview - Plantain lancéolé (Plantago lanceolata)</strong></p>
+                            <p>Plante herbacée vivace commune, connue pour ses feuilles étroites et lancéolées et ses propriétés médicinales. Usages en phytothérapie pour soulager les irritations cutanées et respiratoires, mais peut causer des allergies chez certaines personnes.</p>
+                            <p><small>⚠️ Source: Google AI - Aucune traçabilité de l'information</small></p>
+                        </div>
+                        <div class="choice-buttons">
+                            <button class="btn btn-hornet" id="acceptHornet">⚡ Accepter</button>
+                            <button class="btn btn-kikko" id="chooseKikko">🐝 Créer Moi-Même</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Étape 3: Travail de la Ruche -->
+                <div id="hive-phase" class="phase hidden">
+                    <div class="hive-work">
+                        <h3>🏭 Votre Ruche au Travail</h3>
+                        
+                        <div class="worker-section" id="ocrWorker">
+                            <div class="worker-icon">👁️</div>
+                            <div class="worker-progress">
+                                <strong>OCR Worker Bee</strong>
+                                <p>Lecture du texte dans l'image...</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="ocrProgress"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="worker-section" id="visionWorker">
+                            <div class="worker-icon">🔍</div>
+                            <div class="worker-progress">
+                                <strong>Vision Worker Bee</strong>
+                                <p>Analyse visuelle de la plante...</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="visionProgress"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="worker-section" id="queenWorker">
+                            <div class="worker-icon">👑</div>
+                            <div class="worker-progress">
+                                <strong>Queen AI (Gemma)</strong>
+                                <p>Structuration intelligente...</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="queenProgress"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Étape 4: Questions -->
+                <div id="question-phase" class="phase hidden">
+                    <div class="question-panel">
+                        <h3 id="questionTitle">🤔 Aidez votre Reine IA</h3>
+                        <p id="questionText">Dans quel contexte avez-vous trouvé cette plante ?</p>
+                        <div class="question-options" id="questionOptions">
+                            <div class="option-btn" data-value="jardin">🏡 Dans mon jardin</div>
+                            <div class="option-btn" data-value="foret">🌲 En forêt</div>
+                            <div class="option-btn" data-value="parc">🏞️ Dans un parc</div>
+                            <div class="option-btn" data-value="sauvage">🌿 Bord de route</div>
+                        </div>
+                        <button class="btn btn-kikko" id="nextQuestion" style="margin-top: 15px; width: 100%;" disabled>Suivant</button>
+                    </div>
+                </div>
+
+                <!-- Étape 5: Microsite Final -->
+                <div id="microsite-phase" class="phase hidden">
+                    <div class="microsite-preview">
+                        <div class="microsite-header">
+                            <div class="plant-image"></div>
+                            <h2 id="plantName">Plantain Lancéolé</h2>
+                            <p id="plantScientific">Plantago lanceolata</p>
+                        </div>
+
+                        <div class="trust-seal">
+                            🏆 Microsite Certifié - Thread of Provenance Complet
+                        </div>
+
+                        <div class="language-selector">
+                            <span style="font-weight: bold; margin-right: 10px;">🌍 Langues:</span>
+                            <div class="lang-btn active" data-lang="fr">🇫🇷 FR</div>
+                            <div class="lang-btn" data-lang="en">🇬🇧 EN</div>
+                            <div class="lang-btn" data-lang="es">🇪🇸 ES</div>
+                            <div class="lang-btn" data-lang="de">🇩🇪 DE</div>
+                            <div class="lang-btn" data-lang="it">🇮🇹 IT</div>
+                        </div>
+
+                        <div class="microsite-content" id="micrositeContent">
+                            <div class="property-row">
+                                <strong>Famille</strong>
+                                <span>Plantaginacées</span>
+                            </div>
+                            <div class="property-row">
+                                <strong>Propriétés médicinales</strong>
+                                <span>Apaisantes, cicatrisantes, anti-inflammatoires</span>
+                            </div>
+                            <div class="property-row">
+                                <strong>Habitat naturel</strong>
+                                <span>Prairies, pâturages, bord des chemins</span>
+                            </div>
+                            <div class="property-row">
+                                <strong>Type de plante</strong>
+                                <span>Vivace - Toute l'année</span>
+                            </div>
+                            <div class="property-row">
+                                <strong>Comestibilité</strong>
+                                <span>✅ Jeunes feuilles comestibles (crues ou cuites)</span>
+                            </div>
+                            <div class="property-row">
+                                <strong>Précautions</strong>
+                                <span>⚠️ Allergies au pollen possible</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-kikko" style="width: 100%; margin-top: 20px;">
+                            📤 Partager ce Microsite
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Narrateur abeille -->
+    <div class="bee-narrator">
+        <div class="bee-avatar">🐝</div>
+        <div class="bee-message">
+            <span class="typing" id="beeMessage">Salut ! Je vais vous montrer la magie de la création Kikko ! Prenez une photo pour commencer...</span>
+        </div>
+    </div>
+
+    <script>
+        class KikkoCreationDemo {
+            constructor() {
+                this.currentPhase = 0;
+                this.currentQuestion = 0;
+                this.userAnswers = {};
+                this.questions = [
+                    {
+                        title: "🧠 Validation des Connaissances",
+                        text: "Le plantain lancéolé est-il principalement connu pour ses propriétés :",
+                        options: [
+                            {value: "cicatrisantes", text: "🩹 Cicatrisantes"},
+                            {value: "hallucinogenes", text: "🍄 Hallucinogènes"},
+                            {value: "cariogenes", text: "🦷 Cariogènes"},
+                            {value: "explosives", text: "💥 Explosives"}
+                        ],
+                        correct: "cicatrisantes"
+                    },
+                    {
+                        title: "⚕️ Effets Secondaires",
+                        text: "Quel type de réaction peut provoquer l'allergie au plantain lancéolé ?",
+                        options: [
+                            {value: "hypertension", text: "💓 Hypertension artérielle"},
+                            {value: "rhinite", text: "🤧 Rhinite allergique et conjonctivite"},
+                            {value: "diabete", text: "🍬 Diabète"},
+                            {value: "insomnie", text: "😴 Insomnie"}
+                        ],
+                        correct: "rhinite"
+                    },
+                    {
+                        title: "🌿 Parties Utilisées",
+                        text: "Quelles parties du plantain lancéolé sont généralement utilisées en phytothérapie ?",
+                        options: [
+                            {value: "racines", text: "🌱 Les racines"},
+                            {value: "feuilles", text: "🍃 Les feuilles"},
+                            {value: "fleurs", text: "🌸 Les fleurs"},
+                            {value: "tiges", text: "🌿 Les tiges"}
+                        ],
+                        correct: "feuilles"
+                    },
+                    {
+                        title: "🌍 Distribution",
+                        text: "Le plantain lancéolé est-il une plante :",
+                        options: [
+                            {value: "espace", text: "🚀 Originaire de l'espace"},
+                            {value: "laboratoire", text: "🧪 Exclusivement cultivée en laboratoire"},
+                            {value: "temperee", text: "🌾 Commune dans les zones tempérées"},
+                            {value: "rare", text: "💎 Extrêmement rare"}
+                        ],
+                        correct: "temperee"
+                    }
+                ];
+                this.messages = [
+                    "Salut ! Je vais vous montrer la magie de la création Kikko ! Prenez une photo pour commencer...",
+                    "📸 Parfait ! Photo capturée. Maintenant observez le dilemme : AI Overview vs Ruche authentique !",
+                    "🐝 Google AI Overview donne des infos mais SANS provenance ! D'où viennent ces données ? Mystère total !",
+                    "🏆 Excellent choix ! Vous préférez la transparence à l'opacité. Observez votre ruche au travail !",
+                    "🔬 Vos Worker Bees analysent l'image avec ML Kit : OCR, vision, classification. Tout sur votre appareil !",
+                    "👑 Votre Queen AI (Gemma) structure les données et pose des questions pour VALIDER les connaissances !",
+                    "❓ Ces questions vérifient la cohérence ! Contrairement à Google, VOUS validez chaque information !",
+                    "🌍 Voilà ! Microsite complet avec Thread of Provenance. Chaque info est traçable et vérifiable !",
+                    "✨ Différence clé : Google dit 'faites-moi confiance', Kikko dit 'voici les preuves' ! Redémarrage..."
+                ];
+                this.translations = {
+                    fr: {
+                        name: "Plantain Lancéolé",
+                        scientific: "Plantago lanceolata",
+                        family: "Plantaginacées",
+                        usage: "Apaisantes, cicatrisantes, anti-inflammatoires",
+                        location: "Prairies, pâturages, bord des chemins",
+                        season: "Vivace - Toute l'année",
+                        edible: "✅ Jeunes feuilles comestibles (crues ou cuites)",
+                        risks: "⚠️ Allergies au pollen possible"
+                    },
+                    en: {
+                        name: "Ribwort Plantain",
+                        scientific: "Plantago lanceolata",
+                        family: "Plantaginaceae",
+                        usage: "Soothing, healing, anti-inflammatory",
+                        location: "Meadows, pastures, roadsides",
+                        season: "Perennial - Year-round",
+                        edible: "✅ Young leaves edible (raw or cooked)",
+                        risks: "⚠️ Possible pollen allergies"
+                    },
+                    es: {
+                        name: "Llantén Menor",
+                        scientific: "Plantago lanceolata",
+                        family: "Plantagináceas",
+                        usage: "Calmantes, cicatrizantes, antiinflamatorias",
+                        location: "Praderas, pastizales, bordes de caminos",
+                        season: "Perenne - Todo el año",
+                        edible: "✅ Hojas jóvenes comestibles (crudas o cocidas)",
+                        risks: "⚠️ Posibles alergias al polen"
+                    },
+                    de: {
+                        name: "Spitzwegerich",
+                        scientific: "Plantago lanceolata",
+                        family: "Wegerichgewächse",
+                        usage: "Beruhigend, heilend, entzündungshemmend",
+                        location: "Wiesen, Weiden, Wegränder",
+                        season: "Mehrjährig - Ganzjährig",
+                        edible: "✅ Junge Blätter essbar (roh oder gekocht)",
+                        risks: "⚠️ Mögliche Pollenallergien"
+                    },
+                    it: {
+                        name: "Piantaggine Lanceolata",
+                        scientific: "Plantago lanceolata",
+                        family: "Plantaginaceae",
+                        usage: "Lenitive, cicatrizzanti, antinfiammatorie",
+                        location: "Prati, pascoli, bordi delle strade",
+                        season: "Perenne - Tutto l'anno",
+                        edible: "✅ Foglie giovani commestibili (crude o cotte)",
+                        risks: "⚠️ Possibili allergie ai pollini"
+                    }
+                };
+                this.init();
+            }
+
+            init() {
+                this.showMessage(0);
+                this.setupEventListeners();
+            }
+
+            setupEventListeners() {
+                document.getElementById('captureBtn').addEventListener('click', () => this.capturePhoto());
+                document.getElementById('acceptHornet').addEventListener('click', () => this.acceptHornet());
+                document.getElementById('chooseKikko').addEventListener('click', () => this.chooseKikko());
+                document.getElementById('nextQuestion').addEventListener('click', () => this.nextQuestion());
+                
+                // Options des questions
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('option-btn')) {
+                        this.selectOption(e.target);
+                    }
+                });
+
+                // Sélecteur de langue
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('lang-btn')) {
+                        this.changeLanguage(e.target.dataset.lang);
+                    }
+                });
+            }
+
+            showMessage(index) {
+                const messageEl = document.getElementById('beeMessage');
+                messageEl.innerHTML = '<span class="typing">' + this.messages[index] + '</span>';
+            }
+
+            showPhase(phaseIndex) {
+                const phases = ['camera-phase', 'hornet-phase', 'hive-phase', 'question-phase', 'microsite-phase'];
+                phases.forEach(phase => {
+                    document.getElementById(phase).classList.add('hidden');
+                });
+                document.getElementById(phases[phaseIndex]).classList.remove('hidden');
+            }
+
+            async capturePhoto() {
+                this.showMessage(1);
+                
+                // Simulation de la prise de photo
+                const photoOverlay = document.getElementById('photoOverlay');
+                photoOverlay.style.backgroundImage = `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><rect fill="%23228B22" width="300" height="300"/><g transform="translate(150,150)"><circle fill="%2332CD32" r="40"/><path fill="%2390EE90" d="M-30,-20 Q-40,-40 -20,-45 Q0,-50 20,-45 Q40,-40 30,-20 Q20,-10 0,-5 Q-20,-10 -30,-20"/><path fill="%2390EE90" d="M-20,20 Q-30,40 -10,45 Q10,50 30,45 Q50,40 40,20 Q30,10 10,5 Q-10,10 -20,20"/><rect fill="%23654321" x="-3" y="20" width="6" height="40"/></g></svg>')`;
+                
+                document.getElementById('captureBtn').style.transform = 'translateX(-50%) scale(0.8)';
+                
+                await this.wait(1000);
+                
+                // Passer à l'offre du frelon
+                this.showMessage(2);
+                this.showPhase(1);
+                document.querySelector('.hornet-offer').classList.add('visible');
+                
+                await this.wait(4000);
+                this.showMessage(3);
+            }
+
+            async acceptHornet() {
+                // Si l'utilisateur accepte le frelon (pas recommandé dans cette démo)
+                alert("💡 Dans la vraie app, vous obtiendriez une réponse rapide mais sans provenance ni vérification !");
+                this.chooseKikko(); // Forcer le choix Kikko pour la démo
+            }
+
+            async chooseKikko() {
+                this.showMessage(4);
+                
+                // Masquer l'offre du frelon
+                document.querySelector('.hornet-offer').style.opacity = '0.3';
+                
+                // Montrer le travail de la ruche
+                this.showPhase(2);
+                document.querySelector('.hive-work').classList.add('visible');
+                
+                // Animer le travail des workers
+                await this.simulateHiveWork();
+                
+                this.showMessage(5);
+                await this.wait(2000);
+                
+                // Passer aux questions
+                this.showMessage(6);
+                this.startQuestions();
+            }
+
+            async simulateHiveWork() {
+                const workers = [
+                    {id: 'ocrWorker', progress: 'ocrProgress', duration: 2000},
+                    {id: 'visionWorker', progress: 'visionProgress', duration: 3000},
+                    {id: 'queenWorker', progress: 'queenProgress', duration: 2500}
+                ];
+
+                // Démarrer tous les workers
+                workers.forEach(worker => {
+                    document.querySelector(`#${worker.id} .worker-icon`).classList.add('working');
+                    this.animateProgress(worker.progress, worker.duration);
+                });
+
+                // Ajouter des abeilles volantes
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => this.addFloatingBee(), i * 800);
+                }
+
+                await this.wait(4000);
+            }
+
+            animateProgress(elementId, duration) {
+                const progressBar = document.getElementById(elementId);
+                let progress = 0;
+                const increment = 100 / (duration / 50);
+                
+                const interval = setInterval(() => {
+                    progress += increment;
+                    progressBar.style.width = Math.min(progress, 100) + '%';
+                    
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                    }
+                }, 50);
+            }
+
+            startQuestions() {
+                this.showPhase(3);
+                this.showCurrentQuestion();
+                document.querySelector('.question-panel').classList.add('visible');
+            }
+
+            showCurrentQuestion() {
+                const question = this.questions[this.currentQuestion];
+                document.getElementById('questionTitle').textContent = question.title;
+                document.getElementById('questionText').textContent = question.text;
+                
+                const optionsContainer = document.getElementById('questionOptions');
+                optionsContainer.innerHTML = '';
+                
+                question.options.forEach(option => {
+                    const btn = document.createElement('div');
+                    btn.className = 'option-btn';
+                    btn.dataset.value = option.value;
+                    btn.textContent = option.text;
+                    optionsContainer.appendChild(btn);
+                });
+
+                document.getElementById('nextQuestion').disabled = true;
+            }
+
+            selectOption(element) {
+                // Retirer la sélection des autres options
+                document.querySelectorAll('.option-btn').forEach(btn => {
+                    btn.classList.remove('selected', 'correct', 'incorrect');
+                });
+                
+                // Sélectionner cette option
+                element.classList.add('selected');
+                
+                // Vérifier si c'est la bonne réponse
+                const question = this.questions[this.currentQuestion];
+                const isCorrect = element.dataset.value === question.correct;
+                
+                if (isCorrect) {
+                    element.classList.add('correct');
+                    element.style.background = 'rgba(40, 167, 69, 0.2)';
+                    element.style.borderColor = '#28a745';
+                } else {
+                    element.classList.add('incorrect');
+                    element.style.background = 'rgba(220, 53, 69, 0.2)';
+                    element.style.borderColor = '#dc3545';
+                    
+                    // Montrer la bonne réponse
+                    setTimeout(() => {
+                        const correctOption = document.querySelector(`[data-value="${question.correct}"]`);
+                        if (correctOption) {
+                            correctOption.classList.add('correct');
+                            correctOption.style.background = 'rgba(40, 167, 69, 0.2)';
+                            correctOption.style.borderColor = '#28a745';
+                        }
+                    }, 1000);
+                }
+                
+                // Sauvegarder la réponse
+                this.userAnswers[this.currentQuestion] = {
+                    value: element.dataset.value,
+                    correct: isCorrect
+                };
+                
+                // Activer le bouton suivant après un délai
+                setTimeout(() => {
+                    document.getElementById('nextQuestion').disabled = false;
+                }, 1500);
+            }
+
+            async nextQuestion() {
+                this.currentQuestion++;
+                
+                if (this.currentQuestion < this.questions.length) {
+                    this.showCurrentQuestion();
+                } else {
+                    // Toutes les questions terminées
+                    this.showMessage(7);
+                    await this.wait(1000);
+                    this.showMicrosite();
+                }
+            }
+
+            async showMicrosite() {
+                this.showPhase(4);
+                document.querySelector('.microsite-preview').classList.add('visible');
+                
+                // Mettre à jour la localisation basée sur les réponses
+                this.updateMicrositeWithAnswers();
+                
+                await this.wait(4000);
+                this.showMessage(8);
+                
+                // Redémarrer la démo
+                setTimeout(() => this.restartDemo(), 6000);
+            }
+
+            updateMicrositeWithAnswers() {
+                const location = this.userAnswers[0] || 'sauvage';
+                const region = this.userAnswers[1] || 'provence';
+                
+                const locationTexts = {
+                    jardin: 'Jardin privé',
+                    foret: 'Forêt',
+                    parc: 'Parc public',
+                    sauvage: 'Bord de route'
+                };
+                
+                const regionTexts = {
+                    provence: 'Provence',
+                    bretagne: 'Bretagne',
+                    alpes: 'Alpes',
+                    parisien: 'Région Parisienne'
+                };
+                
+                // Mettre à jour la localisation dans le microsite
+                document.querySelector('.property-row:nth-child(3) span').textContent = 
+                    `${locationTexts[location]}, ${regionTexts[region]}`;
+            }
+
+            changeLanguage(lang) {
+                // Mettre à jour l'interface de sélection
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+                
+                // Mettre à jour le contenu
+                const translation = this.translations[lang];
+                document.getElementById('plantName').textContent = translation.name;
+                document.getElementById('plantScientific').textContent = translation.scientific;
+                
+                const properties = document.querySelectorAll('.property-row span');
+                properties[0].textContent = translation.family;
+                properties[1].textContent = translation.usage;
+                properties[2].textContent = translation.location;
+                properties[3].textContent = translation.season;
+                properties[4].textContent = translation.edible;
+                properties[5].textContent = translation.risks;
+            }
+
+            addFloatingBee() {
+                const container = document.querySelector('.floating-elements');
+                const bee = document.createElement('div');
+                bee.className = 'floating-bee';
+                bee.textContent = '🐝';
+                bee.style.top = Math.random() * 200 + 'px';
+                bee.style.animationDelay = '0s';
+                container.appendChild(bee);
+                
+                setTimeout(() => bee.remove(), 3000);
+            }
+
+            async restartDemo() {
+                // Reset
+                this.currentQuestion = 0;
+                this.userAnswers = {};
+                
+                // Reset des éléments visuels
+                document.querySelector('.hornet-offer').classList.remove('visible');
+                document.querySelector('.hive-work').classList.remove('visible');
+                document.querySelector('.question-panel').classList.remove('visible');
+                document.querySelector('.microsite-preview').classList.remove('visible');
+                
+                // Reset des barres de progression
+                ['ocrProgress', 'visionProgress', 'queenProgress'].forEach(id => {
+                    document.getElementById(id).style.width = '0%';
+                });
+                
+                // Reset de la photo
+                document.getElementById('photoOverlay').style.backgroundImage = '';
+                document.getElementById('captureBtn').style.transform = 'translateX(-50%) scale(1)';
+                
+                // Retour à la phase camera
+                this.showPhase(0);
+                this.showMessage(0);
+            }
+
+            wait(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        }
+
+        // Démarrage de la démo
+        document.addEventListener('DOMContentLoaded', () => {
+            new KikkoCreationDemo();
+        });
+    </script>
+</body>
+</html>

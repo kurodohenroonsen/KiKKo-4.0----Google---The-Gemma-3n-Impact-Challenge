@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kikko - Streaming AI vs Ruche</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #2E8B57 0%, #228B22 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .phone-container {
+            width: 375px;
+            height: 667px;
+            background: #000;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .status-bar {
+            height: 44px;
+            background: linear-gradient(45deg, #32CD32, #228B22);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .app-header {
+            height: 80px;
+            background: linear-gradient(45deg, #32CD32, #228B22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .camera-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .camera-view {
+            width: 100%;
+            height: 300px;
+            background: #000;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+        }
+
+        .capture-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 70px;
+            background: white;
+            border: 4px solid #32CD32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 24px;
+        }
+
+        .capture-btn:hover {
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .gemma-analysis {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .gemma-analysis.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .analysis-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .gemma-icon {
+            width: 40px;
+            height: 40px;
+            background: #32CD32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        .typing-text {
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            line-height: 1.4;
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Modal du Faux Bourdon */
+        .hornet-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .hornet-modal.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .hornet-container {
+            width: 90%;
+            max-width: 500px;
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .hornet-modal.visible .hornet-container {
+            transform: scale(1);
+        }
+
+        .hornet-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hornet-avatar {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .streaming-text {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 200px;
+            font-family: 'SF Pro Display', sans-serif;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .stream-line {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: streamIn 0.5s ease forwards;
+        }
+
+        @keyframes streamIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tts-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sound-wave {
+            width: 4px;
+            height: 15px;
+            background: white;
+            margin: 0 1px;
+            border-radius: 2px;
+            animation: wave 1s ease-in-out infinite;
+        }
+
+        .sound-wave:nth-child(2) { animation-delay: 0.1s; }
+        .sound-wave:nth-child(3) { animation-delay: 0.2s; }
+        .sound-wave:nth-child(4) { animation-delay: 0.3s; }
+
+        @keyframes wave {
+            0%, 100% { transform: scaleY(0.5); }
+            50% { transform: scaleY(1); }
+        }
+
+        .questions-form {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .questions-form.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .question-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        .question-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .question-options {
+            display: grid;
+            gap: 8px;
+        }
+
+        .option-radio {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .option-radio:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .option-radio input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-accept {
+            background: rgba(255,255,255,0.9);
+            color: #FF6B35;
+        }
+
+        .btn-reject {
+            background: #32CD32;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .hive-work {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .hive-work.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .worker-section {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .worker-icon {
+            width: 40px;
+            height: 40px;
+            background: #32CD32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        .worker-icon.working {
+            animation: working 1s ease-in-out infinite;
+        }
+
+        @keyframes working {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .worker-progress {
+            flex: 1;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #32CD32, #228B22);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .bee-narrator {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(45deg, #2E8B57, #228B22);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
+
+        .bee-avatar {
+            width: 60px;
+            height: 60px;
+            background: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-right: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .bee-message {
+            flex: 1;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .typing {
+            display: inline-block;
+            animation: typing 1s ease-in-out infinite;
+        }
+
+        @keyframes typing {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .microsite-preview {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .microsite-preview.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .trust-seal {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .vs-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .comparison-card {
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .card-hornet {
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            color: white;
+        }
+
+        .card-kikko {
+            background: linear-gradient(135deg, #32CD32, #228B22);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <div class="screen">
+            <div class="status-bar">
+                <span>10:23</span>
+                <span>🔋 92%</span>
+            </div>
+            
+            <div class="app-header">
+                <div class="logo">Kikko Creator</div>
+                <div class="camera-icon">📸</div>
+            </div>
+
+            <div class="main-content">
+                <!-- Étape 1: Camera -->
+                <div id="camera-phase" class="phase">
+                    <div class="camera-view">
+                        <div class="photo-overlay" id="photoOverlay"></div>
+                        <div class="capture-btn" id="captureBtn">📸</div>
+                    </div>
+                    <p style="text-align: center; color: #666; font-size: 14px;">
+                        Pointez vers une plante pour créer un microsite
+                    </p>
+                </div>
+
+                <!-- Étape 2: Analyse Gemma -->
+                <div id="gemma-phase" class="phase hidden">
+                    <div class="gemma-analysis">
+                        <div class="analysis-header">
+                            <div class="gemma-icon">🧠</div>
+                            <div>
+                                <h3>Gemma Analyse</h3>
+                                <p>Reconnaissance en cours...</p>
+                            </div>
+                        </div>
+                        <div class="typing-text" id="gemmaText"></div>
+                    </div>
+                </div>
+
+                <!-- Étape 2.5: Proposition Frelons -->
+                <div id="hornet-offer-phase" class="phase hidden">
+                    <div class="gemma-analysis">
+                        <div class="analysis-header">
+                            <div class="gemma-icon">⚡</div>
+                            <div>
+                                <h3>AI Overview Rapide</h3>
+                                <p>Réponse instantanée disponible</p>
+                            </div>
+                        </div>
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                            <p>Cette plante semble être un <strong>Plantain lancéolé</strong>. Plante comestible commune, souvent utilisée en herboristerie pour ses propriétés anti-inflammatoires.</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #FF6B35, #F7931E); color: white; padding: 20px; border-radius: 15px; text-align: center;">
+                            <h3>🐝 Veux-tu la connaissance des frelons ?</h3>
+                            <p>Informations complètes avec fun facts, impacts et quiz !</p>
+                            <div style="display: flex; gap: 15px; margin-top: 15px;">
+                                <button class="btn btn-accept" id="acceptFrelons" style="flex: 1; background: white; color: #FF6B35;">✅ Oui</button>
+                                <button class="btn btn-reject" id="refuseFrelons" style="flex: 1; background: #32CD32; color: white;">❌ Non</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="hive-phase" class="phase hidden">
+                    <div class="hive-work">
+                        <h3>🏭 Votre Ruche au Travail</h3>
+                        
+                        <div class="worker-section" id="ocrWorker">
+                            <div class="worker-icon">👁️</div>
+                            <div class="worker-progress">
+                                <strong>OCR Worker Bee</strong>
+                                <p>Lecture du texte dans l'image...</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="ocrProgress"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="worker-section" id="visionWorker">
+                            <div class="worker-icon">🔍</div>
+                            <div class="worker-progress">
+                                <strong>Vision Worker Bee</strong>
+                                <p>Analyse visuelle de la plante...</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="visionProgress"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="worker-section" id="queenWorker">
+                            <div class="worker-icon">👑</div>
+                            <div class="worker-progress">
+                                <strong>Queen AI (Gemma)</strong>
+                                <p>Structuration intelligente...</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="queenProgress"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Étape 4: Comparaison -->
+                <div id="comparison-phase" class="phase hidden">
+                    <div class="vs-comparison">
+                        <div class="comparison-card card-hornet">
+                            <h4>🐝 AI Overview</h4>
+                            <p>✅ Rapide</p>
+                            <p>❌ Opaque</p>
+                            <p>❌ Non vérifiable</p>
+                        </div>
+                        <div class="comparison-card card-kikko">
+                            <h4>🏭 Votre Ruche</h4>
+                            <p>✅ Transparent</p>
+                            <p>✅ Vérifiable</p>
+                            <p>✅ Vous appartient</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Étape 5: Microsite Final -->
+                <div id="microsite-phase" class="phase hidden">
+                    <div class="microsite-preview">
+                        <div class="trust-seal">
+                            🏆 Microsite Certifié Kikko - Thread of Provenance Complet
+                        </div>
+                        <h2>Plantain Lancéolé</h2>
+                        <p><em>Plantago lanceolata</em></p>
+                        <p><strong>✅ Authenticité vérifiée par reproduction d'inférence</strong></p>
+                        <p><strong>🔬 Créé avec vos propres Worker Bees et Queen AI</strong></p>
+                        <p><strong>📍 Localisé et contextualisé par vous</strong></p>
+                        <button class="btn btn-reject" style="width: 100%; margin-top: 20px;">
+                            📤 Partager ce Microsite Vérifié
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal du Faux Bourdon -->
+    <div class="hornet-modal" id="hornetModal">
+        <div class="hornet-container">
+            <button class="close-btn" id="closeModal">×</button>
+            
+            <div class="hornet-header">
+                <div class="hornet-avatar">🐝</div>
+                <h2>Faux Bourdon AI Overview</h2>
+                <p>Streaming en temps réel</p>
+            </div>
+
+            <div class="streaming-text" id="streamingText">
+                <div class="tts-indicator">
+                    🔊 TTS
+                    <div class="sound-wave"></div>
+                    <div class="sound-wave"></div>
+                    <div class="sound-wave"></div>
+                    <div class="sound-wave"></div>
+                </div>
+            </div>
+
+            <div class="questions-form" id="questionsForm">
+                <h3>📝 Questions de Validation</h3>
+                <div id="questionsContainer"></div>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="btn btn-accept" id="acceptHornet">⚡ Accepter Rapide</button>
+                <button class="btn btn-reject" id="chooseKikko">🏭 Préférer Ma Ruche</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Narrateur abeille -->
+    <div class="bee-narrator">
+        <div class="bee-avatar">🐝</div>
+        <div class="bee-message">
+            <span class="typing" id="beeMessage">Observez le duel : AI Overview streaming vs Ruche authentique !</span>
+        </div>
+    </div>
+
+    <script>
+        class KikkoStreamingDemo {
+            constructor() {
+                this.currentPhase = 0;
+                this.streamingTexts = [
+                    "Salut ! Je suis le Faux Bourdon, votre assistant IA rapide ! 🐝",
+                    "",
+                    "J'ai analysé votre photo et trouvé des infos instantanées :",
+                    "",
+                    "🌿 Cette plante semble être un Plantain lancéolé !",
+                    "",
+                    "C'est une plante herbacée vivace... très commune dans nos régions...",
+                    "",
+                    "Connue pour ses feuilles étroites et lancéolées... et ses propriétés médicinales remarquables !",
+                    "",
+                    "Elle pousse dans les prairies... les pâturages... et au bord des chemins...",
+                    "",
+                    "🏥 Côté médical : propriétés apaisantes, cicatrisantes et anti-inflammatoires !",
+                    "",
+                    "Les feuilles peuvent soulager les piqûres d'insectes... les irritations cutanées...",
+                    "",
+                    "⚠️ Attention : certaines personnes peuvent être allergiques au pollen !",
+                    "",
+                    "🍽️ Alimentation : les jeunes feuilles sont comestibles, crues ou cuites !",
+                    "",
+                    "Bon... maintenant quelques questions pour valider ces infos :",
+                    "",
+                    "QUESTIONS_DETECTED"
+                ];
+                
+                this.questions = [
+                    {
+                        text: "Le plantain lancéolé est-il principalement connu pour ses propriétés :",
+                        options: [
+                            "🩹 Cicatrisantes",
+                            "🍄 Hallucinogènes", 
+                            "🦷 Cariogènes",
+                            "💥 Explosives"
+                        ]
+                    },
+                    {
+                        text: "Quel type de réaction peut provoquer l'allergie au plantain lancéolé ?",
+                        options: [
+                            "💓 Hypertension artérielle",
+                            "🤧 Rhinite allergique",
+                            "🍬 Diabète",
+                            "😴 Insomnie"
+                        ]
+                    }
+                ];
+
+                this.messages = [
+                    "Observez le duel : AI Overview streaming vs Ruche authentique !",
+                    "📸 Photo capturée ! Gemma analyse pour générer la recherche Google...",
+                    "🧠 Analyse terminée ! Lancement de la recherche AI Overview...",
+                    "🐝 Le Faux Bourdon streams l'info Google avec TTS en temps réel !",
+                    "📝 Questions détectées ! Le formulaire apparaît automatiquement !",
+                    "🔄 Pendant ce temps, votre Ruche travaille en parallèle...",
+                    "⚖️ Choisissez : Rapidité opaque vs Authenticité transparente !",
+                    "🏭 Votre Ruche analyse la même photo avec VOS outils !",
+                    "✅ Comparaison : Même info, mais Kikko vous donne les PREUVES !",
+                    "🏆 Microsite final : Certifié authentique par reproduction d'inférence !"
+                ];
+
+                this.currentStreamIndex = 0;
+                this.isStreaming = false;
+                this.init();
+            }
+
+            init() {
+                this.showMessage(0);
+                this.setupEventListeners();
+                setTimeout(() => this.startDemo(), 2000);
+            }
+
+            setupEventListeners() {
+                document.getElementById('captureBtn').addEventListener('click', () => this.capturePhoto());
+                document.getElementById('closeModal').addEventListener('click', () => this.closeModal());
+                document.getElementById('acceptHornet').addEventListener('click', () => this.acceptHornet());
+                document.getElementById('chooseKikko').addEventListener('click', () => this.chooseKikko());
+                document.getElementById('acceptFrelons').addEventListener('click', () => this.acceptFrelons());
+                document.getElementById('refuseFrelons').addEventListener('click', () => this.refuseFrelons());
+            }
+
+            showMessage(index) {
+                const messageEl = document.getElementById('beeMessage');
+                messageEl.innerHTML = '<span class="typing">' + this.messages[index] + '</span>';
+            }
+
+            showPhase(phaseIndex) {
+                const phases = ['camera-phase', 'gemma-phase', 'hornet-offer-phase', 'hive-phase', 'comparison-phase', 'microsite-phase'];
+                phases.forEach(phase => {
+                    document.getElementById(phase).classList.add('hidden');
+                });
+                document.getElementById(phases[phaseIndex]).classList.remove('hidden');
+            }
+
+            async startDemo() {
+                // Auto-capture après 2 secondes
+                setTimeout(() => this.capturePhoto(), 2000);
+            }
+
+            async capturePhoto() {
+                this.showMessage(1);
+                
+                // Simulation de la prise de photo
+                const photoOverlay = document.getElementById('photoOverlay');
+                photoOverlay.style.backgroundImage = `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><rect fill="%23228B22" width="300" height="300"/><g transform="translate(150,150)"><circle fill="%2332CD32" r="40"/><path fill="%2390EE90" d="M-30,-20 Q-40,-40 -20,-45 Q0,-50 20,-45 Q40,-40 30,-20 Q20,-10 0,-5 Q-20,-10 -30,-20"/><path fill="%2390EE90" d="M-20,20 Q-30,40 -10,45 Q10,50 30,45 Q50,40 40,20 Q30,10 10,5 Q-10,10 -20,20"/><rect fill="%23654321" x="-3" y="20" width="6" height="40"/></g></svg>')`;
+                
+                document.getElementById('captureBtn').style.transform = 'translateX(-50%) scale(0.8)';
+                
+                await this.wait(1000);
+                
+                // Phase Gemma
+                this.showMessage(2);
+                this.showPhase(1);
+                document.querySelector('.gemma-analysis').classList.add('visible');
+                
+                await this.simulateGemmaAnalysis();
+                
+                // Lancer le modal du Faux Bourdon
+                this.showMessage(3);
+                this.showModal();
+                
+                // Démarrer le travail de la ruche en parallèle
+                setTimeout(() => {
+                    this.showMessage(5);
+                    this.startHiveWork();
+                }, 3000);
+            }
+
+            async simulateGemmaAnalysis() {
+                const gemmaTexts = [
+                    "🔍 Détection d'une plante...",
+                    "🌿 Forme des feuilles : lancéolées", 
+                    "📊 Classification : Plantaginaceae",
+                    "🏷️ Espèce identifiée : Plantago lanceolata",
+                    "✅ Analyse terminée - Plantain lancéolé détecté"
+                ];
+
+                const textEl = document.getElementById('gemmaText');
+                
+                for (let i = 0; i < gemmaTexts.length; i++) {
+                    await this.typeText(textEl, gemmaTexts[i] + '\n');
+                    await this.wait(800);
+                }
+            }
+
+            async typeText(element, text) {
+                return new Promise(resolve => {
+                    let i = 0;
+                    const interval = setInterval(() => {
+                        element.textContent += text[i];
+                        i++;
+                        if (i >= text.length) {
+                            clearInterval(interval);
+                            resolve();
+                        }
+                    }, 50);
+                });
+            }
+
+            showModal() {
+                document.getElementById('hornetModal').classList.add('visible');
+                setTimeout(() => this.startStreaming(), 500);
+            }
+
+            closeModal() {
+                document.getElementById('hornetModal').classList.remove('visible');
+                this.showMessage(6);
+                this.showPhase(3); // Comparaison
+                setTimeout(() => {
+                    this.showMessage(7);
+                    this.showPhase(2); // Hive work
+                }, 2000);
+            }
+
+            async startStreaming() {
+                this.isStreaming = true;
+                this.currentStreamIndex = 0;
+                const streamContainer = document.getElementById('streamingText');
+                
+                // Vider le container mais garder l'indicateur TTS
+                const ttsIndicator = streamContainer.querySelector('.tts-indicator');
+                streamContainer.innerHTML = '';
+                streamContainer.appendChild(ttsIndicator);
+
+                for (let i = 0; i < this.streamingTexts.length; i++) {
+                    if (!this.isStreaming) break;
+                    
+                    const text = this.streamingTexts[i];
+                    
+                    if (text === "QUESTIONS_DETECTED") {
+                        this.showMessage(4);
+                        this.showQuestions();
+                        break;
+                    }
+                    
+                    if (text.trim() !== "") {
+                        await this.addStreamLine(streamContainer, text);
+                        await this.wait(1500); // Pause pour TTS
+                    } else {
+                        await this.wait(300); // Pause courte pour les lignes vides
+                    }
+                }
+            }
+
+            async addStreamLine(container, text) {
+                const line = document.createElement('div');
+                line.className = 'stream-line';
+                line.textContent = text;
+                container.appendChild(line);
+                
+                // Scroll vers le bas
+                container.scrollTop = container.scrollHeight;
+                
+                return this.wait(100);
+            }
+
+            showQuestions() {
+                const questionsForm = document.getElementById('questionsForm');
+                const container = document.getElementById('questionsContainer');
+                
+                container.innerHTML = '';
+                
+                this.questions.forEach((question, index) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'question-item';
+                    
+                    questionDiv.innerHTML = `
+                        <div class="question-title">${question.text}</div>
+                        <div class="question-options">
+                            ${question.options.map((option, optIndex) => `
+                                <label class="option-radio">
+                                    <input type="radio" name="question_${index}" value="${optIndex}">
+                                    ${option}
+                                </label>
+                            `).join('')}
+                        </div>
+                    `;
+                    
+                    container.appendChild(questionDiv);
+                });
+                
+                questionsForm.classList.add('visible');
+            }
+
+            async startHiveWork() {
+                this.showPhase(2);
+                document.querySelector('.hive-work').classList.add('visible');
+                
+                // Animer le travail des workers
+                const workers = [
+                    {id: 'ocrWorker', progress: 'ocrProgress', duration: 2000},
+                    {id: 'visionWorker', progress: 'visionProgress', duration: 3000},
+                    {id: 'queenWorker', progress: 'queenProgress', duration: 2500}
+                ];
+
+                workers.forEach(worker => {
+                    document.querySelector(`#${worker.id} .worker-icon`).classList.add('working');
+                    this.animateProgress(worker.progress, worker.duration);
+                });
+
+                await this.wait(4000);
+            }
+
+            animateProgress(elementId, duration) {
+                const progressBar = document.getElementById(elementId);
+                let progress = 0;
+                const increment = 100 / (duration / 50);
+                
+                const interval = setInterval(() => {
+                    progress += increment;
+                    progressBar.style.width = Math.min(progress, 100) + '%';
+                    
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                    }
+                }, 50);
+            }
+
+            async acceptHornet() {
+                this.showMessage(8);
+                alert("💡 Vous acceptez l'AI Overview : Rapide mais sans provenance ni vérification !");
+                this.closeModal();
+                await this.wait(2000);
+                this.restartDemo();
+            }
+
+            async chooseKikko() {
+                this.isStreaming = false;
+                this.closeModal();
+                
+                await this.wait(3000);
+                
+                this.showMessage(8);
+                await this.wait(2000);
+                
+                this.showMessage(9);
+                this.showPhase(4); // Microsite final
+                document.querySelector('.microsite-preview').classList.add('visible');
+                
+                setTimeout(() => this.restartDemo(), 6000);
+            }
+
+            async restartDemo() {
+                // Reset complet
+                document.getElementById('hornetModal').classList.remove('visible');
+                document.querySelector('.gemma-analysis').classList.remove('visible');
+                document.querySelector('.hive-work').classList.remove('visible');
+                document.querySelector('.microsite-preview').classList.remove('visible');
+                
+                // Reset des barres de progression
+                ['ocrProgress', 'visionProgress', 'queenProgress'].forEach(id => {
+                    document.getElementById(id).style.width = '0%';
+                });
+                
+                // Reset de la photo
+                document.getElementById('photoOverlay').style.backgroundImage = '';
+                document.getElementById('captureBtn').style.transform = 'translateX(-50%) scale(1)';
+                document.getElementById('gemmaText').textContent = '';
+                
+                // Retour à la phase camera
+                this.showPhase(0);
+                this.showMessage(0);
+                
+                // Relancer
+                setTimeout(() => this.startDemo(), 3000);
+            }
+
+            wait(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        }
+
+        // Démarrage de la démo
+        document.addEventListener('DOMContentLoaded', () => {
+            new KikkoStreamingDemo();
+        });
+    </script>
+</body>
+</html>

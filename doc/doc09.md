@@ -24,23 +24,28 @@ Kikko will be offered to everyone, completely free, with no strings attached. Th
     *   Unlimited local storage of "honey" and "pollen."
     *   The complete "Thread of Provenance" and "Seal of Trust" features.
     *   Unlimited peer-to-peer sharing via WebTorrent.
-    *   Access to all badges, quests, and future updates.
+    *   A starter set of badges and quests.
 
-This is not a "freemium" strategy in disguise. It is a commitment to accessibility and a rejection of the idea that powerful personal tools should come at a price.
+This free tier is not a "demo." It is a complete, powerful tool that fulfills the core promise of the application. The **Bourdon**, ever the pragmatist, might grumble about the lack of "honey-money," but ultimately agrees it's the most effective way to get more foragers for the Queen.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
-| <img src="illustrations/free_intro.png" alt="Cinematic 3D render, animation movie style. A beautiful, glowing Kikko Hive icon is offered freely in an open hand. It represents a gift to the user."> | <img src="illustrations/free_action.png" alt="Cinematic 3D render, animation movie style. Hiro, with a look of wonder, accepts the gift. The Hive icon settles into his phone, which begins to glow with a warm, personal light."> | <img src="illustrations/free_conclusion.png" alt="Cinematic 3D render, animation movie style. Hiro is now happily foraging in his world, his Hive fully functional, collecting pollen and earning badges without any barriers or requests for payment."> |
-| **The Gift of Knowledge:** The core Kikko experience is presented as a gift, free for everyone to use and benefit from. | **The Unconditional Start:** The user can start their journey immediately, with all essential features available from the beginning. | **Full-Featured Freedom:** The free version is not a trial; it's a complete, powerful tool that showcases the full potential of a personal memory hive. |
+| <img src="illustrations/gift_intro.png" alt="Cinematic 3D render, animation movie style. A beautiful, glowing Kikko Hive icon is held in an open, welcoming human hand, symbolizing a free gift to the user. The Bourdon hovers nearby, looking a bit bewildered by this 'no profit' strategy."> | <img src="illustrations/gift_action.png" alt="Cinematic 3D render, animation movie style. Hiro, with a look of wonder, accepts the gift. The Hive icon settles into his phone, which begins to glow with a warm, personal light. The Bourdon shrugs, acknowledging the transfer."> | <img src="illustrations/gift_conclusion.png" alt="Cinematic 3D render, animation movie style. Hiro is now happily foraging in his world, his Hive fully functional, collecting golden pollen and earning shiny badges. The Bourdon floats lazily on a cloud of Honey Points, looking smug about the successful viral spread."> |
+| **The Unconditional Offer:** The Kikko experience is presented as a gift to all, symbolizing its commitment to user empowerment over profit. | **The Acceptance:** The user accepts the free, full-featured Hive, beginning their journey of personal knowledge discovery. | **The Flourishing Hive:** The user thrives, collecting memories and earning rewards, while the Bourdon observes the growing popularity of the freely-given Kikko. |
 
 ### **2. Why This Approach? The Economics of a Powerful Idea**
 
 Choosing a non-commercial path is a strategic decision that serves the core goals of the project.
 
-*   **Maximizing Impact for the Competition:** For the Google AI Edge Challenge, our goal is to present the most powerful and uncompromised vision possible. A business model, no matter how ethical, would distract from the core message: the technological and philosophical innovation.
-*   **Building Trust Through Action:** The strongest way to prove our commitment to user sovereignty is to remove profit from the equation entirely. Our actions speak louder than any privacy policy. We are not interested in the user's money because we are only interested in empowering them.
-*   **Fostering an Authentic Community:** A non-commercial project attracts a different kind of community: one built on passion, collaboration, and shared ideals, not on consumer transactions. We hope to inspire developers, designers, and thinkers to build upon the ideas presented in Kikko.
-*   **A Focus on Pure Innovation:** By removing the pressure to generate revenue, the development team can focus 100% of its energy on solving the complex challenges of the user experience, AI partnership, and on-device performance.
+*   **Maximizing Impact for the Competition:** For the Google AI Edge Challenge, our goal is to present the most powerful and uncompromised vision possible. A business model, no matter how ethical, would distract from the core message: the technological and philosophical innovation. The Bourdon might comment: `"Moi, je préfère les siestes. Moins de soucis de rentabilité, plus de temps pour flâner."`
+*   **Building Trust Through Action:** The strongest way to prove our commitment to user sovereignty is to remove profit from the equation entirely. Our actions speak louder than any privacy policy. We are not interested in the user's money because we are only interested in empowering them. The Bourdon might add: `"Pas de piège à miel, gamin. La Mémère, elle, joue pas à ça."`
+*   **Fostering an Authentic Community:** A non-commercial project attracts a different kind of community: one built on passion, collaboration, and shared ideals, not on consumer transactions. We hope to inspire developers, designers, and thinkers to build upon the ideas presented in Kikko. The Bourdon would nod: `"Les vrais butineurs, pas les pique-assiettes. J'aime ça."`
+*   **A Focus on Pure Innovation:** By removing the pressure to generate revenue, the development team (us!) can focus 100% of its energy on solving the complex challenges of the user experience, AI partnership, and on-device performance. The Bourdon: `"Moins de paperasse, plus de temps pour que la Reine et les filles inventent des trucs dingues. Ça me va."`
+
+| Introduction | Action | Conclusion |
+| :---: | :---: | :---: |
+| <img src="illustrations/pure_innovation_intro.png" alt="Cinematic 3D render, animation movie style. The development team (represented by stylized, glowing robot figures) works intensely on a holographic blueprint of the Kikko Hive, surrounded by complex formulas. The Bourdon yawns lazily nearby, observing."> | <img src="illustrations/pure_innovation_action.png" alt="Cinematic 3D render, animation movie style. The blueprint transforms into a vibrant, fully functional 3D Hive, pulsing with energy. New, innovative features (like glowing Thread of Provenance links) are visibly highlighted."> | <img src="illustrations/pure_innovation_conclusion.png" alt="Cinematic 3D render, animation movie style. The development team looks satisfied, raising their hands in triumph. The Bourdon, now sporting a tiny, proud sash, sips a digital cocktail, signifying success achieved through pure innovation."> |
+| **The Dedicated Artisans:** The development team is shown focusing purely on technological and philosophical innovation. | **The Fruit of Labor:** Unburdened by commercial pressures, the team generates truly groundbreaking features. | **The Shared Triumph:** The success of the project is a testament to the power of pure innovation, benefiting all. |
 
 ### **3. The Future: An Open Question**
 
@@ -48,9 +53,9 @@ While the initial vision for Kikko is non-commercial, we believe that successful
 
 *   **Professional Guilds:** Offering highly specialized, paid "Queen" AIs for professional use-cases (e.g., a "Paramedic Queen" for emergency responders, a "Lab-Tech Queen" for scientists).
 *   **Donation-Based Support:** Allowing passionate users to support the project's maintenance and development voluntarily.
-*   **Becoming an Open-Source Project:** Entrusting the future of Kikko to the community itself.
+*   **Becoming an Open-Source Project:** Entrusting the future of Kikko to the community itself, ensuring its longevity and evolution.
 
-However, these are possibilities for a distant future. **For now, Kikko is a gift.** Its value is not measured in dollars, but in the potential it has to change how we think about personal technology.
+However, these are possibilities for a distant future. **For now, Kikko is a gift.** Its value is not measured in dollars, but in the potential it has to change how we think about personal technology. The Bourdon's parting thought: `"L'avenir ? On verra bien. Pour l'instant, c'est gratuit, c'est beau, et ça me laisse tranquille. Quoi de plus ?"`
 
 **Conclusion:**
 Kikko's "business model" is to not have one. It is an investment in an idea. By offering it as a free, complete, and powerful tool, we aim to make the strongest possible case for a new paradigm of personal AI—one based on trust, sovereignty, and the simple joy of understanding one's own world.
