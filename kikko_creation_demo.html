@@ -29,7 +29,7 @@
             padding: 8px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             position: relative;
-            overflow: hidden;
+            overflow: hidden; /* Phone frame clips screen */
         }
 
         .screen {
@@ -37,8 +37,10 @@
             height: 100%;
             background: #fff;
             border-radius: 32px;
-            overflow: hidden;
+            overflow: hidden; /* Screen clips internal content */
             position: relative;
+            display: flex; /* Flex container for header, main, and narrator */
+            flex-direction: column;
         }
 
         .status-bar {
@@ -86,10 +88,11 @@
         }
 
         .main-content {
-            flex: 1;
+            flex: 1; /* Takes remaining space between header and narrator */
             padding: 20px;
             position: relative;
-            overflow-y: auto;
+            overflow-y: auto; /* *** CRITICAL: Enables vertical scrolling for main content *** */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
         }
 
         .camera-view {
@@ -368,6 +371,9 @@
 
         .microsite-content {
             text-align: left;
+            /* If this content can grow significantly, consider adding: */
+            /* max-height: 200px; */
+            /* overflow-y: auto; */
         }
 
         .property-row {
@@ -382,7 +388,7 @@
         }
 
         .bee-narrator {
-            position: fixed;
+            position: fixed; /* Keep narrator at the bottom of the viewport */
             bottom: 0;
             left: 0;
             right: 0;
@@ -448,7 +454,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            overflow: hidden;
+            overflow: hidden; /* Clips bees outside this area */
         }
 
         .floating-bee {
@@ -509,11 +515,7 @@
                                 <p>Réponse instantanée disponible</p>
                             </div>
                         </div>
-                        <div id="hornetText">
-                            <p><strong>AI Overview - Plantain lancéolé (Plantago lanceolata)</strong></p>
-                            <p>Plante herbacée vivace commune, connue pour ses feuilles étroites et lancéolées et ses propriétés médicinales. Usages en phytothérapie pour soulager les irritations cutanées et respiratoires, mais peut causer des allergies chez certaines personnes.</p>
-                            <p><small>⚠️ Source: Google AI - Aucune traçabilité de l'information</small></p>
-                        </div>
+                        <p id="hornetText">Cette plante semble être un <strong>Plantain lancéolé</strong>. Plante comestible commune, souvent utilisée en herboristerie pour ses propriétés anti-inflammatoires.</p>
                         <div class="choice-buttons">
                             <button class="btn btn-hornet" id="acceptHornet">⚡ Accepter</button>
                             <button class="btn btn-kikko" id="chooseKikko">🐝 Créer Moi-Même</button>
@@ -604,24 +606,20 @@
                                 <span>Plantaginacées</span>
                             </div>
                             <div class="property-row">
-                                <strong>Propriétés médicinales</strong>
-                                <span>Apaisantes, cicatrisantes, anti-inflammatoires</span>
+                                <strong>Usage traditionnel</strong>
+                                <span>Anti-inflammatoire, cicatrisant</span>
                             </div>
                             <div class="property-row">
-                                <strong>Habitat naturel</strong>
-                                <span>Prairies, pâturages, bord des chemins</span>
+                                <strong>Localisation</strong>
+                                <span>Bord de route, Provence</span>
                             </div>
                             <div class="property-row">
-                                <strong>Type de plante</strong>
-                                <span>Vivace - Toute l'année</span>
+                                <strong>Saison optimale</strong>
+                                <span>Printemps - Été</span>
                             </div>
                             <div class="property-row">
                                 <strong>Comestibilité</strong>
-                                <span>✅ Jeunes feuilles comestibles (crues ou cuites)</span>
-                            </div>
-                            <div class="property-row">
-                                <strong>Précautions</strong>
-                                <span>⚠️ Allergies au pollen possible</span>
+                                <span>✅ Feuilles jeunes comestibles</span>
                             </div>
                         </div>
 
@@ -650,111 +648,82 @@
                 this.userAnswers = {};
                 this.questions = [
                     {
-                        title: "🧠 Validation des Connaissances",
-                        text: "Le plantain lancéolé est-il principalement connu pour ses propriétés :",
+                        title: "🤔 Aidez votre Reine IA",
+                        text: "Dans quel contexte avez-vous trouvé cette plante ?",
                         options: [
-                            {value: "cicatrisantes", text: "🩹 Cicatrisantes"},
-                            {value: "hallucinogenes", text: "🍄 Hallucinogènes"},
-                            {value: "cariogenes", text: "🦷 Cariogènes"},
-                            {value: "explosives", text: "💥 Explosives"}
-                        ],
-                        correct: "cicatrisantes"
+                            {value: "jardin", text: "🏡 Dans mon jardin"},
+                            {value: "foret", text: "🌲 En forêt"},
+                            {value: "parc", text: "🏞️ Dans un parc"},
+                            {value: "sauvage", text: "🌿 Bord de route"}
+                        ]
                     },
                     {
-                        title: "⚕️ Effets Secondaires",
-                        text: "Quel type de réaction peut provoquer l'allergie au plantain lancéolé ?",
+                        title: "🎯 Précision géographique",
+                        text: "Pouvez-vous préciser la région ?",
                         options: [
-                            {value: "hypertension", text: "💓 Hypertension artérielle"},
-                            {value: "rhinite", text: "🤧 Rhinite allergique et conjonctivite"},
-                            {value: "diabete", text: "🍬 Diabète"},
-                            {value: "insomnie", text: "😴 Insomnie"}
-                        ],
-                        correct: "rhinite"
-                    },
-                    {
-                        title: "🌿 Parties Utilisées",
-                        text: "Quelles parties du plantain lancéolé sont généralement utilisées en phytothérapie ?",
-                        options: [
-                            {value: "racines", text: "🌱 Les racines"},
-                            {value: "feuilles", text: "🍃 Les feuilles"},
-                            {value: "fleurs", text: "🌸 Les fleurs"},
-                            {value: "tiges", text: "🌿 Les tiges"}
-                        ],
-                        correct: "feuilles"
-                    },
-                    {
-                        title: "🌍 Distribution",
-                        text: "Le plantain lancéolé est-il une plante :",
-                        options: [
-                            {value: "espace", text: "🚀 Originaire de l'espace"},
-                            {value: "laboratoire", text: "🧪 Exclusivement cultivée en laboratoire"},
-                            {value: "temperee", text: "🌾 Commune dans les zones tempérées"},
-                            {value: "rare", text: "💎 Extrêmement rare"}
-                        ],
-                        correct: "temperee"
+                            {value: "provence", text: "🌞 Provence"},
+                            {value: "bretagne", text: "🌊 Bretagne"},
+                            {value: "alpes", text: "🏔️ Alpes"},
+                            {value: "parisien", text: "🏛️ Région Parisienne"}
+                        ]
                     }
                 ];
                 this.messages = [
                     "Salut ! Je vais vous montrer la magie de la création Kikko ! Prenez une photo pour commencer...",
-                    "📸 Parfait ! Photo capturée. Maintenant observez le dilemme : AI Overview vs Ruche authentique !",
-                    "🐝 Google AI Overview donne des infos mais SANS provenance ! D'où viennent ces données ? Mystère total !",
-                    "🏆 Excellent choix ! Vous préférez la transparence à l'opacité. Observez votre ruche au travail !",
+                    "📸 Parfait ! Photo capturée. Maintenant observez le dilemme : Frelon rapide vs Ruche authentique !",
+                    "🐝 Le Frelon propose une réponse instantanée mais opaque. Remarquez : aucune preuve, aucune traçabilité !",
+                    "🏆 Excellent choix ! Vous préférez la qualité à la vitesse. Observez votre ruche personnelle au travail !",
                     "🔬 Vos Worker Bees analysent l'image avec ML Kit : OCR, vision, classification. Tout sur votre appareil !",
-                    "👑 Votre Queen AI (Gemma) structure les données et pose des questions pour VALIDER les connaissances !",
-                    "❓ Ces questions vérifient la cohérence ! Contrairement à Google, VOUS validez chaque information !",
-                    "🌍 Voilà ! Microsite complet avec Thread of Provenance. Chaque info est traçable et vérifiable !",
-                    "✨ Différence clé : Google dit 'faites-moi confiance', Kikko dit 'voici les preuves' ! Redémarrage..."
+                    "👑 Votre Queen AI (Gemma) structure les données et pose des questions intelligentes pour enrichir le microsite !",
+                    "❓ Ces questions permettent d'ajouter le contexte humain que l'IA seule ne peut pas deviner !",
+                    "🌍 Voilà ! Microsite complet avec Thread of Provenance. Traduisible en 50+ langues instantanément !",
+                    "✨ Différence clé : Votre microsite est vérifiable, traçable et vous appartient à 100% ! Redémarrage..."
                 ];
                 this.translations = {
                     fr: {
                         name: "Plantain Lancéolé",
                         scientific: "Plantago lanceolata",
                         family: "Plantaginacées",
-                        usage: "Apaisantes, cicatrisantes, anti-inflammatoires",
-                        location: "Prairies, pâturages, bord des chemins",
-                        season: "Vivace - Toute l'année",
-                        edible: "✅ Jeunes feuilles comestibles (crues ou cuites)",
-                        risks: "⚠️ Allergies au pollen possible"
+                        usage: "Anti-inflammatoire, cicatrisant",
+                        location: "Bord de route, Provence",
+                        season: "Printemps - Été",
+                        edible: "✅ Feuilles jeunes comestibles"
                     },
                     en: {
                         name: "Ribwort Plantain",
                         scientific: "Plantago lanceolata",
                         family: "Plantaginaceae",
-                        usage: "Soothing, healing, anti-inflammatory",
-                        location: "Meadows, pastures, roadsides",
-                        season: "Perennial - Year-round",
-                        edible: "✅ Young leaves edible (raw or cooked)",
-                        risks: "⚠️ Possible pollen allergies"
+                        usage: "Anti-inflammatory, healing",
+                        location: "Roadside, Provence",
+                        season: "Spring - Summer",
+                        edible: "✅ Young leaves edible"
                     },
                     es: {
                         name: "Llantén Menor",
                         scientific: "Plantago lanceolata",
                         family: "Plantagináceas",
-                        usage: "Calmantes, cicatrizantes, antiinflamatorias",
-                        location: "Praderas, pastizales, bordes de caminos",
-                        season: "Perenne - Todo el año",
-                        edible: "✅ Hojas jóvenes comestibles (crudas o cocidas)",
-                        risks: "⚠️ Posibles alergias al polen"
+                        usage: "Antiinflamatorio, cicatrizante",
+                        location: "Borde de carretera, Provenza",
+                        season: "Primavera - Verano",
+                        edible: "✅ Hojas jóvenes comestibles"
                     },
                     de: {
                         name: "Spitzwegerich",
                         scientific: "Plantago lanceolata",
                         family: "Wegerichgewächse",
-                        usage: "Beruhigend, heilend, entzündungshemmend",
-                        location: "Wiesen, Weiden, Wegränder",
-                        season: "Mehrjährig - Ganzjährig",
-                        edible: "✅ Junge Blätter essbar (roh oder gekocht)",
-                        risks: "⚠️ Mögliche Pollenallergien"
+                        usage: "Entzündungshemmend, heilend",
+                        location: "Straßenrand, Provence",
+                        season: "Frühling - Sommer",
+                        edible: "✅ Junge Blätter essbar"
                     },
                     it: {
                         name: "Piantaggine Lanceolata",
                         scientific: "Plantago lanceolata",
                         family: "Plantaginaceae",
-                        usage: "Lenitive, cicatrizzanti, antinfiammatorie",
-                        location: "Prati, pascoli, bordi delle strade",
-                        season: "Perenne - Tutto l'anno",
-                        edible: "✅ Foglie giovani commestibili (crude o cotte)",
-                        risks: "⚠️ Possibili allergie ai pollini"
+                        usage: "Antinfiammatorio, cicatrizzante",
+                        location: "Bordo strada, Provenza",
+                        season: "Primavera - Estate",
+                        edible: "✅ Foglie giovani commestibili"
                     }
                 };
                 this.init();
@@ -910,46 +879,18 @@
             selectOption(element) {
                 // Retirer la sélection des autres options
                 document.querySelectorAll('.option-btn').forEach(btn => {
-                    btn.classList.remove('selected', 'correct', 'incorrect');
+                    btn.classList.remove('selected');
                 });
                 
                 // Sélectionner cette option
                 element.classList.add('selected');
                 
-                // Vérifier si c'est la bonne réponse
-                const question = this.questions[this.currentQuestion];
-                const isCorrect = element.dataset.value === question.correct;
-                
-                if (isCorrect) {
-                    element.classList.add('correct');
-                    element.style.background = 'rgba(40, 167, 69, 0.2)';
-                    element.style.borderColor = '#28a745';
-                } else {
-                    element.classList.add('incorrect');
-                    element.style.background = 'rgba(220, 53, 69, 0.2)';
-                    element.style.borderColor = '#dc3545';
-                    
-                    // Montrer la bonne réponse
-                    setTimeout(() => {
-                        const correctOption = document.querySelector(`[data-value="${question.correct}"]`);
-                        if (correctOption) {
-                            correctOption.classList.add('correct');
-                            correctOption.style.background = 'rgba(40, 167, 69, 0.2)';
-                            correctOption.style.borderColor = '#28a745';
-                        }
-                    }, 1000);
-                }
-                
                 // Sauvegarder la réponse
-                this.userAnswers[this.currentQuestion] = {
-                    value: element.dataset.value,
-                    correct: isCorrect
-                };
+                const question = this.questions[this.currentQuestion];
+                this.userAnswers[this.currentQuestion] = element.dataset.value;
                 
-                // Activer le bouton suivant après un délai
-                setTimeout(() => {
-                    document.getElementById('nextQuestion').disabled = false;
-                }, 1500);
+                // Activer le bouton suivant
+                document.getElementById('nextQuestion').disabled = false;
             }
 
             async nextQuestion() {
@@ -1020,7 +961,6 @@
                 properties[2].textContent = translation.location;
                 properties[3].textContent = translation.season;
                 properties[4].textContent = translation.edible;
-                properties[5].textContent = translation.risks;
             }
 
             addFloatingBee() {
