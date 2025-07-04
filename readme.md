@@ -1,5 +1,5 @@
 <p align="center">
-  <video src="/videos/kikko_banner_veo3.mp4" autoplay loop muted playsinline width="100%"></video>
+  <img src="/videos/kikko_banner_veo3.gif" alt="Kikko's Saga Forge Animated Banner">
 </p>
 
 # Kikko's Saga Forge
