@@ -1,13 +1,16 @@
-<p align="center">
-  <img src="../illustrations/doc02_banner.png" alt="A wide, cinematic banner image for a UI/UX document, rendered in a 3D animation movie style. The scene is viewed from over the shoulder of a 10-year-old girl, Léa (braided pigtails, glasses, bright yellow raincoat). She holds her smartphone like a magical window. Through the screen, she sees a vivid, augmented view of a supermarket shelf. Translucent hexagonal UI elements highlight a specific cookie box. Floating beside her is her personal Kikkō Guardian turtle, its shell glowing softly. The plump Bourdon character hovers near the phone, gesturing towards the screen, acting as the friendly guide for the interface. The scene is lit with clean, bright light, emphasizing simplicity, clarity, and a human-AI partnership.">
-</p>
 
+<p align="center">
+  <img src="/videos/doc02_banner_veo3.gif" alt="Kikko's Saga Forge Animated Banner">
+</p>
 # Document 2/10: The World of Kikko's Saga Forge
 
 **Title:** The World of Kikko: The Interface as a Living Companion
 
 **Objective:** To define the fundamental principles of Kikko's User Interface (UI) and User Experience (UX), emphasizing simplicity, immersion, and the unique communication partnership between the Forager, their Guardian, and the Hive.
 
+<p align="center">
+  <img src="../illustrations/doc02_banner.png" alt="A wide, cinematic banner image for a UI/UX document, rendered in a 3D animation movie style. The scene is viewed from over the shoulder of a 10-year-old girl, Léa (braided pigtails, glasses, bright yellow raincoat). She holds her smartphone like a magical window. Through the screen, she sees a vivid, augmented view of a supermarket shelf. Translucent hexagonal UI elements highlight a specific cookie box. Floating beside her is her personal Kikkō Guardian turtle, its shell glowing softly. The plump Bourdon character hovers near the phone, gesturing towards the screen, acting as the friendly guide for the interface. The scene is lit with clean, bright light, emphasizing simplicity, clarity, and a human-AI partnership.">
+</p>
 ---
 
 ### **Core Philosophy: The Anti-App**
