@@ -1,7 +1,7 @@
-
 <p align="center">
   <img src="/videos/doc02_banner_veo3.gif" alt="Kikko's Saga Forge Animated Banner">
 </p>
+
 # Document 2/10: The World of Kikko's Saga Forge
 
 **Title:** The World of Kikko: The Interface as a Living Companion
