@@ -23,10 +23,10 @@ We are not building a company; we are building an idea. And the best way to shar
 Kikko will be offered to everyone, completely free, with no strings attached. There are no premium tiers, no advertisements, no plans for future subscriptions. Every feature is available to every user from the moment they install the application.
 
 *   **The Full Experience, For Everyone:**
-    *   The complete foraging and gamification experience for all personas, from **Hiro** the naturalist to **Léa** the allergy detective.
+    *   The complete foraging and gamification experience for all personas.
     *   The AI Queen (Gemma) and all Worker Bees (ML Kit) at their full potential.
     *   Unlimited local storage of "honey" (as Microsites) and "pollen."
-    *   The complete "Thread of Provenance" and "Seal of Trust" features, including full **Inference Reproduction** and **traceable Hornet data integration**.
+    *   The complete "Thread of Provenance" and "Seal of Trust" features, including full **Inference Reproduction** and traceable Hornet data integration.
     *   Unlimited peer-to-peer sharing via WebTorrent.
     *   A starter set of badges and quests.
 
@@ -34,7 +34,7 @@ This free tier is not a "demo." It is a complete, powerful tool that fulfills th
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
-| <img src="illustrations/gift_intro.png" alt="Cinematic 3D render, animation movie style. A beautiful, glowing Kikko Hive icon is held in an open, welcoming human hand, symbolizing a free gift to the user. The Bourdon hovers nearby, looking a bit bewildered by this 'no profit' strategy."> | <img src="illustrations/gift_action.png" alt="Cinematic 3D render, animation movie style. Two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), look on with wonder as they each receive a glowing Hive icon on their phones, which begin to glow with a warm, personal light. The Bourdon shrugs, acknowledging the transfer."> | <img src="illustrations/gift_conclusion.png" alt="Cinematic 3D render, animation movie style. Hiro and Léa are now happily foraging in their respective worlds (garden and supermarket), their Hives fully functional, collecting golden pollen and earning shiny badges. The Bourdon floats lazily on a cloud of Honey Points, looking smug about the successful viral spread."> |
+| <img src="illustrations/gift_intro.png" alt="Cinematic 3D render, animation movie style. A beautiful, glowing Kikko Hive icon is held in an open, welcoming human hand, symbolizing a free gift to the user. The Bourdon hovers nearby, looking a bit bewildered by this 'no profit' strategy."> | <img src="illustrations/gift_action.png" alt="Cinematic 3D render, animation movie style. Two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), look on with wonder as they each receive a glowing Hive icon on their phones, which begin to glow with a warm, personal light. The Bourdon shrugs, acknowledging the transfer."> | <img src="illustrations/gift_conclusion.png" alt="Cinematic 3D render, animation movie style, viewed from over their shoulders. Hiro and Léa are now happily foraging on their phones in their respective worlds (garden and supermarket), their Hives fully functional, collecting golden pollen and earning shiny badges. The Bourdon floats lazily on a cloud of Honey Points, looking smug about the successful viral spread."> |
 | **The Unconditional Offer:** The Kikko experience is presented as a gift to all, symbolizing its commitment to user empowerment over profit. | **The Acceptance:** The users accept the free, full-featured Hive, beginning their journey of personal knowledge discovery. | **The Flourishing Hive:** The users thrive, collecting memories and earning rewards, while the Bourdon observes the growing popularity of the freely-given Kikko. |
 
 ### **2. Why This Approach? The Economics of a Powerful Idea**
