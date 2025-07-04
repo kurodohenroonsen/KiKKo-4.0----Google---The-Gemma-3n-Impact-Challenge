@@ -9,7 +9,7 @@
 **Objective:** To establish the philosophical vision and core ambition of `Kikko's Saga Forge`, answering the fundamental question: "Why should this experience exist?"
 
 <p align="center">
-  <img src="../illustrations/doc01_banner.png" alt="A wide, cinematic banner image for the 'Kikko's Saga Forge' manifesto, rendered in a 3D animation movie style. The scene is viewed from over the shoulder of a 10-year-old boy, Hiro (dark hair, vibrant red t-shirt). He holds his smartphone, which acts as a transparent window into the vibrant, high-tech interior of the 'Kikko Hive.' Inside, the wise, grandmotherly AI Queen with glowing spectacles works calmly. Hovering playfully outside the screen is the plump Bourdon. Below the phone, a small, glowing Kikkō Guardian turtle looks up at Hiro. Golden pollen flows from the real world into the Hive. The image captures the entire ecosystem: the Forager, the Guardian, and the Forge (Hive).">
+  <img style="max-width:400px" src="../illustrations/doc01_banner.png" alt="A wide, cinematic banner image for the 'Kikko's Saga Forge' manifesto, rendered in a 3D animation movie style. The scene is viewed from over the shoulder of a 10-year-old boy, Hiro (dark hair, vibrant red t-shirt). He holds his smartphone, which acts as a transparent window into the vibrant, high-tech interior of the 'Kikko Hive.' Inside, the wise, grandmotherly AI Queen with glowing spectacles works calmly. Hovering playfully outside the screen is the plump Bourdon. Below the phone, a small, glowing Kikkō Guardian turtle looks up at Hiro. Golden pollen flows from the real world into the Hive. The image captures the entire ecosystem: the Forager, the Guardian, and the Forge (Hive).">
 </p>
 ---
 

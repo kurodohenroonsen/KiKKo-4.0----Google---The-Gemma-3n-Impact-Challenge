@@ -9,7 +9,7 @@
 **Objective:** To define Kikko's core motivation and "business model" as explicitly non-commercial for its initial release. This document frames the project not as a product to be sold, but as a gift to the community and a powerful proof-of-concept for a new category of ethical, personal AI.
 
 <p align="center">
-  <img src="illustrations/doc09_banner.png" alt="A wide, cinematic banner image for the 'Philosophy of Gifting' document, rendered in a 3D animation movie style. The scene shows two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), standing together and looking out at a beautiful, expansive landscape at sunset. A large, glowing Kikko Hive icon floats gently between them, held in their open, welcoming hands, symbolizing a shared, free gift to the community. The plump Bourdon character hovers nearby, looking a bit bewildered but content with this 'no profit' strategy. The overall atmosphere is one of hope, generosity, and empowerment.">
+  <img style="max-width:400px" src="illustrations/doc09_banner.png" alt="A wide, cinematic banner image for the 'Philosophy of Gifting' document, rendered in a 3D animation movie style. The scene shows two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), standing together and looking out at a beautiful, expansive landscape at sunset. A large, glowing Kikko Hive icon floats gently between them, held in their open, welcoming hands, symbolizing a shared, free gift to the community. The plump Bourdon character hovers nearby, looking a bit bewildered but content with this 'no profit' strategy. The overall atmosphere is one of hope, generosity, and empowerment.">
 </p>
 ---
 
