@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="illustrations/doc08_banner.png" alt="A wide, cinematic banner image for the decentralized sharing document, rendered in a 3D animation movie style. The scene shows two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), sitting back-to-back in a garden. They each hold a smartphone. A swarm of golden 'data-bees' is shown flying directly from Hiro's phone to Léa's. Hiro's phone screen shows a 'Microsite' for a berry plant, while Léa's screen shows her Hive receiving and verifying it for allergens. The plump Bourdon character floats between them, proudly overseeing this 'Digital Pollination'. The image conveys a sense of trusted, private, peer-to-peer collaboration.">
+  <img src="/videos/doc08_banner_veo3.gif" alt="Kikko's Saga Forge Animated Banner">
 </p>
 
 # Document 8/10: The Global Swarm - Decentralized Sharing & Community
@@ -8,6 +8,9 @@
 
 **Objective:** To define the technology and philosophy behind Kikko's sharing feature, positioning it as a tool for deep collaboration within trusted groups (families, teams, hobbyists) rather than a viral social network. The focus is on practical, real-world utility enabled by peer-to-peer technology and **verifiable knowledge**.
 
+<p align="center">
+  <img src="illustrations/doc08_banner.png" alt="A wide, cinematic banner image for the decentralized sharing document, rendered in a 3D animation movie style. The scene shows two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), sitting back-to-back in a garden. They each hold a smartphone. A swarm of golden 'data-bees' is shown flying directly from Hiro's phone to Léa's. Hiro's phone screen shows a 'Microsite' for a berry plant, while Léa's screen shows her Hive receiving and verifying it for allergens. The plump Bourdon character floats between them, proudly overseeing this 'Digital Pollination'. The image conveys a sense of trusted, private, peer-to-peer collaboration.">
+</p>
 ---
 
 ### **Core Philosophy: A Gift of Verifiable Knowledge**

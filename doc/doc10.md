@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="/videos/doc10_banner_veo3.gif" alt="Kikko's Saga Forge Animated Banner">
+</p>
+
 # Document 10/10: The Kikko Project - Synopsis for the Google AI Edge Challenge
 
 **Title:** Kikko: Your Personal Memory Hive - A Personal Knowledge Game Built on Trust

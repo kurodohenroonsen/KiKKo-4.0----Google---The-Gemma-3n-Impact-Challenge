@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="illustrations/doc06_banner.png" alt="A wide, cinematic banner image for the 'Thread of Provenance' document, rendered in a 3D animation movie style. The scene is split into three parts. 1) Left: A glowing honeycomb cell representing a food memory for Léa is shown, with an intricate, golden 'Seal of Trust' forming on its surface. 2) Center: From a view over her shoulder, Léa's finger (10-year-old girl, yellow raincoat sleeve) touches the seal on her phone screen, which unfolds into a luminous, holographic scroll. 3) Right: The scroll displays a beautiful infographic detailing the data's journey: a photo of the ingredients, the AI processing steps, Léa's own validation inputs, and a clearly marked section for any externally sourced 'Hornet' data with its HTML source. The image emphasizes transparency, trust, and the verifiable story behind each memory.">
+  <img src="/videos/doc06_banner_veo3.gif" alt="Kikko's Saga Forge Animated Banner">
 </p>
 
 # Document 6/10: The Thread of Provenance - The Seal of Trust
@@ -8,6 +8,9 @@
 
 **Objective:** To detail the structure, purpose, and in-game representation of the Provenance Document. This feature is positioned as the ultimate reward for choosing personal discovery over opaque convenience, guaranteeing transparency and trust in the knowledge created by the Forager.
 
+<p align="center">
+  <img src="illustrations/doc06_banner.png" alt="A wide, cinematic banner image for the 'Thread of Provenance' document, rendered in a 3D animation movie style. The scene is split into three parts. 1) Left: A glowing honeycomb cell representing a food memory for Léa is shown, with an intricate, golden 'Seal of Trust' forming on its surface. 2) Center: From a view over her shoulder, Léa's finger (10-year-old girl, yellow raincoat sleeve) touches the seal on her phone screen, which unfolds into a luminous, holographic scroll. 3) Right: The scroll displays a beautiful infographic detailing the data's journey: a photo of the ingredients, the AI processing steps, Léa's own validation inputs, and a clearly marked section for any externally sourced 'Hornet' data with its HTML source. The image emphasizes transparency, trust, and the verifiable story behind each memory.">
+</p>
 ---
 
 ### **Core Philosophy: The Story is the Reward**

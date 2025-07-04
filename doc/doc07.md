@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="illustrations/doc07_banner.png" alt="A wide, cinematic banner image for a long-term utility document, rendered in a 3D animation movie style. The scene depicts 10-year-old boy Hiro (red t-shirt) in his lush garden, looking at his smartphone with a 'Eureka!' expression. On the phone screen, a 'Microsite' for a specific plant is displayed. From this Microsite, a glowing thread of light extends out into the real world, connecting to a ladybug sitting on that exact plant, which Hiro hadn't noticed before. Inside the Hive, visible through the screen's transparency, the AI Queen is shown connecting two honeycomb cells (one for the plant, one for the ladybug), her eyes glowing with intelligence. The image captures the moment the Hive provides a proactive, insightful connection based on Hiro's past foraging.">
+  <img src="/videos/doc07_banner_veo3.gif" alt="Kikko's Saga Forge Animated Banner">
 </p>
 
 # Document 7/10: The Augmented Memory - Long-Term Utility
@@ -8,6 +8,9 @@
 
 **Objective:** To define the "endgame" of Kikko, showcasing how the accumulated, **trusted** knowledge transforms the application from a game of collection into an indispensable, proactive personal AI assistant that augments the user's daily life with unparalleled relevance and verifiable accuracy.
 
+<p align="center">
+  <img src="illustrations/doc07_banner.png" alt="A wide, cinematic banner image for a long-term utility document, rendered in a 3D animation movie style. The scene depicts 10-year-old boy Hiro (red t-shirt) in his lush garden, looking at his smartphone with a 'Eureka!' expression. On the phone screen, a 'Microsite' for a specific plant is displayed. From this Microsite, a glowing thread of light extends out into the real world, connecting to a ladybug sitting on that exact plant, which Hiro hadn't noticed before. Inside the Hive, visible through the screen's transparency, the AI Queen is shown connecting two honeycomb cells (one for the plant, one for the ladybug), her eyes glowing with intelligence. The image captures the moment the Hive provides a proactive, insightful connection based on Hiro's past foraging.">
+</p>
 ---
 
 ### **Core Philosophy: From Connection to Confidence**

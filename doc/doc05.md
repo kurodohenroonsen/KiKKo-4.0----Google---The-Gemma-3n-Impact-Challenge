@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="illustrations/doc05_banner.png" alt="A wide, cinematic banner image for the 'Hornet's Dilemma' document, rendered in a 3D animation movie style. The image is split. On the left, a sleek, chrome-and-black mechanical Hornet hovers menacingly, its red eyes glowing, offering a pre-packaged, instant 'AI Overview' on a floating screen. On the right, our hero Hiro (10-year-old boy, red t-shirt) is shown working with his friendly, personal Hive (AI Queen and Bourdon visible through the phone screen), diligently foraging pure golden pollen from a real-world flower. The visual contrast between the cold, efficient Hornet and the warm, collaborative Hive is stark, representing the core choice between convenience and verifiable truth.">
+  <img src="/videos/doc05_banner_veo3.gif" alt="Kikko's Saga Forge Animated Banner">
 </p>
 
 # Document 5/10: The Hornet's Dilemma - The Temptation of Opaque Knowledge
@@ -8,6 +8,9 @@
 
 **Objective:** To define the core philosophical and gameplay conflict of Kikko. This is achieved by introducing the Hornet, which represents the seductive convenience of external, opaque cloud AI, and frames the central, recurring choice for the player: instant gratification versus verifiable personal knowledge.
 
+<p align="center">
+  <img src="illustrations/doc05_banner.png" alt="A wide, cinematic banner image for the 'Hornet's Dilemma' document, rendered in a 3D animation movie style. The image is split. On the left, a sleek, chrome-and-black mechanical Hornet hovers menacingly, its red eyes glowing, offering a pre-packaged, instant 'AI Overview' on a floating screen. On the right, our hero Hiro (10-year-old boy, red t-shirt) is shown working with his friendly, personal Hive (AI Queen and Bourdon visible through the phone screen), diligently foraging pure golden pollen from a real-world flower. The visual contrast between the cold, efficient Hornet and the warm, collaborative Hive is stark, representing the core choice between convenience and verifiable truth.">
+</p>
 ---
 
 ### **Core Philosophy: A Garden with a Shortcut**
