@@ -55,7 +55,7 @@ When a group member receives this package, their Hive can independently verify t
 
 ### **3. The Emergent Community: Niche Swarms**
 
-Kikko's community model focuses on empowering small, private groups with shared goals.
+Kikko's community model focuses on empowering small, private, groups with shared goals.
 
 *   **Use Case: The Nature & Food Club.** **Hiro** finds a wild berry bush in the park and forages a detailed, Hive-forged Microsite about it. He shares it with **Léa**. Léa's Hive receives the package and automatically runs an **inference reproduction** to verify Hiro's identification. Then, her Queen cross-references the verified berry species with Léa's allergy profile. Léa gets a notification: "Hiro shared a 'Wild Raspberry' forage. Verified by Hive. This berry is SAFE for you."
 *   **Use Case: The Family Inventory.** A family can create a shared "swarm" for household items. One person forages the warranty for the new TV, another the paint codes for the living room wall. Everyone in the family receives the verified "honey" on their device.
