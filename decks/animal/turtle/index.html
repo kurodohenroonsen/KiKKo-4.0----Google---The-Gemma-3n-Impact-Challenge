@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kikko Microsite</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="card-container">
+        <header class="card-header">
+            <div class="header-content">
+                <!-- NOUVELLE GALERIE DE MINIATURES À GAUCHE -->
+                <div id="thumbnail-gallery" class="thumbnail-gallery">
+                    <!-- Les miniatures seront injectées ici -->
+                </div>
+
+                <div class="title-block">
+                    <div class="language-selector" id="language-selector">
+                        <!-- Les boutons de langue seront injectés ici -->
+                    </div>
+                    <h1 id="card-title"></h1>
+                    <h2 id="scientific-name"></h2>
+                    <div id="forger-info" class="forger-info">
+                        <!-- Les informations sur le forgeron seront injectées ici -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- NOUVELLE SECTION MONOLOGUE INTÉGRÉE AU HEADER -->
+            <section class="monologue-section">
+                <div class="monologue-header-controls">
+                    <h3 id="monologue-header"></h3>
+                    <div class="tts-controls">
+                        <select id="voice-select"></select>
+                        <button id="play-button" aria-label="Play">▶️</button>
+                        <button id="stop-button" aria-label="Stop">⏹️</button>
+                    </div>
+                </div>
+                <div id="monologue-collapsible" class="monologue-collapsible">
+                    <p id="monologue-text"></p>
+                </div>
+                <button id="monologue-toggle" class="monologue-toggle"></button>
+            </section>
+        </header>
+
+        <main class="card-body">
+            <div class="content-column">
+                <section class="stats-section">
+                    <h3 id="stats-header"></h3>
+                    <div id="stats-container" class="stats-container">
+                        <!-- Les groupes de stats seront injectés ici -->
+                    </div>
+                </section>
+
+                <section class="description-section">
+                    <h3 id="description-header"></h3>
+                    <p id="card-description"></p>
+                </section>
+
+                <section class="fun-facts-section">
+                    <h3 id="fun-facts-header"></h3>
+                    <ul id="fun-facts-list"></ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- NOUVEAU BOUTON QUIZ FLOTTANT -->
+    <button id="quiz-floating-button" class="quiz-floating-button">🧠</button>
+
+    <!-- MODALS (Galerie, Quiz, Provenance) -->
+    <div id="gallery-modal" class="modal">
+        <span class="close-button gallery-close">×</span>
+        <div class="gallery-modal-content"><img id="modal-image" src="" alt="Image en grand format"><button id="modal-prev" class="gallery-nav prev">❮</button><button id="modal-next" class="gallery-nav next">❯</button></div>
+    </div>
+
+    <div id="quiz-modal" class="modal">
+        <div class="modal-content quiz-modal-content">
+            <span class="close-button quiz-close">×</span>
+            <h3 id="quiz-modal-header"></h3>
+            <div id="quiz-modal-container"></div>
+        </div>
+    </div>
+
+    <div id="provenance-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button provenance-close">×</span>
+            <h3 id="provenance-header"></h3>
+            <div id="provenance-details"></div>
+        </div>
+    </div>
+
+    <script src="js/translations.js"></script>
+    <script src="js/provenance.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
