@@ -8,27 +8,31 @@
 </head>
 <body>
 
+    <!-- NOUVELLE BARRE DE LANGUE, HORS DE LA CARTE -->
+    <div id="language-bar" class="language-bar">
+        <!-- Les boutons de langue seront injectés ici -->
+    </div>
+
     <div class="card-container">
         <header class="card-header">
             <div class="header-content">
-                <!-- NOUVELLE GALERIE DE MINIATURES À GAUCHE -->
-                <div id="thumbnail-gallery" class="thumbnail-gallery">
-                    <!-- Les miniatures seront injectées ici -->
+                <!-- NOUVEAU MINI SLIDESHOW DE MINIATURES -->
+                <div id="thumbnail-slideshow" class="thumbnail-slideshow">
+                    <img id="thumbnail-image" src="" alt="Aperçu de l'image">
+                    <div class="thumbnail-nav">
+                        <button id="thumb-prev">‹</button>
+                        <span id="thumb-counter"></span>
+                        <button id="thumb-next">›</button>
+                    </div>
                 </div>
 
                 <div class="title-block">
-                    <div class="language-selector" id="language-selector">
-                        <!-- Les boutons de langue seront injectés ici -->
-                    </div>
                     <h1 id="card-title"></h1>
                     <h2 id="scientific-name"></h2>
-                    <div id="forger-info" class="forger-info">
-                        <!-- Les informations sur le forgeron seront injectées ici -->
-                    </div>
+                    <div id="forger-info" class="forger-info"></div>
                 </div>
             </div>
 
-            <!-- NOUVELLE SECTION MONOLOGUE INTÉGRÉE AU HEADER -->
             <section class="monologue-section">
                 <div class="monologue-header-controls">
                     <h3 id="monologue-header"></h3>
@@ -50,7 +54,7 @@
                 <section class="stats-section">
                     <h3 id="stats-header"></h3>
                     <div id="stats-container" class="stats-container">
-                        <!-- Les groupes de stats seront injectés ici -->
+                        <!-- Les nouvelles stats sur 2 lignes seront injectées ici -->
                     </div>
                 </section>
 
@@ -67,7 +71,6 @@
         </main>
     </div>
 
-    <!-- NOUVEAU BOUTON QUIZ FLOTTANT -->
     <button id="quiz-floating-button" class="quiz-floating-button">🧠</button>
 
     <!-- MODALS (Galerie, Quiz, Provenance) -->
