@@ -1,0 +1,56 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Taxon",
+  "name": "Tortue Géante des Galápagos",
+  "alternateName": "Chelonoidis niger",
+  "description_i18n": {
+    "fr": "Reine de la longévité et géante pacifique, cette tortue est un symbole vivant de l'évolution. Sa lenteur n'a d'égale que sa sagesse. Elle passe ses journées à brouter paisiblement, portant sur sa carapace le poids de l'histoire.",
+    "en": "Queen of longevity and a peaceful giant, this tortoise is a living symbol of evolution. Its slowness is matched only by its wisdom. It spends its days grazing peacefully, carrying the weight of history on its shell.",
+    "jp": "長寿の女王であり、平和的な巨人であるこのカメは、進化の生きた象徴です。その遅さは、その知恵に匹敵します。歴史の重みを甲羅に背負い、穏やかに草を食んで日々を過ごします。"
+  },
+  "image": "assets/images/tortue.png",
+  "stats": {
+    "taille": {
+      "emoji": "📏",
+      "label": "TAILLE",
+      "value": 1.5,
+      "unit": "m",
+      "battle_history": { "high_wins": 0, "high_losses": 0, "low_wins": 0, "low_losses": 0 }
+    },
+    "poids": {
+      "emoji": "⚖️",
+      "label": "POIDS",
+      "value": 400,
+      "unit": "kg",
+      "battle_history": { "high_wins": 0, "high_losses": 0, "low_wins": 0, "low_losses": 0 }
+    },
+    "vitesse_sol": {
+      "emoji": "🏃",
+      "label": "VITESSE (Sol)",
+      "value": 0.3,
+      "unit": "km/h",
+      "battle_history": { "high_wins": 0, "high_losses": 0, "low_wins": 0, "low_losses": 0 }
+    },
+    "vitesse_air": {
+      "emoji": "🕊️",
+      "label": "VITESSE (Air)",
+      "value": 0,
+      "unit": "km/h",
+      "battle_history": { "high_wins": 0, "high_losses": 0, "low_wins": 0, "low_losses": 0 }
+    },
+    "vitesse_eau": {
+      "emoji": "🌊",
+      "label": "VITESSE (Eau)",
+      "value": 0.5,
+      "unit": "km/h",
+      "battle_history": { "high_wins": 0, "high_losses": 0, "low_wins": 0, "low_losses": 0 }
+    },
+    "longevite": {
+      "emoji": "⏳",
+      "label": "LONGÉVITÉ",
+      "value": 150,
+      "unit": "ans",
+      "battle_history": { "high_wins": 0, "high_losses": 0, "low_wins": 0, "low_losses": 0 }
+    }
+  }
+}

@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
         monologueModalHeader: document.querySelector('#monologue-modal h3'),
         monologueModalText: document.querySelector('#monologue-modal p'),
         monologueModalVoiceSelect: document.querySelector('#monologue-modal #monologue-voice-select'),
-        monologueModalPlayPause: document.querySelector('#monologue-modal #play-pause-button'),
-        monologueModalStop: document.querySelector('#monologue-modal #stop-button'),
+        monologueModalPlayPause: document.querySelector('#monologue-modal #monologue-play-pause-button'),
+        monologueModalStop: document.querySelector('#monologue-modal #monologue-stop-button'),
     };
     console.log("🔍 Sélecteurs DOM initialisés.");
 

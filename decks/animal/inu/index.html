@@ -8,13 +8,23 @@
 </head>
 <body>
 
-    <div id="language-bar" class="language-bar">
-        <!-- Les boutons de langue seront injectés ici -->
+    <!-- NOUVEAU MENU DE LANGUE GLOBAL -->
+    <div id="language-dropdown" class="language-dropdown">
+        <button id="current-lang-button" class="current-lang-button"></button>
+        <div id="language-list" class="dropdown-content">
+            <!-- Les boutons de langue seront injectés ici -->
+        </div>
     </div>
 
     <div class="card-container">
         <header class="card-header">
             <div class="header-content">
+                <div class="title-block">
+                    <h1 id="card-title"></h1>
+                    <h2 id="scientific-name"></h2>
+                    <div id="forger-info" class="forger-info"></div>
+                </div>
+                <!-- NOUVEAU MINI SLIDESHOW DE MINIATURES À DROITE -->
                 <div id="thumbnail-slideshow" class="thumbnail-slideshow">
                     <img id="thumbnail-image" src="" alt="Aperçu de l'image">
                     <div class="thumbnail-nav">
@@ -23,20 +33,15 @@
                         <button id="thumb-next" aria-label="Next thumbnail">›</button>
                     </div>
                 </div>
-                <div class="title-block">
-                    <h1 id="card-title"></h1>
-                    <h2 id="scientific-name"></h2>
-                    <div id="forger-info" class="forger-info"></div>
-                </div>
             </div>
         </header>
 
         <main class="card-body">
             <div class="content-column">
+                <!-- NOUVELLE SECTION DE STATS SANS TITRE -->
                 <section class="stats-section">
-                    <h3 id="stats-header"></h3>
                     <div id="stats-container" class="stats-container">
-                        <!-- Les stats seront injectées ici -->
+                        <!-- Les stats en 2 lignes seront injectées ici -->
                     </div>
                 </section>
 
@@ -53,11 +58,11 @@
         </main>
     </div>
 
-    <!-- BOUTONS FLOTTANTS -->
+    <!-- BOUTONS FLOTTANTS CONSERVÉS -->
     <button id="quiz-floating-button" class="floating-button quiz-button" aria-label="Open Quiz">🧠</button>
     <button id="bourdon-floating-button" class="floating-button bourdon-button" aria-label="Open Bourdon's Report">🗣️</button>
 
-    <!-- MODALS -->
+    <!-- MODALS (Galerie, Quiz, Monologue, Provenance) -->
     <div id="gallery-modal" class="modal">
         <span class="close-button" aria-label="Close">×</span>
         <div class="gallery-modal-content">

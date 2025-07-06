@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("🚀 Kikko Microsite: Document chargé. Lancement du script moteur v10 (FINAL, COMPLET ET CORRIGÉ).");
+    console.log("🚀 Kikko Microsite: Document chargé. Lancement du script moteur v11 (FINAL, COMPLET ET CORRIGÉ).");
 
     // --- VÉRIFICATION DE LA PRÉSENCE DES DONNÉES ---
     if (typeof uiTranslations === 'undefined' || typeof cardData === 'undefined' || typeof provenanceData === 'undefined') {
@@ -20,10 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- SÉLECTEURS D'ÉLÉMENTS ---
     const DOMElements = {
-        languageBar: document.getElementById('language-bar'),
+        languageBar: document.getElementById('language-dropdown'),
         cardTitle: document.getElementById('card-title'),
         scientificName: document.getElementById('scientific-name'),
-        thumbnailSlideshow: document.getElementById('thumbnail-slideshow'),
         thumbnailImage: document.getElementById('thumbnail-image'),
         thumbPrev: document.getElementById('thumb-prev'),
         thumbNext: document.getElementById('thumb-next'),
@@ -52,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         provenanceDetails: document.getElementById('provenance-details'),
         monologueModalHeader: document.querySelector('#monologue-modal h3'),
         monologueModalText: document.querySelector('#monologue-modal p'),
-        monologueModalVoiceSelect: document.querySelector('#monologue-modal #monologue-voice-select'),
+        monologueModalVoiceSelect: document.querySelector('#monologue-modal #voice-select'),
         monologueModalPlayPause: document.querySelector('#monologue-modal #play-pause-button'),
         monologueModalStop: document.querySelector('#monologue-modal #stop-button'),
     };
@@ -76,15 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const t = uiTranslations[lang] || uiTranslations['en'];
         
         try {
-            // Mettre à jour les textes statiques
-            DOMElements.statsHeader.textContent = t.statsHeader;
+           // DOMElements.statsHeader.textContent = t.statsHeader;
             DOMElements.descriptionHeader.textContent = t.descriptionHeader;
             DOMElements.funFactsHeader.textContent = t.funFactsHeader;
             DOMElements.provenanceHeader.textContent = t.provenanceHeader;
             DOMElements.quizModalHeader.textContent = t.quizModalHeader;
             if(DOMElements.monologueModalHeader) DOMElements.monologueModalHeader.textContent = t.monologueHeader;
             
-            // Mettre à jour les données de la carte
             DOMElements.cardTitle.textContent = `${cardData.deck_emoji} ${cardData.name_i18n[lang]}`;
             DOMElements.scientificName.textContent = cardData.scientificName;
             DOMElements.cardDescription.textContent = cardData.description_i18n[lang];
@@ -172,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function speak(autoPlay = false) {
         if (synth.speaking) synth.cancel();
         if (!autoPlay) return;
-
         const textToSpeak = DOMElements.monologueModalText.textContent;
         if (textToSpeak) {
             const utterance = new SpeechSynthesisUtterance(textToSpeak);
@@ -200,7 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function updateThumbnail() { DOMElements.thumbnailImage.src = cardData.images[currentThumbnailIndex]; DOMElements.thumbCounter.textContent = `${currentThumbnailIndex + 1}/${cardData.images.length}`; }
     function changeThumbnail(direction) { currentThumbnailIndex = (currentThumbnailIndex + direction + cardData.images.length) % cardData.images.length; updateThumbnail(); }
-    
     function openGalleryModal(index) { currentModalImageIndex = index; updateModalImage(); openModal(DOMElements.galleryModal); }
     function updateModalImage() { DOMElements.modalImage.src = cardData.images[currentModalImageIndex]; }
     function changeModalImage(direction) { currentModalImageIndex = (currentModalImageIndex + direction + cardData.images.length) % cardData.images.length; updateModalImage(); }
@@ -222,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const quizData = getQuizData(); let score = 0;
         userAnswers.forEach((answer, index) => { if (answer === quizData[index].answer) score++; });
         const t = uiTranslations[currentLang];
-        DOMElements.quizModalContainer.innerHTML = `<h3>${t.quizFinish}</h3><p class="quiz-score">${t.quizScore} ${score} / ${quizData.length}</p><button id="quiz-restart">${t.openQuizButton || "Recommencer le Quiz"}</button>`;
+        DOMElements.quizModalContainer.innerHTML = `<h3>${t.quizFinish}</h3><p class="quiz-score">${t.quizScore} ${score} / ${quizData.length}</p><button id="quiz-restart">${t.quizRestart || "Recommencer"}</button>`;
     }
     
     function showQuizAnswerResult(selectedOptionKey) {
