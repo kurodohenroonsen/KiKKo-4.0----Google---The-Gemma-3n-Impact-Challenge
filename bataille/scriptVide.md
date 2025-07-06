@@ -201,9 +201,15 @@ Ce document contient les 15 prompts de production définitifs. Chaque prompt est
 
 #### **Plan 5.1 : La Compilation des Avis (Introduction)**
 * **Script Détaillé :**
-    * **Scène et Personnages :** Les deux Kikkō holographiques sur l'arène.
-    * **Mouvement et Action :** Les Kikkō regardent les votes lumineux converger vers le centre de l'arène.
-* **Style & Rendu Constant :** (Tel que défini au plan 1.1)
+    * **Scène et Personnages :**
+        * **Kikkō de Léa :** Un gardien tortue numérique holographique, vert foncé, avec une carapace semblant robuste. Ses motifs hexagonaux sont d'un cyan doux et rassurant.
+        * **Kikkō de Hiro :** Un gardien tortue numérique holographique, vert clair, avec des motifs de carapace plus vifs et artistiques, presque comme des graffitis de lumière.
+        * **Décor :** La scène se déroule sur une arène de jeu holographique, qui est une version agrandie de la carapace du Kikkō de Léa. Cette arène flotte dans un grand parc verdoyant et ensoleillé un après-midi d'été. D'autres familles sont visibles en arrière-plan flouté.
+    * **Mouvement et Action :** Les deux Kikkō holographiques flottent de part et d'autre de l'arène. Ils regardent avec attention des faisceaux de lumière (l'un siglé 'A', l'autre 'B') qui traversent l'arène pour converger vers le centre, représentant la compilation des votes par l'appareil Hôte.
+* **Style & Rendu Constant :**
+    * **Rendu :** Rendu 3D de très haute qualité, avec une esthétique de film d'animation cinématique. L'accent est mis sur des personnages expressifs et attachants, des textures riches et détaillées, et une direction artistique soignée.
+    * **Lumière & Ambiance :** Éclairage sophistiqué et chaleureux, imitant la lumière dorée d'une fin d'après-midi pour créer une atmosphère magique et sécurisante.
+    * **UI & Effets :** Les hologrammes et les particules de données sont d'un or chaud ou d'un cyan électrique. L'interface est sombre, minimaliste et élégante avec des icônes hexagonales.
 * **Narration (Voix Off du Bourdon) :**
     * 🇫🇷 : *Les résultats affluent vers l'Hôte. Le code va faire son travail de simple comptable. L'intelligence a déjà été déployée.*
     * 🇬🇧 : *The results are flowing to the Host. The code will now do its job as a simple accountant. The intelligence has already been deployed.*
@@ -212,9 +218,14 @@ Ce document contient les 15 prompts de production définitifs. Chaque prompt est
 #### **Plan 5.2 : Le Résultat du Clash (Action)**
 * **Script Détaillé :**
     * **Scène et Personnages :**
-        * **Hiro et son Kikkō vert clair.** (Descriptions cohérentes)
-    * **Mouvement et Action :** Vue sur Hiro et son Kikkō. L'arène holographique projette des confettis sur eux. Son Kikkō fait un petit salto de joie.
-* **Style & Rendu Constant :** (Tel que défini au plan 1.1)
+        * **Hiro :** Garçon de 10 ans, portant son t-shirt rouge vif caractéristique, avec des cheveux bruns courts et des yeux expressifs. Ses expressions sont joueuses et compétitives.
+        * **Kikkō de Hiro :** Un gardien tortue numérique holographique, vert clair, avec des motifs de carapace plus vifs et artistiques, presque comme des graffitis de lumière. Il est très expressif et agité.
+        * **Décor :** La scène se déroule dans un grand parc verdoyant et ensoleillé un après-midi d'été. La bataille a lieu sur une arène de jeu holographique flottant au-dessus d'une nappe de pique-nique.
+    * **Mouvement et Action :** Plan américain centré sur Hiro et son Kikkō holographique. De l'arène en dessous d'eux, une gerbe de confettis numériques dorés jaillit vers le haut. Hiro lève le poing avec un grand sourire de victoire, tandis que son Kikkō fait un salto arrière joyeux dans les airs.
+* **Style & Rendu Constant :**
+    * **Rendu :** Rendu 3D de très haute qualité, avec une esthétique de film d'animation cinématique. L'accent est mis sur des personnages expressifs et attachants, des textures riches et détaillées, et une direction artistique soignée.
+    * **Lumière & Ambiance :** Éclairage sophistiqué et chaleureux, imitant la lumière dorée d'une fin d'après-midi pour créer une atmosphère magique et sécurisante.
+    * **UI & Effets :** Les hologrammes et les particules de données sont d'un or chaud ou d'un cyan électrique. L'interface est sombre, minimaliste et élégante avec des icônes hexagonales.
 * **Narration (Voix Off du Bourdon) :**
     * 🇫🇷 : *Et le gagnant de la manche est... le Gâteau ! Logique, pour un anniversaire. C'est festif, ça met tout le monde d'accord. Enfin, presque tout le monde.*
     * 🇬🇧 : *And the winner of the round is... the Cake! Makes sense for a birthday. It's festive, everyone agrees. Well, almost everyone.*
@@ -223,10 +234,15 @@ Ce document contient les 15 prompts de production définitifs. Chaque prompt est
 #### **Plan 5.3 : La Vraie Victoire (Conclusion)**
 * **Script Détaillé :**
     * **Scène et Personnages :**
-        * **Léa et son Kikkō vert foncé.** (Descriptions cohérentes)
-        * **Le Bourdon de Léa.** (Studieux, avec des lunettes)
-    * **Mouvement et Action :** Plan serré sur Léa, l'air déçue. Son Kikkō lui donne un coup de tête affectueux. Elle tapote la carte du gâteau sur son écran. La caméra plonge, l'alerte ROUGE "ATTENTION : CONTIENT DES NOIX" apparaît. La caméra revient sur Léa, qui affiche un immense sourire de soulagement. Le Bourdon de Léa flotte à côté, hochant la tête avec approbation.
-* **Style & Rendu Constant :** (Tel que défini au plan 1.1)
+        * **Léa :** Fille de 10 ans, portant son imperméable jaune vif à capuche, des lunettes rondes et coiffée de deux nattes soignées. Son expression passe de la déception au soulagement et à la joie.
+        * **Kikkō de Léa :** Son gardien tortue numérique holographique, vert foncé, avec une carapace semblant robuste. Il est très expressif et réconfortant.
+        * **Le Bourdon de Léa :** La grosse abeille-bourdon de dessin animé, dodue et sympathique. Il porte de petites lunettes rondes qui lui donnent un air studieux et sage.
+        * **Décor :** La scène se déroule dans un grand parc verdoyant et ensoleillé un après-midi d'été. L'arène de bataille holographique vient de se dissiper, laissant place à une atmosphère plus calme.
+    * **Mouvement et Action :** Plan serré sur le visage de Léa, montrant une légère déception après avoir perdu la manche. Son Kikkō holographique flotte près de sa joue et lui donne un petit coup de tête affectueux pour la réconforter. Elle esquisse un petit sourire, puis son doigt tapote sur l'icône de la carte du gâteau qu'elle vient de recevoir sur son écran. La caméra plonge littéralement dans l'écran du téléphone. Une alerte ROUGE en plein écran apparaît avec une animation percutante et le texte "ATTENTION : CONTIENT DES NOIX". La caméra ressort rapidement de l'écran pour revenir sur le visage de Léa, qui affiche maintenant un immense sourire de soulagement. Le Bourdon de Léa flotte à côté, hochant la tête lentement avec une expression de fierté et d'approbation.
+* **Style & Rendu Constant :**
+    * **Rendu :** Rendu 3D de très haute qualité, avec une esthétique de film d'animation cinématique. L'accent est mis sur des personnages expressifs et attachants, des textures riches et détaillées, et une direction artistique soignée.
+    * **Lumière & Ambiance :** Éclairage sophistiqué et chaleureux, imitant la lumière dorée d'une fin d'après-midi pour créer une atmosphère magique, sécurisante et immersive.
+    * **UI & Effets :** Les hologrammes et les particules de données sont d'un or chaud ou d'un cyan électrique. L'interface est sombre, minimaliste et élégante avec des icônes hexagonales. L'alerte de sécurité est un rouge vif et sans équivoque pour un contraste maximal.
 * **Narration (Voix Off du Bourdon) :**
     * 🇫🇷 : *Mais... ne vous y trompez pas. Perdre une manche, ce n'est rien. Gagner l'information qui vous protège... *ça*, c'est la vraie victoire. Bien joué, Léa. C'est exactement ça, le but du jeu.*
     * 🇬🇧 : *But... make no mistake. Losing a round is nothing. Gaining the information that protects you... *that* is the real victory. Well done, Léa. That's the whole point of the game.*
