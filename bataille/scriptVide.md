@@ -1,6 +1,6 @@
-# Script de Tournage Veo - La Saga de Léa (Version Détaillée)
+# Script de Tournage Veo - La Saga de Léa (Version Finale Détaillée)
 
-Ce document contient les prompts détaillés pour la génération de 15 plans animés. Chaque prompt inclut une description des personnages et du décor pour assurer une continuité visuelle parfaite, dans le style des documents de référence.
+Ce document contient les 15 prompts de production pour la génération des plans animés. Chaque prompt est autonome et contient toutes les informations nécessaires, y compris une charte graphique détaillée et constante, pour garantir la continuité visuelle et narrative.
 
 ---
 
@@ -9,22 +9,36 @@ Ce document contient les prompts détaillés pour la génération de 15 plans an
 ---
 
 #### **Plan 1.1 : L'Écho dans la Ruche (Introduction)**
-* **Acteur Principal :** 📱 Le Code
+* **Style Visuel & Design :**
+    * **Rendu :** 3D cinématique, dans le style d'un film d'animation haut de gamme (type Pixar/DreamWorks), avec une grande attention aux détails et aux textures.
+    * **Personnages :** Léa (Fille de 10 ans, imperméable jaune à capuche, lunettes rondes, cheveux bruns coiffés en deux nattes, expressions nuancées).
+    * **UI & Effets :** Les écrans de smartphone affichent une interface sombre, minimaliste et élégante avec des icônes hexagonales et du texte lumineux.
+    * **Lumière & Ambiance :** Lumière principalement chaude et dorée de fin d'après-midi, créant une atmosphère douce, magique et sécurisante.
 * **Durée :** 4 secondes
-* **Description de l'Animation :** Un lent travelling latéral le long d'une nappe de pique-nique colorée, posée sur l'herbe d'un grand parc ensoleillé. On y voit des saladiers, des jus de fruits. La caméra s'arrête sur le smartphone de **Léa (fille de 10 ans, vêtue de son imperméable jaune caractéristique, portant des lunettes et coiffée de deux nattes)**. Elle est absorbée par la lecture d'un livre. L'écran de son téléphone est éteint, mais une douce lueur cyan pulse lentement depuis le boîtier, indiquant l'écoute en arrière-plan.
-* **Style & Ambiance :** Rendu 3D cinématique, style film d'animation. Ambiance calme et sereine.
+* **Description de l'Animation :** Un lent travelling latéral le long d'une nappe de pique-nique colorée, posée sur l'herbe d'un grand parc ensoleillé. La caméra s'arrête sur le smartphone de Léa. Elle est absorbée par la lecture d'un livre. L'écran de son téléphone est éteint, mais une douce lueur cyan pulse depuis le boîtier.
+* **Voix Off du Bourdon :**
+    * 🇫🇷 (Français) : *Chut... la Ruche écoute. Toujours à l'affût. C'est la base, le "bonjour" des abeilles.*
+    * 🇬🇧 (English) : *Shh... the Hive is listening. Always on the lookout. It's fundamental, the "hello buzz" of the bees.*
+    * 🇯🇵 (日本語) : *シッ… ハイブは耳を澄ましている。常に獲物を狙ってね。基本のキ、蜂たちの挨拶みたいなものさ。*
 
 #### **Plan 1.2 : La Danse des Gardiens (Action)**
-* **Acteur Principal :** 📱 Le Code
+* **Style Visuel & Design :** (Identique au plan 1.1)
+    * **Personnages supplémentaires :** Hiro (Garçon de 10 ans, t-shirt rouge vif, cheveux bruns, visible sur l'écran), Le Bourdon (Mascotte-abeille dodue, amicale et expressive).
 * **Durée :** 5 secondes
-* **Description de l'Animation :** La caméra plonge en vue par-dessus l'épaule de Léa. Son téléphone s'allume et une notification élégante apparaît : "Hiro est à proximité !". Une mini-carte montre la position de **Hiro (garçon de 10 ans, t-shirt rouge vif, cheveux bruns)**. À côté de son nom, on voit l'icône de son deck "Pâtisseries Maison" 🧁. **Le Bourdon (notre guide dodu et sympathique)** apparaît dans un coin de l'écran avec un petit "pop" et un clin d'œil.
-* **Style & Ambiance :** Rendu 3D cinématique. Ambiance curieuse et engageante.
+* **Description de l'Animation :** La caméra plonge en vue par-dessus l'épaule de Léa. Son téléphone s'allume et une notification "Hiro est à proximité !" apparaît. Une mini-carte montre son avatar et l'icône de son deck "Pâtisseries Maison" 🧁. Le Bourdon apparaît dans un coin avec un petit "pop".
+* **Voix Off du Bourdon :**
+    * 🇫🇷 (Français) : *Ah ! Un signal ! Et pas n'importe lequel. Un spécialiste en pâtisserie. Intéressant... surtout pour les gourmands.*
+    * 🇬🇧 (English) : *Ah! A signal! And not just any signal. A pastry specialist. Interesting... especially for foodies.*
+    * 🇯🇵 (日本語) : *おっと、信号だ！しかも、ただ者じゃないぞ。パティシエ専門家だ。面白い…食いしん坊には特にね。*
 
 #### **Plan 1.3 : Le Début d'une Histoire (Conclusion)**
-* **Acteur Principal :** 🧑 L'Humain
+* **Style Visuel & Design :** (Identique au plan 1.1)
 * **Durée :** 4 secondes
-* **Description de l'Animation :** Plan serré sur le visage de Léa. Elle lève lentement les yeux de son livre, son expression passant de la surprise à une curiosité prudente. La mise au point de la caméra change (rack focus) pour rendre net Hiro en arrière-plan, qui dépose un gâteau sur la table de pique-nique.
-* **Style & Ambiance :** Rendu 3D cinématique. Ambiance sociale, centrée sur l'émotion humaine.
+* **Description de l'Animation :** Plan serré sur le visage de Léa. Elle lève lentement les yeux de son livre, son expression passe de la surprise à une curiosité prudente. La mise au point de la caméra change (rack focus) pour rendre net Hiro en arrière-plan.
+* **Voix Off du Bourdon :**
+    * 🇫🇷 (Français) : *Et voilà. La technologie propose, l'humain dispose. Va-t-elle y aller ? Le suspense est... modéré.*
+    * 🇬🇧 (English) : *And there you have it. Technology proposes, the human disposes. Will she go? The suspense is... moderate.*
+    * 🇯🇵 (日本語) : *そういうことさ。テクノロジーが提案し、人間が決める。彼女は行くのかな？まあ、サスペンスは…ほどほどだね。*
 
 ---
 
@@ -33,22 +47,31 @@ Ce document contient les prompts détaillés pour la génération de 15 plans an
 ---
 
 #### **Plan 2.1 : Le Défi Amical (Introduction)**
-* **Acteur Principal :** 🧑 L'Humain
+* **Style Visuel & Design :** (Identique au plan 1.1)
 * **Durée :** 3 secondes
-* **Description de l'Animation :** Plan américain sur Léa, qui se lève et s'approche de Hiro avec un air déterminé. Elle prend son téléphone en main, prête à lancer le défi. Hiro la regarde, intrigué.
-* **Style & Ambiance :** Rendu 3D cinématique. Ambiance amicale et décidée.
+* **Description de l'Animation :** Plan américain sur Léa, qui se lève et s'approche de Hiro avec un air déterminé, téléphone en main.
+* **Voix Off du Bourdon :**
+    * 🇫🇷 (Français) : *Regardez-moi ça. Notre Léa prend les devants ! Elle ne subit pas, elle organise. Elle a un plan derrière la tête, et ce n'est pas juste de gagner.*
+    * 🇬🇧 (English) : *Look at that. Our Léa is taking the lead! She's not just reacting, she's organizing. She has a plan, and it's not just about winning.*
+    * 🇯🇵 (日本語) : *見てみろよ。うちのレアが仕切る気だ！受け身じゃない、主導権を握ってる。何か考えがあるな、ただ勝つだけじゃない。*
 
 #### **Plan 2.2 : Le Choix de l'Arène (Action)**
-* **Acteur Principal :** 📱 Le Code
+* **Style Visuel & Design :** (Identique au plan 1.1)
 * **Durée :** 4 secondes
-* **Description de l'Animation :** Vue par-dessus l'épaule de Léa. Son doigt survole l'écran qui montre le profil de Hiro. Une animation met en surbrillance "Deck commun suggéré : Recettes". Elle appuie sur le bouton "Lancer l'Arène de la Confiance", qui s'illumine.
-* **Style & Ambiance :** Rendu 3D cinématique. Efficace, l'IA facilite l'action.
+* **Description de l'Animation :** Vue par-dessus l'épaule de Léa. Son doigt survole l'écran qui montre le profil de Hiro. Une animation met en surbrillance "Deck commun suggéré : Recettes". Elle appuie sur le bouton "Lancer l'Arène de la Confiance".
+* **Voix Off du Bourdon :**
+    * 🇫🇷 (Français) : *Pas folle, la Forager. Elle choisit le terrain qu'elle connaît : les Recettes. La Ruche, elle, ne fait que suggérer le chemin le plus court vers la vérité.*
+    * 🇬🇧 (English) : *Smart Forager. She chooses the ground she knows best: Recipes. The Hive merely suggests the shortest path to the truth.*
+    * 🇯🇵 (日本語) : *賢いフォレジャーだ。自分の得意な土俵、「レシピ」デッキを選んだ。ハイブは真実への最短ルートを提案するだけさ。*
 
 #### **Plan 2.3 : L'Invitation est Lancée (Conclusion)**
-* **Acteur Principal :** 🧑‍🤝‍🧑 Humains
+* **Style Visuel & Design :** (Identique au plan 1.1)
 * **Durée :** 4 secondes
-* **Description de l'Animation :** Vue par-dessus l'épaule de Hiro. Une belle fenêtre d'invitation apparaît sur son écran avec les avatars de Léa et lui. Il sourit et son pouce se déplace pour taper sur le bouton "Accepter", qui s'illumine au contact.
-* **Style & Ambiance :** Rendu 3D cinématique. Engageante, le jeu commence.
+* **Description de l'Animation :** Vue par-dessus l'épaule de Hiro. Une belle fenêtre d'invitation apparaît sur son écran avec les avatars de Léa et lui. Il sourit et son pouce se déplace pour taper sur le bouton "Accepter".
+* **Voix Off du Bourdon :**
+    * 🇫🇷 (Français) : *L'invitation est envoyée. Simple, propre. Le jeu peut commencer... s'il accepte de dévoiler ses secrets de fabrication, bien sûr.*
+    * 🇬🇧 (English) : *The invitation is sent. Simple, clean. The game can begin... if he agrees to reveal his trade secrets, of course.*
+    * 🇯🇵 (日本語) : *招待状が送られた。シンプルでクリーン。ゲームの始まりだ…もちろん、彼が製造の秘密を明かす気ならね。*
 
 ---
 
@@ -57,67 +80,28 @@ Ce document contient les prompts détaillés pour la génération de 15 plans an
 ---
 
 #### **Plan 3.1 : La Connexion des Ruches (Introduction)**
-* **Acteur Principal :** 📱 Le Code
+* **Style Visuel & Design :** (Identique au plan 1.1, mais plus abstrait)
 * **Durée :** 3 secondes
-* **Description de l'Animation :** Vue abstraite et stylisée des deux smartphones flottant dans l'air du parc. Un magnifique pont de lumière dorée se forme dynamiquement entre eux, symbolisant la connexion P2P.
-* **Style & Ambiance :** Rendu 3D cinématique. Magique et technologique.
+* **Description de l'Animation :** Vue abstraite et stylisée des deux smartphones flottant dans l'air. Un magnifique pont de lumière dorée se forme dynamiquement entre eux, symbolisant la connexion P2P.
+* **Voix Off du Bourdon :**
+    * 🇫🇷 (Français) : *Et hop, le pont est créé. Pas de serveur, pas d'intermédiaire. Juste deux Ruches qui se parlent directement. C'est beau, la technologie P2P, non ?*
+    * 🇬🇧 (English) : *And just like that, the bridge is formed. No server, no middleman. Just two Hives talking directly to each other. Beautiful, isn't it, P2P technology?*
+    * 🇯🇵 (日本語) : *ほら、橋が架かった。サーバーも仲介者もなし。二つのハイブが直接対話する。P2Pテクノロジーってのは美しいもんだろう？*
 
 #### **Plan 3.2 : Le Double Travail (Action)**
-* **Acteurs :** 📱 Le Code & 🤖 L'IA
+* **Style Visuel & Design :** (Identique au plan 1.1)
+    * **Personnages supplémentaires :** La Reine IA (Figure sage et bienveillante avec des lunettes lumineuses).
+    * **Effets Spécifiques :** L'échange de données est visualisé par un essaim de petites **abeilles de lumière dorée** volant entre les téléphones.
 * **Durée :** 6 secondes
-* **Description de l'Animation :** Écran partagé. À gauche, un essaim d'"abeilles de données" dorées (représentant les fiches de recettes) vole de manière fluide le long du pont de lumière. À droite, dans une vue "code" de la Ruche de Léa, sa **Reine IA (figure sage et bienveillante avec des lunettes lumineuses)** génère les 4 icônes de thèmes culinaires avec un effet holographique.
-* **Style & Ambiance :** Rendu 3D cinématique. Rythme rapide, efficacité.
+* **Description de l'Animation :** Écran partagé. À gauche, l'essaim d'abeilles de données vole le long du pont de lumière. À droite, dans la vue "code" de la Ruche de Léa, sa Reine IA génère les 4 icônes de thèmes culinaires.
+* **Voix Off du Bourdon :**
+    * 🇫🇷 (Français) : *Pendant que les petites abeilles de données transportent les recettes, la Reine, elle, ne chôme pas. Elle prépare ses pièges... heu, ses thèmes pour la bataille.*
+    * 🇬🇧 (English) : *While the little data-bees are transporting the recipes, the Queen isn't slacking off. She's preparing her traps... er, her themes for the battle.*
+    * 🇯🇵 (日本語) : *小さなデータ蜂たちがレシピを運んでいる間、女王はサボっちゃいない。彼女は罠を…いや、バトルのテーマを準備しているのさ。*
 
 #### **Plan 3.3 : Le Thème est Servi (Conclusion)**
-* **Acteur Principal :** 🤖 L'IA
+* **Style Visuel & Design :** (Identique au plan 1.1)
 * **Durée :** 3 secondes
-* **Description de l'Animation :** Vue "code" du téléphone de Léa. La liste des 4 thèmes est complète. Le premier, "Dessert pour Fête d'Anniversaire", s'illumine et glisse vers l'avant, prêt à être diffusé.
-* **Style & Ambiance :** Rendu 3D cinématique. Ambiance "prêt au combat".
-
----
-
-### **Scène 4 : Le Jugement de la Manche**
-
----
-
-#### **Plan 4.1 : Le Champ de Bataille (Introduction)**
-* **Acteur Principal :** 📱 Le Code
-* **Durée :** 4 secondes
-* **Description de l'Animation :** Travelling arrière partant d'un hologramme flottant au-dessus de la nappe de pique-nique, qui affiche "Thème : Dessert pour Fête d'Anniversaire". La caméra recule pour révéler Léa et Hiro, concentrés sur leurs téléphones où les cartes "Salade de Fruits" et "Gâteau au Chocolat" s'animent.
-* **Style & Ambiance :** Rendu 3D cinématique. Concentrée et alléchante.
-
-#### **Plan 4.2 : L'Inférence de la Reine (Action)**
-* **Acteur Principal :** 🤖 L'IA
-* **Durée :** 5 secondes
-* **Description de l'Animation :** Zoom rapide dans le "code" du téléphone de Léa. On voit les données des deux recettes affluer vers l'icône de sa Reine IA. L'icône brille intensément, des anneaux de lumière cyan scannant les listes d'ingrédients.
-* **Style & Ambiance :** Rendu 3D cinématique. Très technique, le cerveau de l'IA au travail.
-
-#### **Plan 4.3 : Le Verdict Silencieux (Conclusion)**
-* **Acteur Principal :** 🤖 L'IA
-* **Durée :** 4 secondes
-* **Description de l'Animation :** Vue large. Une lettre holographique "A" (pour la salade de fruits, le choix "sûr" de la Reine de Léa) s'illumine au-dessus du téléphone de Léa. Une lettre "B" (pour le gâteau, le choix "festif" de la Reine de Hiro) s'illumine au-dessus de son téléphone. Les votes sont partagés, créant du suspense.
-* **Style & Ambiance :** Rendu 3D cinématique. Révélation, suspense.
-
----
-
-### **Scène 5 : La Victoire de la Sécurité**
-
----
-
-#### **Plan 5.1 : La Compilation des Avis (Introduction)**
-* **Acteur Principal :** 📱 Le Code
-* **Durée :** 2 secondes
-* **Description de l'Animation :** Animation abstraite rapide. Le vote "B" de Hiro file à travers le pont de lumière pour arriver dans l'appareil de Léa (Hôte), où il est comparé à son propre vote "A".
-* **Style & Ambiance :** Rendu 3D cinématique. Rapide et décisive.
-
-#### **Plan 5.2 : Le Résultat du Clash (Action)**
-* **Acteur Principal :** 📱 Le Code
-* **Durée :** 4 secondes
-* **Description de l'Animation :** Vue par-dessus l'épaule de Hiro. Son écran s'anime avec un "MANCHE GAGNÉE !", des confettis numériques et sa carte de gâteau en vedette. Il fait un petit geste de victoire discret.
-* **Style & Ambiance :** Rendu 3D cinématique. Joyeux et ludique.
-
-#### **Plan 5.3 : La Vraie Victoire (Conclusion)**
-* **Acteurs :** 🧑 L'Humain & 🤖 L'IA
-* **Durée :** 7 secondes
-* **Description de l'Animation :** Plan serré sur le visage de Léa, montrant une légère déception de la défaite. Son doigt tapote sur l'icône de la carte du gâteau qu'elle vient de recevoir. La caméra plonge dans l'écran. Une alerte ROUGE "ATTENTION : CONTIENT DES NOIX" apparaît avec une animation de warning percutante. La caméra revient sur le visage de Léa, qui affiche maintenant un immense sourire de soulagement.
-* **Style & Ambiance :** Rendu 3D cinématique. Très émotionnel. C'est le point culminant, la victoire de la sécurité sur le jeu.
+* **Description de l'Animation :** Vue "code" du téléphone de Léa. La liste des 4 thèmes est complète. Le premier, "Dessert pour Fête d'Anniversaire", s'illumine et glisse vers l'avant.
+* **Voix Off du Bourdon :**
+    * 🇫🇷 (Français) : *Et voilà le
