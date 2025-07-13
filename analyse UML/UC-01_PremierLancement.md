@@ -4,7 +4,7 @@
 
 **Acteur Primaire** : Le Butineur
 
-**Objectif** : Lancer l'application pour la première fois, être guidé à travers une séquence de bienvenue, et voir l'application s'initialiser complètement (téléchargement des modèles, création de la base de données) pour être prête à l'emploi.
+**Objectif** : Lancer l'application pour la première fois, être guidé à travers une séquence de bienvenue, et voir l'application s'initialiser complètement (téléchargement des modèles, création de la base de données avec ses données initiales complètes) pour être prête à l'emploi.
 
 **Préconditions** :
 * L'application est installée sur l'appareil.
@@ -12,7 +12,7 @@
 
 **Postcondition de Succès** :
 * Le Butineur est sur l'écran principal de l'application (`HiveActivity`).
-* La base de données locale est créée et contient les 16 cartes de départ.
+* La base de données locale est créée et contient les 16 cartes de départ, **incluant leurs images sources et leurs journaux de provenance détaillés**.
 * Les modèles d'IA nécessaires sont téléchargés.
 * L'indicateur `isFirstLaunch` est positionné à `false`.
 
@@ -31,7 +31,7 @@
 6.  Le système attend la fin du téléchargement.
 7.  Le système vérifie si la base de données est vide.
 8.  Le système lit le fichier de données initiales (`default_cards.json`).
-9.  Le système insère les 16 cartes dans la base de données.
+9.  **Le système insère les 16 cartes, chacune avec son journal de provenance complet et ses images sources encodées en Base64, dans la base de données.**
 10. Le système met à jour l'indicateur `isFirstLaunch` à `false`.
 11. Le système redirige le Butineur vers l'écran principal et termine l'activité d'introduction.
 

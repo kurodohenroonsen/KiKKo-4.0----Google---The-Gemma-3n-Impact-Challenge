@@ -1,0 +1,110 @@
+@startuml
+' Style et apparence
+skinparam classAttributeIconSize 0
+hide empty members
+left to right direction
+skinparam package {
+    BorderColor gray
+    BackgroundColor lightyellow
+}
+
+' --- Package: Noyau de Données (Core Data Models) ---
+package "1. Core Data Models" {
+  class Card << (E,orchid) Entity >> {
+    +id: String
+    +deckName: String
+    +name: String
+    +stats: Map<String, Double>
+    +aiOverviewHtml: String
+    +bourdonTTS: String
+    +provenanceLog: String
+    +imagesBase64: List<String>
+  }
+
+  class QuizQuestion << (D,lightgreen) Data >> {
+    +q: String
+    +o: List<String>
+    +c: Int
+  }
+
+  class Provenance << (D,lightblue) Embedded >> {
+    +type: ProvenanceType
+    +sourceName: String
+    +isReproducible: Boolean
+  }
+
+  enum ProvenanceType {
+    HIVE_FORGED
+    HORNET_SOURCED
+  }
+}
+
+' --- Package: Base de Données (Room Database) ---
+package "2. Database (Room)" {
+  class AppDatabase << (D,khaki) Database >> {
+    +cardDao(): CardDao
+  }
+
+  interface CardDao << DAO >> {
+    +insertAll(cards: List<Card>)
+    +getById(id: String): Card?
+    +getAll(): List<Card>
+    +getCount(): Int
+  }
+
+  class TypeConverters << Utility >> {
+    +fromQuizList(quiz: List<QuizQuestion>): String
+    +toQuizList(json: String): List<QuizQuestion>
+    +fromStatsMap(stats: Map<String, Double>): String
+    +toStatsMap(json: String): Map<String, Double>
+    +fromStringList(list: List<String>): String
+    +toStringList(json: String): List<String>
+  }
+}
+
+' --- Package: Interface Utilisateur (UI) ---
+package "3. User Interface" {
+    class IntroActivity << Activity >>
+    class LoadingActivity << Activity >>
+    class HiveActivity << Activity >>
+    class MainActivity << Activity >>
+    class PlayerAdapter << Adapter >>
+    class RadarView << View >>
+}
+
+' --- Package: Anciens Modèles (Legacy) ---
+package "4. Legacy Models (to deprecate)" {
+    skinparam class {
+        BackgroundColor lightgrey
+    }
+    class HoneyCard << (D,red) Deprecated >>
+    class TrustedPackage << (D,red) Deprecated >>
+    class PlayerCatalogue << (D,orange) Refactor >>
+    class Deck << (D,orange) Refactor >>
+}
+
+
+' --- Définition des Relations ---
+
+' Relations Noyau
+Card "1" *-- "1..*" QuizQuestion : contains >
+Card "1" *-- "1" Provenance : has >
+Provenance "1" o-- "1" ProvenanceType : uses >
+
+' Relations Base de Données
+AppDatabase ..> CardDao : provides
+AppDatabase ..> TypeConverters : uses
+CardDao ..> Card : manipulates
+
+' Relations UI
+LoadingActivity ..> CardDao : uses >
+MainActivity ..> PlayerAdapter : uses >
+MainActivity ..> RadarView : uses >
+PlayerAdapter ..> PlayerCatalogue : displays >
+RadarView ..> PlayerCatalogue : displays >
+
+' Relations Legacy
+PlayerCatalogue "1" *-- "0..*" Deck
+TrustedPackage "1" *-- "0..*" HoneyCard
+
+@enduml
