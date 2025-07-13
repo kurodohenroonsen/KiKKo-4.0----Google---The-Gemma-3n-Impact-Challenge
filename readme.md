@@ -31,15 +31,11 @@ With Kikko, you are not a user; you are a **Forager**, entrusted with a **Kikkō
 
 The core gameplay is a virtuous and satisfying cycle: **Explore -> Capture -> Forge -> Feed -> Challenge.**
 
-* **Explore the World (Real-Time Analysis):** Point your phone's camera at the world. Your Hive is always active. A multitude of **Worker Bees (the entire ML Kit suite)** constantly analyze the video stream to detect objects, recognize text, identify languages, and more. Information and suggestions are overlaid on your screen, augmenting your perception of the world.
+* **Explore the World (Live Specialist Analysis):** Point your phone's camera at the world. Your Hive's **Specialist Bees** (the fine-tuned on-device models for Plants, Animals, etc.) analyze the video stream in real-time. The app overlays their live identifications on what you see (e.g., "Taraxacum officinale, 89% confidence"), turning your camera into a lens of instant knowledge. Other Worker Bees simultaneously scan for text, barcodes, and other useful information.
 
-* **Capture "Pollen":** When an element identified by the Hive interests you, you "capture" it with a simple tap. This specific sample of reality – the image and the initial analysis from the Worker Bees – becomes your "pollen".
+* **Capture "Pollen":** When you see an interesting live identification, you "capture" it with a simple tap. This "pollen" package is rich: it contains the image frame and, crucially, the **expert opinion** from the Specialist Bee (e.g., `label: 'dandelion', confidence: 0.89`).
 
-* **Forge "Informative Honey":** The true forging process begins with the captured pollen, following our "Guild of Experts" architecture:
-    1.  A **Detective Bee (Object Detection)** refines the location of the object of interest.
-    2.  You, the **Forager**, confirm the target and can specify its name for greater accuracy (the "Human Refinement" step).
-    3.  The object's image is then submitted to a council of **Specialist Bees** (pre-trained, optimized classification models for each deck: Plants, Animals, etc.).
-    4.  Finally, the **AI Queen (Gemma)** receives the opinions from these experts, reasons upon this information, and generates the final, rich, and structured knowledge card.
+* **Forge "Informative Honey":** The captured pollen is sent to the **AI Queen (Gemma)**. Her role is to orchestrate the final creation of the card. She takes the specialist's identification and, if the confidence is low or the identification is generic, she may ask the **Forager** for refinement ('Is this a *Golden Delicious* apple specifically?'). She then forges the final, rich knowledge card with descriptions, stats, and a quiz, using her generative power to expand upon the initial identification.
 
 * **Feed your Guardian:** The "honey" you create is the food for your Kikkō Guardian. Pure, Hive-forged honey—with a reproducible history—makes it grow strong and its shell more beautiful. "Junk food" honey from external AIs (the "Hornets") offers less nutrition, stunting its growth.
 
