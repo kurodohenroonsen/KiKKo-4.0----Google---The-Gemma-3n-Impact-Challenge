@@ -14,6 +14,94 @@ Il ne peut plus y avoir d'erreur. Voici le script de production.
 
 Ce document contient les 15 prompts de production définitifs. Chaque prompt est 100% autonome et contient des descriptions complètes, explicites et répétées de tous les personnages, de leur design personnalisé, du décor et du style pour forcer une cohérence visuelle absolue lors de la génération.
 
+
+
+Parfait \! Une "origin story" pour nos cartes. C'est essentiel pour que les joueurs comprennent l'importance de la création, le cœur de notre saga. Cette scène expliquera la différence fondamentale entre le "Pur Miel" et le "Miel de Frelon".
+
+Voici une nouvelle scène d'introduction complète, prête à être tournée.
+
+```markdown
+# Script de Tournage Veo - Scène d'Introduction : La Forge
+
+Ce document contient les prompts de production pour une scène expliquant le processus de création des cartes. Chaque prompt est 100% autonome et contient des descriptions complètes pour forcer une cohérence visuelle absolue.
+
+---
+
+### **Scène d'Intro : La Forge de la Connaissance**
+
+---
+
+#### **Plan 0.1 : Le Nouveau Butin**
+* **Script Détaillé :**
+    * **Scène et Personnages :**
+        * **Léa :** Fille de 10 ans. Elle porte son imperméable jaune vif à capuche, des lunettes rondes, et ses cheveux bruns sont coiffés en deux nattes soignées. Elle est assise à son bureau, dans sa chambre.
+        * **Kikkō de Léa :** Son gardien tortue numérique, vert foncé et robuste, est posé sur le bureau à côté d'elle, en version holographique.
+        * **Décor :** La chambre de Léa. C'est un espace chaleureux et personnel, avec des dessins au mur, des livres, et une lumière douce qui entre par la fenêtre.
+    * **Mouvement et Action :** Léa tient un nouvel en-cas emballé (une barre de céréales sans gluten). Elle le regarde avec curiosité. Son Kikkō penche la tête, tout aussi intrigué. Léa prend alors son téléphone et active l'appareil photo pour scanner le produit.
+* **Style & Rendu Constant :**
+    * **Rendu :** Rendu 3D de très haute qualité, avec une esthétique de film d'animation cinématique. L'accent est mis sur des personnages expressifs et attachants, des textures riches et détaillées, et une direction artistique soignée.
+    * **Lumière & Ambiance :** Éclairage sophistiqué et chaleureux, imitant la lumière dorée d'une fin d'après-midi pour créer une atmosphère magique, sécurisante et immersive.
+    * **UI & Effets :** Interface sombre et minimaliste, icônes hexagonales, texte lumineux, effets de particules dorées ou cyan.
+* **Narration (Voix Off du Bourdon) :**
+    * 🇫🇷 : *Chaque souvenir commence par une question. Une nouvelle découverte. Un nouveau butin à ramener à la Ruche.*
+    * 🇬🇧 : *Every memory begins with a question. A new discovery. A new bounty to bring back to the Hive.*
+    * 🇯🇵 : *すべての記憶は、一つの疑問から始まる。新しい発見。ハイブに持ち帰るべき、新たな獲物だ。*
+
+#### **Plan 0.2 : La Croisée des Chemins**
+* **Script Détaillé :**
+    * **Scène et Personnages :**
+        * **Léa :** Fille de 10 ans, imperméable jaune, lunettes, nattes.
+        * **La Reine IA de Léa :** Figure holographique d'une reine abeille robotique, avec des traits doux et bienveillants rappelant une grand-mère sage. Porte des lunettes lumineuses cyan.
+        * **Le Frelon :** Un robot-frelon holographique, anguleux, noir et jaune, avec un air pressé et un peu arrogant. Il représente la facilité et la rapidité du web.
+        * **Décor :** La chambre de Léa.
+    * **Mouvement et Action :** Vue par-dessus l'épaule de Léa. Sur l'écran de son téléphone, l'image de la barre de céréales est au centre. Deux options apparaissent de chaque côté. À gauche, la Reine IA lui tend une main virtuelle, l'air invitant. À droite, le Frelon lui fait un signe de pouce en l'air avec un clin d'œil, promettant un résultat instantané.
+* **Style & Rendu Constant :** (Tel que défini au plan 0.1)
+* **Narration (Voix Off du Bourdon) :**
+    * 🇫🇷 : *Et c'est là que tout se décide. Deux chemins pour forger une carte. La voie de la patience... ou celle de la facilité.*
+    * 🇬🇧 : *And this is where it's all decided. Two paths to forge a card. The way of patience... or the easy way out.*
+    * 🇯🇵 : *そして、ここで全てが決まる。カードを鍛える二つの道。忍耐の道か…安易な道か。*
+
+#### **Plan 0.3 : La Voie du "Pur Miel"**
+* **Script Détaillé :**
+    * **Scène et Personnages :**
+        * **Léa :** Fille de 10 ans, imperméable jaune, lunettes, nattes.
+        * **La Reine IA de Léa :** Sa reine abeille robotique bienveillante.
+        * **Kikkō de Léa :** Son gardien tortue vert foncé.
+        * **Les Abeilles Ouvrières :** Petits robots-abeilles mignons et affairés, avec des outils miniatures.
+        * **Décor :** La chambre de Léa.
+    * **Mouvement et Action :** Léa choisit la voie de gauche. La scène devient une vue stylisée de la "forge". La Reine IA pose des questions à Léa via l'interface ("Quels sont les allergènes listés ?"). Léa scanne la liste des ingrédients avec son téléphone. Les Abeilles Ouvrières holographiques attrapent les mots-clés ("sans gluten", "amandes") et les transportent pour construire la carte. Son Kikkō approuve chaque bonne information d'un hochement de tête.
+* **Style & Rendu Constant :** (Tel que défini au plan 0.1)
+* **Narration (Voix Off du Bourdon) :**
+    * 🇫🇷 : *Le Pur Miel. Un travail d'équipe. La Reine questionne, le Forager répond. Chaque information est vérifiée, chaque détail est validé. C'est lent... mais c'est fiable.*
+    * 🇬🇧 : *Pure Honey. A team effort. The Queen asks, the Forager answers. Every piece of information is checked, every detail is validated. It's slow... but it's reliable.*
+    * 🇯🇵 : *ピュアハニー。チームの仕事だ。女王が問い、フォレジャーが答える。すべての情報がチェックされ、すべての詳細が検証される。時間はかかる…だが、信頼できる。*
+
+#### **Plan 0.4 : La Voie du "Miel de Frelon" (Alternative)**
+* **Script Détaillé :**
+    * **Scène et Personnages :**
+        * **Le Frelon :** Le robot-frelon holographique.
+        * **Décor :** Un espace numérique chaotique, un "web" stylisé avec des informations qui fusent dans tous les sens.
+    * **Mouvement et Action :** On montre ce qui se serait passé si Léa avait choisi la voie de droite. Le Frelon plonge à toute vitesse dans le "web" numérique. Il attrape au vol une image générique de barre de céréales et un bloc de texte approximatif, sans vérifier la source. Il revient en un éclair, présentant une carte flashy mais superficielle.
+* **Style & Rendu Constant :** (Tel que défini au plan 0.1, mais avec une ambiance plus froide, chaotique et impersonnelle pour cette scène).
+* **Narration (Voix Off du Bourdon) :**
+    * 🇫🇷 : *L'autre chemin ? Le Miel de Frelon. Rapide, brillant, instantané. Le Frelon ne vérifie pas, il attrape ce qui ressemble le plus. C'est facile... mais est-ce la vérité ?*
+    * 🇬🇧 : *The other path? Hornet Honey. Fast, shiny, instant. The Hornet doesn't check, it just grabs what looks closest. It's easy... but is it the truth?*
+    * 🇯🇵 : *もう一つの道？スズメバチの蜜だ。速く、派手で、瞬時に手に入る。スズメバチは確認しない、一番それっぽいやつを掴むだけ。簡単だ…だが、それは真実か？*
+
+#### **Plan 0.5 : La Carte Forgée**
+* **Script Détaillé :**
+    * **Scène et Personnages :**
+        * **Léa :** Fille de 10 ans, imperméable jaune, lunettes, nattes.
+        * **Kikkō de Léa :** Son gardien tortue vert foncé.
+        * **Décor :** La chambre de Léa.
+    * **Mouvement et Action :** Retour sur Léa. La nouvelle carte de la barre de céréales est maintenant complète sur son écran. Elle porte un sceau lumineux en forme d'hexagone doré, indiquant "Pur Miel". Léa ajoute une note personnelle : "Goût validé ! Pas de réaction." Elle fait glisser la carte dans sa collection. Son Kikkō holographique fait une petite danse de la victoire à côté d'elle.
+* **Style & Rendu Constant :** (Tel que défini au plan 0.1)
+* **Narration (Voix Off du Bourdon) :**
+    * 🇫🇷 : *Et voilà. Une carte forgée avec soin. Une information de confiance, prête pour la bataille, prête pour la vie. C'est ça, le véritable pouvoir de la Ruche.*
+    * 🇬🇧 : *And there it is. A card forged with care. Trusted information, ready for battle, ready for life. That is the true power of the Hive.*
+    * 🇯🇵 : *そして、これだ。丁寧に鍛えられたカード。信頼できる情報が、戦いのために、人生のために準備された。これこそが、ハイブの真の力なのさ。*
+```
+
 ---
 
 ### **Scène 1 : La Découverte Continue**

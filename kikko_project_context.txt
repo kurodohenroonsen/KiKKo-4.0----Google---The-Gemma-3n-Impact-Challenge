@@ -1,0 +1,2302 @@
+
+
+--- START OF FILE app/build.gradle.kts ---
+
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+}
+
+android {
+    namespace = "be.aktina.android.kikkopocnearby"
+    compileSdk = 35
+    defaultConfig {
+        applicationId = "be.aktina.android.kikkopocnearby"
+        minSdk = 26
+        targetSdk = 35
+        versionCode = 1
+        versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+
+dependencies {
+
+// On-Device Generative AI (Gemma 3n via MediaPipe)
+    implementation(libs.mediapipe.tasks.genai)
+
+    // ML Kit - Vision APIs (choisir bundled ou unbundled par fonctionnalité)
+    implementation(libs.mlkit.text.recognition)
+    implementation(libs.mlkit.text.recognition.japanese)
+    implementation(libs.mlkit.face.detection)
+    implementation(libs.mlkit.barcode.scanning)
+    implementation(libs.mlkit.image.labeling)
+   // implementation(libs.mlkit.object.detection)
+    // OU
+    // implementation(libs.gms.mlkit.text.recognition)
+    //...etc.
+
+    // ML Kit - Language APIs
+    implementation(libs.mlkit.language.id)
+    implementation(libs.mlkit.translate)
+    implementation(libs.mlkit.smart.reply)
+    implementation("com.google.android.gms:play-services-location:21.2.0")
+
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.android)
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.alphacephei:vosk-android:0.3.32")
+    implementation("com.google.android.gms:play-services-nearby:19.3.0")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+}
+
+--- END OF FILE app/build.gradle.kts ---
+
+
+--- START OF FILE app/proguard-rules.pro ---
+
+# Add project specific ProGuard rules here.
+# You can control the set of applied configuration files using the
+# proguardFiles setting in build.gradle.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+# Uncomment this to preserve the line number information for
+# debugging stack traces.
+#-keepattributes SourceFile,LineNumberTable
+
+# If you keep the line number information, uncomment this to
+# hide the original source file name.
+#-renamesourcefileattribute SourceFile
+
+--- END OF FILE app/proguard-rules.pro ---
+
+
+--- START OF FILE app/src/androidTest/java/be/aktina/android/kikkopocnearby/ExampleInstrumentedTest.kt ---
+
+package be.aktina.android.kikkopocnearby
+
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.ext.junit.runners.AndroidJUnit4
+
+import org.junit.Test
+import org.junit.runner.RunWith
+
+import org.junit.Assert.*
+
+/**
+ * Instrumented test, which will execute on an Android device.
+ *
+ * See [testing documentation](http://d.android.com/tools/testing).
+ */
+@RunWith(AndroidJUnit4::class)
+class ExampleInstrumentedTest {
+    @Test
+    fun useAppContext() {
+        // Context of the app under test.
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        assertEquals("be.aktina.android.kikkopocnearby", appContext.packageName)
+    }
+}
+
+--- END OF FILE app/src/androidTest/java/be/aktina/android/kikkopocnearby/ExampleInstrumentedTest.kt ---
+
+
+--- START OF FILE app/src/main/AndroidManifest.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES"
+        android:usesPermissionFlags="neverForLocation"
+        tools:targetApi="tiramisu" />
+
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.KikkoPocNearby.Hive"
+        tools:targetApi="31"
+        >
+
+        <activity
+            android:name=".IntroActivity"
+            android:exported="false">
+        </activity>
+
+        <activity
+            android:name=".HiveActivity"
+            android:exported="false" >
+        </activity>
+
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.KikkoPocNearby.Hive">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="ocr,ocr_japanese,ocr_korean,ocr_devanagari,ocr_chinese" />
+        <meta-data
+            android:name="com.google.mlkit.language.DEPENDENCIES"
+            android:value="langid" />
+    </application>
+
+</manifest>
+
+--- END OF FILE app/src/main/AndroidManifest.xml ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/GameConstants.kt ---
+
+package be.aktina.android.kikkopocnearby
+
+/**
+ * Un objet singleton pour contenir les constantes de notre jeu.
+ * C'est ici que nous définissons les règles qui ne changent pas.
+ */
+object GameConstants {
+
+    /**
+     * La liste maîtresse, fixe et ordonnée, de TOUS les decks possibles dans le jeu.
+     * L'ordre est crucial et ne doit pas être changé à la légère.
+     */
+    val MASTER_DECK_LIST = listOf(
+        "Animaux",
+        "Recette",
+        "Aliment",
+        "Plantes"
+    )
+
+    /**
+     * BOURDON: Table de correspondance mise à jour avec l'emoji gâteau.
+     */
+    val DECK_EMOJIS = mapOf(
+        "Animaux" to "🐢",
+        "Recette" to "🎂", // Changement de 🍳 en 🎂
+        "Aliment" to "🍎",
+        "Plantes" to "🌿"
+    )
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/GameConstants.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/HiveActivity.kt ---
+
+package be.aktina.android.kikkopocnearby
+
+import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.VideoView
+
+class HiveActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_hive)
+
+        val videoViewBackground = findViewById<VideoView>(R.id.videoView_hive_background)
+        val videoPath = "android.resource://" + packageName + "/" + R.raw.hive_background_loop
+        videoViewBackground.setVideoURI(Uri.parse(videoPath))
+
+        // La Ruche est un écosystème qui vit, qui boucle.
+        videoViewBackground.setOnPreparedListener { mp ->
+            mp.isLooping = true
+            videoViewBackground.start()
+        }
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/HiveActivity.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/IntroActivity.kt ---
+
+package be.aktina.android.kikkopocnearby
+
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
+import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.VideoView
+import androidx.appcompat.app.AppCompatActivity
+import com.google.mlkit.common.model.DownloadConditions
+import com.google.mlkit.common.model.RemoteModelManager
+//import com.google.mlkit.generate.ai.GenAi
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.TranslateRemoteModel
+import java.util.Locale
+
+class IntroActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
+
+    // Bourdon: Une machine à états plus fine pour notre chorégraphie.
+    private enum class IntroState {
+        BOURDON_ARRIVING,         // 1. Je fais mon entrée.
+        BOURDON_SPEAKS_WELCOME,   // 2. Je parle.
+        AWAITING_EGG_CLICK,       // 3. J'attends le clic.
+        HATCHING,                 // 4. L'œuf éclot.
+        DOWNLOADING_SPEAKING,     // 5. Les abeilles arrivent, j'explique.
+        DOWNLOADING_WAITING,      // 6. On attend la fin du téléchargement.
+        HIVE_READY_SPEAKING,      // 7. La Reine est là, j'explique.
+        FINAL_CHOICE_SPEAKING,    // 8. Je présente les options.
+        AWAITING_FINAL_CHOICE,    // 9. Les boutons sont là, j'attends.
+        COMPLETED
+    }
+
+    // Bourdon: Les acteurs de notre scène.
+    private lateinit var videoView: VideoView
+    private lateinit var progressBar: ProgressBar
+    private lateinit var buttonContainer: LinearLayout
+    private lateinit var tts: TextToSpeech
+    private var currentState = IntroState.BOURDON_ARRIVING
+
+    // Bourdon: Pour savoir de quoi je parle.
+    private val UTTERANCE_ID_WELCOME = "welcome_speech"
+    private val UTTERANCE_ID_HATCHING = "hatching_speech"
+    private val UTTERANCE_ID_DOWNLOADING = "downloading_speech"
+    private val UTTERANCE_ID_HIVE_READY = "hive_ready_speech"
+    private val UTTERANCE_ID_CHOICES = "choices_speech"
+
+    private val requiredModels = mutableSetOf("GEMMA", "TRANSLATION_FR", "TRANSLATION_JA")
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_intro)
+
+        // Bourdon: On récupère tous nos éléments de scène.
+        videoView = findViewById(R.id.videoView_intro)
+        progressBar = findViewById(R.id.progressBar_download)
+        buttonContainer = findViewById(R.id.button_container)
+        findViewById<Button>(R.id.button_explore).setOnClickListener { finishIntro() }
+        findViewById<Button>(R.id.button_forage).setOnClickListener { finishIntro() }
+        findViewById<Button>(R.id.button_clash).setOnClickListener { finishIntro() }
+
+        tts = TextToSpeech(this, this)
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            setupTts()
+            // Bourdon: Et... Moteur !
+            updateState(IntroState.BOURDON_ARRIVING)
+        } else {
+            Log.e("TTS", "TTS Initialization Failed!")
+        }
+    }
+
+    // Bourdon: C'est ici que je synchronise ma voix avec les actions. Le cœur de la mise en scène.
+    private fun setupTts() {
+        tts.setLanguage(Locale.getDefault())
+        tts.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+            override fun onStart(utteranceId: String?) {}
+            override fun onError(utteranceId: String?) {}
+            override fun onDone(utteranceId: String?) {
+                runOnUiThread {
+                    when (utteranceId) {
+                        UTTERANCE_ID_WELCOME -> updateState(IntroState.AWAITING_EGG_CLICK)
+                        UTTERANCE_ID_DOWNLOADING -> updateState(IntroState.DOWNLOADING_WAITING)
+                        UTTERANCE_ID_HIVE_READY -> updateState(IntroState.FINAL_CHOICE_SPEAKING)
+                        UTTERANCE_ID_CHOICES -> updateState(IntroState.AWAITING_FINAL_CHOICE)
+                    }
+                }
+            }
+        })
+    }
+
+    // Bourdon: Le grand chef d'orchestre.
+    private fun updateState(newState: IntroState) {
+        if (currentState == newState) return
+        currentState = newState
+        Log.d("IntroActivity", "Switching to state: $currentState")
+
+        // Bourdon: On cache tout par défaut, puis on montre ce qui est nécessaire.
+        progressBar.visibility = View.GONE
+        buttonContainer.visibility = View.GONE
+        videoView.setOnClickListener(null)
+        videoView.setOnCompletionListener(null)
+
+        when (currentState) {
+            IntroState.BOURDON_ARRIVING -> {
+                // TODO: Lancer la création de la DB en arrière-plan ici.
+                playVideo(R.raw.bourdon_arrives, false) // Vidéo du Bourdon qui arrive.
+                videoView.setOnCompletionListener { updateState(IntroState.BOURDON_SPEAKS_WELCOME) }
+            }
+            IntroState.BOURDON_SPEAKS_WELCOME -> {
+                playVideo(R.raw.bourdon_talks, true) // Vidéo du Bourdon qui parle en boucle.
+                speak(R.string.bourdon_intro_welcome, UTTERANCE_ID_WELCOME)
+            }
+            IntroState.AWAITING_EGG_CLICK -> {
+                //playVideo(R.raw.egg_pulsing, true) // L'œuf attend, en boucle.
+                videoView.setOnClickListener { updateState(IntroState.HATCHING) }
+            }
+            IntroState.HATCHING -> {
+                playVideo(R.raw.egg_hatching, false)
+                speak(R.string.bourdon_intro_hatching, UTTERANCE_ID_HATCHING) // Ma voix sur l'éclosion.
+                videoView.setOnCompletionListener { updateState(IntroState.DOWNLOADING_SPEAKING) }
+            }
+            IntroState.DOWNLOADING_SPEAKING -> {
+                //playVideo(R.raw.worker_bees_arriving, true)
+                speak(R.string.bourdon_intro_downloading, UTTERANCE_ID_DOWNLOADING)
+                downloadAllRequiredModels()
+            }
+            IntroState.DOWNLOADING_WAITING -> {
+                progressBar.visibility = View.VISIBLE // On montre qu'on bosse.
+            }
+            IntroState.HIVE_READY_SPEAKING -> {
+                progressBar.visibility = View.GONE
+                //playVideo(R.raw.queen_arriving, false)
+                speak(R.string.bourdon_intro_hive_ready, UTTERANCE_ID_HIVE_READY)
+            }
+            IntroState.FINAL_CHOICE_SPEAKING -> {
+                //playVideo(R.raw.bourdon_explains_choices, true) // Bourdon explique en boucle.
+                speak(R.string.bourdon_intro_choices, UTTERANCE_ID_CHOICES)
+            }
+            IntroState.AWAITING_FINAL_CHOICE -> {
+                buttonContainer.visibility = View.VISIBLE // Les boutons apparaissent !
+            }
+            IntroState.COMPLETED -> {
+                // Géré par les listeners des boutons.
+            }
+        }
+    }
+
+    private fun finishIntro() {
+        if (currentState == IntroState.COMPLETED) return // Pour éviter double-clic
+        updateState(IntroState.COMPLETED)
+
+        val sharedPref = getSharedPreferences("KikkoPrefs", Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putBoolean("isFirstLaunch", false)
+            apply()
+        }
+        val intent = Intent(this, HiveActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun playVideo(resId: Int, loop: Boolean) {
+        val path = "android.resource://" + packageName + "/" + resId
+        videoView.setVideoURI(Uri.parse(path))
+        videoView.setOnPreparedListener { mp -> mp.isLooping = loop }
+        videoView.start()
+    }
+
+    private fun speak(textResId: Int, utteranceId: String) {
+        val text = getString(textResId)
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
+    }
+
+    // ... (Les fonctions de téléchargement de modèles restent les mêmes) ...
+    private fun downloadAllRequiredModels() { /* ... */ }
+    private fun downloadGemmaModel() { /* ... */ }
+    private fun downloadTranslationModel(language: String, modelName: String) { /* ... */ }
+    @Synchronized
+    private fun onModelDownloaded(modelName: String) {
+        requiredModels.remove(modelName)
+        Log.d("ModelDownload", "$modelName is ready. Remaining: ${requiredModels.size}")
+        if (requiredModels.isEmpty() && currentState == IntroState.DOWNLOADING_WAITING) {
+            runOnUiThread { updateState(IntroState.HIVE_READY_SPEAKING) }
+        }
+    }
+
+    override fun onDestroy() {
+        if (this::tts.isInitialized) {
+            tts.stop()
+            tts.shutdown()
+        }
+        super.onDestroy()
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/IntroActivity.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/KikkoData.kt ---
+
+package be.aktina.android.kikkopocnearby
+
+import com.google.gson.Gson
+
+/**
+ * Représente une seule carte de "Miel Forgé".
+ * C'est l'unité de connaissance de base dans notre PoC.
+ */
+data class HoneyCard(
+    val id: String,
+    val name: String, // "Abeille", "Miel", etc.
+    val type: String, // "Animal" ou "Produit Transformé"
+    val description: String
+)
+
+/**
+ * Représente le paquet complet que deux Foragers s'échangent.
+ * Il contient le nom du Forager et sa liste de cartes.
+ */
+data class TrustedPackage(
+    val foragerName: String,
+    val cards: List<HoneyCard>
+) {
+    // Méthode pratique pour convertir cet objet en JSON, puis en bytes pour l'envoi.
+    fun toBytes(): ByteArray {
+        val gson = Gson()
+        return gson.toJson(this).toByteArray(Charsets.UTF_8)
+    }
+
+    // Méthode statique pour faire l'inverse : convertir des bytes en notre objet.
+    companion object {
+        fun fromBytes(bytes: ByteArray): TrustedPackage {
+            val gson = Gson()
+            return gson.fromJson(String(bytes, Charsets.UTF_8), TrustedPackage::class.java)
+        }
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/KikkoData.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/KikkoModels.kt ---
+
+package be.aktina.android.kikkopocnearby
+
+import android.graphics.Color
+
+/**
+ * Représente un seul deck de cartes dans la collection d'un joueur.
+ */
+data class Deck(
+    val name: String,
+    val cardCount: Int
+)
+
+/**
+ * Représente le catalogue complet d'un joueur.
+ *
+ * @param playerName Le nom unique du Forgeur.
+ * @param decks La liste de tous ses decks.
+ * @param latitude La position géographique du joueur.
+ * @param longitude La position géographique du joueur.
+ * @param wins Le nombre de victoires du joueur.
+ * @param losses Le nombre de défaites du joueur.
+ * @param color La couleur assignée à ce joueur pour l'affichage.
+ */
+data class PlayerCatalogue(
+    val playerName: String,
+    val decks: List<Deck>,
+    val latitude: Double? = null,
+    val longitude: Double? = null,
+    // BOURDON: Assurez-vous que ces deux lignes sont bien présentes.
+    val wins: Int = 0,
+    val losses: Int = 0,
+    var color: Int = Color.WHITE
+)
+
+/**
+ * Une classe utilitaire pour notre interface.
+ */
+data class DiscoveredPlayer(
+    val endpointId: String,
+    val catalogue: PlayerCatalogue
+)
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/KikkoModels.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/MainActivity.kt ---
+
+package be.aktina.android.kikkopocnearby
+
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.pm.PackageManager
+import android.graphics.PorterDuff
+import android.location.Location
+import android.os.Build
+import android.os.Bundle
+import android.os.Looper
+import android.util.Log
+import android.util.TypedValue
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.AttrRes
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
+import com.google.android.gms.nearby.Nearby
+import com.google.android.gms.nearby.connection.AdvertisingOptions
+import com.google.android.gms.nearby.connection.ConnectionInfo
+import com.google.android.gms.nearby.connection.ConnectionLifecycleCallback
+import com.google.android.gms.nearby.connection.ConnectionResolution
+import com.google.android.gms.nearby.connection.ConnectionsClient
+import com.google.android.gms.nearby.connection.ConnectionsStatusCodes
+import com.google.android.gms.nearby.connection.DiscoveredEndpointInfo
+import com.google.android.gms.nearby.connection.DiscoveryOptions
+import com.google.android.gms.nearby.connection.EndpointDiscoveryCallback
+import com.google.android.gms.nearby.connection.Payload
+import com.google.android.gms.nearby.connection.PayloadCallback
+import com.google.android.gms.nearby.connection.PayloadTransferUpdate
+import com.google.android.gms.nearby.connection.Strategy
+import com.google.gson.Gson
+import java.nio.charset.StandardCharsets
+import java.util.Locale
+import kotlin.math.abs
+
+class MainActivity : AppCompatActivity() {
+
+    // Vues
+    private lateinit var playerNameText: TextView
+    private lateinit var statusTextScrolling: TextView
+    private lateinit var radarView: RadarView
+    private lateinit var playersRecyclerView: RecyclerView
+    private lateinit var gpsStatusIcon: ImageView
+    private lateinit var advertisingStatusIcon: ImageView
+
+    // Client de localisation et position
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var myLocation: Location? = null
+
+    // Client et constantes Nearby
+    private lateinit var connectionsClient: ConnectionsClient
+    private val strategy = Strategy.P2P_STAR
+    private val serviceId = "be.aktina.android.kikkopocnearby.SERVICE_ID"
+    private val myName = "KikkoUser${(100..999).random()}"
+    private val gson = Gson()
+
+    // Couleurs et palettes
+    private lateinit var turtleColorPalette: IntArray
+    private var colorError: Int = 0
+    private var colorActive: Int = 0
+    private var colorInactive: Int = 0
+
+    // État de la Ruche
+    private var myCatalogue = PlayerCatalogue(
+        playerName = myName,
+        decks = listOf(
+            Deck("Animaux", 123),
+            Deck("Recette", 45),
+            Deck("Aliment", 289),
+            Deck("Plantes", 78)
+        ),
+        wins = 15,
+        losses = 4
+    )
+    private val discoveredPlayers = mutableMapOf<String, PlayerCatalogue>()
+    private lateinit var playerAdapter: PlayerAdapter
+
+    private var connectedEndpointId: String? = null
+    private var opponentCatalogue: PlayerCatalogue? = null
+
+    // Variables d'état
+    private var isDiscovering = false
+    private var isAdvertising = false
+    private var lastAdvertisingTime: Long = 0
+    private var lastAdvertisedLocation: Location? = null
+    private val ADVERTISING_UPDATE_INTERVAL_MS = 10000
+    private val ADVERTISING_UPDATE_DISTANCE_METERS = 5f
+
+    private val requestMultiplePermissions =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            if (permissions.all { it.value }) {
+                onPermissionsGranted()
+            } else {
+                statusTextScrolling.text = getString(R.string.status_permissions_denied)
+                gpsStatusIcon.isEnabled = false
+                advertisingStatusIcon.isEnabled = false
+            }
+        }
+
+    companion object {
+        private val REQUIRED_PERMISSIONS =
+            when {
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> arrayOf(
+                    Manifest.permission.BLUETOOTH_SCAN,
+                    Manifest.permission.BLUETOOTH_ADVERTISE,
+                    Manifest.permission.BLUETOOTH_CONNECT,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.NEARBY_WIFI_DEVICES
+                )
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> arrayOf(
+                    Manifest.permission.BLUETOOTH_SCAN,
+                    Manifest.permission.BLUETOOTH_ADVERTISE,
+                    Manifest.permission.BLUETOOTH_CONNECT,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                )
+                else -> arrayOf(
+                    Manifest.permission.BLUETOOTH,
+                    Manifest.permission.BLUETOOTH_ADMIN,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                )
+            }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        playerNameText = findViewById(R.id.player_name_text)
+        statusTextScrolling = findViewById(R.id.status_text_scrolling)
+        radarView = findViewById(R.id.radar_view)
+        playersRecyclerView = findViewById(R.id.players_recycler_view)
+        gpsStatusIcon = findViewById(R.id.gps_status_icon)
+        advertisingStatusIcon = findViewById(R.id.advertising_status_icon)
+
+        statusTextScrolling.isSelected = true
+        playerNameText.text = myName
+        statusTextScrolling.text = getString(R.string.status_ready)
+
+        turtleColorPalette = resources.getIntArray(R.array.turtle_colors)
+        colorError = ContextCompat.getColor(this, R.color.hive_red)
+        colorActive = resolveThemeColor(com.google.android.material.R.attr.colorPrimary)
+        colorInactive = resolveThemeColor(android.R.attr.textColorSecondary)
+
+        playerAdapter = PlayerAdapter(discoveredPlayers, null) { endpointId, catalogue ->
+            this.opponentCatalogue = catalogue
+            connectionsClient.requestConnection(myName, endpointId, connectionLifecycleCallback)
+        }
+        playersRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        playersRecyclerView.adapter = playerAdapter
+
+        connectionsClient = Nearby.getConnectionsClient(this)
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
+        setupIconClickListeners()
+        checkAndRequestPermissions()
+    }
+
+    private fun setupIconClickListeners() {
+        gpsStatusIcon.setOnClickListener {
+            if (isDiscovering) stopDiscovery() else startDiscovery()
+        }
+        advertisingStatusIcon.setOnClickListener {
+            if (isAdvertising) stopAdvertising() else startAdvertising()
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun onPermissionsGranted() {
+        Toast.makeText(this, getString(R.string.toast_permissions_granted), Toast.LENGTH_SHORT).show()
+        gpsStatusIcon.isEnabled = true
+        advertisingStatusIcon.isEnabled = true
+        startLocationUpdates()
+        startDiscovery()
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun startLocationUpdates() {
+        val locationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 5000).build()
+        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
+    }
+
+    private fun stopLocationUpdates() {
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback)
+    }
+
+    private val locationCallback = object : LocationCallback() {
+        override fun onLocationResult(locationResult: LocationResult) {
+            val newLocation = locationResult.lastLocation ?: return
+
+            if (myLocation == null) {
+                gpsStatusIcon.setColorFilter(colorActive, PorterDuff.Mode.SRC_IN)
+                Toast.makeText(this@MainActivity, getString(R.string.toast_gps_acquired), Toast.LENGTH_SHORT).show()
+                statusTextScrolling.text = getString(R.string.status_ready_gps_ok)
+                if (!isAdvertising) startAdvertising()
+            }
+
+            myLocation = newLocation
+            playerAdapter.updateUserLocation(myLocation)
+            radarView.updatePlayers(discoveredPlayers, myLocation)
+
+            if (isAdvertising) {
+                val currentTime = System.currentTimeMillis()
+                val timeSinceLastUpdate = currentTime - lastAdvertisingTime
+                val distanceMoved = lastAdvertisedLocation?.distanceTo(newLocation) ?: Float.MAX_VALUE
+
+                if (timeSinceLastUpdate > ADVERTISING_UPDATE_INTERVAL_MS && distanceMoved > ADVERTISING_UPDATE_DISTANCE_METERS) {
+                    connectionsClient.stopAdvertising()
+                    advertiseCurrentLocation()
+                }
+            }
+        }
+    }
+
+    private fun startAdvertising() {
+        isAdvertising = true
+        advertisingStatusIcon.setColorFilter(colorActive, PorterDuff.Mode.SRC_IN)
+        statusTextScrolling.text = getString(R.string.status_visible)
+        startLocationUpdates()
+        advertiseCurrentLocation()
+    }
+
+    private fun stopAdvertising() {
+        isAdvertising = false
+        connectionsClient.stopAdvertising()
+        advertisingStatusIcon.setColorFilter(colorInactive, PorterDuff.Mode.SRC_IN)
+        statusTextScrolling.text = getString(R.string.status_ready)
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun advertiseCurrentLocation() {
+        if (myLocation == null) {
+            fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
+                if(location != null) { myLocation = location; advertiseCurrentLocation() }
+                else { Toast.makeText(this, getString(R.string.toast_gps_unavailable), Toast.LENGTH_SHORT).show() }
+            }
+            return
+        }
+
+        val deckCountsCsv = myCatalogue.decks.joinToString(",") { myCatalogue.decks.find { d -> d.name == it.name }?.cardCount.toString() }
+        val recordCsv = "${myCatalogue.wins},${myCatalogue.losses}"
+        val latFormatted = String.format(Locale.US, "%.6f", myLocation!!.latitude)
+        val lonFormatted = String.format(Locale.US, "%.6f", myLocation!!.longitude)
+        val endpointNameCompact = "$myName|$deckCountsCsv|$recordCsv|$latFormatted $lonFormatted"
+
+        val advertisingOptions = AdvertisingOptions.Builder().setStrategy(strategy).build()
+        connectionsClient.startAdvertising(endpointNameCompact, serviceId, connectionLifecycleCallback, advertisingOptions)
+            .addOnSuccessListener {
+                lastAdvertisingTime = System.currentTimeMillis()
+                lastAdvertisedLocation = myLocation
+            }
+            .addOnFailureListener { e ->
+                Log.w("Nearby", "Échec temporaire de la relance de la publicité.", e)
+            }
+    }
+
+    private fun startDiscovery() {
+        isDiscovering = true
+        gpsStatusIcon.setColorFilter(colorActive, PorterDuff.Mode.SRC_IN)
+        statusTextScrolling.text = getString(R.string.status_searching)
+        discoveredPlayers.clear()
+        playerAdapter.notifyDataSetChanged()
+        radarView.updatePlayers(discoveredPlayers, myLocation)
+        radarView.visibility = View.VISIBLE
+        playersRecyclerView.visibility = View.VISIBLE
+
+        val discoveryOptions = DiscoveryOptions.Builder().setStrategy(strategy).build()
+        connectionsClient.startDiscovery(serviceId, endpointDiscoveryCallback, discoveryOptions)
+            .addOnFailureListener {
+                isDiscovering = false
+                gpsStatusIcon.setColorFilter(colorError, PorterDuff.Mode.SRC_IN)
+            }
+    }
+
+    private fun stopDiscovery() {
+        isDiscovering = false
+        connectionsClient.stopDiscovery()
+        gpsStatusIcon.setColorFilter(colorInactive, PorterDuff.Mode.SRC_IN)
+        statusTextScrolling.text = getString(R.string.status_ready)
+        discoveredPlayers.clear()
+        playerAdapter.notifyDataSetChanged()
+        radarView.visibility = View.GONE
+        playersRecyclerView.visibility = View.GONE
+    }
+
+    private val endpointDiscoveryCallback = object : EndpointDiscoveryCallback() {
+        override fun onEndpointFound(endpointId: String, discoveredEndpointInfo: DiscoveredEndpointInfo) {
+            val compactName = discoveredEndpointInfo.endpointName
+            try {
+                val parts = compactName.split('|')
+                if (parts.size == 4) {
+                    val name = parts[0]
+                    val deckCountsCsv = parts[1].split(',')
+                    val recordParts = parts[2].split(',')
+                    val locationParts = parts[3].split(' ')
+
+                    val wins = recordParts[0].toInt()
+                    val losses = recordParts[1].toInt()
+                    val lat = locationParts[0].toDouble()
+                    val lon = locationParts[1].toDouble()
+
+                    val reconstructedDecks = mutableListOf<Deck>()
+                    deckCountsCsv.forEachIndexed { index, countStr ->
+                        val count = countStr.toInt()
+                        if (count > 0 && index < GameConstants.MASTER_DECK_LIST.size) {
+                            reconstructedDecks.add(Deck(GameConstants.MASTER_DECK_LIST[index], count))
+                        }
+                    }
+
+                    val colorIndex = abs(endpointId.hashCode()) % turtleColorPalette.size
+                    val assignedColor = turtleColorPalette[colorIndex]
+
+                    val partialCatalogue = PlayerCatalogue(name, reconstructedDecks, lat, lon, wins, losses, assignedColor)
+
+                    if (!discoveredPlayers.containsKey(endpointId)) {
+                        discoveredPlayers[endpointId] = partialCatalogue
+                        playerAdapter.notifyDataSetChanged()
+                        radarView.updatePlayers(discoveredPlayers, myLocation)
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e("Nearby", "Erreur en analysant le nom compact: $compactName", e)
+            }
+        }
+
+        override fun onEndpointLost(endpointId: String) {
+            discoveredPlayers.remove(endpointId)
+            playerAdapter.notifyDataSetChanged()
+            radarView.updatePlayers(discoveredPlayers, myLocation)
+        }
+    }
+
+    private val connectionLifecycleCallback = object : ConnectionLifecycleCallback() {
+        override fun onConnectionInitiated(endpointId: String, connectionInfo: ConnectionInfo) {
+            val opponentNameFromInfo = connectionInfo.endpointName.split('|').firstOrNull() ?: "Adversaire"
+
+            // BOURDON: On applique notre nouveau thème de dialogue ici !
+            AlertDialog.Builder(this@MainActivity, R.style.KikkoAlertDialogTheme)
+                .setTitle(getString(R.string.dialog_connection_title, opponentNameFromInfo))
+                .setMessage(getString(R.string.dialog_connection_message, connectionInfo.authenticationDigits))
+                .setPositiveButton(getString(R.string.dialog_accept)) { _, _ ->
+                    connectionsClient.acceptConnection(endpointId, payloadCallback)
+                }
+                .setNegativeButton(getString(R.string.dialog_decline)) { _, _ -> connectionsClient.rejectConnection(endpointId) }
+                .show()
+        }
+
+        override fun onConnectionResult(endpointId: String, result: ConnectionResolution) {
+            val name = opponentCatalogue?.playerName ?: "Adversaire"
+            when (result.status.statusCode) {
+                ConnectionsStatusCodes.STATUS_OK -> {
+                    if (isAdvertising) stopAdvertising()
+                    if (isDiscovering) stopDiscovery()
+                    statusTextScrolling.text = getString(R.string.status_connected_to, name)
+                    connectedEndpointId = endpointId
+                    sendCatalogue(endpointId)
+                    radarView.visibility = View.GONE
+                    playersRecyclerView.visibility = View.GONE
+                }
+                ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED -> Log.w("Nearby", "Connexion rejetée par $name")
+                else -> Log.w("Nearby", "Erreur de connexion avec $name")
+            }
+        }
+
+        override fun onDisconnected(endpointId: String) {
+            val name = opponentCatalogue?.playerName ?: "l'adversaire"
+            statusTextScrolling.text = getString(R.string.status_disconnected)
+            connectedEndpointId = null
+        }
+    }
+
+    private val payloadCallback = object : PayloadCallback() {
+        override fun onPayloadReceived(endpointId: String, payload: Payload) {
+            if (payload.type == Payload.Type.BYTES) {
+                val catalogueJson = String(payload.asBytes()!!, StandardCharsets.UTF_8)
+                try {
+                    val fullCatalogue = gson.fromJson(catalogueJson, PlayerCatalogue::class.java)
+                    opponentCatalogue = fullCatalogue
+                    Toast.makeText(this@MainActivity, getString(R.string.toast_catalogue_received, fullCatalogue.playerName), Toast.LENGTH_LONG).show()
+                } catch (e: Exception) {
+                    Log.e("Nearby", "Erreur en décodant le payload du catalogue complet", e)
+                }
+            }
+        }
+        override fun onPayloadTransferUpdate(endpointId: String, update: PayloadTransferUpdate) {}
+    }
+
+    private fun sendCatalogue(endpointId: String) {
+        myCatalogue = myCatalogue.copy(latitude = myLocation?.latitude, longitude = myLocation?.longitude)
+        val catalogueJson = gson.toJson(myCatalogue)
+        val payload = Payload.fromBytes(catalogueJson.toByteArray(StandardCharsets.UTF_8))
+        connectionsClient.sendPayload(endpointId, payload)
+    }
+
+    private fun hasAllPermissions(): Boolean = REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun checkAndRequestPermissions() {
+        if (!hasAllPermissions()) {
+            requestMultiplePermissions.launch(REQUIRED_PERMISSIONS)
+        } else {
+            onPermissionsGranted()
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        connectionsClient.stopAllEndpoints()
+        if (isAdvertising) stopAdvertising()
+        if (isDiscovering) stopDiscovery()
+        connectedEndpointId = null
+    }
+
+    private fun resolveThemeColor(@AttrRes attr: Int): Int {
+        val typedValue = TypedValue()
+        theme.resolveAttribute(attr, typedValue, true)
+        return typedValue.data
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/MainActivity.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/PlayerAdapter.kt ---
+
+package be.aktina.android.kikkopocnearby
+
+import android.graphics.PorterDuff
+import android.location.Location
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import java.util.Locale
+
+class PlayerAdapter(
+    private val players: Map<String, PlayerCatalogue>,
+    private var currentUserLocation: Location?,
+    private val onClick: (endpointId: String, catalogue: PlayerCatalogue) -> Unit
+) : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
+
+    class PlayerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val playerIcon: ImageView = view.findViewById(R.id.player_icon)
+        val playerNameText: TextView = view.findViewById(R.id.player_name_text)
+        val decksColumn1Text: TextView = view.findViewById(R.id.decks_column_1_text)
+        val decksColumn2Text: TextView = view.findViewById(R.id.decks_column_2_text)
+        val playerDistanceText: TextView = view.findViewById(R.id.player_distance_text)
+        val playerRecordText: TextView = view.findViewById(R.id.player_record_text)
+    }
+
+    fun updateUserLocation(location: Location?) {
+        this.currentUserLocation = location
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_player_card, parent, false)
+        return PlayerViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
+        val playerEntry = players.entries.toList()[position]
+        val endpointId = playerEntry.key
+        val catalogue = playerEntry.value
+        // BOURDON: On récupère le contexte pour accéder aux ressources string
+        val context = holder.itemView.context
+
+        holder.playerNameText.text = catalogue.playerName
+
+        val column1Decks = StringBuilder()
+        val column2Decks = StringBuilder()
+
+        catalogue.decks.forEach { deck ->
+            val emoji = GameConstants.DECK_EMOJIS[deck.name] ?: "❓"
+            val deckString = "$emoji(${deck.cardCount})\n"
+            when (deck.name) {
+                "Animaux", "Plantes" -> column1Decks.append(deckString)
+                "Recette", "Aliment" -> column2Decks.append(deckString)
+            }
+        }
+
+        holder.decksColumn1Text.text = column1Decks.toString().trim()
+        holder.decksColumn2Text.text = column2Decks.toString().trim()
+
+        // BOURDON: Utilisation des ressources string pour les stats et la distance
+        holder.playerRecordText.text = context.getString(R.string.card_record_format, catalogue.wins, catalogue.losses)
+
+        if (currentUserLocation != null && catalogue.latitude != null && catalogue.longitude != null) {
+            val playerLocation = Location("player").apply {
+                latitude = catalogue.latitude
+                longitude = catalogue.longitude
+            }
+            val distance = currentUserLocation!!.distanceTo(playerLocation)
+            holder.playerDistanceText.text = context.getString(R.string.card_distance_format, distance)
+        } else {
+            holder.playerDistanceText.text = ""
+        }
+
+        holder.playerIcon.setColorFilter(catalogue.color, PorterDuff.Mode.SRC_IN)
+
+        holder.itemView.setOnClickListener { onClick(endpointId, catalogue) }
+    }
+
+    override fun getItemCount() = players.size
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/PlayerAdapter.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/RadarView.kt ---
+
+package be.aktina.android.kikkopocnearby
+
+import android.content.Context
+import android.graphics.*
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import android.location.Location
+import android.util.AttributeSet
+import android.util.TypedValue
+import android.view.View
+import androidx.annotation.AttrRes
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.graphics.drawable.toBitmap
+import kotlin.math.cos
+import kotlin.math.min
+import kotlin.math.sin
+
+class RadarView @JvmOverloads constructor(
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+) : View(context, attrs, defStyleAttr), SensorEventListener {
+
+    // BOURDON: Paramètres de configuration pour fignoler le design.
+    // Vous pouvez jouer avec ces valeurs (en dp).
+    private val TURTLE_ICON_SIZE_DP = 36f
+    private val CARDINAL_POINTS_RADIUS_OFFSET_DP = 25f
+    private val DISTANCE_LABEL_VERTICAL_OFFSET_DP = 7f
+    private val PLAYER_NAME_VERTICAL_OFFSET_DP = 12f
+
+    // -- Variables converties en pixels pour le dessin
+    private val turtleIconSizePx: Int
+    private val cardinalPointsRadiusOffsetPx: Float
+    private val distanceLabelVerticalOffsetPx: Float
+    private val playerNameVerticalOffsetPx: Float
+
+    // -- Paints
+    private val playerTextPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val cardinalPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val labelPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val turtleBitmap: Bitmap
+
+    // -- Données des capteurs et de jeu
+    private val sensorManager: SensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+    private val accelerometerReading = FloatArray(3)
+    private val magnetometerReading = FloatArray(3)
+    private var smoothedAccelerometerReading = FloatArray(3)
+    private var smoothedMagnetometerReading = FloatArray(3)
+    private val rotationMatrix = FloatArray(9)
+    private val orientationAngles = FloatArray(3)
+    private var azimuth: Float = 0f
+    private var players: List<PlayerCatalogue> = emptyList()
+    private var userLocation: Location? = null
+    private val maxDistanceMeters = 20f
+    private val cardinalPoints = mapOf("N" to 0f, "E" to 90f, "S" to 180f, "O" to 270f)
+    private val alpha: Float = 0.1f
+
+    init {
+        val density = context.resources.displayMetrics.density
+        // Conversion des DP en Px
+        turtleIconSizePx = (TURTLE_ICON_SIZE_DP * density).toInt()
+        cardinalPointsRadiusOffsetPx = CARDINAL_POINTS_RADIUS_OFFSET_DP * density
+        distanceLabelVerticalOffsetPx = DISTANCE_LABEL_VERTICAL_OFFSET_DP * density
+        playerNameVerticalOffsetPx = PLAYER_NAME_VERTICAL_OFFSET_DP * density
+
+        val primaryColor = resolveThemeColor(com.google.android.material.R.attr.colorPrimary)
+        val onSurfaceColor = resolveThemeColor(com.google.android.material.R.attr.colorOnSurface)
+
+        playerTextPaint.color = onSurfaceColor
+        playerTextPaint.textSize = 28f // Un peu plus petit
+        playerTextPaint.textAlign = Paint.Align.CENTER
+
+        cardinalPaint.color = primaryColor
+        cardinalPaint.textSize = 52f
+        cardinalPaint.textAlign = Paint.Align.CENTER
+        cardinalPaint.isFakeBoldText = true
+
+        labelPaint.color = onSurfaceColor
+        labelPaint.textSize = 30f // Un peu plus petit
+        labelPaint.textAlign = Paint.Align.CENTER
+        labelPaint.isFakeBoldText = true
+
+        val turtleDrawable = AppCompatResources.getDrawable(context, R.drawable.ic_turtle)
+        turtleBitmap = turtleDrawable?.toBitmap(turtleIconSizePx, turtleIconSizePx, Bitmap.Config.ARGB_8888)!!
+    }
+
+    private fun resolveThemeColor(@AttrRes attr: Int): Int {
+        val typedValue = TypedValue()
+        context.theme.resolveAttribute(attr, typedValue, true)
+        return typedValue.data
+    }
+
+    fun updatePlayers(newPlayers: Map<String, PlayerCatalogue>, currentUserLocation: Location?) {
+        this.players = newPlayers.values.toList()
+        this.userLocation = currentUserLocation
+        invalidate()
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+
+        val centerX = width / 2f
+        val centerY = height / 2f
+        val radius = min(centerX, centerY) * 0.55f // Un peu plus grand
+
+        // On ne dessine que les étiquettes, le fond est l'image
+        val distances = listOf(5f, 10f, 15f, 20f)
+        distances.forEach { distance ->
+            val circleRadius = (distance / maxDistanceMeters) * radius
+            canvas.drawText(
+                "${distance.toInt()}m",
+                centerX,
+                centerY - circleRadius + labelPaint.textSize + distanceLabelVerticalOffsetPx,
+                labelPaint
+            )
+        }
+
+        // Dessin des points cardinaux
+        val textRadius = radius + cardinalPointsRadiusOffsetPx
+        cardinalPoints.forEach { (point, angle) ->
+            val angleOnRadar = (angle - Math.toDegrees(azimuth.toDouble())).toFloat()
+            val angleInRad = Math.toRadians(angleOnRadar.toDouble())
+            val x = centerX + (textRadius * sin(angleInRad)).toFloat()
+            val y = centerY - (textRadius * cos(angleInRad)).toFloat() + (cardinalPaint.textSize / 2)
+            canvas.drawText(point, x, y, cardinalPaint)
+        }
+
+        // Dessin des joueurs
+        val currentUserLoc = userLocation ?: return
+        for (player in players) {
+            val lat = player.latitude
+            val lon = player.longitude
+
+            if (lat != null && lon != null) {
+                val playerLocation = Location("player").apply { latitude = lat; longitude = lon }
+                val distance = currentUserLoc.distanceTo(playerLocation)
+                if (distance <= maxDistanceMeters) {
+                    val bearing = currentUserLoc.bearingTo(playerLocation)
+                    val angleOnRadar = (bearing - Math.toDegrees(azimuth.toDouble())).toFloat()
+                    val angleInRad = Math.toRadians(angleOnRadar.toDouble())
+                    val distanceOnRadar = (distance / maxDistanceMeters) * radius
+
+                    val playerX = centerX + (distanceOnRadar * sin(angleInRad)).toFloat()
+                    val playerY = centerY - (distanceOnRadar * cos(angleInRad)).toFloat()
+
+                    val paint = Paint()
+                    paint.colorFilter = PorterDuffColorFilter(player.color, PorterDuff.Mode.SRC_IN)
+                    canvas.drawBitmap(turtleBitmap, playerX - turtleBitmap.width / 2, playerY - turtleBitmap.height / 2, paint)
+
+                    canvas.drawText(player.playerName, playerX, playerY + turtleBitmap.height / 2 + playerNameVerticalOffsetPx, playerTextPaint)
+                }
+            }
+        }
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)?.also {
+            sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI)
+        }
+        sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)?.also {
+            sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI)
+        }
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        sensorManager.unregisterListener(this)
+    }
+
+    override fun onSensorChanged(event: SensorEvent) {
+        if (event.sensor.type == Sensor.TYPE_ACCELEROMETER) {
+            smoothedAccelerometerReading = lowPass(event.values, smoothedAccelerometerReading)
+        } else if (event.sensor.type == Sensor.TYPE_MAGNETIC_FIELD) {
+            smoothedMagnetometerReading = lowPass(event.values, smoothedMagnetometerReading)
+        }
+        updateOrientationAngles()
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) { }
+
+    private fun lowPass(input: FloatArray, output: FloatArray): FloatArray {
+        for (i in input.indices) {
+            output[i] = output[i] + alpha * (input[i] - output[i])
+        }
+        return output
+    }
+
+    private fun updateOrientationAngles() {
+        SensorManager.getRotationMatrix(rotationMatrix, null, smoothedAccelerometerReading, smoothedMagnetometerReading)
+        SensorManager.getOrientation(rotationMatrix, orientationAngles)
+        azimuth = orientationAngles[0]
+        invalidate()
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/RadarView.kt ---
+
+
+--- START OF FILE app/src/main/res/drawable/dialog_background.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="?attr/colorSurface" />
+
+    <stroke
+        android:width="2dp"
+        android:color="?attr/colorPrimary" />
+
+    <corners android:radius="16dp" />
+
+</shape>
+
+--- END OF FILE app/src/main/res/drawable/dialog_background.xml ---
+
+
+--- START OF FILE app/src/main/res/drawable/ic_launcher_background.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#3DDC84"
+        android:pathData="M0,0h108v108h-108z" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M9,0L9,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,0L19,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M29,0L29,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M39,0L39,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M49,0L49,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M59,0L59,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M69,0L69,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M79,0L79,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M89,0L89,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M99,0L99,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,9L108,9"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,19L108,19"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,29L108,29"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,39L108,39"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,49L108,49"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,59L108,59"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,69L108,69"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,79L108,79"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,89L108,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,99L108,99"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,29L89,29"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,39L89,39"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,49L89,49"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,59L89,59"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,69L89,69"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,79L89,79"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M29,19L29,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M39,19L39,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M49,19L49,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M59,19L59,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M69,19L69,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M79,19L79,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+</vector>
+
+
+--- END OF FILE app/src/main/res/drawable/ic_launcher_background.xml ---
+
+
+--- START OF FILE app/src/main/res/drawable/ic_launcher_foreground.xml ---
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="85.84757"
+                android:endY="92.4963"
+                android:startX="42.9492"
+                android:startY="49.59793"
+                android:type="linear">
+                <item
+                    android:color="#44000000"
+                    android:offset="0.0" />
+                <item
+                    android:color="#00000000"
+                    android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillType="nonZero"
+        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
+        android:strokeWidth="1"
+        android:strokeColor="#00000000" />
+</vector>
+
+--- END OF FILE app/src/main/res/drawable/ic_launcher_foreground.xml ---
+
+
+--- START OF FILE app/src/main/res/drawable/ic_turtle.xml ---
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- —— Couleurs ——  -->
+    <!-- Vert clair pour la peau / pattes / tête -->
+    <group android:name="turtle"
+        android:translateX="0"
+        android:translateY="0">
+
+        <!-- Carapace extérieure (anneau épais) -->
+
+        <!-- Carapace intérieure (scute central) -->
+        <path
+            android:fillColor="#2E7D32"
+            android:pathData="
+                M12,6
+                a6,6 0 1,1 0,12
+                a6,6 0 1,1 0,-12" />
+
+
+        <!-- Tête (cercle) -->
+        <path
+            android:fillColor="#4CAF50"
+            android:pathData="
+                M12,0.0
+                a2.2,2.0 0 0,0.2 0,4.0
+                a2.2,2.0 0 0,1 0,-4.0" />
+
+        <!-- Pattes avant -->
+        <path
+            android:fillColor="#4CAF50"
+            android:pathData="
+                M4,4.5
+                a1.7,1.7 0 1,1 0,3.4
+                a1.7,1.7 0 1,1 0,-3.4" />
+        <path
+            android:fillColor="#4CAF50"
+            android:pathData="
+                M20,4.5
+                a1.7,1.7 0 1,1 0,3.4
+                a1.7,1.7 0 1,1 0,-3.4" />
+
+        <!-- Pattes arrière -->
+        <path
+            android:fillColor="#4CAF50"
+            android:pathData="
+                M4,16.5
+                a1.7,1.7 0 1,1 0,3.4
+                a1.7,1.7 0 1,1 0,-3.4" />
+        <path
+            android:fillColor="#4CAF50"
+            android:pathData="
+                M20,16.5
+                a1.7,1.7 0 1,1 0,3.4
+                a1.7,1.7 0 1,1 0,-3.4" />
+
+        <!-- Queue (petit triangle arrondi) -->
+        <path
+            android:fillColor="#4CAF50"
+            android:pathData="
+                M11,21.5
+                q1,1 2,0
+                v1.2 h-2z" />
+    </group>
+
+<path
+    android:fillColor="#FFD700"
+    android:pathData="M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM12,20c-4.41,0 -8,-3.59 -8,-8s3.59,-8 8,-8 8,3.59 8,8 -3.59,8 -8,8z"/>
+<path
+    android:fillColor="#FFD700"
+    android:pathData="M12,5c-3.86,0 -7,3.14 -7,7s3.14,7 7,7 7,-3.14 7,-7 -3.14,-7 -7,-7zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5z"/>
+</vector>
+
+
+--- END OF FILE app/src/main/res/drawable/ic_turtle.xml ---
+
+
+--- START OF FILE app/src/main/res/layout/activity_hive.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".HiveActivity">
+
+    <VideoView
+        android:id="@+id/videoView_hive_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- C'est ici que viendront plus tard tes boutons, listes, etc. -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+--- END OF FILE app/src/main/res/layout/activity_hive.xml ---
+
+
+--- START OF FILE app/src/main/res/layout/activity_intro.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".IntroActivity">
+
+    <VideoView
+        android:id="@+id/videoView_intro"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_download"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/button_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_explore"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="@string/button_explore_hive" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_forage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="@string/button_start_foraging" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_clash"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_saga_clash" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+--- END OF FILE app/src/main/res/layout/activity_intro.xml ---
+
+
+--- START OF FILE app/src/main/res/layout/activity_main.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/gps_status_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/button_search"
+        android:focusable="true"
+        android:padding="8dp"
+        android:src="@android:drawable/ic_menu_search"
+        app:layout_constraintBottom_toBottomOf="@id/player_name_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/player_name_text"
+        app:tint="?android:attr/textColorSecondary" />
+
+    <TextView
+        android:id="@+id/player_name_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/advertising_status_icon"
+        app:layout_constraintStart_toEndOf="@id/gps_status_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="KikkoUser123" />
+
+    <ImageView
+        android:id="@+id/advertising_status_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/button_become_visible"
+        android:focusable="true"
+        android:padding="8dp"
+        android:src="@android:drawable/ic_menu_share"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/player_name_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/player_name_text"
+        app:tint="?android:attr/textColorSecondary"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/status_text_scrolling"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textColor="?android:attr/textColorSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_name_text"
+        tools:text="Recherche en cours... Connecté à un autre joueur avec un nom très long..." />
+
+    <be.aktina.android.kikkopocnearby.RadarView
+        android:id="@+id/radar_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/radar_bourdon"
+        android:visibility="gone"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toTopOf="@+id/players_recycler_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/status_text_scrolling"
+        tools:visibility="visible" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/players_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_player_card"
+        tools:orientation="horizontal"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+--- END OF FILE app/src/main/res/layout/activity_main.xml ---
+
+
+--- START OF FILE app/src/main/res/layout/item_player_card.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/player_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_turtle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="Icône de joueur tortue" />
+
+        <TextView
+            android:id="@+id/player_name_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="?android:attr/textColorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/player_icon"
+            app:layout_constraintTop_toTopOf="@id/player_icon"
+            tools:text="KikkoUser123" />
+
+        <TextView
+            android:id="@+id/player_record_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="12sp"
+            android:textColor="?android:attr/textColorSecondary"
+            app:layout_constraintStart_toStartOf="@id/player_name_text"
+            app:layout_constraintTop_toBottomOf="@id/player_name_text"
+            tools:text="🏆 15 / 💔 4" />
+
+        <TextView
+            android:id="@+id/player_distance_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="?android:attr/textColorSecondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/player_record_text"
+            tools:text="11.6m" />
+
+        <View
+            android:id="@+id/separator_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorPrimary"
+            android:alpha="0.3"
+            app:layout_constraintTop_toBottomOf="@id/player_record_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/decks_column_1_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="?android:attr/textColorSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/separator_line"
+            tools:text="🐢(123)\n🌿(78)" />
+
+        <TextView
+            android:id="@+id/decks_column_2_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="?android:attr/textColorSecondary"
+            app:layout_constraintStart_toEndOf="@+id/decks_column_1_text"
+            app:layout_constraintTop_toTopOf="@id/decks_column_1_text"
+            tools:text="🎂(45)\n🍎(289)" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
+
+--- END OF FILE app/src/main/res/layout/item_player_card.xml ---
+
+
+--- START OF FILE app/src/main/res/mipmap-anydpi/ic_launcher.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_launcher_background" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
+</adaptive-icon>
+
+--- END OF FILE app/src/main/res/mipmap-anydpi/ic_launcher.xml ---
+
+
+--- START OF FILE app/src/main/res/mipmap-anydpi/ic_launcher_round.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_launcher_background" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
+</adaptive-icon>
+
+--- END OF FILE app/src/main/res/mipmap-anydpi/ic_launcher_round.xml ---
+
+
+--- START OF FILE app/src/main/res/values-fr/strings.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kikko\'s Saga Forge</string>
+    <string name="bourdon_intro_welcome">"Hé, Butineur ! Bienvenue. Pendant que tu admires le paysage, je mets en place les fondations de ta Ruche... La base de données de ton futur Gardien est prête. Tout est sécurisé sur ton appareil, promis juré. Maintenant, le grand moment... Touche cet œuf pour commencer ta saga."</string>
+    <string name="bourdon_intro_hatching">"Et voilà ! Ton Gardien Kikkō est né. Il a l'air un peu perdu, mais il a faim... faim de connaissance !"</string>
+    <string name="bourdon_intro_downloading">"Attention, voici les Abeilles ! Mes collègues, les ouvrières spécialisées. Elles téléchargent leurs outils... et surtout, elles cherchent leur Reine — le modèle Gemma — le cerveau de notre opération. Ça peut prendre un instant, trouver une majesté, ce n'est pas si simple."</string>
+    <string name="bourdon_intro_hive_ready">"Parfait ! La Ruche est opérationnelle. La Reine est arrivée et ses ouvrières sont prêtes."</string>
+    <string name="bourdon_intro_choices">"L'aventure ne fait que commencer. Quel est ton premier geste ? Explorer les souvenirs déjà forgés pour ton Gardien, commencer un nouveau butinage toi-même, ou tester ton savoir dans un Choc des Sagas ? Le choix t'appartient, Butineur."</string>
+    <string name="button_explore_hive">Explorer la Ruche</string>
+    <string name="button_start_foraging">Commencer à Butiner</string>
+    <string name="button_saga_clash">Choc des Sagas</string>
+
+    <string name="button_become_visible">Devenir Visible</string>
+    <string name="button_stop_visibility">Arrêter la Visibilité</string>
+    <string name="button_search">Chercher</string>
+
+    <string name="status_ready_format">%1$s | Prêt</string>
+    <string name="status_ready_gps_ok_format">%1$s | Prêt (GPS OK)</string>
+    <string name="status_visible_format">%1$s | Visible…</string>
+    <string name="status_searching_format">%1$s | Recherche…</string>
+    <string name="status_connected_to_format">%1$s | Connecté à %2$s</string>
+    <string name="status_disconnected_format">%1$s | Déconnecté</string>
+
+    <string name="status_permissions_denied">Permissions Refusées</string>
+    <string name="status_ready">Prêt</string>
+    <string name="status_ready_gps_ok">Prêt (GPS OK)</string>
+    <string name="status_visible">Visible…</string>
+    <string name="status_searching">Recherche…</string>
+    <string name="status_connected_to">Connecté à %1$s</string>
+    <string name="status_disconnected">Déconnecté</string>
+
+    <string name="toast_permissions_granted">Permissions accordées.</string>
+    <string name="toast_getting_gps">Récupération de la position GPS…</string>
+    <string name="toast_gps_acquired">Position GPS acquise !</string>
+    <string name="toast_gps_unavailable">Position GPS non disponible.</string>
+    <string name="toast_catalogue_received">Catalogue complet de %1$s reçu !</string>
+
+    <string name="dialog_connection_title">Accepter la connexion de %1$s ?</string>
+    <string name="dialog_connection_message">Confirmez que le code est : %1$s</string>
+    <string name="dialog_accept">Accepter</string>
+    <string name="dialog_decline">Refuser</string>
+
+    <string name="card_record_format">🏆 %1$d / 💔 %2$d</string>
+    <string name="card_distance_format">%.1fm</string>
+    <string name="card_no_decks_known">Pas de decks connus</string>
+</resources>
+
+--- END OF FILE app/src/main/res/values-fr/strings.xml ---
+
+
+--- START OF FILE app/src/main/res/values-ja/strings.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kikko\'s Saga Forge</string>
+    <string name="bourdon_intro_welcome">"やあ、冒険者！ようこそ。君が景色を眺めている間に、君のハイブの土台を準備しておくよ… 未来のガーディアンのデータベースは準備万端だ。すべて君のデバイスの中で安全だから、安心して。さあ、いよいよだ… 卵に触れて、君の物語を始めよう。"</string>
+    <string name="bourdon_intro_hatching">"見てごらん！君のキッコー・ガーディアンが生まれたよ。ちょっと戸惑っているみたいだけど、お腹を空かせている… そう、知識に飢えているんだ！"</string>
+    <string name="bourdon_intro_downloading">"見て、ハチたちが来たよ！僕の同僚、専門の働きバチたちさ。彼らは道具をダウンロードしていて…そして何より、彼らの女王様—ジェンマモデル—を探しているんだ。僕らの作戦の頭脳をね。ちょっと時間がかかるかも。王族を見つけるのは簡単じゃないからさ。"</string>
+    <string name="bourdon_intro_hive_ready">"完璧だ！ハイブは稼働準備完了。女王様が到着して、働きバチたちも準備OK。"</string>
+    <string name="bourdon_intro_choices">"冒険はまだ始まったばかり。最初の一手はどうする？ガーディアンのために既に作られた記憶を探検するか、自分で新しい採集を始めるか、それともサガ・クラッシュで知識を試すか？選択は君次第だよ、冒険者。"</string>
+    <string name="button_explore_hive">ハイブを探検</string>
+    <string name="button_start_foraging">採集を始める</string>
+    <string name="button_saga_clash">サガ・クラッシュ</string>
+
+    <string name="button_become_visible">公開する</string>
+    <string name="button_stop_visibility">公開を停止</string>
+    <string name="button_search">探す</string>
+
+    <string name="status_ready_format">%1$s | 準備完了</string>
+    <string name="status_ready_gps_ok_format">%1$s | 準備完了 (GPS OK)</string>
+    <string name="status_visible_format">%1$s | 公開中…</string>
+    <string name="status_searching_format">%1$s | 検索中…</string>
+    <string name="status_connected_to_format">%1$s | %2$sに接続済み</string>
+    <string name="status_disconnected_format">%1$s | 切断されました</string>
+
+    <string name="status_permissions_denied">権限が拒否されました</string>
+    <string name="status_ready">準備完了</string>
+    <string name="status_ready_gps_ok">準備完了 (GPS OK)</string>
+    <string name="status_visible">公開中…</string>
+    <string name="status_searching">検索中…</string>
+    <string name="status_connected_to">%1$sに接続済み</string>
+    <string name="status_disconnected">切断されました</string>
+
+    <string name="toast_permissions_granted">権限が許可されました。</string>
+    <string name="toast_getting_gps">GPS位置情報を取得中…</string>
+    <string name="toast_gps_acquired">GPS位置情報を取得しました！</string>
+    <string name="toast_gps_unavailable">GPS位置情報が利用できません。</string>
+    <string name="toast_catalogue_received">%1$sから完全なカタログを受信しました！</string>
+
+    <string name="dialog_connection_title">%1$sからの接続を承認しますか？</string>
+    <string name="dialog_connection_message">コードが %1$s であることを確認してください</string>
+    <string name="dialog_accept">承認</string>
+    <string name="dialog_decline">拒否</string>
+
+    <string name="card_record_format">🏆 %1$d / 💔 %2$d</string>
+    <string name="card_distance_format">%.1fm</string>
+    <string name="card_no_decks_known">デッキ不明</string>
+</resources>
+
+--- END OF FILE app/src/main/res/values-ja/strings.xml ---
+
+
+--- START OF FILE app/src/main/res/values-night/themes.xml ---
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.KikkoPocNearby" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    </style>
+</resources>
+
+--- END OF FILE app/src/main/res/values-night/themes.xml ---
+
+
+--- START OF FILE app/src/main/res/values/colors.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="hive_black">#121212</color>
+    <color name="hive_gold">#FFD700</color>
+    <color name="hive_gold_dark">#FFA000</color>
+    <color name="hive_cyan_accent">#00BCD4</color>
+    <color name="hive_red">#D32F2F</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="turtle_blue">#03A9F4</color>
+    <color name="turtle_green">#4CAF50</color>
+    <color name="turtle_red">#F44336</color>
+    <color name="turtle_purple">#9C27B0</color>
+    <color name="turtle_orange">#FF9800</color>
+    <color name="turtle_pink">#E91E63</color>
+
+    <array name="turtle_colors">
+        <item>@color/turtle_blue</item>
+        <item>@color/turtle_green</item>
+        <item>@color/turtle_red</item>
+        <item>@color/turtle_purple</item>
+        <item>@color/turtle_orange</item>
+        <item>@color/turtle_pink</item>
+    </array>
+
+</resources>
+
+--- END OF FILE app/src/main/res/values/colors.xml ---
+
+
+--- START OF FILE app/src/main/res/values/strings.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kikko\'s Saga Forge</string>
+
+    <string name="bourdon_intro_welcome">"Hey, Forager! Welcome. While you admire the view, I'm setting up your Hive's foundations... Your future Guardian's database is ready. All secure on your device, scout's honor. Now for the big moment... Touch the egg to start your saga."</string>
+    <string name="bourdon_intro_hatching">"And there you have it! Your Kikkō Guardian is born. Looks a little lost, but it's hungry... hungry for knowledge!"</string>
+    <string name="bourdon_intro_downloading">"Look out, here come the Bees! My colleagues, the specialized workers. They're downloading their tools... and most importantly, they're searching for their Queen—the Gemma model—the brain of our operation. This might take a moment, finding royalty isn't easy."</string>
+    <string name="bourdon_intro_hive_ready">"Perfect! The Hive is operational. The Queen has arrived and her workers are ready."</string>
+    <string name="bourdon_intro_choices">"The adventure is just beginning. What's your first move? Explore the memories already forged for your Guardian, start a new forage yourself, or test your knowledge in a Saga Clash? The choice is yours, Forager."</string>
+    <string name="button_explore_hive">Explore Hive</string>
+    <string name="button_start_foraging">Start Foraging</string>
+    <string name="button_saga_clash">Saga Clash</string>
+
+    <string name="button_become_visible">Become Visible</string>
+    <string name="button_stop_visibility">Stop Visibility</string>
+    <string name="button_search">Search</string>
+
+    <string name="status_ready_format">%1$s | Ready</string>
+    <string name="status_ready_gps_ok_format">%1$s | Ready (GPS OK)</string>
+    <string name="status_visible_format">%1$s | Visible…</string>
+    <string name="status_searching_format">%1$s | Searching…</string>
+    <string name="status_connected_to_format">%1$s | Connected to %2$s</string>
+    <string name="status_disconnected_format">%1$s | Disconnected</string>
+
+    <string name="status_permissions_denied">Permissions Denied</string>
+    <string name="status_ready">Ready</string>
+    <string name="status_ready_gps_ok">Ready (GPS OK)</string>
+    <string name="status_visible">Visible…</string>
+    <string name="status_searching">Searching…</string>
+    <string name="status_connected_to">Connected to %1$s</string>
+    <string name="status_disconnected">Disconnected</string>
+
+    <string name="toast_permissions_granted">Permissions granted.</string>
+    <string name="toast_getting_gps">Acquiring GPS position…</string>
+    <string name="toast_gps_acquired">GPS position acquired!</string>
+    <string name="toast_gps_unavailable">GPS position not available.</string>
+    <string name="toast_catalogue_received">Full catalogue from %1$s received!</string>
+
+    <string name="dialog_connection_title">Accept connection from %1$s?</string>
+    <string name="dialog_connection_message">Confirm the code is: %1$s</string>
+    <string name="dialog_accept">Accept</string>
+    <string name="dialog_decline">Decline</string>
+
+    <string name="card_record_format">🏆 %1$d / 💔 %2$d</string>
+    <string name="card_distance_format">%.1fm</string>
+    <string name="card_no_decks_known">No decks known</string>
+</resources>
+
+--- END OF FILE app/src/main/res/values/strings.xml ---
+
+
+--- START OF FILE app/src/main/res/values/themes.xml ---
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.KikkoPocNearby" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/hive_gold</item>
+        <item name="colorPrimaryVariant">@color/hive_gold_dark</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSecondary">@color/hive_cyan_accent</item>
+        <item name="colorSecondaryVariant">@color/hive_cyan_accent</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="Theme.KikkoPocNearby.Hive" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/hive_gold</item>
+        <item name="colorOnPrimary">@color/hive_black</item>
+
+        <item name="colorSecondary">@color/hive_cyan_accent</item>
+        <item name="colorOnSecondary">@color/hive_black</item>
+
+        <item name="android:colorBackground">@color/hive_black</item>
+        <item name="colorSurface">#1E1E1E</item>
+        <item name="colorOnSurface">@color/white</item>
+
+        <item name="android:statusBarColor" tools:targetApi="l">@color/hive_black</item>
+
+        <item name="alertDialogTheme">@style/KikkoAlertDialogTheme</item>
+    </style>
+
+    <style name="KikkoAlertDialogTheme" parent="Theme.Material3.Dark.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+        <item name="colorPrimary">@color/hive_gold</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">#B3FFFFFF</item>
+    </style>
+
+</resources>
+
+--- END OF FILE app/src/main/res/values/themes.xml ---
+
+
+--- START OF FILE app/src/main/res/xml/backup_rules.xml ---
+
+<?xml version="1.0" encoding="utf-8"?><!--
+   Sample backup rules file; uncomment and customize as necessary.
+   See https://developer.android.com/guide/topics/data/autobackup
+   for details.
+   Note: This file is ignored for devices older than API 31
+   See https://developer.android.com/about/versions/12/backup-restore
+-->
+<full-backup-content>
+    <!--
+   <include domain="sharedpref" path="."/>
+   <exclude domain="sharedpref" path="device.xml"/>
+-->
+</full-backup-content>
+
+--- END OF FILE app/src/main/res/xml/backup_rules.xml ---
+
+
+--- START OF FILE app/src/main/res/xml/data_extraction_rules.xml ---
+
+<?xml version="1.0" encoding="utf-8"?><!--
+   Sample data extraction rules file; uncomment and customize as necessary.
+   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
+   for details.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <!-- TODO: Use <include> and <exclude> to control what is backed up.
+        <include .../>
+        <exclude .../>
+        -->
+    </cloud-backup>
+    <!--
+    <device-transfer>
+        <include .../>
+        <exclude .../>
+    </device-transfer>
+    -->
+</data-extraction-rules>
+
+--- END OF FILE app/src/main/res/xml/data_extraction_rules.xml ---
+
+
+--- START OF FILE app/src/test/java/be/aktina/android/kikkopocnearby/ExampleUnitTest.kt ---
+
+package be.aktina.android.kikkopocnearby
+
+import org.junit.Test
+
+import org.junit.Assert.*
+
+/**
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * See [testing documentation](http://d.android.com/tools/testing).
+ */
+class ExampleUnitTest {
+    @Test
+    fun addition_isCorrect() {
+        assertEquals(4, 2 + 2)
+    }
+}
+
+--- END OF FILE app/src/test/java/be/aktina/android/kikkopocnearby/ExampleUnitTest.kt ---
+
+
+--- START OF FILE build.gradle.kts ---
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.android) apply false
+}
+
+--- END OF FILE build.gradle.kts ---
+
+
+--- START OF FILE settings.gradle.kts ---
+
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "KikkoPocNearby"
+include(":app")
+ 
+
+--- END OF FILE settings.gradle.kts ---
