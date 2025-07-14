@@ -25,15 +25,15 @@ We are not building a company; we are building an idea. And the best way to shar
 
 Kikko will be offered to everyone, completely free, with no strings attached. There are no premium tiers, no advertisements, no plans for future subscriptions. Every feature is available to every user from the moment they install the application.
 
-*   **The Full Experience, For Everyone:**
-    *   The complete foraging and gamification experience for all personas.
-    *   The AI Queen (Gemma) and all Worker Bees (ML Kit) at their full potential.
-    *   Unlimited local storage of "honey" (as Microsites) and "pollen."
-    *   The complete "Thread of Provenance" and "Seal of Trust" features, including full **Inference Reproduction** and traceable Hornet data integration.
-    *   Unlimited peer-to-peer sharing via WebTorrent.
-    *   A starter set of badges and quests.
+* **The Full Experience, For Everyone:**
+    * The complete foraging and gamification experience for all personas.
+    * The entire **Guild of AI Artisans** at their full potential: The AI Queen (Gemma), the Scout Bees (ML Kit), and all Specialist Bees (TFLite models).
+    * Unlimited local storage of "honey" (`Card` objects) and "pollen" (source images).
+    * The complete "Thread of Provenance" and "Seal of Trust" features, including full **Inference Reproduction** and traceable Hornet data integration.
+    * Unlimited P2P interactions via **Nearby Connections** and remote sharing via **WebTorrent**.
+    * A starter set of badges and quests.
 
-This free tier is not a "demo." It is a complete, powerful tool that fulfills the core promise of the application. The **Bourdon**, ever the pragmatist, might grumble about the lack of "honey-money," but ultimately agrees it's the most effective way to get more foragers for the Queen.
+This free tier is not a "demo." It is a complete, powerful tool that fulfills the core promise of the application. I, the **Bourdon**, ever the pragmatist, might grumble about the lack of "honey-money," but I ultimately agree it's the most effective way to get more Foragers for the Queen.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -44,10 +44,10 @@ This free tier is not a "demo." It is a complete, powerful tool that fulfills th
 
 Choosing a non-commercial path is a strategic decision that serves the core goals of the project.
 
-*   **Maximizing Impact for the Competition:** For the Google AI Edge Challenge, our goal is to present the most powerful and uncompromised vision possible. A business model would distract from the core message: the technological and philosophical innovation around on-device AI and verifiable knowledge. The Bourdon might comment: `"Moi, je préfère les siestes. Moins de soucis de rentabilité, plus de temps pour flâner."`
-*   **Building Trust Through Action:** The strongest way to prove our commitment to user sovereignty is to remove profit from the equation entirely. Our actions speak louder than any privacy policy. We are not interested in the user's money because we are only interested in empowering them. The Bourdon might add: `"Pas de piège à miel, gamin. La Mémère, elle, joue pas à ça."`
-*   **Fostering an Authentic Community:** A non-commercial project attracts a community built on passion and shared ideals. We hope to inspire developers, designers, and thinkers to build upon the ideas presented in Kikko. The Bourdon would nod: `"Les vrais butineurs, pas les pique-assiettes. J'aime ça."`
-*   **A Focus on Pure Innovation:** By removing the pressure to generate revenue, the development team can focus 100% of its energy on solving the complex challenges of the user experience, AI partnership, and on-device performance. The Bourdon: `"Moins de paperasse, plus de temps pour que la Reine et les filles inventent des trucs dingues. Ça me va."`
+* **Maximizing Impact for the Competition:** For the Google AI Edge Challenge, our goal is to present the most powerful and uncompromised vision possible. A business model would distract from the core message: the technological and philosophical innovation around on-device AI and verifiable knowledge. I might comment: `"Personally, I prefer naps. Fewer profitability concerns, more time for a stroll."`
+* **Building Trust Through Action:** The strongest way to prove our commitment to user sovereignty is to remove profit from the equation entirely. Our actions speak louder than any privacy policy. We are not interested in the user's money because we are only interested in empowering them. I might add: `"No honey traps here, kid. The Queen doesn't play that game."`
+* **Fostering an Authentic Community:** A non-commercial project attracts a community built on passion and shared ideals. We hope to inspire developers, designers, and thinkers to build upon the ideas presented in Kikko. I would nod: `"Real foragers, not free-riders. I like that."`
+* **A Focus on Pure Innovation:** By removing the pressure to generate revenue, the development team can focus 100% of its energy on solving the complex challenges of the user experience, AI partnership, and on-device performance. I'd say: `"Less paperwork means more time for the Queen and the Bees to invent crazy new stuff. Works for me."`
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -58,11 +58,11 @@ Choosing a non-commercial path is a strategic decision that serves the core goal
 
 While the initial vision for Kikko is non-commercial, we believe that successful, ethical projects can find sustainable paths forward. A future version of Kikko *could* explore models like:
 
-*   **Professional Guilds:** Offering highly specialized, paid "Queen" AIs for professional use-cases (e.g., a "Paramedic Queen" for emergency responders, a "Lab-Tech Queen" for scientists).
-*   **Donation-Based Support:** Allowing passionate users to support the project's maintenance and development voluntarily.
-*   **Becoming an Open-Source Project:** Entrusting the future of Kikko to the community itself, ensuring its longevity and evolution.
+* **Professional Guilds:** Offering highly specialized, paid "Queen" AIs for professional use-cases (e.g., a "Paramedic Queen" for emergency responders, a "Lab-Tech Queen" for scientists).
+* **Donation-Based Support:** Allowing passionate users to support the project's maintenance and development voluntarily.
+* **Becoming an Open-Source Project:** Entrusting the future of Kikko to the community itself, ensuring its longevity and evolution.
 
-However, these are possibilities for a distant future. **For now, Kikko is a gift.** Its value is not measured in dollars, but in the potential it has to change how we think about personal technology. The Bourdon's parting thought: `"L'avenir ? On verra bien. Pour l'instant, c'est gratuit, c'est beau, et ça me laisse tranquille. Quoi de plus ?"`
+However, these are possibilities for a distant future. **For now, Kikko is a gift.** Its value is not measured in dollars, but in the potential it has to change how we think about personal technology. My parting thought: `"The future? We'll see. For now, it's free, it's beautiful, and it leaves me in peace. What more could you ask for?"`
 
 **Conclusion:**
 Kikko's "business model" is to not have one. It is an investment in an idea. By offering it as a free, complete, and powerful tool, we aim to make the strongest possible case for a new paradigm of personal AI—one based on trust, sovereignty, and the simple joy of understanding one's own world.
