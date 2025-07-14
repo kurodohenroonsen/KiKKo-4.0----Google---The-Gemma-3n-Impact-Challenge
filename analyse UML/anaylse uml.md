@@ -38,8 +38,21 @@ Ce chapitre établit le périmètre fonctionnel du point de vue des utilisateurs
 1.1. Cas d'Utilisation Principaux
 
 1.1.1. Analyse Textuelle : UC-01 - Premier Lancement & Initialisation de la Ruche
+Le premier contact avec "Kikko's Saga Forge" n'est pas un lancement d'application, c'est une cérémonie d'accueil. Conformément à notre philosophie, nous avons remplacé l'onboarding traditionnel par une mise en scène narrative, orchestrée par IntroActivity.kt et sa machine à états interne IntroState. L'objectif est double : immerger immédiatement le Butineur dans son rôle d'acteur et, en coulisses, forger une Ruche IA 100% opérationnelle avant même la première action de jeu.   
 
-Description détaillée du flux d'onboarding, du téléchargement des modèles et de la création de la base de données.
+Le flux est une symphonie synchronisée où chaque étape technique est habillée d'une justification narrative :
+
+L'Accueil Immersif : L'utilisateur est accueilli par le Bourdon. La machine à états (BOURDON_ARRIVING, BOURDON_SPEAKS_WELCOME) pilote l'enchaînement des vidéos et des dialogues via synthèse vocale (TTS). L'interaction de l'utilisateur (toucher l'œuf pour le faire éclore) n'est pas une simple action, c'est un événement qui fait avancer le récit, le rendant acteur de la genèse de son propre écosystème.   
+
+La Forge en Coulisses : Pendant que le Bourdon captive l'utilisateur, deux opérations critiques se déroulent en arrière-plan pour minimiser l'attente :
+
+L'Éveil de l'Intelligence : Le téléchargement des modèles d’IA essentiels (Gemma via MediaPipe, modèles TFLite pour les Specialist Bees) est orchestré par WorkManager pour une exécution asynchrone respectant les contraintes réseau. Le Bourdon traduit cette étape en une narration immersive : les "Abeilles" et leur "Reine" s’éveillent dans la Ruche, transformant un processus technique en un moment clé de la construction de l’univers.   
+
+La Genèse de la Mémoire : Simultanément, la base de données Room est créée et peuplée à partir du fichier default_cards.json. Ces cartes de départ ne sont pas des coquilles vides ; elles sont livrées avec leur "Fil de Provenance" complet, rendant leurs inférences reproductibles et démontrant dès la première seconde notre engagement fondamental pour une confiance vérifiable.   
+
+La Transition vers la Saga : Une fois la Ruche prête (modèles téléchargés, base de données peuplée), le Bourdon présente au Butineur ses premiers choix d'aventure. L'indicateur isFirstLaunch est basculé à false dans les SharedPreferences. L'IntroActivity a terminé son rôle et redirige l'utilisateur vers l'écran principal (HiveActivity), sa saga prête à commencer.   
+
+Ce cas d'utilisation n'est donc pas un simple tutoriel. Il établit les piliers du projet : une expérience utilisateur narrative, une complexité technique masquée par une interface intuitive, une architecture "Privacy by Design" (tout en local), et une proposition de valeur immédiate pour l'utilisateur, qui commence son aventure avec un écosystème déjà riche et fonctionnel.
 
 1.1.2. Analyse Textuelle : UC-02 - Forger une Carte de Connaissance
 
