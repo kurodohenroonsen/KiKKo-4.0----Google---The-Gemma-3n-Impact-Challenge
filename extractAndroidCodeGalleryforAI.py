@@ -59,10 +59,10 @@ def consolidate_android_project(project_path, output_file):
 # --- Point d'entrée du script ---
 if __name__ == "__main__":
     # Le chemin de votre projet sur votre Mac
-    project_root_path = "/Users/kurodohenroonsen/Documents/aktina/KikkoPocNearby"
+    project_root_path = "/Users/kurodohenroonsen/Documents/gallery-main/Android/src"
     
     # Nom du fichier de sortie
-    output_filename = "kikko_project_context.txt"
+    output_filename = "project_galleryedge_context.txt"
 
     if os.path.isdir(project_root_path):
         consolidate_android_project(project_root_path, output_filename)

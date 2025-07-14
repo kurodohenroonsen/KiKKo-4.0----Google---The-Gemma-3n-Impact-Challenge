@@ -59,7 +59,7 @@ def consolidate_android_project(project_path, output_file):
 # --- Point d'entrée du script ---
 if __name__ == "__main__":
     # Le chemin de votre projet sur votre Mac
-    project_root_path = "/Users/kurodohenroonsen/Documents/aktina/KikkoPocNearby"
+    project_root_path = "/Users/kurodohenroonsen/Documents/vision-quickstart"
     
     # Nom du fichier de sortie
     output_filename = "project_MLKITVISION_context.txt"
