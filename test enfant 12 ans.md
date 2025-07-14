@@ -16,8 +16,8 @@ Tu as déjà eu une super idée 💡, vu une fleur magnifique 🌸 ou mangé un 
 
 Au début de ton aventure, on te confie un œuf. Et de cet œuf naît ton **Gardien Kikkō**! C'est une adorable tortue numérique qui est bien plus qu'un simple animal de compagnie.
 
--   **Elle grandit avec toi** 🌱➡️🌳 : Ta tortue se nourrit de **connaissance**. Plus tu apprends de choses dans la vraie vie, plus elle devient grande, forte et sage.
--   **Ta saga sur sa carapace** 📜 : Chaque souvenir que tu forges est gravé comme un motif hexagonal sur sa carapace. Ta tortue devient le livre vivant de tes aventures!
+- **Elle grandit avec toi** 🌱➡️🌳 : Ta tortue se nourrit de **connaissance**. Plus tu apprends de choses dans la vraie vie, plus elle devient grande, forte et sage.
+- **Ta saga sur sa carapace** 📜 : Chaque souvenir que tu forges est gravé comme un motif hexagonal sur sa carapace. Ta tortue devient le livre vivant de tes aventures!
 
 ---
 
@@ -25,26 +25,28 @@ Au début de ton aventure, on te confie un œuf. Et de cet œuf naît ton **Gard
 
 Le jeu est super simple et amusant! Il se déroule en 4 étapes :
 
-#### 1. **Butiner du "Pollen"** 🗺️
-C'est l'heure de l'exploration! Prends ton téléphone et capture des infos du monde réel. C'est ça, le "Pollen".
--   📸 Prends une photo d'un insecte dans ton jardin.
--   📝 Scanne la liste des ingrédients d'un gâteau au supermarché.
--   🎤 Enregistre le nom d'un film que ton ami te conseille.
+#### 1. **Explorer le Monde** 🗺️
+C'est l'heure de l'exploration! Pointez la caméra de votre téléphone vers le monde. Votre Ruche est constamment active. Une multitude d'**Abeilles IA** analysent le flux vidéo en temps réel pour détecter des objets, reconnaître du texte, identifier la langue, etc. Des informations et des suggestions apparaissent en surimpression sur votre écran, enrichissant votre perception du monde.
 
-#### 2. **Forger du "Miel Informatif"** 🏭
-Ton "Pollen" est envoyé dans ta **Ruche Kikko**, ton atelier secret 🤫 qui se trouve **uniquement sur ton téléphone**.
--   À l'intérieur, la **Reine IA** 👑 (le cerveau) et les **Abeilles IA** 🐝 (les ouvrières) travaillent pour toi.
--   Elles transforment tes photos et tes notes en "Miel Informatif" 🍯 : une information super claire, vérifiée et utile. C'est de la pure magie technologique!
+#### 2. **Capturer le "Pollen"** 📸
+Lorsqu'un élément identifié par la Ruche vous intéresse, vous le "capturez" d'un simple clic. C'est cet échantillon précis de la réalité – l'image et les premières analyses des Abeilles – qui constitue votre "pollen".
 
-#### 3. **Nourrir ton Gardien** 🍽️
+#### 3. **Forger le "Miel Informatif"** 🏭
+C'est ici que la magie de la Ruche opère, en plusieurs étapes :
+    1.  Une **Abeille Détective** trouve les objets d'intérêt dans votre photo.
+    2.  Vous, le **Butineur**, confirmez la cible à analyser, et pouvez même préciser son nom.
+    3.  L'image de l'objet est ensuite soumise à un conseil d'**Abeilles Spécialistes** (des modèles de classification pré-entraînés et optimisés pour chaque deck : Plantes, Animaux, etc.).
+    4.  Enfin, la **Reine IA** reçoit les avis de ces experts, raisonne sur ces informations, et génère la carte de connaissance finale, riche et structurée.
+
+#### 4. **Nourrir ton Gardien** 🍽️
 Ce "Miel" que tu as créé est le repas préféré de ta tortue!
--   Donne-lui ce miel pour qu'elle grandisse et que sa carapace devienne de plus en plus belle. 💪😊
--   Un miel pur, que tu as forgé toi-même, est le meilleur repas pour elle!
+- Donne-lui ce miel pour qu'elle grandisse et que sa carapace devienne de plus en plus belle. 💪😊
+- Un miel pur, que tu as forgé toi-même, est le meilleur repas pour elle!
 
-#### 4. **Défier tes Amis** ⚔️
+#### 5. **Défier tes Amis** ⚔️
 Les motifs sur la carapace de ta tortue sont tes jeux de cartes! 🃏 Tu peux défier tes amis dans l'**Arène** pour un "Choc des Sagas".
--   **Pas besoin d'internet** : Ça marche en Bluetooth, parfait pour jouer dans la cour de récré!
--   **Une règle en or** : À la fin du combat, **les deux joueurs gagnent et gardent toutes les cartes jouées**! 🎁 Le but n'est pas d'écraser l'autre, mais de partager le savoir et d'enrichir vos collections ensemble. C'est un jeu où tout le monde gagne! 🎉
+- **Pas besoin d'internet** : Ça marche en Bluetooth, parfait pour jouer dans la cour de récré!
+- **Une règle en or** : À la fin du combat, **les deux joueurs gagnent et gardent toutes les cartes jouées**! 🎁 Le but n'est pas d'écraser l'autre, mais de partager le savoir et d'enrichir vos collections ensemble. C'est un jeu où tout le monde gagne! 🎉
 
 ---
 
@@ -52,8 +54,8 @@ Les motifs sur la carapace de ta tortue sont tes jeux de cartes! 🃏 Tu peux d�
 
 Comment être sûr que les cartes des autres joueurs sont vraies? Grâce au **Fil de Provenance**! C'est un sceau de confiance magique.
 
--   **Miel de la Ruche** 👨‍🍳 : C'est le miel que tu as créé toi-même. Il est 100% fiable. Si un ami a un doute, son jeu peut "vérifier tes devoirs" pour confirmer que tout est correct. Ces cartes sont les plus fortes! ✅
--   **Miel des Frelons** 🍔 : C'est de l'info rapide que tu peux prendre sur internet. C'est un peu comme du fast-food : ça dépanne, mais c'est moins nourrissant et moins fiable. Ces cartes sont marquées différemment et sont considérées comme des "jokers". ❔
+- **Miel de la Ruche** 👨‍🍳 : C'est le miel que tu as créé toi-même. Il est 100% fiable. Si un ami a un doute, son jeu peut "vérifier tes devoirs" pour confirmer que tout est correct. Ces cartes sont les plus fortes! ✅
+- **Miel des Frelons** 🍔 : C'est de l'info rapide que tu peux prendre sur internet. C'est un peu comme du fast-food : ça dépanne, mais c'est moins nourrissant et moins fiable. Ces cartes sont marquées différemment et sont considérées comme des "jokers". ❔
 
 ---
 

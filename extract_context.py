@@ -8,7 +8,7 @@ OUTPUT_FILE = 'code_pour_ia.txt'
 # Dossiers à ignorer complètement.
 DIRS_TO_EXCLUDE = ['android videos','.git', 'bataille', 'decks', 'ecrans', 'illustrations', 'reflexions design', 'tests', 'videos', 'voices']
 # Fichiers spécifiques à ignorer.
-FILES_TO_EXCLUDE = ['.DS_Store','food_data_downloader.py','prompt conseil  best prompt!!.txt','prompt.md', 'nubel-nutrition-mapping-strategy.md','gpc_en.json','m.html','compass_artifact_wf-61430fac-b376-465f-b781-b3aee3f3c532_text_markdown.md','extract_context.py', 'gs1Voc.jsonld', 'unionLabelling_products.json', 'unionLabelling_rules.json', 'Nubel_FR.csv', OUTPUT_FILE]
+FILES_TO_EXCLUDE = ['kikko_project_context.txt','extractAndroidCodeforAI.py','.DS_Store','food_data_downloader.py','prompt conseil  best prompt!!.txt','prompt.md', 'nubel-nutrition-mapping-strategy.md','gpc_en.json','m.html','compass_artifact_wf-61430fac-b376-465f-b781-b3aee3f3c532_text_markdown.md','extract_context.py', 'gs1Voc.jsonld', 'unionLabelling_products.json', 'unionLabelling_rules.json', 'Nubel_FR.csv', OUTPUT_FILE]
 # Extensions de fichiers à traiter comme binaires.
 BINARY_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.ico', '.svg']
 
