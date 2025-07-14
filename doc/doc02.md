@@ -23,11 +23,11 @@ Our goal is to erase the boundary between the user's physical world and their di
 
 Kikko's "default mode" is the camera view. This is the heart of the experience, the Hive's window to the world.
 
-*   **Augmented Transparency:** The camera view is subtly enhanced. Colors are slightly richer, light is warmer. The interface beautifies, it doesn't impose.
-*   **Contextual Overlays:** The Hive communicates visually by superimposing minimalist, translucent graphic elements onto real-world objects.
-    *   **The Quest Honeycomb:** When the Queen needs more information (e.g., a clearer picture of the ingredients list for Léa), a simple, glowing hexagon with a '?' icon appears and "latches" onto the object of interest, issuing a new foraging quest.
-    *   **Guardian's Presence:** Léa's Kikkō Guardian might appear as a small, translucent avatar in the corner of her screen, observing the world with her.
-*   **The Touch of Intent:** The user's tap on the screen is a direct command, telling the Hive: "Look closely at this. Forge me some honey for my Guardian."
+* **Live Specialist Analysis:** The camera view is a constantly active augmented reality layer. The Hive's **Specialist Bees** (on-device TFLite models) perpetually analyze the video stream, overlaying their findings directly onto the view. As Léa points her phone at a cookie box, the Text Recognition Bee might highlight the ingredients in real-time.
+* **Contextual Overlays:** The Hive communicates visually by superimposing minimalist, translucent graphic elements onto real-world objects.
+    * **The Identification Tag:** When a Specialist Bee identifies an object with high confidence, a subtle, glowing tag with its name might appear.
+    * **The Quest Honeycomb:** When the **AI Queen** needs more information (e.g., "I see nuts, but I need a clearer picture of the allergen warning"), a simple, glowing hexagon with a '?' icon appears and "latches" onto the object of interest, issuing a new foraging quest.
+* **The Touch of Intent:** The user's tap on the screen is a direct command, telling the Hive: "This is what I'm interested in. Capture this 'pollen' and let's forge some honey."
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -38,22 +38,26 @@ Kikko's "default mode" is the camera view. This is the heart of the experience, 
 
 With a simple gesture, the user can transition from the "window" to a view of their **Kikkō Guardian**. This is where they manage their saga.
 
-*   **The Evolving Carapace:** The turtle's shell is the main interface for knowledge management. It's a living, 3D model. Each hexagonal scute (plate) on its shell represents a thematic **"Arena"** (e.g., "Packaged Snacks," "Home-cooked Meals," "Garden Plants").
-*   **Deck Visualization:** Tapping on a scute causes the corresponding deck of holographic cards to fan out, ready for inspection or battle. Cards forged from "Pure Honey" glow gold; those containing "Hornet" data have a grayish tint.
-*   **Guardian's Well-being:** The Guardian's animation and expression reflect its "diet." A well-fed Guardian (from pure, reproducible honey) will swim energetically. One fed with "junk food" honey might seem sluggish, providing a visual cue of its knowledge quality.
+* **The Evolving Carapace:** The turtle's shell is the main interface for knowledge management. It's a living, 3D model. Each hexagonal scute (plate) on its shell represents a thematic **"Deck"** (e.g., "Packaged Snacks," "Garden Plants").
+* **Deck Visualization:** Tapping on a scute causes the corresponding deck of holographic `Card` objects to fan out, ready for inspection or battle. Cards forged from "Pure Honey" (Hive-Forged) glow gold; those containing "Hornet" data have a grayish tint.
+* **Guardian's Well-being:** The Guardian's animation and expression reflect its "diet." A well-fed Guardian (from pure, reproducible honey) will swim energetically. One fed with "junk food" honey might seem sluggish, providing a visual cue of its knowledge quality.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
 | <img src="../illustrations/ui_inner_intro.png" alt="Cinematic 3D render, animation movie style. An expansive, dark, high-tech space where Léa's Kikkō Guardian swims gracefully. Its shell is a beautiful mosaic of glowing hexagonal patterns, each representing a different food 'Arena'."> | <img src="../illustrations/ui_inner_action.png" alt="Cinematic 3D render, animation movie style, viewed from over her shoulder. A holographic child's finger (representing Léa's interaction on her phone screen) touches a specific glowing hexagonal scute on the turtle's shell, labeled with a 'cookie' icon."> | <img src="../illustrations/ui_inner_conclusion.png" alt="Cinematic 3D render, animation movie style. In response to the tap, a beautiful fan of holographic cards from the 'Packaged Snacks' deck emerges from that part of the shell. One card, 'Oatmeal Cookies', is brought to the front, displaying its stats and a glowing 'Seal of Trust'. The Bourdon hovers nearby, observing."> |
-| **The Living Codex:** The Guardian's shell is the user's knowledge graph, a navigable and beautiful 3D landscape of Arenas. | **The Deck Selection:** User interaction with a specific Arena on the shell reveals the deck of knowledge cards within. | **Access and Presentation:** The Bourdon ensures the user can easily access and understand the structured data on each card and its verifiable origin. |
+| **The Living Codex:** The Guardian's shell is the user's knowledge graph, a navigable and beautiful 3D landscape of Decks. | **The Deck Selection:** User interaction with a specific Deck on the shell reveals the knowledge cards within. | **Access and Presentation:** The Bourdon ensures the user can easily access and understand the structured data on each card and its verifiable origin. |
 
 ### **Component 3: The Dialogue (Human-AI Partnership)**
 
 All communication occurs through a minimalist, non-intrusive dialogue interface, primarily driven by the **Bourdon's unique personality**.
 
-*   **The Bourdon's Delivery:** The Bourdon is the primary voice and visual representation of the Hive's communication. He presents quests, relays the Queen's questions, and delivers the finished "honey" to the Kikkō Guardian.
-*   **Suggest, Query & Confirm:** This is the core interactive loop. The Queen formulates suggestions ("I believe this is `gs1:FoodProduct`") or asks contextual questions ("Did you see a 'may contain nuts' warning?"). The Bourdon relays these. Léa's confirmation or answer is crucial for forging trusted, reproducible honey.
-*   **Effortless Correction as a Feature:** If the AI's OCR misreads an ingredient, correcting it is simple. This is not a failure, but a key part of the **collaborative forging process**. The user's input is valued and necessary. The Bourdon might even offer a cheeky comment like: `"Oops, my bad. Good catch, kiddo! The Queen needs her coffee."`
+* **The Bourdon's Delivery:** I am the primary voice and visual representation of the Hive's communication. I present quests, relay the Queen's questions, and deliver the finished "honey" to the Kikkō Guardian.
+* **Refine, Confirm & Forge:** This is the core interactive loop.
+    1.  A **Specialist Bee** provides an initial identification (e.g., "apple, 85%").
+    2.  I (the Bourdon) relay this to the Forager: "My specialist thinks this is an apple. Is that right? Can you be more specific?".
+    3.  Léa can confirm, or refine the identification by typing "Granny Smith apple". This **Human Refinement** is a crucial part of the collaborative forging process.
+    4.  The **AI Queen** takes this confirmed pollen and forges the final, trusted knowledge card.
+* **Effortless Correction as a Feature:** If an AI's initial guess is wrong, correcting it is not a failure, but a key part of the game. The user's input is valued and necessary. I might even offer a cheeky comment like: `"Oops, my bad. Good catch, kiddo! The Queen needs her coffee."`
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
