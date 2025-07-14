@@ -32,12 +32,12 @@ This Guardian is cared for by its friends in your **Kikko Hive**: your private, 
 | <img src="../illustrations/p1_intro.png" alt="Cinematic 3D render, animation movie style. A standard, cold-looking smartphone lies inert on a wooden table. The room is dark, symbolizing untapped potential for memory and adventure."> | <img src="../illustrations/p1_action.png" alt="Cinematic 3D render, animation movie style, viewed from over Hiro's shoulder. His hands (10-year-old boy, red t-shirt sleeves visible) pick up the phone. As he touches the screen, a warm, golden light glows, and a tiny, newly hatched digital Kikkō turtle appears, looking up at him with curious eyes."> | <img src="../illustrations/p1_conclusion.png" alt="Cinematic 3D render, animation movie style. The phone is now a vibrant window into a living world. The Kikkō turtle swims playfully in a digital space on the screen, while the Bourdon character peeks out from the corner, ready to guide Hiro and his new companion."> |
 | **The Inert Object:** A smartphone is just a cold, impersonal slab of glass and metal. | **The Awakening:** The user's first interaction doesn't launch an app; it hatches their personal Kikkō Guardian, the start of their saga. | **The Symbiosis:** The device is now a portal to a living ecosystem, a partnership between the Forager, their Guardian, and the AI Hive. |
 
-### **Founding Principle #2: "Pollen" is Foraged, "Honey" is Forged, Your Guardian is Fed**
+### **Founding Principle #2: "Pollen" is Captured, "Honey" is Forged, Your Guardian is Fed**
 
 In our ecosystem, data has a life cycle that is organic and meaningful.
 
-1.  **Foraging "Pollen":** You explore the world and capture raw information (a photo, a scan, a note). This is "pollen," the raw material for knowledge.
-2.  **Forging "Honey":** You bring this pollen to your **Kikko Hive**. Inside, your AI companions **forge** it into structured, verifiable "Informative Honey" in a true **human-AI partnership**.
+1.  **Exploring & Capturing "Pollen":** You explore the world through your device's camera. The Hive's **Specialist Bees** (on-device ML models) analyze the world in real-time. When you see something interesting, you **capture** it. This "pollen" is a package of the image frame and the initial analysis from the specialists.
+2.  **Forging "Honey":** You bring this pollen to your **Kikko Hive**. Here, in a true **human-AI partnership**, you may be asked to refine the initial identification. Then, the **AI Queen (Gemma)** takes this verified input and forges it into structured, verifiable "Informative Honey."
 3.  **Feeding your Guardian:** This trusted honey is the food for your Kikkō Guardian. By eating it, your turtle grows, its shell becoming more intricate and beautiful, visually representing your expanding saga.
 
 | Introduction | Action | Conclusion |
@@ -45,27 +45,27 @@ In our ecosystem, data has a life cycle that is organic and meaningful.
 | <img src="../illustrations/p2_intro.png" alt="Cinematic 3D render, animation movie style. A chaotic storm of generic data icons (1s, 0s, graphs, charts) swirls in an abstract digital space, representing the impersonal noise of big data."> | <img src="../illustrations/p2_action.png" alt="Cinematic 3D render, animation movie style. The user's hand (Hiro's) reaches into the storm and gently touches a single object: a photo of a vibrant wildflower from his garden. The photo glows with a warm, personal light."> | <img src="../illustrations/p2_conclusion.png" alt="Cinematic 3D render, animation movie style. The glowing photo transforms into a single, precious, shimmering particle of golden pollen, held carefully in Hiro's cupped hands. This is the raw ingredient for his Hive."> |
 | **The Data Storm:** The modern world is a confusing storm of impersonal, generic data. | **The Act of Meaning:** The user makes a conscious choice to select one specific piece of information that is personally meaningful. | **The Precious Pollen:** The impersonal data is transformed into a unique, personal "pollen," the raw material for knowledge. |
 
-### **Founding Principle #3: The Hive, a Symbiotic Partnership**
+### **Founding Principle #3: The Hive, a Guild of AI Artisans**
 
-The **Kikko Hive** is your on-device AI forge, populated by friendly digital artisans who work for you and your Guardian.
+The **Kikko Hive** is your on-device AI forge, populated by a guild of digital artisans who work for you and your Guardian.
 
-*   **The Worker Bees (ML Kit):** Tireless specialists who extract the raw material from the "pollen."
-*   **The AI Queen (Gemma):** The wise master artisan. She understands, connects, and suggests. She engages you in a dialogue to forge the most accurate honey, sometimes **issuing new foraging quests** ("Forager, I need a close-up of that label!") or **conducting her own web research** to enrich a memory.
-*   **The Bourdon (The Communicator):** The charming link between you, your Guardian, and the Hive. He presents quests from the Queen, delivers the finished honey, and sometimes, offers "junk food" honey from external "Hornets" (AI Overviews), which is less nutritious for your Guardian.
+* **The Specialist Bees (ML Kit & pre-trained TFLite models):** A team of tireless experts, each trained for a specific domain (Plants, Animals, etc.). They analyze the world in real-time through your camera.
+* **The AI Queen (Gemma):** The wise master artisan. She orchestrates the guild. She takes the preliminary analysis from the Bees, engages you in a dialogue for clarification and refinement, and then uses her generative power to forge the final, rich, and structured honey.
+* **The Bourdon (The Communicator):** The charming link between you, your Guardian, and the Hive. I present the Queen's questions, deliver the finished honey, and sometimes, I might tempt you with "junk food" honey from external "Hornets" (unverified web results).
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
 | <img src="../illustrations/p3_intro.png" alt="Cinematic 3D render, animation movie style. A stream of raw, glowing pollen particles (from Hiro's photo of a plant) flows into the high-tech, glowing interior of the Kikko Hive."> | <img src="../illustrations/p3_action.png" alt="Cinematic 3D render, animation movie style. Inside the Hive, cute Worker Bees process the pollen while the AI Queen orchestrates. The Bourdon zips out of the Hive, holding a glistening drop of golden 'Informative Honey'."> | <img src="../illustrations/p3_conclusion.png" alt="Cinematic 3D render, animation movie style. The Bourdon playfully offers the drop of honey to Hiro's Kikkō Guardian, which happily eats it. As it does, a hexagonal pattern on its shell glows, signifying it has assimilated the new knowledge and grown a little stronger."> |
-| **The Raw Material:** The user's foraged pollen arrives in the Hive to be processed. | **The Artisans' Work:** The AI companions work together, in partnership with the user, to forge raw pollen into "Informative Honey." | **Nourishing the Saga:** The finished honey is fed to the Kikkō Guardian, which assimilates the knowledge and grows. |
+| **The Raw Material:** The user's captured pollen arrives in the Hive to be processed. | **The Artisans' Work:** The AI companions work together, in partnership with the user, to forge raw pollen into "Informative Honey." | **Nourishing the Saga:** The finished honey is fed to the Kikkō Guardian, which assimilates the knowledge and grows. |
 
 ### **Founding Principle #4: Gamification is a Language of Growth and Battle**
 
 Game mechanics are the intuitive language of Kikko.
 
-*   **Quests** are invitations to find new "pollen" to feed your Guardian.
-*   **Badges** and **Points** celebrate your foraging achievements.
-*   **The Kikkō's Growth** is the ultimate visual representation of your progress.
-*   **The Saga Clash** is the social expression of your knowledge, where your Guardian's shell becomes a battle arena for a friendly, P2P card game using themed decks.
+* **Quests** are invitations to find new "pollen" to feed your Guardian.
+* **Badges** and **Points** celebrate your foraging achievements.
+* **The Kikkō's Growth** is the ultimate visual representation of your progress.
+* **The Saga Clash** is the social expression of your knowledge, where your Guardian's shell becomes a battle arena for a friendly, P2P card game using themed decks.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -77,7 +77,7 @@ Game mechanics are the intuitive language of Kikko.
 This is the central promise, embodied by the symbiosis of the Hive and the Guardian.
 
 1.  **100% On-Device:** Your Hive, your Guardian, and your entire saga reside **only and exclusively on your device**.
-2.  **Radical Transparency:** Every drop of honey has a **"Thread of Provenance"**. Hive-forged honey has a blueprint for **Inference Reproduction**, making it verifiably true. Hornet honey has its HTML source traced. You always know what your Guardian is eating.
+2.  **Radical Transparency:** Every drop of honey has a **"Thread of Provenance"**. Hive-forged honey has a detailed log file containing the prompts, parameters, and raw responses of every AI inference, making it **verifiably true via Inference Reproduction**. Hornet honey has its HTML source traced. You always know what your Guardian is eating.
 3.  **Sovereign Sharing:** The "Saga Clash" is a **peer-to-peer** exchange. You gift knowledge directly to your friends, enriching each other's Guardians.
 
 | Introduction | Action | Conclusion |
