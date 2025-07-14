@@ -2,6 +2,7 @@
 Préambule
 
 0.1. Objectifs du Document
+
 Ce document constitue le manifeste narratif qui démontre pourquoi "Kikko's Saga Forge" redéfinit les standards de l'IA embarquée. Il a été conçu pour servir de source de vérité unique à nos trois publics cibles : les Juges du concours, pour qui il sert de preuve argumentée de notre vision ; les Architectes logiciels, à qui il fournit une vue d'ensemble des principes de conception ; et les Développeurs, qui y trouveront un guide précis pour l'implémentation.
 
 Il prouve que Kikko transcende le statut d'application classique pour répondre aux défis contemporains de l'amnésie digitale assistée et de la crise de confiance envers les IA opaques. Chaque diagramme illustre cette vision, forgeant une nouvelle catégorie : le    
@@ -9,6 +10,7 @@ Il prouve que Kikko transcende le statut d'application classique pour répondre 
 Jeu de Connaissance Vérifiable (Verifiable Knowledge RPG).   
 
 0.2. Conventions UML et Stylistiques
+
 Pour garantir une clarté et une cohérence irréprochables, notre modélisation adhère à des standards stricts.
 
 Outil et Identité Visuelle : Tous les diagrammes sont générés avec PlantUML. L'ensemble respecte rigoureusement notre thème personnalisé    
@@ -53,6 +55,87 @@ La Genèse de la Mémoire : Simultanément, la base de données Room est créée
 La Transition vers la Saga : Une fois la Ruche prête (modèles téléchargés, base de données peuplée), le Bourdon présente au Butineur ses premiers choix d'aventure. L'indicateur isFirstLaunch est basculé à false dans les SharedPreferences. L'IntroActivity a terminé son rôle et redirige l'utilisateur vers l'écran principal (HiveActivity), sa saga prête à commencer.   
 
 Ce cas d'utilisation n'est donc pas un simple tutoriel. Il établit les piliers du projet : une expérience utilisateur narrative, une complexité technique masquée par une interface intuitive, une architecture "Privacy by Design" (tout en local), et une proposition de valeur immédiate pour l'utilisateur, qui commence son aventure avec un écosystème déjà riche et fonctionnel.
+
+Informations Générales
+Nom : Premier Lancement & Initialisation de la Ruche
+
+Acteur Primaire : Le Butineur
+
+Objectif : Lancer l'application pour la première fois, être guidé à travers une séquence de bienvenue immersive, et voir l'application s'initialiser complètement (téléchargement des modèles, création et peuplement de la base de données) pour être prête à l'emploi.
+
+Préconditions :
+
+L'application est installée sur l'appareil.
+
+L'indicateur isFirstLaunch dans les SharedPreferences est absent ou true.   
+
+Postcondition de Succès :
+
+Le Butineur est sur l'écran principal de l'application (HiveActivity).   
+
+La base de données locale (Room) est créée et peuplée avec les cartes de départ.   
+
+Les modèles d'IA essentiels (Gemma, etc.) sont téléchargés et prêts à l'emploi.   
+
+L'indicateur isFirstLaunch est positionné à false.   
+
+Scénario Principal de Succès (Chemin Parfait)
+Le Butineur lance l'application. Le système vérifie que isFirstLaunch est true et lance IntroActivity.   
+
+Le système entre dans l'état IntroState.BOURDON_ARRIVING, jouant la vidéo bourdon_arrives.mp4.   
+
+À la fin de la vidéo, le système passe à IntroState.BOURDON_SPEAKS_WELCOME. La vidéo bourdon_talks.mp4 est jouée en boucle et la synthèse vocale (TTS) énonce le dialogue de bienvenue (bourdon_intro_welcome).   
+
+À la fin du dialogue, le système passe à IntroState.AWAITING_EGG_CLICK et attend une interaction de l'utilisateur.   
+
+Le Butineur touche l'écran. Le système passe à IntroState.HATCHING, joue la vidéo egg_hatching.mp4 et le dialogue TTS associé (bourdon_intro_hatching).   
+
+À la fin de la vidéo, le système passe à IntroState.DOWNLOADING_SPEAKING. Le TTS énonce le dialogue expliquant que la Ruche s'éveille (bourdon_intro_downloading).   
+
+Le système lance deux opérations critiques en parallèle pour minimiser l'attente :
+
+Tâche 1 (IA) : Il lance le téléchargement des modèles d'IA requis via une tâche de premier plan (ex: Coroutine ou Service) pour garantir une exécution immédiate et un suivi précis de la progression.   
+
+Tâche 2 (DB) : Simultanément, il lance la création de la base de données Room et son peuplement à partir du fichier default_cards.json. Ces cartes de départ sont livrées avec leur "Fil de Provenance" complet, rendant leurs inférences reproductibles et démontrant dès la première seconde notre engagement fondamental pour une confiance vérifiable.   
+
+Une barre de progression est affichée pendant que le système attend la complétion des deux tâches en arrière-plan.   
+
+Une fois les deux tâches terminées, le système passe à IntroState.HIVE_READY_SPEAKING. Le TTS annonce que la Ruche est prête (bourdon_intro_hive_ready).   
+
+Le système passe à IntroState.AWAITING_FINAL_CHOICE, affichant les boutons d'action.   
+
+Le Butineur sélectionne une des options.
+
+Le système écrit isFirstLaunch = false dans les SharedPreferences, lance HiveActivity et termine IntroActivity.   
+
+Extensions (Flux Alternatifs)
+3a. Le Butineur quitte l'application pendant la séquence :
+
+Si le Butineur quitte IntroActivity avant l'étape 12, isFirstLaunch reste true. Lors du prochain lancement, le scénario principal reprendra à l'étape 1 pour garantir une initialisation complète.
+
+5a. Le Butineur refuse les permissions critiques (si demandées) :
+
+Le système affiche un dialogue expliquant la nécessité de la permission. Le Bourdon peut intervenir via TTS pour contextualiser. Si le refus est maintenu, le système passe au flux d'erreur approprié (ex: échec de téléchargement si le réseau est refusé).
+
+Flux d'Erreur
+FE1 : Échec d'initialisation du TTS :
+
+Cause : Le moteur TTS de l'appareil ne s'initialise pas (onInit retourne TextToSpeech.ERROR).   
+
+Réaction : Le système continue sans synthèse vocale. Les dialogues du Bourdon sont affichés sous forme de sous-titres pour que l'expérience reste fonctionnelle, bien que moins immersive.
+
+FE2 : Échec du téléchargement des modèles d'IA :
+
+Cause : Pas de connexion réseau ou espace de stockage insuffisant.
+
+Réaction : WorkManager (ou le service équivalent) signale un échec. Le système affiche un message d'erreur contextualisé ("Mes Abeilles ont besoin d'une connexion pour rejoindre la Ruche.") et propose deux options : "Réessayer" pour relancer le téléchargement, ou "Continuer en mode dégradé" pour utiliser des modèles par défaut pré-embarqués (si disponibles). Si aucune option n’est choisie, le cas d’utilisation se met en pause.
+
+FE3 : Échec de l'initialisation de la base de données :
+
+Cause : Fichier default_cards.json corrompu/manquant ou erreur d'écriture sur le disque.
+
+Réaction : C'est une erreur critique. Le système enregistre l'erreur et affiche une boîte de dialogue bloquante : "Erreur critique : la mémoire initiale de la Ruche est endommagée. Veuillez réinstaller l'application." L'application se ferme.
+
 
 1.1.2. Analyse Textuelle : UC-02 - Forger une Carte de Connaissance
 
