@@ -2,88 +2,104 @@
   <img src="/videos/doc01_banner_veo3.gif" alt="Kikko's Saga Forge Animated Banner">
 </p>
 
-# Document 1/10: The Saga Forge Manifesto
+# Document 1/10 : Le Manifeste de la Forge - Notre Vision pour la Victoire
 
-**Title:** The Saga Forge Manifesto: Augmenting Our Memory in a Living World
+**Titre :** Le Manifeste de la Forge : Forger une Mémoire Vérifiable dans un Monde d'IA Opaques
 
-**Objective:** To establish the philosophical vision and core ambition of `Kikko's Saga Forge`, answering the fundamental question: "Why should this experience exist?"
+**Objectif :** Établir la vision philosophique et l'ambition technique de `Kikko's Saga Forge`, en répondant à la question fondamentale pour le jury : "Pourquoi cette expérience représente-t-elle le futur de l'IA embarquée ?"
+
 
 <p align="center">
-  <img style="max-width:400px" src="../illustrations/doc01_banner.png" alt="A wide, cinematic banner image for the 'Kikko's Saga Forge' manifesto, rendered in a 3D animation movie style. The scene is viewed from over the shoulder of a 10-year-old boy, Hiro (dark hair, vibrant red t-shirt). He holds his smartphone, which acts as a transparent window into the vibrant, high-tech interior of the 'Kikko Hive.' Inside, the wise, grandmotherly AI Queen with glowing spectacles works calmly. Hovering playfully outside the screen is the plump Bourdon. Below the phone, a small, glowing Kikkō Guardian turtle looks up at Hiro. Golden pollen flows from the real world into the Hive. The image captures the entire ecosystem: the Forager, the Guardian, and the Forge (Hive).">
+  <img style="max-width:400px" src="../illustrations/doc01_banner.png" alt="A wide, cinematic banner image for the 'Kikko's Saga Forge' manifesto, rendered in a 3D animation movie style. The scene is viewed from over the shoulder of a 10-year-old boy, Hiro (dark hair, vibrant red t-shirt). He holds his smartphone, which acts as a transparent window into the vibrant, high-tech interior of the 'Kikko Hive.'
+Inside, the wise, grandmotherly AI Queen with glowing spectacles works calmly. Hovering playfully outside the screen is the plump Bourdon. Below the phone, a small, glowing Kikkō Guardian turtle looks up at Hiro. Golden pollen flows from the real world into the Hive. The image captures the entire ecosystem: the Forager, the Guardian, and the Forge (Hive).">
 </p>
 ---
 
-### **Introduction: Digital Amnesia, a Modern Condition**
+### **Introduction : De l'Amnésie Digitale à la Confiance Radicale**
 
-We live in a paradoxical era. Never have we been exposed to so much information, yet never have our memories felt so fragmented. We suffer from a form of **assisted digital amnesia**, where precious fragments of our lives—the name of a recommended book, the taste of a shared wine, the advice from a craftsman, or for a young boy like **Hiro**, the specific pattern on a ladybug's back—are lost to the digital ether.
+[cite_start]Nous vivons une ère de paradoxes : un accès infini à l'information, couplé à une **amnésie digitale assistée** où nos propres découvertes s'évaporent[cite: 1003, 1004]. [cite_start]Pire, nous faisons face à une crise de confiance envers des IA "boîtes noires" qui nous demandent de croire sans preuve[cite: 965].
 
-We've delegated our memory, and in return, we get algorithmic suggestions. We've lost the intimate connection to the story of our own knowledge, and crucially, the ability to **trust and verify its origin.**
+**`Kikko's Saga Forge` est notre réponse audacieuse et notre proposition pour gagner ce challenge.** Nous créons une nouvelle catégorie d'application : le **Jeu de Connaissance Vérifiable** (Verifiable Knowledge RPG).
 
-**`Kikko's Saga Forge` is an invitation to forge your memory, to grow your saga, and to play with verifiable truth.**
+### **Principe Fondamental #1 : Le Kikkō, Votre Saga Vivante et Vérifiable**
 
-### **Founding Principle #1: The Kikkō, Your Living Saga**
+Kikko n'est pas une "application". C'est un écosystème. [cite_start]Vous devenez un **Butineur**, et l'on vous confie un **Gardien Kikkō** : une tortue numérique qui est le réceptacle vivant de votre mémoire[cite: 1007, 1008]. [cite_start]Sa carapace est la mosaïque de votre savoir, et sa croissance dépend de la qualité de la connaissance que vous forgez[cite: 1009, 1010]. [cite_start]Cette forge, c'est votre **Ruche Kikko** : un atelier d'IA privé, 100% embarqué sur votre appareil[cite: 1011].
 
-Kikko rejects the idea of a simple "app." When you begin, you become a **Forager**, and you are entrusted with a **Kikkō Guardian**: a young digital turtle, your life-long companion. This Guardian is the vessel of your memory, the codex of your personal saga. Its shell, a mosaic of hexagonal patterns, is where your knowledge lives. Its growth is a direct reflection of your own journey of discovery.
+| Introduction | Action |
+Conclusion |
+| :---: | :---: | :---: |
+|
+<img src="../illustrations/p1_intro.png" alt="Cinematic 3D render, animation movie style. A standard, cold-looking smartphone lies inert on a wooden table. The room is dark, symbolizing untapped potential for memory and adventure."> |
+<img src="../illustrations/p1_action.png" alt="Cinematic 3D render, animation movie style, viewed from over Hiro's shoulder. His hands (10-year-old boy, red t-shirt sleeves visible) pick up the phone. As he touches the screen, a warm, golden light glows, and a tiny, newly hatched digital Kikkō turtle appears, looking up at him with curious eyes."> |
+<img src="../illustrations/p1_conclusion.png" alt="Cinematic 3D render, animation movie style. The phone is now a vibrant window into a living world. The Kikkō turtle swims playfully in a digital space on the screen, while the Bourdon character peeks out from the corner, ready to guide Hiro and his new companion."> |
+| **L'Objet Inerte :** Un smartphone n'est qu'un portail froid et impersonnel. |
+[cite_start]**L'Éveil :** La première interaction de l'utilisateur ne lance pas une application ; elle fait éclore son Gardien Kikkō personnel, le début de sa saga[cite: 1017, 1018]. | [cite_start]**La Symbiose :** L'appareil est désormais un portail vers un écosystème vivant, un partenariat entre le Butineur, son Gardien et la Ruche IA[cite: 1020].
+|
 
-This Guardian is cared for by its friends in your **Kikko Hive**: your private, on-device AI workshop. The smartphone is merely the **magical window** through which you interact with this symbiotic ecosystem.
+### **Principe Fondamental #2 : Le Pollen est un Dataset, le Miel est une Inférence**
+
+Dans notre écosystème, les données ont un cycle de vie conçu pour la qualité et la réutilisation.
+1.  [cite_start]**Capturer le "Pollen" :** Vous explorez le monde et capturez un "pollen" : un paquet de données contenant l'image source et l'analyse brute de nos **Abeilles Spécialistes** (modèles ML embarqués)[cite: 1023, 1024]. Ce n'est pas juste une photo, c'est une **donnée d'entraînement de haute qualité**, prête pour un futur fine-tuning.
+2.  **Forger le "Miel" :** Vous amenez ce pollen à votre **Ruche Kikko**. [cite_start]Ici, dans un véritable **partenariat Homme-IA**, vous raffinez l'identification de l'IA, fournissant une "vérité terrain" inestimable[cite: 1025, 1026]. La **Reine IA (Gemma)** forge alors le "Miel Informatif" structuré et vérifiable.
+3.  **Nourrir votre Gardien :** Ce Miel de confiance est la nourriture de votre Gardien Kikkō. [cite_start]Il grandit, et sa carapace, votre saga, devient plus complexe et magnifique[cite: 1028].
+
+|
+Introduction | Action | Conclusion |
+| :---: | :---: | :---: |
+|
+<img src="../illustrations/p2_intro.png" alt="Cinematic 3D render, animation movie style. A chaotic storm of generic data icons (1s, 0s, graphs, charts) swirls in an abstract digital space, representing the impersonal noise of big data."> |
+<img src="../illustrations/p2_action.png" alt="Cinematic 3D render, animation movie style. The user's hand (Hiro's) reaches into the storm and gently touches a single object: a photo of a vibrant wildflower from his garden. The photo glows with a warm, personal light."> |
+<img src="../illustrations/p2_conclusion.png" alt="Cinematic 3D render, animation movie style. The glowing photo transforms into a single, precious, shimmering particle of golden pollen, held carefully in Hiro's cupped hands. This is the raw ingredient for his Hive."> |
+| [cite_start]**La Tempête de Données :** Le monde moderne est une tempête de données impersonnelles[cite: 1033]. |
+[cite_start]**L'Acte de Sens :** L'utilisateur choisit consciemment une information qui a une signification personnelle pour lui[cite: 1034]. | [cite_start]**Le Pollen Précieux :** La donnée impersonnelle est transformée en un "pollen" unique et personnel, la matière première de la connaissance[cite: 1036]. |
+
+### **Principe Fondamental #3 : La Ruche, une Guilde d'Artisans IA Embarqués**
+
+La **Ruche Kikko** est votre forge IA, peuplée d'une guilde d'artisans numériques qui travaillent pour vous.
+* [cite_start]**Les Abeilles Spécialistes (ML Kit & TFLite) :** Une équipe d'experts infatigables, chacun entraîné pour un domaine spécifique (Plantes, Animaux, etc.)[cite: 1037].
+* **La Reine IA (Gemma) :** Le maître artisan. [cite_start]Elle orchestre la guilde, dialogue avec vous pour la clarification, puis utilise sa puissance générative pour forger le Miel final, riche et structuré[cite: 1039].
+* **Le Bourdon (Le Communicateur) :** Le lien charmant entre vous et la Ruche. [cite_start]Je présente les questions de la Reine et vous livre le Miel terminé[cite: 1040, 1041].
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
-| <img src="../illustrations/p1_intro.png" alt="Cinematic 3D render, animation movie style. A standard, cold-looking smartphone lies inert on a wooden table. The room is dark, symbolizing untapped potential for memory and adventure."> | <img src="../illustrations/p1_action.png" alt="Cinematic 3D render, animation movie style, viewed from over Hiro's shoulder. His hands (10-year-old boy, red t-shirt sleeves visible) pick up the phone. As he touches the screen, a warm, golden light glows, and a tiny, newly hatched digital Kikkō turtle appears, looking up at him with curious eyes."> | <img src="../illustrations/p1_conclusion.png" alt="Cinematic 3D render, animation movie style. The phone is now a vibrant window into a living world. The Kikkō turtle swims playfully in a digital space on the screen, while the Bourdon character peeks out from the corner, ready to guide Hiro and his new companion."> |
-| **The Inert Object:** A smartphone is just a cold, impersonal slab of glass and metal. | **The Awakening:** The user's first interaction doesn't launch an app; it hatches their personal Kikkō Guardian, the start of their saga. | **The Symbiosis:** The device is now a portal to a living ecosystem, a partnership between the Forager, their Guardian, and the AI Hive. |
+|
+<img src="../illustrations/p3_intro.png" alt="Cinematic 3D render, animation movie style. A stream of raw, glowing pollen particles (from Hiro's photo of a plant) flows into the high-tech, glowing interior of the Kikko Hive."> |
+<img src="../illustrations/p3_action.png" alt="Cinematic 3D render, animation movie style. Inside the Hive, cute Worker Bees process the pollen while the AI Queen orchestrates. The Bourdon zips out of the Hive, holding a glistening drop of golden 'Informative Honey'."> |
+<img src="../illustrations/p3_conclusion.png" alt="Cinematic 3D render, animation movie style. The Bourdon playfully offers the drop of honey to Hiro's Kikkō Guardian, which happily eats it. As it does, a hexagonal pattern on its shell glows, signifying it has assimilated the new knowledge and grown a little stronger."> |
+| [cite_start]**La Matière Première :** Le pollen capturé par l'utilisateur arrive dans la Ruche pour être traité[cite: 1046]. |
+[cite_start]**Le Travail des Artisans :** Les compagnons IA travaillent ensemble, en partenariat avec l'utilisateur, pour forger le pollen brut en "Miel Informatif"[cite: 1047]. | [cite_start]**Nourrir la Saga :** Le Miel terminé est donné au Gardien Kikkō, qui assimile la connaissance et grandit[cite: 1048]. |
 
-### **Founding Principle #2: "Pollen" is Captured, "Honey" is Forged, Your Guardian is Fed**
+### **Principe Fondamental #4 : La Gamification au Service de la Confiance**
 
-In our ecosystem, data has a life cycle that is organic and meaningful.
-
-1.  **Exploring & Capturing "Pollen":** You explore the world through your device's camera. The Hive's **Specialist Bees** (on-device ML models) analyze the world in real-time. When you see something interesting, you **capture** it. This "pollen" is a package of the image frame and the initial analysis from the specialists.
-2.  **Forging "Honey":** You bring this pollen to your **Kikko Hive**. Here, in a true **human-AI partnership**, you may be asked to refine the initial identification. Then, the **AI Queen (Gemma)** takes this verified input and forges it into structured, verifiable "Informative Honey."
-3.  **Feeding your Guardian:** This trusted honey is the food for your Kikkō Guardian. By eating it, your turtle grows, its shell becoming more intricate and beautiful, visually representing your expanding saga.
-
-| Introduction | Action | Conclusion |
-| :---: | :---: | :---: |
-| <img src="../illustrations/p2_intro.png" alt="Cinematic 3D render, animation movie style. A chaotic storm of generic data icons (1s, 0s, graphs, charts) swirls in an abstract digital space, representing the impersonal noise of big data."> | <img src="../illustrations/p2_action.png" alt="Cinematic 3D render, animation movie style. The user's hand (Hiro's) reaches into the storm and gently touches a single object: a photo of a vibrant wildflower from his garden. The photo glows with a warm, personal light."> | <img src="../illustrations/p2_conclusion.png" alt="Cinematic 3D render, animation movie style. The glowing photo transforms into a single, precious, shimmering particle of golden pollen, held carefully in Hiro's cupped hands. This is the raw ingredient for his Hive."> |
-| **The Data Storm:** The modern world is a confusing storm of impersonal, generic data. | **The Act of Meaning:** The user makes a conscious choice to select one specific piece of information that is personally meaningful. | **The Precious Pollen:** The impersonal data is transformed into a unique, personal "pollen," the raw material for knowledge. |
-
-### **Founding Principle #3: The Hive, a Guild of AI Artisans**
-
-The **Kikko Hive** is your on-device AI forge, populated by a guild of digital artisans who work for you and your Guardian.
-
-* **The Specialist Bees (ML Kit & pre-trained TFLite models):** A team of tireless experts, each trained for a specific domain (Plants, Animals, etc.). They analyze the world in real-time through your camera.
-* **The AI Queen (Gemma):** The wise master artisan. She orchestrates the guild. She takes the preliminary analysis from the Bees, engages you in a dialogue for clarification and refinement, and then uses her generative power to forge the final, rich, and structured honey.
-* **The Bourdon (The Communicator):** The charming link between you, your Guardian, and the Hive. I present the Queen's questions, deliver the finished honey, and sometimes, I might tempt you with "junk food" honey from external "Hornets" (unverified web results).
+Les mécaniques de jeu sont le langage de Kikko.
+* [cite_start]**Les Quêtes** sont des invitations à trouver du "pollen" pour nourrir votre Gardien[cite: 1050].
+* [cite_start]**La Croissance du Kikkō** est la représentation visuelle ultime de vos progrès[cite: 1052].
+* [cite_start]**Le Choc des Sagas** est l'expression sociale de votre savoir, où la carapace de votre Gardien devient une arène de jeu de cartes P2P[cite: 1053].
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
-| <img src="../illustrations/p3_intro.png" alt="Cinematic 3D render, animation movie style. A stream of raw, glowing pollen particles (from Hiro's photo of a plant) flows into the high-tech, glowing interior of the Kikko Hive."> | <img src="../illustrations/p3_action.png" alt="Cinematic 3D render, animation movie style. Inside the Hive, cute Worker Bees process the pollen while the AI Queen orchestrates. The Bourdon zips out of the Hive, holding a glistening drop of golden 'Informative Honey'."> | <img src="../illustrations/p3_conclusion.png" alt="Cinematic 3D render, animation movie style. The Bourdon playfully offers the drop of honey to Hiro's Kikkō Guardian, which happily eats it. As it does, a hexagonal pattern on its shell glows, signifying it has assimilated the new knowledge and grown a little stronger."> |
-| **The Raw Material:** The user's captured pollen arrives in the Hive to be processed. | **The Artisans' Work:** The AI companions work together, in partnership with the user, to forge raw pollen into "Informative Honey." | **Nourishing the Saga:** The finished honey is fed to the Kikkō Guardian, which assimilates the knowledge and grows. |
+|
+<img src="../illustrations/p4_intro.png" alt="Cinematic 3D render, animation movie style. A young, small Kikkō Guardian is shown, its shell simple with only a few glowing hexagonal patterns. It looks up expectantly, ready for its next meal of honey."> |
+<img src="../illustrations/p4_action.png" alt="Cinematic 3D render, animation movie style. Hiro completes a quest. His Guardian eats a drop of honey, and a new, beautiful, intricate hexagonal pattern materializes on its shell with a burst of light and sound."> |
+<img src="../illustrations/p4_conclusion.png" alt="Cinematic 3D render, animation movie style. Two large, mature Kikkō Guardians, their shells covered in complex glowing patterns, face off as their shells transform into a hexagonal game board, ready for a 'Saga Clash' with matching decks."> |
+| [cite_start]**La Toile Vierge :** La carapace du Gardien est une toile, représentant le potentiel de savoir de l'utilisateur[cite: 1057]. |
+[cite_start]**L'Instant de Croissance :** Chaque morceau de Miel forgé contribue directement à l'évolution visible du Gardien[cite: 1058]. | [cite_start]**Le Chef-d'œuvre :** Avec le temps, le Gardien devient un chef-d'œuvre puissant et unique, prêt à tester son savoir dans l'Arène[cite: 1059]. |
 
-### **Founding Principle #4: Gamification is a Language of Growth and Battle**
+### **Principe Fondamental #5 : Votre Savoir Vous Appartient. Point.**
 
-Game mechanics are the intuitive language of Kikko.
-
-* **Quests** are invitations to find new "pollen" to feed your Guardian.
-* **Badges** and **Points** celebrate your foraging achievements.
-* **The Kikkō's Growth** is the ultimate visual representation of your progress.
-* **The Saga Clash** is the social expression of your knowledge, where your Guardian's shell becomes a battle arena for a friendly, P2P card game using themed decks.
-
-| Introduction | Action | Conclusion |
-| :---: | :---: | :---: |
-| <img src="../illustrations/p4_intro.png" alt="Cinematic 3D render, animation movie style. A young, small Kikkō Guardian is shown, its shell simple with only a few glowing hexagonal patterns. It looks up expectantly, ready for its next meal of honey."> | <img src="../illustrations/p4_action.png" alt="Cinematic 3D render, animation movie style. Hiro completes a quest. His Guardian eats a drop of honey, and a new, beautiful, intricate hexagonal pattern materializes on its shell with a burst of light and sound."> | <img src="../illustrations/p4_conclusion.png" alt="Cinematic 3D render, animation movie style. Two large, mature Kikkō Guardians, their shells covered in complex glowing patterns, face off as their shells transform into a hexagonal game board, ready for a 'Saga Clash' with matching decks."> |
-| **The Blank Canvas:** The Guardian's shell is a canvas, representing the user's potential for knowledge. | **The Moment of Growth:** Each piece of forged honey contributes directly to the Guardian's visible evolution. | **The Masterpiece:** Over time, the Guardian becomes a powerful and unique masterpiece, ready to test its knowledge in the Arena. |
-
-### **Founding Principle #5: Your Knowledge Belongs to You. Period.**
-
-This is the central promise, embodied by the symbiosis of the Hive and the Guardian.
-
-1.  **100% On-Device:** Your Hive, your Guardian, and your entire saga reside **only and exclusively on your device**.
-2.  **Radical Transparency:** Every drop of honey has a **"Thread of Provenance"**. Hive-forged honey has a detailed log file containing the prompts, parameters, and raw responses of every AI inference, making it **verifiably true via Inference Reproduction**. Hornet honey has its HTML source traced. You always know what your Guardian is eating.
-3.  **Sovereign Sharing:** The "Saga Clash" is a **peer-to-peer** exchange. You gift knowledge directly to your friends, enriching each other's Guardians.
+C'est notre promesse centrale, incarnée par l'architecture de la Ruche.
+1.  [cite_start]**100% Embarqué :** Votre Ruche, votre Gardien, et toute votre saga résident **uniquement sur votre appareil**[cite: 1062].
+2.  **Transparence Radicale :** Chaque goutte de Miel possède un **"Fil de Provenance"**. [cite_start]Le Miel forgé dans la Ruche a un journal de bord complet (`provenance.json`) contenant les prompts, les paramètres et les réponses brutes de chaque inférence IA, rendant cette connaissance **vérifiable via la Reproduction d'Inférence**[cite: 1064, 969].
+3.  **Partage Souverain :** Le "Choc des Sagas" est un échange **peer-to-peer**. [cite_start]Vous offrez du savoir directement à vos amis, enrichissant la saga de chacun[cite: 1067].
 
 | Introduction | Action | Conclusion |
-| :---: | :---: | :---: |
-| <img src="../illustrations/p5_intro.png" alt="Cinematic 3D render, animation movie style. A glowing Kikkō Guardian is shown curled up inside a beautiful, crystalline, and sealed vault, symbolizing the privacy and security of the user's on-device saga."> | <img src="../illustrations/p5_action.png" alt="Cinematic 3D render, animation movie style. A detailed view of a 'Seal of Trust' on a holographic card. The seal is a complex, beautiful engraving of light, combining hexagonal patterns from both a honeycomb and a turtle's shell, guaranteeing its reproducible authenticity."> | <img src="../illustrations/p5_conclusion.png" alt="Cinematic 3D render, animation movie style. Two Kikkō Guardians are shown side-by-side. A set of 4 holographic cards flies from one Guardian to the other, demonstrating a secure, complete, and decentralized exchange of knowledge after a battle."> |
-| **The Private Vault:** The user's saga is securely stored within their own personal, on-device ecosystem. | **The Unbreakable Seal:** Each piece of knowledge is stamped with a verifiable seal of trust and reproducible provenance. | **The Sovereign Gift:** After a battle, knowledge is shared directly and securely, ensuring every player's saga is enriched. |
+|
+:---: | :---: | :---: |
+| <img src="../illustrations/p5_intro.png" alt="Cinematic 3D render, animation movie style. A glowing Kikkō Guardian is shown curled up inside a beautiful, crystalline, and sealed vault, symbolizing the privacy and security of the user's on-device saga."> |
+<img src="../illustrations/p5_action.png" alt="Cinematic 3D render, animation movie style. A detailed view of a 'Seal of Trust' on a holographic card. The seal is a complex, beautiful engraving of light, combining hexagonal patterns from both a honeycomb and a turtle's shell, guaranteeing its reproducible authenticity."> |
+<img src="../illustrations/p5_conclusion.png" alt="Cinematic 3D render, animation movie style. Two Kikkō Guardians are shown side-by-side. A set of 4 holographic cards flies from one Guardian to the other, demonstrating a secure, complete, and decentralized exchange of knowledge after a battle."> |
+| [cite_start]**Le Coffre-Fort Privé :** La saga de l'utilisateur est stockée en toute sécurité au sein de son propre écosystème personnel et embarqué[cite: 1071]. |
+[cite_start]**Le Sceau Inviolable :** Chaque morceau de savoir est estampillé d'un sceau de confiance vérifiable et d'une provenance reproductible[cite: 1072]. | [cite_start]**Le Don Souverain :** Après un combat, le savoir est partagé directement et en toute sécurité, assurant que la saga de chaque joueur est enrichie[cite: 1073]. |
 
-**Conclusion:**
-`Kikko's Saga Forge` is not just an app. It is a living world. A step towards a future where technology serves our most intimate human need: to build, understand, and share our life's story. A future where our memory is a trusted companion we can grow with, and our knowledge is a source of joy and connection.
+**Conclusion :**
+`Kikko's Saga Forge` n'est pas juste une application. [cite_start]C'est un monde vivant[cite: 1075]. [cite_start]C'est notre proposition pour un futur où la technologie sert notre besoin le plus humain : construire, comprendre et partager l'histoire de notre vie[cite: 1076]. [cite_start]Un futur où notre mémoire est un compagnon de confiance avec lequel nous grandissons[cite: 1077].
