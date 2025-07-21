@@ -59,10 +59,10 @@ def consolidate_android_project(project_path, output_file):
 # --- Point d'entrée du script ---
 if __name__ == "__main__":
     # Le chemin de votre projet sur votre Mac
-    project_root_path = "/Users/kurodohenroonsen/Documents/Kikko-Saga-Forge/Android/src"
+    project_root_path = "/Users/kurodohenroonsen/Downloads/vosk-android-demo-master"
     
     # Nom du fichier de sortie
-    output_filename = "project_kikko_based_on_galleryedge_context.txt"
+    output_filename = "project_vosk_context.txt"
 
     if os.path.isdir(project_root_path):
         consolidate_android_project(project_root_path, output_filename)

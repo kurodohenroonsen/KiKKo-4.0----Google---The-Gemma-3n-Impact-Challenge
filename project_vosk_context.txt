@@ -1,0 +1,268 @@
+
+
+--- START OF FILE .gitattributes ---
+
+# Openfst doesn't like CR+LF
+
+words.txt -crlf
+
+
+--- END OF FILE .gitattributes ---
+
+
+--- START OF FILE app/build.gradle ---
+
+apply plugin: 'com.android.application'
+
+android {
+    namespace "org.vosk.demo"
+    compileSdkVersion 33
+    defaultConfig {
+        applicationId "org.vosk.demo"
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.1"
+        ndkVersion = "25.2.9519653"
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86_64', 'x86'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'net.java.dev.jna:jna:5.13.0@aar'
+    implementation 'com.alphacephei:vosk-android:0.3.47@aar'
+    implementation project(':models')
+}
+
+
+--- END OF FILE app/build.gradle ---
+
+
+--- START OF FILE app/proguard-rules.pro ---
+
+-keep class com.sun.jna.* { *; }
+-keepclassmembers class * extends com.sun.jna.* { public *; }
+
+
+--- END OF FILE app/proguard-rules.pro ---
+
+
+--- START OF FILE app/src/main/AndroidManifest.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        tools:targetApi="s">
+        <activity
+            android:name="VoskActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
+
+--- END OF FILE app/src/main/AndroidManifest.xml ---
+
+
+--- START OF FILE app/src/main/res/layout/main.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+    <Button
+        android:id="@+id/recognize_file"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/recognize_file"/>
+
+    <Button
+        android:id="@+id/recognize_mic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/recognize_microphone"/>
+
+    <ToggleButton
+        android:id="@+id/pause"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOff="@string/pause"
+        android:textOn="@string/continueRecognition"/>
+
+    <TextView
+        android:id="@+id/result_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:scrollbars="vertical"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</LinearLayout>
+
+
+--- END OF FILE app/src/main/res/layout/main.xml ---
+
+
+--- START OF FILE app/src/main/res/values/strings.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Vosk Demo</string>
+    <string name="recognize_file">Recognize File</string>
+    <string name="recognize_microphone">Recognize Microphone</string>
+    <string name="stop_microphone">Stop Microphone</string>
+    <string name="preparing">Preparing the recognizer\n</string>
+    <string name="ready">Ready\n</string>
+    <string name="failed">Failed to init recognizer %s\n</string>
+    <string name="starting">Starting\n</string>
+    <string name="say_something">Say something\n</string>
+    <string name="stop_file">Stop File</string>
+    <string name="pause">Pause</string>
+    <string name="continueRecognition">Continue</string>
+
+</resources>
+
+
+--- END OF FILE app/src/main/res/values/strings.xml ---
+
+
+--- START OF FILE app/src/main/res/xml/data_extraction_rules.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Sample data extraction rules file; uncomment and customize as necessary.
+   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
+   for details.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <!--
+        TODO: Use <include> and <exclude> to control what is backed up.
+        The domain can be file, database, sharedpref, external or root.
+        Examples:
+
+        <include domain="file" path="file_to_include"/>
+        <exclude domain="file" path="file_to_exclude"/>
+        <include domain="file" path="include_folder"/>
+        <exclude domain="file" path="include_folder/file_to_exclude"/>
+        <exclude domain="file" path="exclude_folder"/>
+        <include domain="file" path="exclude_folder/file_to_include"/>
+
+        <include domain="sharedpref" path="include_shared_pref1.xml"/>
+        <include domain="database" path="db_name/file_to_include"/>
+        <exclude domain="database" path="db_name/include_folder/file_to_exclude"/>
+        <include domain="external" path="file_to_include"/>
+        <exclude domain="external" path="file_to_exclude"/>
+        <include domain="root" path="file_to_include"/>
+        <exclude domain="root" path="file_to_exclude"/>
+        -->
+    </cloud-backup>
+    <!--
+    <device-transfer>
+        <include .../>
+        <exclude .../>
+    </device-transfer>
+    -->
+</data-extraction-rules>
+
+--- END OF FILE app/src/main/res/xml/data_extraction_rules.xml ---
+
+
+--- START OF FILE build.gradle ---
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.1'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+
+--- END OF FILE build.gradle ---
+
+
+--- START OF FILE models/build.gradle ---
+
+apply plugin: 'com.android.library'
+
+android {
+    namespace "org.vosk.models"
+    compileSdkVersion 33
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+    }
+    buildFeatures {
+        buildConfig = false
+    }
+    sourceSets {
+        main {
+            assets.srcDirs += "$buildDir/generated/assets"
+        }
+    }
+}
+
+tasks.register('genUUID') {
+    def uuid = UUID.randomUUID().toString()
+    def odir = file("$buildDir/generated/assets/model-en-us")
+    def ofile = file("$odir/uuid")
+    doLast {
+        mkdir odir
+        ofile.text = uuid
+    }
+}
+
+preBuild.dependsOn(genUUID)
+
+
+--- END OF FILE models/build.gradle ---
+
+
+--- START OF FILE settings.gradle ---
+
+include ':models', ':app'
+
+
+--- END OF FILE settings.gradle ---

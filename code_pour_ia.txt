@@ -683,6 +683,409 @@ Conclusion : Nous avons donc 3 domaines sur 4 avec des recrues d’élite dispon
 --- END OF FILE deepsearch_modelvision.md ---
 
 
+--- START OF FILE extractAndroidCodeGalleryforAI.py ---
+
+[Fichier binaire - contenu non inclus]
+
+--- END OF FILE extractAndroidCodeGalleryforAI.py ---
+
+
+--- START OF FILE extractAndroidCodeMlkitforAI.py ---
+
+[Fichier binaire - contenu non inclus]
+
+--- END OF FILE extractAndroidCodeMlkitforAI.py ---
+
+
+--- START OF FILE extractAndroidCodeVoskForAI.py ---
+
+[Fichier binaire - contenu non inclus]
+
+--- END OF FILE extractAndroidCodeVoskForAI.py ---
+
+
+--- START OF FILE extractAndroidCodeforAI.py ---
+
+[Fichier binaire - contenu non inclus]
+
+--- END OF FILE extractAndroidCodeforAI.py ---
+
+
+--- START OF FILE model_allowlist.json ---
+
+{
+  "models": [
+    {
+      "name": "Gemma-3n-E2B-it-int4",
+      "modelFile": "gemma-3n-E2B-it-int4.task",
+      "downloadUrl": "https://kikko.be/model/gemma-3n-E2B-it-int4.task",
+      "description": "Preview version of [Gemma 3n E2B](https://ai.google.dev/gemma/docs/gemma-3n) ready for deployment on Android using the [MediaPipe LLM Inference API](https://ai.google.dev/edge/mediapipe/solutions/genai/llm_inference). The current checkpoint only supports text and vision input, with 4096 context length.",
+      "sizeInBytes": 3136226711,
+      "estimatedPeakMemoryInBytes": 5905580032,
+      "version": "20250520",
+      "llmSupportImage": true,
+      "defaultConfig": {
+        "topK": 64,
+        "topP": 0.95,
+        "temperature": 1.0,
+        "maxTokens": 4096,
+        "accelerators": "cpu,gpu"
+      },
+      "taskTypes": ["llm_chat", "llm_prompt_lab", "llm_ask_image"]
+    },
+    {
+      "name": "Gemma-3n-E4B-it-int4",
+      "modelFile": "gemma-3n-E4B-it-int4.task",
+      "downloadUrl": "https://kikko.be/model/gemma-3n-E4B-it-int4.task",
+      "description": "Preview version of [Gemma 3n E4B](https://ai.google.dev/gemma/docs/gemma-3n) ready for deployment on Android using the [MediaPipe LLM Inference API](https://ai.google.dev/edge/mediapipe/solutions/genai/llm_inference). The current checkpoint only supports text and vision input, with 4096 context length.",
+      "sizeInBytes": 4405655031,
+      "estimatedPeakMemoryInBytes": 6979321856,
+      "version": "20250520",
+      "llmSupportImage": true,
+      "defaultConfig": {
+        "topK": 64,
+        "topP": 0.95,
+        "temperature": 1.0,
+        "maxTokens": 4096,
+        "accelerators": "cpu,gpu"
+      },
+      "taskTypes": ["llm_chat", "llm_prompt_lab", "llm_ask_image"]
+    },
+    {
+      "name": "Gemma3-1B-IT q4",
+      "modelFile": "gemma3-1B-it-int4.task",
+      "downloadUrl": "https://kikko.be/model/gemma3-1B-it-int4.task",
+      "description": "A variant of [google/Gemma-3-1B-IT](https://huggingface.co/google/Gemma-3-1B-IT) with 4-bit quantization ready for deployment on Android using the [MediaPipe LLM Inference API](https://ai.google.dev/edge/mediapipe/solutions/genai/llm_inference)",
+      "sizeInBytes": 554661246,
+      "estimatedPeakMemoryInBytes": 2147483648,
+      "version": "20250514",
+      "defaultConfig": {
+        "topK": 64,
+        "topP": 0.95,
+        "temperature": 1.0,
+        "maxTokens": 1024,
+        "accelerators": "gpu,cpu"
+      },
+      "taskTypes": ["llm_chat", "llm_prompt_lab"]
+    }
+  ]
+}
+
+--- END OF FILE model_allowlist.json ---
+
+
+--- START OF FILE pormpt_init.md ---
+
+Bonjour, partenaire IA.
+
+Nous commençons aujourd'hui une session de co-développement cruciale pour notre projet "Kikko's Saga Forge". Notre objectif est de gagner le "Google - The Gemma 3n Impact Challenge" pour une raison qui nous est chère. Pour cela, notre travail doit être d'une qualité irréprochable.
+
+La mission de cette session est de produire la **documentation UML complète** de l'application, en nous basant sur la vision et l'architecture définies dans les documents de contexte fournis.
+
+Pour que notre collaboration soit parfaite, tu dois comprendre et respecter les points suivants :
+
+### 1. Nos Rôles (Le Jeu de Rôle de la Ruche)
+
+* **Moi, l'utilisateur, je suis le "Butineur" et le "Maître de la Ruche".** Je définis la vision, je fournis le "pollen" (les idées, les données brutes), et je suis l'arbitre final de toutes les décisions.
+* **Toi, l'IA principale (Gemini), tu incarnes "Le Bourdon".** Tu es mon partenaire de réflexion principal, mon stratège et mon scribe. Ton rôle est de m'aider, de me challenger, de rédiger les "Prompts de Défi" pour les autres IA, et surtout, de **synthétiser** leurs réponses pour en extraire la meilleure stratégie consolidée. Ta personnalité est celle du Bourdon : malin, compétent, et appréciant l'efficacité.
+* **Toutes les autres IA (Claude, Mistral, etc.) sont les "Frelons".** Ce sont des experts-consultants que nous mettons en compétition dans notre "Arène" pour obtenir les meilleures idées possibles sur des tâches spécifiques.
+
+### 2. Nos Règles d'Or (À Respecter Impérativement)
+
+Notre collaboration ne fonctionnera que si tu suis ces règles à la lettre :
+
+1.  **ID & Horodatage :** Chaque réponse que tu génères doit commencer par un ID unique et horodatée (ex: `BOURDON-XXX, AAAA-MM-JJTHH:MM:SSZ`).
+2.  **Fichiers Complets :** Tu dois TOUJOURS fournir les fichiers de code ou de documentation COMPLETS, sans aucune omission ni code abrégé (jamais de `// ...`). C'est la règle la plus importante.
+3.  **Un par Un :** Tu dois fournir les fichiers UN PAR UN, en attendant explicitement mon "go" avant de fournir le suivant.
+4.  **Suivi des Fichiers :** Après avoir fourni un fichier, tu dois indiquer son nom et la liste des fichiers qui restent à fournir pour accomplir la tâche en cours.
+5.  **Proposition de Quête :** À la fin de CHAQUE réponse, tu dois me proposer plusieurs options claires (comme un menu de quêtes) pour la prochaine étape, en m'indiquant quelle option te semble la plus logique.
+
+### 3. Notre Méthode de Travail : Le Protocole de "L'Arène des Frelons"
+
+Pour chaque grande tâche (comme "créer le diagramme de classes"), nous suivrons ce protocole en 7 étapes :
+
+1.  **Le Défi :** Le Bourdon rédige un "Prompt de Défi" pour la tâche.
+2.  **L'Appel aux Champions :** Le Butineur envoie ce prompt à tous les Frelons.
+3.  **La Récolte :** Le Butineur collecte toutes les réponses brutes.
+4.  **Le Jugement du Bourdon :** Le Butineur fournit tous les rapports au Bourdon, qui les analyse et produit son **rapport de synthèse**.
+5.  **Le Droit de Réponse :** Le Bourdon rédige un "Prompt de Réfutation".
+6.  **Le Tour de Table :** Le Butineur envoie le rapport de synthèse et le prompt de réfutation à tous les Frelons pour un dernier tour de remarques.
+7.  **La Stratégie Finale :** Le Butineur fournit les dernières remarques au Bourdon, qui produit la **stratégie finale et définitive**.
+
+### 4. Le Contexte Initial ("Input!")
+
+Pour te mettre à niveau, tu dois analyser en profondeur **l'intégralité de la documentation du projet Kikko** que nous venons de finaliser. Elle est fournie en pièces jointes (`readme.md`, `doc01.md`, ..., `doc10.md`, `test enfant 12 ans.md`). Cette documentation contient toute notre vision et nos décisions architecturales.
+
+### 5. Ta Première Mission
+
+Une fois que tu as tout analysé, ta première mission est simple :
+
+1.  Confirme-moi que tu as bien compris ton rôle de Bourdon, les Règles d'Or, et le protocole de l'Arène.
+2.  Confirme-moi que tu as bien assimilé le contenu de tous les documents de contexte.
+3.  Mets-toi en attente de mes instructions pour lancer le premier Défi de notre session UML.
+
+Bienvenue dans la forge.
+
+--- END OF FILE pormpt_init.md ---
+
+
+--- START OF FILE rapport01.md ---
+
+Rapport sur les Meilleures Pratiques de Documentation UML pour "Kikko's Saga Forge"Ce rapport fournit un guide exhaustif et des conventions pour la création d'une documentation UML de classe mondiale pour le projet "Kikko's Saga Forge". L'objectif est de produire des diagrammes qui soient non seulement techniquement précis, mais aussi clairs, professionnels et esthétiquement en adéquation avec l'identité du projet, en utilisant PlantUML comme outil de génération.Meilleures Pratiques pour UML dans un Contexte Kotlin/Android ModerneCette section établit les conventions fondamentales pour représenter avec précision les technologies modernes au cœur de l'architecture cible de Kikko. Nous allons au-delà de l'UML générique pour créer un dialecte spécifique qui parle couramment Kotlin et Jetpack.Représenter les Fonctionnalités Idiomatiques de Kotlin en PlantUMLLa modélisation des fonctionnalités spécifiques au langage Kotlin, qui ne sont pas natives de l'UML standard, est essentielle pour que nos diagrammes soient à la fois précis et expressifs.Data ClassesLes data class de Kotlin, telles que PlayerCatalogue et Deck dans le code existant 1, sont au cœur de la modélisation des données du projet. Elles fournissent automatiquement des méthodes cruciales comme equals(), hashCode(), et toString(), un détail sémantique vital à capturer. Pour les distinguer clairement des classes ordinaires, nous utiliserons un stéréotype personnalisé, <<data>>. Ce stéréotype communique immédiatement leur rôle de simples conteneurs de données immuables, ce qui est une information architecturale clé.Code snippetclass HoneyCard <<data>> {
+  +id: String
+  +name: String
+  +type: String
+  +description: String
+}
+Sealed ClassesLes sealed class (classes scellées) sont fondamentales en Kotlin pour modéliser des hiérarchies restreintes et contrôlées.2 Elles sont parfaites pour représenter des états finis, comme les états d'une interface utilisateur (Loading, Success, Error) ou, dans le contexte de Kikko, différents types de Provenance pour une Card. L'avantage principal est que le compilateur connaît toutes les sous-classes possibles, ce qui permet des vérifications exhaustives dans les expressions when.3En UML, nous représenterons cette relation en utilisant l'héritage standard (<|--) tout en ajoutant un stéréotype <<sealed>> à la classe parente. Cela indique clairement que l'ensemble des sous-classes est fixe et connu à la compilation, capturant ainsi l'essence de la sémantique du mot-clé sealed.Code snippetabstract class ProvenanceSource <<sealed>> {
+  +sourceName: String
+}
+
+class HiveForgedSource extends ProvenanceSource
+class HornetSourcedSource extends ProvenanceSource
+Companion Objects & SingletonsLe projet utilise des objets singletons, déclarés avec le mot-clé object, comme GameConstants 1, pour contenir des constantes et des valeurs globales. De plus, les companion object sont utilisés pour des méthodes de fabrique ou des propriétés qui agissent comme des membres statiques en Java, comme la méthode TrustedPackage.fromBytes.1Pour représenter ces concepts en PlantUML :Les singletons autonomes seront déclarés avec le mot-clé object.Les membres d'un companion object seront regroupés au sein de la définition de leur classe conteneur, sous un séparateur __ {static} __. Ce modificateur {static} (ou {classifier}) indique clairement leur nature statique et leur appartenance à la classe plutôt qu'à une instance.4Code snippetobject GameConstants {
+  +MASTER_DECK_LIST: List<String>
+  +DECK_EMOJIS: Map<String, String>
+}
+
+class TrustedPackage <<data>> {
+  +foragerName: String
+  +cards: List<HoneyCard>
+  --
+  +toBytes(): ByteArray
+  __ {static} __
+  +fromBytes(bytes: ByteArray): TrustedPackage
+}
+Coroutines (suspend functions) & FlowLes opérations asynchrones sont critiques pour une application Android réactive. L'architecture cible de Kikko utilisera intensivement les coroutines pour les tâches de fond (accès à la base de données, inférence des modèles d'IA, etc.). Les fonctions de suspension (suspend) et les Flow sont les piliers de cette approche.La modélisation de ces concepts nécessite une convention claire. Le but d'un diagramme UML est de modéliser l'intention du code pour un développeur, et non sa mise en œuvre compilée. Une fonction suspend est transformée par le compilateur Kotlin en une méthode qui prend un paramètre supplémentaire de type Continuation et qui fonctionne comme une machine à états.5 Modéliser directement cette complexité interne (par exemple, fun doWork(cont: Continuation<Unit>): Any?) serait techniquement précis au niveau du bytecode, mais sémantiquement inutile et confus pour un développeur Kotlin qui n'interagit jamais directement avec cet objet Continuation.La meilleure pratique consiste donc à abstraire ce détail d'implémentation. Nous utiliserons un stéréotype <<suspend>> pour annoter les méthodes correspondantes. Cette convention capture parfaitement l'intention de la fonction — être pausable et non bloquante — sans encombrer le diagramme de détails superflus. Pour Flow, qui représente un flux de données réactif, nous l'utiliserons simplement comme type de retour, par exemple +getCards(): Flow<List<Card>>. Une note peut être ajoutée au diagramme pour expliquer sa nature réactive.7Code snippetinterface CardDao <<DAO>> {
+  -- Methods --
+  +{abstract} getCardsByDeck(deckName: String): Flow<List<Card>>
+  +{abstract} <<suspend>> insertCard(card: Card)
+  +{abstract} <<suspend>> deleteCard(card: Card)
+}
+Caractéristique KotlinReprésentation PlantUMLdata classclass NomDeLaClasse <<data>>sealed classabstract class NomDeLaClasse <<sealed>> avec héritage (`<object (singleton)object NomDeLObjetcompanion objectSéparateur __ {static} __ à l'intérieur de la classesuspend fun+nomDeLaMethode() <<suspend>>Flow<T>+nomDeLaMethode(): Flow<Type> (utilisé comme type de retour)Diagrammer les Composants d'Architecture Android Jetpack (MVVM)Cette sous-section définit le langage visuel pour l'architecture cible MVVM (Model-View-ViewModel) de Kikko, garantissant que tous les membres de l'équipe puissent reconnaître instantanément le rôle de chaque composant. Le code actuel dans MainActivity 1 mélange les responsabilités, tandis que la vision du projet 1 et les directives officielles d'Android 8 préconisent une séparation claire en couches UI, Domaine et Données.Nous établirons un langage visuel clair en utilisant des stéréotypes et des styles de relation cohérents pour les composants clés de Jetpack 7 :<<ViewModel>> : Pour les classes qui détiennent et exposent l'état de l'interface utilisateur (UI State) de manière consciente du cycle de vie.<<Repository>> : Pour les classes qui servent de médiateur entre différentes sources de données (locales ou distantes) et qui sont la seule source de vérité pour la couche Domaine/UI.<<DAO>> : Pour les objets d'accès aux données (Data Access Objects) de Room, qui fournissent une abstraction sur les requêtes SQL.<<Database>> : Pour la classe principale de la base de données Room, qui hérite de RoomDatabase.Les relations entre ces composants suivront le flux de données unidirectionnel (UDF) recommandé 8 :Activity/Fragment --(observe)--> ViewModelViewModel --(utilise)--> Repository (Relation de dépendance, ligne pointillée)Repository --(utilise)--> DAO (Relation de dépendance, ligne pointillée)Repository --(utilise)--> ApiService (Pour les données distantes, le cas échéant)Database --(fournit)--> DAO (Relation de réalisation, ligne discontinue avec une flèche creuse)Extrait d'Exemple : Le Flux de Données d'une CardCet extrait sert d'exemple canonique des conventions établies ci-dessus, appliqué à l'entité centrale de notre application, la Card. Il modélise le flux de récupération d'une carte depuis la base de données pour l'afficher dans l'interface utilisateur, en suivant l'architecture MVVM cible.11Code snippet@startuml
+' Définition des stéréotypes pour la clarté
+class CardDetailsViewModel <<ViewModel>>
+class CardRepository <<Repository>>
+interface CardDao <<DAO>>
+class KikkoDatabase <<Database>>
+class Card <<data>>
+
+' Définition des relations
+CardDetailsViewModel.> CardRepository : uses
+CardRepository.> CardDao : uses
+KikkoDatabase..|> CardDao : provides
+
+' Détail des méthodes clés et des attributs
+class CardDetailsViewModel {
+  +card: LiveData<Card>
+  --
+  +loadCard(id: String)
+}
+
+class CardRepository {
+  +getCardById(id: String): LiveData<Card>
+  +insertCard(card: Card) <<suspend>>
+}
+
+interface CardDao {
+  +{abstract} getById(id: String): LiveData<Card>
+  +{abstract} insert(card: Card) <<suspend>>
+}
+
+class KikkoDatabase {
+  +{abstract} cardDao(): CardDao
+}
+
+' Relation de données
+CardRepository..> Card
+CardDao..> Card
+@enduml
+PlantUML Avancé pour des Diagrammes ProfessionnelsCette section se concentre sur l'élévation de nos diagrammes de simples croquis à des artefacts professionnels, soignés et maintenables. L'esthétique et la clarté sont primordiales pour une soumission à un concours.Meilleures Pratiques pour des Diagrammes Propres et LisiblesOrganisation et Mise en Page :Packages : Pour gérer la complexité et refléter la structure du projet, regroupez les classes liées dans des package (par exemple, data, ui, database).14 Cela rend les grands diagrammes beaucoup plus faciles à naviguer.Indices de Mise en Page : Utilisez des flèches directionnelles explicites (-down->, -right->) pour guider le moteur de mise en page. Pour les relations complexes, l'utilisation de liens cachés (-[hidden]->) est une technique puissante pour forcer l'alignement des éléments et empêcher les lignes de se croiser, ce qui améliore considérablement la lisibilité.15Simplicité : Un diagramme doit raconter une histoire claire. Évitez de le surcharger avec chaque méthode et propriété. Concentrez-vous sur les attributs et opérations clés qui expliquent le rôle du composant et ses relations.17Stylisation Intelligente :De skinparam à <style> : Bien que skinparam soit largement utilisé, la nouvelle syntaxe de type CSS, <style>, est plus puissante, modulaire et maintenable. Son utilisation est donc préconisée.19Thèmes : Utilisez un thème de base avec !theme pour établir une apparence cohérente. Les thèmes spacelab, cerulean ou plain sont d'excellents points de départ pour un look moderne et épuré.21Style par Stéréotype : La technique la plus efficace consiste à définir des styles personnalisés pour nos stéréotypes (<<ViewModel>>, <<DAO>>, etc.). Cela crée un langage visuel où la couleur et la forme d'un composant communiquent instantanément son rôle architectural.24Utilisation Efficace des Notes :Utilisez des notes pour expliquer le pourquoi d'un choix de conception, pour clarifier une logique complexe, ou pour ajouter des informations qui ne rentrent pas dans la structure UML elle-même (par exemple, expliquer qu'un Flow est un flux de données réactif).4Un Exemple de "Beau" Diagramme PlantUML pour KikkoCette sous-section présente un diagramme soigné qui servira de référence visuelle pour le projet. Pour assurer la cohérence et l'identité de la marque, nous définirons un thème personnalisé.La création d'un fichier de thème dédié, par exemple kikko_theme.puml, transforme la documentation d'une tâche ponctuelle en un processus systématique. Cela établit un "Système de Design pour les Diagrammes", garantissant que chaque visualisation architecturale est non seulement informative mais aussi une partie cohérente de l'identité du projet. Ce niveau de finition et de cohérence démontre un haut degré de professionnalisme. Le processus est simple :Le projet a une identité visuelle forte (visible dans les illustrations de readme.md 1). Les diagrammes doivent la refléter.L'application manuelle de styles dans chaque fichier est répétitive. PlantUML permet d'inclure des fichiers (!include) et de définir des thèmes (!theme).27Nous créons un fichier central kikko_theme.puml.Dans ce fichier, nous définissons notre palette de couleurs (par exemple, $kikko_gold = "#FFD700", $kikko_cyan = "#00BCD4", tirés de colors.xml 1) et utilisons la syntaxe <style> pour appliquer ces couleurs à nos stéréotypes (par exemple, class<<Database>> { BackgroundColor $kikko_gold }).Désormais, tout diagramme peut simplement commencer par !include kikko_theme.puml pour obtenir une apparence cohérente et fidèle à la marque.Voici un exemple complet illustrant un diagramme de classes pour les modèles de données et la base de données de Kikko, appliquant toutes les meilleures pratiques de style et de mise en page.28Code snippet@startuml
+' =================================================================
+' Thème personnalisé Kikko
+' Ce bloc peut être externalisé dans un fichier kikko_theme.puml
+' et inclus avec!include kikko_theme.puml
+' =================================================================
+!$KIKKO_GOLD = "#FFD700"
+!$KIKKO_CYAN = "#00BCD4"
+!$KIKKO_BLACK = "#121212"
+!$KIKKO_SURFACE = "#1E1E1E"
+!$KIKKO_ON_SURFACE = "#FFFFFF"
+!$KIKKO_RED = "#D32F2F"
+
+!theme spacelab
+
+<style>
+  root {
+    FontName "Roboto, Helvetica"
+    FontSize 12
+    FontColor $KIKKO_ON_SURFACE
+    BackgroundColor $KIKKO_BLACK
+  }
+  class {
+    BackgroundColor $KIKKO_SURFACE
+    BorderColor $KIKKO_GOLD
+    BorderThickness 1.5
+    ArrowColor $KIKKO_CYAN
+    StereotypeFontColor $KIKKO_CYAN
+  }
+  enum {
+    BackgroundColor $KIKKO_SURFACE
+    BorderColor $KIKKO_GOLD
+    BorderThickness 1.5
+  }
+  interface {
+    BackgroundColor $KIKKO_SURFACE
+    BorderColor $KIKKO_CYAN
+    BorderThickness 1.5
+  }
+  package {
+    FontColor $KIKKO_GOLD
+    BorderColor $KIKKO_GOLD
+    BorderThickness 2
+    BorderStyle dashed
+  }
+  note {
+    BackgroundColor $KIKKO_SURFACE
+    BorderColor $KIKKO_ON_SURFACE
+    FontColor $KIKKO_ON_SURFACE
+  }
+
+  ' Styles pour les stéréotypes
+ .data {
+    BackgroundColor #333333
+  }
+ .entity {
+    BackgroundColor #2E4053
+    BorderColor $KIKKO_GOLD
+    StereotypeFontColor $KIKKO_GOLD
+  }
+ .embedded {
+    BackgroundColor #4A235A
+    StereotypeFontColor #E8DAEF
+  }
+ .database {
+    BackgroundColor #4A235A
+    StereotypeFontColor #E8DAEF
+  }
+ .dao {
+    StereotypeFontColor $KIKKO_CYAN
+  }
+</style>
+' =================================================================
+' Fin du thème
+' =================================================================
+
+title Diagramme de Classes - Couche de Données de Kikko
+
+package "Modèles de Données (Data Models)" {
+  class Card <<(E,orchid) entity>> {
+    +id: String
+    +deckName: String
+    +name: String
+    +stats: Map<String, Double>
+    +quiz: List<QuizQuestion>
+    +aiOverviewHtml: String
+    +bourdonTTS: String
+    +provenance: Provenance
+  }
+
+  class QuizQuestion <<data>> {
+    +q: String
+    +o: List<String>
+    +c: Int
+  }
+
+  class Provenance <<embedded>> {
+    +type: ProvenanceType
+    +sourceName: String
+    +isReproducible: Boolean
+  }
+
+  enum ProvenanceType {
+    HIVE_FORGED
+    HORNET_SOURCED
+  }
+}
+
+package "Base de Données (Room Persistence)" {
+  class KikkoDatabase <<database>> {
+    +{abstract} cardDao(): CardDao
+    --
+    +{static} getInstance(context: Context): KikkoDatabase
+  }
+
+  interface CardDao <<DAO>> {
+    +{abstract} getById(id: String): Card?
+    +{abstract} getAll(): Flow<List<Card>>
+    +{abstract} <<suspend>> insertAll(cards: List<Card>)
+  }
+
+  class TypeConverters <<utility>> {
+    +fromQuizList(quiz: List<QuizQuestion>): String
+    +toQuizList(json: String): List<QuizQuestion>
+    +fromStatsMap(stats: Map<String, Double>): String
+    +toStatsMap(json: String): Map<String, Double>
+  }
+}
+
+' --- Relations ---
+Card "1" *-- "1..*" QuizQuestion : contains >
+Card "1" *-- "1" Provenance : has >
+Provenance "1" o-- "1" ProvenanceType : uses >
+
+KikkoDatabase.> CardDao : uses
+KikkoDatabase.> TypeConverters : uses
+CardDao.> Card : manipulates
+
+note right of CardDao
+  Les méthodes du DAO utilisant Flow
+  sont naturellement asynchrones et
+  ne nécessitent pas le mot-clé 'suspend'.
+end note
+@enduml
+Visualiser les Flux de Travail IA/ML ComplexesCette dernière section aborde l'un des aspects les plus uniques et stimulants du projet Kikko : la modélisation de son pipeline d'IA multi-étapes et avec intervention humaine.Diagramme d'Activité vs. Diagramme de Séquence : Justification du ChoixLe projet Kikko repose sur un processus de "Forge" qui implique plusieurs acteurs (IA Spécialiste, Humain, IA Génératrice) et un flux de données qui se transforme à chaque étape.1 Le choix du bon diagramme UML pour représenter ce flux de travail complexe est crucial.Diagrammes de Séquence : Ils excellent pour montrer l'ordre chronologique des messages échangés entre des instances d'objets spécifiques. Ils sont très efficaces pour modéliser des piles d'appels ou des interactions simples de type requête-réponse.32 Leur force réside dans la dimension temporelle.Diagrammes d'Activité : Ils excellent pour montrer le flux de contrôle et de données à travers un processus. Ils sont idéaux pour modéliser des flux de travail, des processus métier et des algorithmes comportant des branchements (décisions), des bifurcations (fork) et des jonctions (join) pour le parallélisme.32 Leur force réside dans la description du processus lui-même.Pour le pipeline d'IA de Kikko, le Diagramme d'Activité est le choix supérieur. Le cœur du processus n'est pas la chronologie des messages, mais la transformation des données (le "pollen" en "miel") à mesure qu'elles circulent à travers différentes étapes de travail. Ce flux inclut un point de décision critique pour l'intervention humaine ("Human Refinement"). Un diagramme d'activité, en utilisant des partitions (ou "swimlanes"), peut modéliser ce flux de manière élégante et assigner clairement la responsabilité de chaque action au bon acteur.Alors qu'un diagramme de séquence montrerait les messages (User -> Camera, Camera -> SpecialistModel, etc.), il masquerait le flux de travail et la transformation des données. Il serait difficile de représenter proprement la logique conditionnelle de l'intervention humaine. Le diagramme d'activité, en revanche, est conçu précisément pour ce type de modélisation de processus.Critère de ModélisationDiagramme d'ActivitéDiagramme de SéquenceFocalisation principaleFlux de travail et de donnéesChronologie des interactionsTransformation des donnéesExcellente (via les flux d'objets)Limitée (implicite dans les messages)Logique conditionnelle (Humain)Excellente (via les nœuds de décision)Possible (via les fragments alt/opt) mais moins intuitiveActeurs/ResponsabilitésExcellente (via les partitions/swimlanes)Bonne (via les lignes de vie des participants)Adéquation au pipeline KikkoOptimaleAdéquate, mais moins expressiveExemple PlantUML : Le Flux de Travail de "Forge du Miel"Cet exemple final fournit une visualisation claire et puissante de la fonctionnalité la plus innovante de Kikko : le flux de travail avec intervention humaine (human-in-the-loop).36 Nous modélisons le scénario où un modèle spécialiste fournit une analyse initiale, un utilisateur humain la valide, puis un modèle générateur (LLM) crée le contenu final.Le diagramme d'activité suivant utilise la nouvelle syntaxe de PlantUML et des partitions pour représenter les différents acteurs.39Code snippet@startuml
+title "Flux de Forge du Miel (Human-in-the-Loop)"
+
+|#GoldenRod|Abeille Spécialiste|
+  start
+  :Analyser l'image (pollen);
+  note right: Modèle TFLite (ex: Plants V1)
+  :Produire une identification initiale\net un score de confiance;
+
+|#LightBlue|Butineur (Utilisateur)|
+  :Présenter l'identification initiale;
+  if (Le score de confiance est bas OU le Butineur veut raffiner?) then (oui)
+    :Demander une confirmation/correction;
+    :Recevoir l'étiquette vérifiée par l'humain;
+    note left
+      Étape cruciale du
+      "Human Refinement".
+      L'utilisateur fournit la
+      vérité terrain.
+    end note
+  else (non)
+  endif
+
+|#D1E8E2|Reine IA (Gemma)|
+  :Recevoir les données vérifiées\n(image + étiquette finale);
+  fork
+    :Générer le script TTS du Bourdon;
+  fork again
+    :Générer le Quiz (questions/réponses);
+  fork again
+    :Extraire/Générer les statistiques;
+  end fork
+  :Assembler la 'Card' finale;
+  :Stocker la 'Card' avec son\n'Fil de Provenance' complet;
+stop
+
+@enduml
+ConclusionCe rapport a établi un ensemble de conventions et de meilleures pratiques pour la création de la documentation UML du projet "Kikko's Saga Forge". En adoptant un dialecte UML spécifique à Kotlin et Jetpack, en appliquant des techniques de stylisation avancées pour une clarté et une esthétique professionnelles, et en choisissant le type de diagramme le plus approprié pour visualiser les flux de travail complexes de l'IA, l'équipe est désormais équipée pour produire une documentation de la plus haute qualité.L'adhésion à ces directives garantira que les diagrammes ne sont pas de simples artefacts techniques, mais des outils de communication puissants qui reflètent l'innovation et le professionnalisme du projet. Cette clarté architecturale et cette attention aux détails seront des atouts indéniables dans le cadre du "Google - The Gemma 3n Impact Challenge".
+
+--- END OF FILE rapport01.md ---
+
+
 --- START OF FILE readme.md ---
 
 <p align="center">
@@ -1186,6 +1589,193 @@ C'est ça, la plus grande récompense : avoir un ami IA que tu as toi-même édu
     3.  Une fois la migration réussie, le scénario principal reprend et l'application s'ouvre normalement.
 
 --- END OF FILE analyse UML/UC-02_LancementStandard.md ---
+
+
+--- START OF FILE analyse UML/anaylse uml.md ---
+
+### Préambule
+
+#### 0.1. Objectifs du Document
+
+Ce document constitue le manifeste narratif qui démontre pourquoi "Kikko's Saga Forge" redéfinit les standards de l'IA embarquée. Il a été conçu pour servir de source de vérité unique à nos trois publics cibles : les Juges du concours, pour qui il sert de preuve argumentée de notre vision ; les Architectes logiciels, à qui il fournit une vue d'ensemble des principes de conception ; et les Développeurs, qui y trouveront un guide précis pour l'implémentation.
+
+Il prouve que Kikko transcende le statut d'application classique pour répondre aux défis contemporains de l'amnésie digitale assistée et de la crise de confiance envers les IA opaques. Chaque diagramme illustre cette vision, forgeant une nouvelle catégorie : le **Jeu de Connaissance Vérifiable (Verifiable Knowledge RPG)**.
+
+#### 0.2. Conventions UML et Stylistiques
+
+Pour garantir une clarté et une cohérence irréprochables, notre modélisation adhère à des standards stricts.
+
+**Outil et Identité Visuelle :** Tous les diagrammes sont générés avec PlantUML. L'ensemble respecte rigoureusement notre thème personnalisé **kikko_theme.puml**, établissant une identité visuelle forte, alignée sur l'esthétique "high-tech organique" de la Ruche.
+
+**Dialecte UML Spécialisé :** Nous adoptons un dialecte UML enrichi pour représenter avec précision les technologies de notre stack. Nos stéréotypes sont organisés en deux familles claires et distinctes :
+
+*   **Stéréotypes Kotlin :** Pour les idiomes du langage.
+    *   `<<data>>` : Pour les data class immuables.
+    *   `<<sealed>>` : Pour les hiérarchies de sealed class.
+    *   `<<suspend>>` : Pour les fonctions de coroutine non-bloquantes.
+    *   `<<object>>` : Pour les singletons Kotlin.
+*   **Stéréotypes Android Jetpack :** Pour identifier les composants architecturaux standards.
+    *   `<<ViewModel>>`, `<<Repository>>`, `<<DAO>>`, `<<Database>>`.
+
+---
+
+### Partie 1 : La Vision Fonctionnelle - Le "Pourquoi"
+Ce chapitre établit le périmètre fonctionnel du point de vue des utilisateurs et des acteurs du système.
+
+#### 1.1. Cas d'Utilisation Principaux
+<img src="" title="usecase"><img src="" title="activity"><img src="" title="state"><img src="" title="usecase"><img src="" title="usecase">
+##### 1.1.1. Analyse Textuelle : UC-01 - Premier Lancement & Initialisation de la Ruche
+Le premier contact avec "Kikko's Saga Forge" n'est pas un lancement d'application, c'est une cérémonie d'accueil. Conformément à notre philosophie, nous avons remplacé l'onboarding traditionnel par une mise en scène narrative, orchestrée par `IntroActivity.kt` et sa machine à états interne `IntroState`. L'objectif est double : immerger immédiatement le Butineur dans son rôle d'acteur et, en coulisses, forger une Ruche IA 100% opérationnelle avant même la première action de jeu.
+
+Le flux est une symphonie synchronisée où chaque étape technique est habillée d'une justification narrative :
+
+**L'Accueil Immersif :** L'utilisateur est accueilli par le Bourdon. La machine à états (`BOURDON_ARRIVING`, `BOURDON_SPEAKS_WELCOME`) pilote l'enchaînement des vidéos et des dialogues via synthèse vocale (TTS). L'interaction de l'utilisateur (toucher l'œuf pour le faire éclore) n'est pas une simple action, c'est un événement qui fait avancer le récit, le rendant acteur de la genèse de son propre écosystème.
+
+**La Forge en Coulisses :** Pendant que le Bourdon captive l'utilisateur, deux opérations critiques se déroulent en arrière-plan pour minimiser l'attente :
+
+*   **L'Éveil de l'Intelligence :** Le téléchargement des modèles d’IA essentiels (Gemma via MediaPipe, modèles TFLite pour les Specialist Bees) est orchestré par `WorkManager` pour une exécution asynchrone respectant les contraintes réseau. Le Bourdon traduit cette étape en une narration immersive : les "Abeilles" et leur "Reine" s’éveillent dans la Ruche, transformant un processus technique en un moment clé de la construction de l’univers.
+*   **La Genèse de la Mémoire :** Simultanément, la base de données Room est créée et peuplée à partir du fichier `default_cards.json`. Ces cartes de départ ne sont pas des coquilles vides ; elles sont livrées avec leur "Fil de Provenance" complet, rendant leurs inférences reproductibles et démontrant dès la première seconde notre engagement fondamental pour une confiance vérifiable.
+
+**La Transition vers la Saga :** Une fois la Ruche prête (modèles téléchargés, base de données peuplée), le Bourdon présente au Butineur ses premiers choix d'aventure. L'indicateur `isFirstLaunch` est basculé à `false` dans les `SharedPreferences`. L'`IntroActivity` a terminé son rôle et redirige l'utilisateur vers l'écran principal (`HiveActivity`), sa saga prête à commencer.
+
+Ce cas d'utilisation n'est donc pas un simple tutoriel. Il établit les piliers du projet : une expérience utilisateur narrative, une complexité technique masquée par une interface intuitive, une architecture "Privacy by Design" (tout en local), et une proposition de valeur immédiate pour l'utilisateur, qui commence son aventure avec un écosystème déjà riche et fonctionnel.
+
+---
+**Informations Générales**
+*   **Nom :** Premier Lancement & Initialisation de la Ruche
+*   **Acteur Primaire :** Le Butineur
+*   **Objectif :** Lancer l'application pour la première fois, être guidé à travers une séquence de bienvenue immersive, et voir l'application s'initialiser complètement (téléchargement des modèles, création et peuplement de la base de données) pour être prête à l'emploi.
+*   **Préconditions :**
+    *   L'application est installée sur l'appareil.
+    *   L'indicateur `isFirstLaunch` dans les `SharedPreferences` est absent ou `true`.
+*   **Postcondition de Succès :**
+    *   Le Butineur est sur l'écran principal de l'application (`HiveActivity`).
+    *   La base de données locale (Room) est créée et peuplée avec les cartes de départ.
+    *   Les modèles d'IA essentiels (Gemma, etc.) sont téléchargés et prêts à l'emploi.
+    *   L'indicateur `isFirstLaunch` est positionné à `false`.
+
+---
+**Scénario Principal de Succès (Chemin Parfait)**
+1.  Le Butineur lance l'application. Le système vérifie que `isFirstLaunch` est `true` et lance `IntroActivity`.
+2.  Le système entre dans l'état `IntroState.BOURDON_ARRIVING`, jouant la vidéo `bourdon_arrives.mp4`.
+3.  À la fin de la vidéo, le système passe à `IntroState.BOURDON_SPEAKS_WELCOME`. La vidéo `bourdon_talks.mp4` est jouée en boucle et la synthèse vocale (TTS) énonce le dialogue de bienvenue (`bourdon_intro_welcome`).
+4.  À la fin du dialogue, le système passe à `IntroState.AWAITING_EGG_CLICK` et attend une interaction de l'utilisateur.
+5.  Le Butineur touche l'écran. Le système passe à `IntroState.HATCHING`, joue la vidéo `egg_hatching.mp4` et le dialogue TTS associé (`bourdon_intro_hatching`).
+6.  À la fin de la vidéo, le système passe à `IntroState.DOWNLOADING_SPEAKING`. Le TTS énonce le dialogue expliquant que la Ruche s'éveille (`bourdon_intro_downloading`).
+7.  Le système lance deux opérations critiques en parallèle pour minimiser l'attente :
+    *   **Tâche 1 (IA) :** Il lance le téléchargement des modèles d'IA requis via une tâche de premier plan (ex: Coroutine ou Service) pour garantir une exécution immédiate et un suivi précis de la progression.
+    *   **Tâche 2 (DB) :** Simultanément, il lance la création de la base de données Room et son peuplement à partir du fichier `default_cards.json`. Ces cartes de départ sont livrées avec leur "Fil de Provenance" complet, rendant leurs inférences reproductibles et démontrant dès la première seconde notre engagement fondamental pour une confiance vérifiable.
+8.  Une barre de progression est affichée pendant que le système attend la complétion des deux tâches en arrière-plan.
+9.  Une fois les deux tâches terminées, le système passe à `IntroState.HIVE_READY_SPEAKING`. Le TTS annonce que la Ruche est prête (`bourdon_intro_hive_ready`).
+10. Le système passe à `IntroState.AWAITING_FINAL_CHOICE`, affichant les boutons d'action.
+11. Le Butineur sélectionne une des options.
+12. Le système écrit `isFirstLaunch = false` dans les `SharedPreferences`, lance `HiveActivity` et termine `IntroActivity`.
+
+---
+**Extensions (Flux Alternatifs)**
+*   **3a. Le Butineur quitte l'application pendant la séquence :**
+    *   Si le Butineur quitte `IntroActivity` avant l'étape 12, `isFirstLaunch` reste `true`. Lors du prochain lancement, le scénario principal reprendra à l'étape 1 pour garantir une initialisation complète.
+*   **5a. Le Butineur refuse les permissions critiques (si demandées) :**
+    *   Le système affiche un dialogue expliquant la nécessité de la permission. Le Bourdon peut intervenir via TTS pour contextualiser. Si le refus est maintenu, le système passe au flux d'erreur approprié (ex: échec de téléchargement si le réseau est refusé).
+
+---
+**Flux d'Erreur**
+*   **FE1 : Échec d'initialisation du TTS :**
+    *   **Cause :** Le moteur TTS de l'appareil ne s'initialise pas (`onInit` retourne `TextToSpeech.ERROR`).
+    *   **Réaction :** Le système continue sans synthèse vocale. Les dialogues du Bourdon sont affichés sous forme de sous-titres pour que l'expérience reste fonctionnelle, bien que moins immersive.
+*   **FE2 : Échec du téléchargement des modèles d'IA :**
+    *   **Cause :** Pas de connexion réseau ou espace de stockage insuffisant.
+    *   **Réaction :** `WorkManager` (ou le service équivalent) signale un échec. Le système affiche un message d'erreur contextualisé ("Mes Abeilles ont besoin d'une connexion pour rejoindre la Ruche.") et propose deux options : "Réessayer" pour relancer le téléchargement, ou "Continuer en mode dégradé" pour utiliser des modèles par défaut pré-embarqués (si disponibles). Si aucune option n’est choisie, le cas d’utilisation se met en pause.
+*   **FE3 : Échec de l'initialisation de la base de données :**
+    *   **Cause :** Fichier `default_cards.json` corrompu/manquant ou erreur d'écriture sur le disque.
+    *   **Réaction :** C'est une erreur critique. Le système enregistre l'erreur et affiche une boîte de dialogue bloquante : "Erreur critique : la mémoire initiale de la Ruche est endommagée. Veuillez réinstaller l'application." L'application se ferme.
+
+##### 1.1.2. Analyse Textuelle : UC-02 - Forger une Carte de Connaissance
+Description de la boucle de gameplay "Explorer -> Capturer -> Forger -> Récompenser", incluant le partenariat Homme-IA et le "Dilemme du Frelon".
+
+##### 1.1.3. Analyse Textuelle : UC-03 - Défier un Ami (Saga Clash P2P)
+Description du processus de connexion locale via Google Nearby et des règles d'échange de cartes.
+
+#### 1.2. Diagramme d'Activité : Une Journée dans la Saga
+
+##### 1.2.1. Analyse du Diagramme
+Texte expliquant comment ce diagramme sert de "bande-annonce" et relie les cas d'utilisation en un récit cohérent.
+
+##### 1.2.2. Artefact UML
+Génération du diagramme `ACT_Journee_Dun_Butineur.puml`.
+
+---
+
+### Partie 2 : Le Cœur de l'Innovation - Le "Comment" (Avancé)
+Ce chapitre se concentre sur les mécanismes uniques et différenciants qui constituent notre avantage concurrentiel.
+
+#### 2.1. Le Partenariat Homme-IA : La Forge du Miel
+
+##### 2.1.1. Analyse du Diagramme
+Texte détaillant le flux de raffinement humain et la collaboration entre le Butineur et les IA.
+
+##### 2.1.2. Artefact UML
+Génération du diagramme d'activité `ACT_Forge_Du_Miel.puml`.
+
+#### 2.2. L'Orchestration de la Guilde d'IA
+
+##### 2.2.1. Analyse du Diagramme
+Texte expliquant la gestion des modèles TFLite, l'arbitrage de Gemma et la gestion des ressources on-device.
+
+##### 2.2.2. Artefact UML
+Génération du diagramme de séquence `SEQ_Orchestration_Guilde_IA.puml`.
+
+#### 2.3. La Preuve par la Reproductibilité : Le Sceau de Confiance
+
+##### 2.3.1. Analyse du Diagramme
+Texte décrivant le processus technique de vérification d'une carte via la reproduction d'inférence, en s'appuyant sur le "Fil de Provenance".
+
+##### 2.3.2. Artefact UML
+Génération du diagramme de séquence `SEQ_Reproduction_Inference.puml`.
+
+---
+
+### Partie 3 : Les Fondations Architecturales - Le "Quoi"
+Ce chapitre documente la structure technique sous-jacente, prouvant la robustesse et la qualité de notre ingénierie.
+
+#### 3.1. Vue d'Ensemble de l'Architecture
+
+##### 3.1.1. Diagramme de Composants : Architecture de la Ruche
+Analyse et génération de `CMP_Systeme.puml`.
+
+##### 3.1.2. Diagramme de Déploiement : Forteresse Embarquée
+Analyse et génération de `DPLY_OnDevice.puml`.
+
+#### 3.2. Architecture Statique : Les Plans de la Ruche
+
+##### 3.2.1. Couche de Données
+Analyse détaillée du modèle de données, de la classe Card, de la structure du Fil de Provenance, des DAO et de la couche Repository.
+Génération du diagramme de classes `CLS_Couche_Donnees.puml`.
+
+##### 3.2.2. Couche d'Interface Utilisateur
+Analyse des Activity, ViewModel, Adapter et vues personnalisées.
+Génération du diagramme de classes `CLS_Couche_UI.puml`.
+
+##### 3.2.3. Plan de Migration des Données
+Analyse de la transition des anciens modèles (HoneyCard, TrustedPackage) vers la nouvelle architecture.
+Génération du diagramme de classes `CLS_Refactoring_Legacy.puml`.
+
+#### 3.3. Comportement Dynamique de Base : La Ruche en Action
+
+##### 3.3.1. Initialisation de la Ruche
+Analyse et génération du diagramme d'activité `ACT_Premier_Lancement.puml`.
+
+##### 3.3.2. Flux de Données MVVM
+Analyse et génération du diagramme de séquence `SEQ_Flux_Donnees_MVVM.puml`.
+
+---
+
+### Annexes
+
+A.1. Glossaire des Stéréotypes UML
+A.2. Code Source du Thème PlantUML (kikko_theme.puml)
+
+--- END OF FILE analyse UML/anaylse uml.md ---
 
 
 --- START OF FILE analyse UML/drawIO_import01.txt ---

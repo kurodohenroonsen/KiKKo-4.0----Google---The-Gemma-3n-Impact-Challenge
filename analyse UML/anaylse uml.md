@@ -28,7 +28,7 @@ Pour garantir une clarté et une cohérence irréprochables, notre modélisation
 Ce chapitre établit le périmètre fonctionnel du point de vue des utilisateurs et des acteurs du système.
 
 #### 1.1. Cas d'Utilisation Principaux
-<img src="" title="usecase"><img src="" title="activity"><img src="" title="usecase"><img src="" title="usecase"><img src="" title="usecase">
+<img src="" title="usecase"><img src="" title="activity"><img src="" title="state"><img src="" title="usecase"><img src="" title="usecase">
 ##### 1.1.1. Analyse Textuelle : UC-01 - Premier Lancement & Initialisation de la Ruche
 Le premier contact avec "Kikko's Saga Forge" n'est pas un lancement d'application, c'est une cérémonie d'accueil. Conformément à notre philosophie, nous avons remplacé l'onboarding traditionnel par une mise en scène narrative, orchestrée par `IntroActivity.kt` et sa machine à états interne `IntroState`. L'objectif est double : immerger immédiatement le Butineur dans son rôle d'acteur et, en coulisses, forger une Ruche IA 100% opérationnelle avant même la première action de jeu.
 

@@ -2,14 +2,18 @@
 
 --- START OF FILE app/build.gradle.kts ---
 
+// MODIFIÉ : On applique le plugin KSP
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp") version "2.0.0-1.0.21"
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
     namespace = "be.aktina.android.kikkopocnearby"
     compileSdk = 35
+
     defaultConfig {
         applicationId = "be.aktina.android.kikkopocnearby"
         minSdk = 26
@@ -18,6 +22,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders["appAuthRedirectScheme"] = "be.aktina.android.kikkopocnearby.oauth"
     }
 
     buildTypes {
@@ -36,43 +41,60 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+        jniLibs.pickFirsts.add("lib/**/libc++_shared.so")
+    }
 }
 
 dependencies {
+    implementation("com.google.mediapipe:tasks-genai:0.10.25")
+    implementation("com.google.guava:guava:32.0.1-android")
 
-// On-Device Generative AI (Gemma 3n via MediaPipe)
-    implementation(libs.mediapipe.tasks.genai)
+    implementation("com.alphacephei:vosk-android:0.3.47")
+    // ... autres dépendances ML Kit ...
+    implementation("com.google.mlkit:text-recognition:16.0.1")
+    implementation("com.google.mlkit:text-recognition-japanese:16.0.1")
+    implementation("com.google.mlkit:face-detection:16.1.7")
+    implementation("com.google.mlkit:barcode-scanning:17.3.0")
+    implementation("com.google.mlkit:image-labeling:17.0.9")
+    implementation("com.google.mlkit:language-id:17.0.6")
+    implementation("com.google.mlkit:translate:17.0.3")
+    implementation("com.google.mlkit:smart-reply:17.0.4")
 
-    // ML Kit - Vision APIs (choisir bundled ou unbundled par fonctionnalité)
-    implementation(libs.mlkit.text.recognition)
-    implementation(libs.mlkit.text.recognition.japanese)
-    implementation(libs.mlkit.face.detection)
-    implementation(libs.mlkit.barcode.scanning)
-    implementation(libs.mlkit.image.labeling)
-   // implementation(libs.mlkit.object.detection)
-    // OU
-    // implementation(libs.gms.mlkit.text.recognition)
-    //...etc.
+    implementation("androidx.core:core-ktx:1.16.0")
+    implementation("androidx.appcompat:appcompat:1.7.1")
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.activity:activity-ktx:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.3")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
 
-    // ML Kit - Language APIs
-    implementation(libs.mlkit.language.id)
-    implementation(libs.mlkit.translate)
-    implementation(libs.mlkit.smart.reply)
-    implementation("com.google.android.gms:play-services-location:21.2.0")
+    // Room DB
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    // MODIFIÉ : On remplace kapt par ksp pour le compilateur Room
+    ksp("androidx.room:room-compiler:2.6.1")
+    androidTestImplementation("androidx.room:room-testing:2.6.1")
 
-    // Coroutines
-    implementation(libs.kotlinx.coroutines.android)
-    implementation("com.google.code.gson:gson:2.10.1")
-    implementation("com.alphacephei:vosk-android:0.3.32")
     implementation("com.google.android.gms:play-services-nearby:19.3.0")
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+
+    implementation("org.jsoup:jsoup:1.17.2")
+    implementation("net.openid:appauth:0.11.1")
+    implementation("org.apache.commons:commons-compress:1.26.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
+    implementation("com.google.code.gson:gson:2.11.0")
+
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 }
 
 --- END OF FILE app/build.gradle.kts ---
@@ -101,6 +123,79 @@ dependencies {
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# --- Règles pour Kotlinx Coroutines ---
+-keepnames class kotlinx.coroutines.internal.MainDispatcherFactory {}
+-keepnames class kotlinx.coroutines.android.AndroidDispatcherFactory {}
+-keepnames class kotlinx.coroutines.android.AndroidExceptionPreHandler {}
+-keepclassmembers class kotlinx.coroutines.flow.internal.AbstractSharedFlow {
+    kotlinx.coroutines.flow.internal.AbstractSharedFlowSlot[] suscriberArray;
+}
+-keepclassmembers class kotlinx.coroutines.flow.internal.ChannelFlow {
+    kotlinx.coroutines.channels.ReceiveChannel context;
+}
+-keepclassmembers class kotlinx.coroutines.selects.SelectBuilderImpl {
+    kotlinx.coroutines.internal.LockFreeLinkedListHead clauses;
+}
+
+# --- Règles pour Kotlinx Serialization ---
+-keepattributes Signature,RuntimeVisibleAnnotations,RuntimeVisibleParameterAnnotations
+-keepclassmembers class ** {
+    @kotlinx.serialization.Serializable <methods>;
+    @kotlinx.serialization.Transient <methods>;
+}
+-keepclasseswithmembernames class * {
+    @kotlinx.serialization.Serializable <methods>;
+    @kotlinx.serialization.Transient <methods>;
+}
+-if class **$$serializer {
+  -keep class **$$serializer {
+    <init>(...);
+    kotlinx.serialization.KSerializer[] childSerializers();
+    kotlinx.serialization.KSerializer[] typeParametersSerializers();
+    kotlinx.serialization.descriptors.SerialDescriptor getDescriptor();
+    void serialize(kotlinx.serialization.encoding.Encoder, ...);
+    java.lang.Object deserialize(kotlinx.serialization.encoding.Decoder);
+  }
+}
+-keep,allowobfuscation,allowshrinking class kotlinx.serialization.internal.*
+
+# --- Règles pour Gson ---
+-keep class com.google.gson.reflect.TypeToken
+-keep class * extends com.google.gson.reflect.TypeToken
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.stream.** { *; }
+-keepclassmembers,allowshrinking class * extends java.lang.Enum {
+    <fields>;
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+-keepclassmembers class * implements com.google.gson.TypeAdapterFactory {
+  <init>(...);
+}
+-keepclassmembers class * implements com.google.gson.JsonSerializer {
+  <init>(...);
+}
+-keepclassmembers class * implements com.google.gson.JsonDeserializer {
+  <init>(...);
+}
+-keepclassmembers,allowshrinking class * {
+  @com.google.gson.annotations.SerializedName <fields>;
+}
+
+# --- Règles pour AndroidX Room ---
+-dontwarn androidx.room.**
+
+# --- Règles pour Vosk (si nécessaire, souvent pas requis mais sécuritaire) ---
+-keep class org.kaldi.** { *; }
+
+# --- Règles pour MediaPipe (Gemma) ---
+-keep class com.google.mediapipe.** { *; }
+-keepclassmembers class * extends com.google.protobuf.GeneratedMessageLite {
+  <fields>;
+}
 
 --- END OF FILE app/proguard-rules.pro ---
 
@@ -143,24 +238,23 @@ class ExampleInstrumentedTest {
 
     <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
-
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-
     <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES"
         android:usesPermissionFlags="neverForLocation"
         tools:targetApi="tiramisu" />
-
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
+        android:name=".KikkoApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -169,41 +263,581 @@ class ExampleInstrumentedTest {
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KikkoPocNearby.Hive"
-        tools:targetApi="31"
-        >
+        tools:targetApi="31">
 
         <activity
-            android:name=".IntroActivity"
-            android:exported="false">
-        </activity>
-
-        <activity
-            android:name=".HiveActivity"
-            android:exported="false" >
-        </activity>
-
-        <activity
-            android:screenOrientation="portrait"
-            android:name=".MainActivity"
+            android:name=".DebugActivity"
             android:exported="true"
-            android:theme="@style/Theme.KikkoPocNearby.Hive">
+            android:label="Kikko Debug"
+            android:theme="@style/Theme.Material3.DayNight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="${appAuthRedirectScheme}" />
+            </intent-filter>
+
         </activity>
 
-        <meta-data
-            android:name="com.google.mlkit.vision.DEPENDENCIES"
-            android:value="ocr,ocr_japanese,ocr_korean,ocr_devanagari,ocr_chinese" />
-        <meta-data
-            android:name="com.google.mlkit.language.DEPENDENCIES"
-            android:value="langid" />
     </application>
 
 </manifest>
 
 --- END OF FILE app/src/main/AndroidManifest.xml ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/DebugActivity.kt ---
+
+package be.aktina.android.kikkopocnearby
+
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.drawable.BitmapDrawable
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.work.WorkInfo
+import androidx.work.WorkManager
+import be.aktina.android.kikkopocnearby.data.DownloadStatus
+import be.aktina.android.kikkopocnearby.data.Model
+import be.aktina.android.kikkopocnearby.data.ModelManager
+import be.aktina.android.kikkopocnearby.services.LlmService
+import be.aktina.android.kikkopocnearby.services.LlmStatus
+import be.aktina.android.kikkopocnearby.services.SttService
+import be.aktina.android.kikkopocnearby.services.SttStatus
+import be.aktina.android.kikkopocnearby.services.TtsService
+import be.aktina.android.kikkopocnearby.ui.ModelAdapter
+import be.aktina.android.kikkopocnearby.workers.DownloadWorker
+import com.google.mlkit.common.model.RemoteModelManager
+import com.google.mlkit.nl.languageid.LanguageIdentification
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.TranslateRemoteModel
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
+import com.google.mlkit.vision.barcode.BarcodeScanning
+import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.face.FaceDetection
+import com.google.mlkit.vision.label.ImageLabeling
+import com.google.mlkit.vision.label.defaults.ImageLabelerOptions
+import com.google.mlkit.vision.text.TextRecognition
+import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import java.util.Locale
+
+class DebugActivity : AppCompatActivity() {
+
+    private val TAG = "DebugActivity"
+
+    // Vues
+    private lateinit var modelsRecyclerView: RecyclerView
+    private lateinit var modelAdapter: ModelAdapter
+    private lateinit var translatorsRecyclerView: RecyclerView
+    private lateinit var translatorAdapter: ModelAdapter
+    private lateinit var radioGroupVoskModels: RadioGroup
+    private lateinit var radioGroupGemmaModels: RadioGroup
+    private lateinit var buttonTestTts: Button
+    private lateinit var buttonLaunchP2p: Button
+    private lateinit var buttonTestVosk: Button
+    private lateinit var textVoskStatus: TextView
+    private lateinit var editTextGemmaPrompt: EditText
+    private lateinit var buttonTestGemma: Button
+    private lateinit var textGemmaResponse: TextView
+    private lateinit var imageTextRecognition: ImageView
+    private lateinit var buttonTextRecognition: Button
+    private lateinit var textTextRecognitionResult: TextView
+    private lateinit var imageFaceDetection: ImageView
+    private lateinit var buttonFaceDetection: Button
+    private lateinit var textFaceDetectionResult: TextView
+    private lateinit var imageBarcodeScanning: ImageView
+    private lateinit var buttonBarcodeScanning: Button
+    private lateinit var textBarcodeScanningResult: TextView
+    private lateinit var imageLabeling: ImageView
+    private lateinit var buttonImageLabeling: Button
+    private lateinit var textImageLabelingResult: TextView
+
+    private var llmAndVoskModels = listOf<Model>()
+    private var translatorModels = mutableListOf<Model>()
+
+    // Services et modèles pour les tests
+    private var isVoskListening = false
+
+    private val requestRecordAudioPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) {
+                Log.i(TAG, "Permission d'enregistrement audio accordée.")
+                testVosk()
+            } else {
+                Log.w(TAG, "Permission du microphone refusée.")
+                Toast.makeText(this, "Permission du microphone refusée.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_debug)
+        supportActionBar?.title = "Kikko - Atelier & Commandement"
+
+        ModelManager.initialize(this)
+        setupViews()
+        setupListeners()
+        observeModels()
+        initLegacyServices()
+        loadTranslatorModels()
+        observeSttService()
+        observeLlmService()
+    }
+
+    private fun setupViews() {
+        modelsRecyclerView = findViewById(R.id.recycler_view_models)
+        modelsRecyclerView.layoutManager = LinearLayoutManager(this)
+        modelAdapter = ModelAdapter(llmAndVoskModels) { model -> handleModelAction(model) }
+        modelsRecyclerView.adapter = modelAdapter
+
+        translatorsRecyclerView = findViewById(R.id.recycler_view_translators)
+        translatorsRecyclerView.layoutManager = LinearLayoutManager(this)
+        translatorAdapter = ModelAdapter(translatorModels) { model -> handleTranslatorAction(model) }
+        translatorsRecyclerView.adapter = translatorAdapter
+
+        radioGroupVoskModels = findViewById(R.id.radiogroup_vosk_models)
+        radioGroupGemmaModels = findViewById(R.id.radiogroup_gemma_models)
+
+        buttonTestTts = findViewById(R.id.button_test_tts)
+        buttonTestVosk = findViewById(R.id.button_test_vosk)
+        textVoskStatus = findViewById(R.id.text_vosk_status)
+        editTextGemmaPrompt = findViewById(R.id.edittext_gemma_prompt)
+        buttonTestGemma = findViewById(R.id.button_test_gemma)
+        textGemmaResponse = findViewById(R.id.text_gemma_response)
+        buttonLaunchP2p = findViewById(R.id.button_launch_p2p)
+        imageTextRecognition = findViewById(R.id.image_text_recognition)
+        buttonTextRecognition = findViewById(R.id.button_text_recognition)
+        textTextRecognitionResult = findViewById(R.id.text_text_recognition_result)
+        imageFaceDetection = findViewById(R.id.image_face_detection)
+        buttonFaceDetection = findViewById(R.id.button_face_detection)
+        textFaceDetectionResult = findViewById(R.id.text_face_detection_result)
+        imageBarcodeScanning = findViewById(R.id.image_barcode_scanning)
+        buttonBarcodeScanning = findViewById(R.id.button_barcode_scanning)
+        textBarcodeScanningResult = findViewById(R.id.text_barcode_scanning_result)
+        imageLabeling = findViewById(R.id.image_labeling)
+        buttonImageLabeling = findViewById(R.id.button_image_labeling)
+        textImageLabelingResult = findViewById(R.id.text_image_labeling_result)
+    }
+
+    private fun setupListeners() {
+        buttonLaunchP2p.setOnClickListener { launchP2P() }
+        buttonTestTts.setOnClickListener { testTts() }
+        buttonTestVosk.setOnClickListener { testVosk() }
+        buttonTestGemma.setOnClickListener { testGemma() }
+        buttonTextRecognition.setOnClickListener { runTextRecognition() }
+        buttonFaceDetection.setOnClickListener { testFaceDetection() }
+        buttonBarcodeScanning.setOnClickListener { testBarcodeScanning() }
+        buttonImageLabeling.setOnClickListener { testImageLabeling() }
+
+        radioGroupVoskModels.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId != -1) {
+                val selectedModelId = findViewById<RadioButton>(checkedId)?.tag as? String
+                selectedModelId?.let { initVosk(it) }
+            }
+        }
+        radioGroupGemmaModels.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId != -1) {
+                val selectedModelId = findViewById<RadioButton>(checkedId)?.tag as? String
+                selectedModelId?.let {
+                    val gemmaModel = llmAndVoskModels.find { m -> m.id == it }
+                    if (gemmaModel != null) {
+                        LlmService.selectModel(this, gemmaModel) { success, error ->
+                            if (!success) {
+                                textGemmaResponse.text = "Gemma: Erreur init: $error"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun observeModels() {
+        ModelManager.models.observe(this) { updatedModels ->
+            if (updatedModels != null) {
+                this.llmAndVoskModels = updatedModels
+                modelAdapter.updateModels(updatedModels)
+                updateModelSelectors()
+                updatedModels.forEach { model -> observeModelDownload(model) }
+            }
+        }
+    }
+
+    private fun observeModelDownload(model: Model) {
+        WorkManager.getInstance(this).getWorkInfosForUniqueWorkLiveData(model.id)
+            .observe(this) { workInfos ->
+                val workInfo = workInfos?.firstOrNull() ?: return@observe
+                when (workInfo.state) {
+                    WorkInfo.State.RUNNING -> {
+                        val progress = workInfo.progress
+                        val isUnzipping = progress.getBoolean(DownloadWorker.KEY_START_UNZIPPING, false)
+                        if (isUnzipping) {
+                            updateModelProgress(model.id, DownloadStatus.DOWNLOADING, model.sizeInBytes, 100, isUnzipping = true)
+                        } else {
+                            val downloadedBytes = progress.getLong(DownloadWorker.KEY_PROGRESS_BYTES, 0L)
+                            val percent = progress.getInt(DownloadWorker.KEY_PROGRESS_PERCENT, 0)
+                            updateModelProgress(model.id, DownloadStatus.DOWNLOADING, downloadedBytes, percent, isUnzipping = false)
+                        }
+                    }
+                    WorkInfo.State.SUCCEEDED -> {
+                        updateModelProgress(model.id, DownloadStatus.SUCCEEDED, model.sizeInBytes, 100)
+                        updateModelSelectors()
+                        if (model.name.contains("Vosk", true)) initVosk()
+                    }
+                    WorkInfo.State.FAILED -> updateModelProgress(model.id, DownloadStatus.FAILED, 0L, 0)
+                    WorkInfo.State.CANCELLED -> updateModelProgress(model.id, DownloadStatus.NOT_DOWNLOADED, 0L, 0)
+                    else -> {}
+                }
+            }
+    }
+
+    private fun observeSttService() {
+        SttService.result.observe(this) { result ->
+            when(result.status) {
+                SttStatus.LISTENING -> {
+                    isVoskListening = true
+                    buttonTestVosk.text = "Arrêter l'écoute"
+                    textVoskStatus.text = result.text
+                }
+                SttStatus.IDLE -> {
+                    isVoskListening = false
+                    buttonTestVosk.text = "Test Vosk (Écoute)"
+                    if (result.isFinal) {
+                        textVoskStatus.text = "Résultat final: ${result.text}"
+                    }
+                }
+                SttStatus.ERROR -> {
+                    isVoskListening = false
+                    buttonTestVosk.text = "Test Vosk (Écoute)"
+                    textVoskStatus.text = result.text
+                }
+                SttStatus.PROCESSING -> {
+                    textVoskStatus.text = result.text
+                }
+            }
+        }
+    }
+
+    private fun observeLlmService() {
+        LlmService.result.observe(this) { result ->
+            val modelName = if (radioGroupGemmaModels.checkedRadioButtonId != -1) {
+                findViewById<RadioButton>(radioGroupGemmaModels.checkedRadioButtonId)?.text ?: "Gemma"
+            } else {
+                "Gemma"
+            }
+
+            when(result.status) {
+                LlmStatus.IDLE -> {
+                    buttonTestGemma.isEnabled = true
+                    textGemmaResponse.text = if (result.text.startsWith("Reine IA")) result.text else "$modelName: ${result.text}"
+                }
+                LlmStatus.THINKING -> {
+                    buttonTestGemma.isEnabled = false
+                    textGemmaResponse.text = "$modelName: ${result.text}"
+                }
+                LlmStatus.ERROR -> {
+                    buttonTestGemma.isEnabled = true
+                    textGemmaResponse.text = "$modelName: ${result.text}"
+                }
+            }
+        }
+    }
+
+
+    private fun handleModelAction(model: Model) {
+        when (model.status) {
+            DownloadStatus.NOT_DOWNLOADED, DownloadStatus.FAILED -> ModelManager.downloadModel(this, model)
+            DownloadStatus.SUCCEEDED -> ModelManager.deleteModel(this, model)
+            else -> Toast.makeText(this, "Action en cours...", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun updateModelProgress(modelId: String, status: DownloadStatus, downloadedBytes: Long, progress: Int, isUnzipping: Boolean = false) {
+        val modelIndex = llmAndVoskModels.indexOfFirst { it.id == modelId }
+        if (modelIndex != -1) {
+            llmAndVoskModels[modelIndex].status = status
+            llmAndVoskModels[modelIndex].downloadedBytes = downloadedBytes
+            llmAndVoskModels[modelIndex].progress = progress
+            modelAdapter.notifyItemChanged(modelIndex, ModelAdapter.ProgressPayload(isUnzipping))
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun loadTranslatorModels() {
+        val remoteModelManager = RemoteModelManager.getInstance()
+        val deviceLanguage = Locale.getDefault().language
+        val targetLanguageCode = TranslateLanguage.fromLanguageTag(deviceLanguage) ?: TranslateLanguage.ENGLISH
+
+        remoteModelManager.getDownloadedModels(TranslateRemoteModel::class.java)
+            .addOnSuccessListener { downloadedModels ->
+                val downloadedLanguages = downloadedModels.map { it.language }
+                translatorModels.clear()
+                TranslateLanguage.getAllLanguages().forEach { langCode ->
+                    if (langCode != targetLanguageCode) {
+                        translatorModels.add(
+                            Model(
+                                id = "translator-$langCode-to-$targetLanguageCode",
+                                name = "Traducteur: ${Locale(langCode).displayName}",
+                                description = "Traduit de '${Locale(langCode).displayLanguage}' vers '${Locale(targetLanguageCode).displayLanguage}'",
+                                url = "",
+                                archiveName = "mlkit_translator_${langCode}.zip",
+                                modelFileName = "mlkit_translator_${langCode}",
+                                sizeInBytes = 30_000_000,
+                                status = if (downloadedLanguages.contains(langCode)) DownloadStatus.SUCCEEDED else DownloadStatus.NOT_DOWNLOADED
+                            )
+                        )
+                    }
+                }
+                translatorAdapter.updateModels(translatorModels.sortedBy { it.name })
+            }
+    }
+
+    private fun handleTranslatorAction(model: Model) {
+        val remoteModelManager = RemoteModelManager.getInstance()
+        val langCode = model.id.split("-")[1]
+        val translatorModel = TranslateRemoteModel.Builder(langCode).build()
+
+        if (model.status == DownloadStatus.SUCCEEDED) {
+            remoteModelManager.deleteDownloadedModel(translatorModel)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Modèle '${model.name}' supprimé.", Toast.LENGTH_SHORT).show()
+                    loadTranslatorModels()
+                }
+        } else {
+            Toast.makeText(this, "Téléchargement du modèle '${model.name}'...", Toast.LENGTH_LONG).show()
+            remoteModelManager.download(translatorModel, com.google.mlkit.common.model.DownloadConditions.Builder().build())
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Modèle '${model.name}' téléchargé !", Toast.LENGTH_SHORT).show()
+                    loadTranslatorModels()
+                }
+        }
+    }
+
+    private fun initLegacyServices() {
+        updateModelSelectors()
+        initVosk()
+    }
+
+    private fun updateModelSelectors() {
+        val downloadedVoskModels = llmAndVoskModels.filter { it.name.contains("Vosk", true) && it.status == DownloadStatus.SUCCEEDED }
+        val downloadedGemmaModels = llmAndVoskModels.filter { it.name.contains("Gemma", true) && it.status == DownloadStatus.SUCCEEDED }
+
+        populateRadioGroup(radioGroupVoskModels, downloadedVoskModels, "Vosk")
+        populateRadioGroup(radioGroupGemmaModels, downloadedGemmaModels, "Gemma")
+    }
+
+    private fun populateRadioGroup(radioGroup: RadioGroup, models: List<Model>, type: String) {
+        val currentSelectionTag = if (radioGroup.checkedRadioButtonId != -1) {
+            findViewById<RadioButton>(radioGroup.checkedRadioButtonId)?.tag as? String
+        } else null
+        radioGroup.removeAllViews()
+
+        if (models.isEmpty()) {
+            val noModelText = TextView(this).apply { text = "Aucun modèle $type n'est prêt." }
+            radioGroup.addView(noModelText)
+            return
+        }
+
+        var selectionRestored = false
+        models.forEach { model ->
+            val radioButton = RadioButton(this).apply {
+                text = model.name
+                tag = model.id
+                id = View.generateViewId()
+            }
+            radioGroup.addView(radioButton)
+            if (model.id == currentSelectionTag) {
+                radioGroup.check(radioButton.id)
+                selectionRestored = true
+            }
+        }
+
+        if (!selectionRestored && radioGroup.childCount > 0) {
+            (radioGroup.getChildAt(0) as? RadioButton)?.let {
+                radioGroup.check(it.id)
+            }
+        }
+    }
+
+    private fun initVosk(modelId: String? = null) {
+        val selectedModelId = modelId ?: if (radioGroupVoskModels.checkedRadioButtonId != -1) {
+            findViewById<RadioButton>(radioGroupVoskModels.checkedRadioButtonId).tag as? String
+        } else {
+            llmAndVoskModels.find { it.name.contains("Vosk", true) && it.status == DownloadStatus.SUCCEEDED }?.id
+        }
+
+        if (selectedModelId == null) {
+            textVoskStatus.text = "Statut Vosk: Aucun modèle téléchargé."
+            return
+        }
+
+        val voskModelEntry = llmAndVoskModels.find { it.id == selectedModelId }
+        if (voskModelEntry != null) {
+            textVoskStatus.text = "Statut Vosk: Chargement de ${voskModelEntry.name}..."
+            val modelPath = voskModelEntry.getModelLocalPath(this).absolutePath
+            SttService.selectModel(modelPath) { success, error ->
+                if (success) {
+                    textVoskStatus.text = "Statut Vosk: Prêt (${voskModelEntry.name})."
+                } else {
+                    textVoskStatus.text = "Statut Vosk: Erreur ($error)"
+                }
+            }
+        }
+    }
+
+    private fun testVosk() {
+        if (isVoskListening) {
+            SttService.stopListening()
+        } else {
+            when {
+                ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED -> {
+                    SttService.startListening()
+                }
+                else -> requestRecordAudioPermission.launch(Manifest.permission.RECORD_AUDIO)
+            }
+        }
+    }
+
+    private fun testTts() {
+        TtsService.speak("Test de synthèse vocale de la Ruche. Le Bourdon est opérationnel.")
+    }
+
+    private fun testGemma() {
+        val prompt = editTextGemmaPrompt.text.toString()
+        if (prompt.isNotBlank()) {
+            LlmService.generateResponse(prompt)
+        } else {
+            Toast.makeText(this, "Veuillez entrer un prompt.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun launchP2P() {
+        startActivity(Intent(this, MainActivity::class.java))
+    }
+
+    private fun runTextRecognition() {
+        runMlKitTest(imageTextRecognition, textTextRecognitionResult, "Reconnaissance Texte") { image ->
+            TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS).process(image)
+                .addOnSuccessListener { visionText ->
+                    val detectedText = visionText.text
+                    if (detectedText.isNotBlank()) {
+                        textTextRecognitionResult.text = "Texte détecté:\n$detectedText"
+                        identifyLanguage(detectedText)
+                    } else {
+                        textTextRecognitionResult.text = "Aucun texte détecté."
+                    }
+                }
+                .addOnFailureListener { e -> textTextRecognitionResult.text = "Échec OCR: ${e.message}" }
+        }
+    }
+
+    private fun identifyLanguage(text: String) {
+        LanguageIdentification.getClient().identifyLanguage(text)
+            .addOnSuccessListener { languageCode ->
+                if (languageCode == "und") {
+                    textTextRecognitionResult.append("\n\nLangue: Indéterminée")
+                } else {
+                    val deviceLanguage = Locale.getDefault().language
+                    textTextRecognitionResult.append("\n\nLangue détectée: $languageCode (Appareil: $deviceLanguage)")
+                    if (languageCode != deviceLanguage) {
+                        translateTextIfNeeded(text, languageCode, deviceLanguage)
+                    }
+                }
+            }
+    }
+
+    private fun translateTextIfNeeded(text: String, sourceLanguage: String, targetLanguage: String) {
+        val options = TranslatorOptions.Builder()
+            .setSourceLanguage(sourceLanguage)
+            .setTargetLanguage(targetLanguage)
+            .build()
+        val translator = Translation.getClient(options)
+        lifecycle.addObserver(translator)
+        textTextRecognitionResult.append("\nTraduction en cours...")
+
+        translator.downloadModelIfNeeded()
+            .addOnSuccessListener {
+                Log.i(TAG, "Modèle de traduction ($sourceLanguage -> $targetLanguage) prêt.")
+                translator.translate(text)
+                    .addOnSuccessListener { translatedText -> textTextRecognitionResult.append("\n\nTraduction:\n$translatedText") }
+                    .addOnFailureListener { e -> textTextRecognitionResult.append("\n\nÉchec de la traduction: ${e.message}") }
+            }
+    }
+
+    private fun testFaceDetection() {
+        runMlKitTest(imageFaceDetection, textFaceDetectionResult, "Détection Visage") { image ->
+            FaceDetection.getClient().process(image)
+                .addOnSuccessListener { faces -> textFaceDetectionResult.text = "${faces.size} visage(s) détecté(s)." }
+                .addOnFailureListener { e -> textFaceDetectionResult.text = "Échec Visage: ${e.message}" }
+        }
+    }
+
+    private fun testBarcodeScanning() {
+        runMlKitTest(imageBarcodeScanning, textBarcodeScanningResult, "Scan Code-barres") { image ->
+            BarcodeScanning.getClient().process(image)
+                .addOnSuccessListener { barcodes ->
+                    val result = if (barcodes.isEmpty()) "Aucun code-barres."
+                    else barcodes.joinToString("\n") { "Type: ${it.format}, Valeur: ${it.rawValue}" }
+                    textBarcodeScanningResult.text = "Code(s)-barres:\n$result"
+                }
+                .addOnFailureListener { e -> textBarcodeScanningResult.text = "Échec Scan: ${e.message}" }
+        }
+    }
+
+    private fun testImageLabeling() {
+        runMlKitTest(imageLabeling, textImageLabelingResult, "Labellisation Image") { image ->
+            ImageLabeling.getClient(ImageLabelerOptions.DEFAULT_OPTIONS).process(image)
+                .addOnSuccessListener { labels ->
+                    val result = labels.joinToString("\n") { "Label: ${it.text}, Confiance: %.2f".format(it.confidence) }
+                    textImageLabelingResult.text = "Labels détectés:\n$result"
+                }
+                .addOnFailureListener { e -> textImageLabelingResult.text = "Échec Label: ${e.message}" }
+        }
+    }
+
+    private fun runMlKitTest(imageView: ImageView, resultView: TextView, testName: String, process: (InputImage) -> Unit) {
+        Log.d(TAG, "Lancement du test: $testName")
+        resultView.text = "Analyse en cours..."
+        try {
+            val bitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val image = InputImage.fromBitmap(bitmap, 0)
+            process(image)
+            resultView.append("\n(Analyse lancée)")
+        } catch (e: Exception) {
+            val errorMsg = "Erreur $testName: Impossible de charger l'image."
+            resultView.text = errorMsg
+            Log.e(TAG, errorMsg, e)
+        }
+    }
+
+    override fun onDestroy() {
+        Log.v(TAG, "Cycle de vie : onDestroy")
+        super.onDestroy()
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/DebugActivity.kt ---
 
 
 --- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/GameConstants.kt ---
@@ -288,37 +922,35 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
+import be.aktina.android.kikkopocnearby.services.TtsService
 import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.common.model.RemoteModelManager
-//import com.google.mlkit.generate.ai.GenAi
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.TranslateRemoteModel
 import java.util.Locale
 
-class IntroActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
+// FRELON-ARCHITECTE: L'Activity n'implémente plus TextToSpeech.OnInitListener
+class IntroActivity : AppCompatActivity() {
 
-    // Bourdon: Une machine à états plus fine pour notre chorégraphie.
     private enum class IntroState {
-        BOURDON_ARRIVING,         // 1. Je fais mon entrée.
-        BOURDON_SPEAKS_WELCOME,   // 2. Je parle.
-        AWAITING_EGG_CLICK,       // 3. J'attends le clic.
-        HATCHING,                 // 4. L'œuf éclot.
-        DOWNLOADING_SPEAKING,     // 5. Les abeilles arrivent, j'explique.
-        DOWNLOADING_WAITING,      // 6. On attend la fin du téléchargement.
-        HIVE_READY_SPEAKING,      // 7. La Reine est là, j'explique.
-        FINAL_CHOICE_SPEAKING,    // 8. Je présente les options.
-        AWAITING_FINAL_CHOICE,    // 9. Les boutons sont là, j'attends.
+        BOURDON_ARRIVING,
+        BOURDON_SPEAKS_WELCOME,
+        AWAITING_EGG_CLICK,
+        HATCHING,
+        DOWNLOADING_SPEAKING,
+        DOWNLOADING_WAITING,
+        HIVE_READY_SPEAKING,
+        FINAL_CHOICE_SPEAKING,
+        AWAITING_FINAL_CHOICE,
         COMPLETED
     }
 
-    // Bourdon: Les acteurs de notre scène.
     private lateinit var videoView: VideoView
     private lateinit var progressBar: ProgressBar
     private lateinit var buttonContainer: LinearLayout
-    private lateinit var tts: TextToSpeech
+    // FRELON-ARCHITECTE: La propriété 'tts' est supprimée.
     private var currentState = IntroState.BOURDON_ARRIVING
 
-    // Bourdon: Pour savoir de quoi je parle.
     private val UTTERANCE_ID_WELCOME = "welcome_speech"
     private val UTTERANCE_ID_HATCHING = "hatching_speech"
     private val UTTERANCE_ID_DOWNLOADING = "downloading_speech"
@@ -326,39 +958,42 @@ class IntroActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private val UTTERANCE_ID_CHOICES = "choices_speech"
 
     private val requiredModels = mutableSetOf("GEMMA", "TRANSLATION_FR", "TRANSLATION_JA")
+    private val TAG = "IntroActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.v(TAG, "Cycle de vie : onCreate - Démarrage de l'activité")
         setContentView(R.layout.activity_intro)
+        Log.v(TAG, "Cycle de vie : setContentView(R.layout.activity_intro) - Le layout est chargé.")
 
-        // Bourdon: On récupère tous nos éléments de scène.
         videoView = findViewById(R.id.videoView_intro)
         progressBar = findViewById(R.id.progressBar_download)
         buttonContainer = findViewById(R.id.button_container)
+        Log.v(TAG, "Vues initialisées : videoView, progressBar, buttonContainer")
+
         findViewById<Button>(R.id.button_explore).setOnClickListener { finishIntro() }
         findViewById<Button>(R.id.button_forage).setOnClickListener { finishIntro() }
         findViewById<Button>(R.id.button_clash).setOnClickListener { finishIntro() }
+        Log.v(TAG, "Listeners des boutons de choix final configurés.")
 
-        tts = TextToSpeech(this, this)
+        // FRELON-ARCHITECTE: On configure le listener directement sur notre service.
+        setupTtsListener()
+        updateState(IntroState.BOURDON_ARRIVING)
     }
 
-    override fun onInit(status: Int) {
-        if (status == TextToSpeech.SUCCESS) {
-            setupTts()
-            // Bourdon: Et... Moteur !
-            updateState(IntroState.BOURDON_ARRIVING)
-        } else {
-            Log.e("TTS", "TTS Initialization Failed!")
-        }
-    }
+    // FRELON-ARCHITECTE: La méthode 'onInit' est supprimée.
 
-    // Bourdon: C'est ici que je synchronise ma voix avec les actions. Le cœur de la mise en scène.
-    private fun setupTts() {
-        tts.setLanguage(Locale.getDefault())
-        tts.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
-            override fun onStart(utteranceId: String?) {}
-            override fun onError(utteranceId: String?) {}
+    private fun setupTtsListener() {
+        Log.v(TAG, "Configuration du UtteranceProgressListener pour cette Activity.")
+        TtsService.setProgressListener(object : UtteranceProgressListener() {
+            override fun onStart(utteranceId: String?) {
+                Log.v(TAG, "TTS onStart pour utteranceId: $utteranceId")
+            }
+            override fun onError(utteranceId: String?) {
+                Log.e(TAG, "TTS onError pour utteranceId: $utteranceId")
+            }
             override fun onDone(utteranceId: String?) {
+                Log.v(TAG, "TTS onDone pour utteranceId: $utteranceId. Changement d'état sur le thread UI.")
                 runOnUiThread {
                     when (utteranceId) {
                         UTTERANCE_ID_WELCOME -> updateState(IntroState.AWAITING_EGG_CLICK)
@@ -371,65 +1006,72 @@ class IntroActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         })
     }
 
-    // Bourdon: Le grand chef d'orchestre.
     private fun updateState(newState: IntroState) {
-        if (currentState == newState) return
+        if (currentState == newState) {
+            Log.v(TAG, "updateState: Tentative de passage au même état ($newState), ignoré.")
+            return
+        }
+        Log.d(TAG, "Mise à jour de l'état: $currentState -> $newState")
         currentState = newState
-        Log.d("IntroActivity", "Switching to state: $currentState")
 
-        // Bourdon: On cache tout par défaut, puis on montre ce qui est nécessaire.
         progressBar.visibility = View.GONE
         buttonContainer.visibility = View.GONE
         videoView.setOnClickListener(null)
         videoView.setOnCompletionListener(null)
+        Log.v(TAG, "Visibilité des vues réinitialisée pour le nouvel état.")
 
         when (currentState) {
             IntroState.BOURDON_ARRIVING -> {
-                // TODO: Lancer la création de la DB en arrière-plan ici.
-                playVideo(R.raw.bourdon_arrives, false) // Vidéo du Bourdon qui arrive.
+                Log.v(TAG, "État BOURDON_ARRIVING: Lancement de la vidéo d'arrivée.")
+                playVideo(R.raw.bourdon_arrives, false)
                 videoView.setOnCompletionListener { updateState(IntroState.BOURDON_SPEAKS_WELCOME) }
             }
             IntroState.BOURDON_SPEAKS_WELCOME -> {
-                playVideo(R.raw.bourdon_talks, true) // Vidéo du Bourdon qui parle en boucle.
+                Log.v(TAG, "État BOURDON_SPEAKS_WELCOME: Lancement vidéo de parole et dialogue TTS.")
+                playVideo(R.raw.bourdon_talks, true)
                 speak(R.string.bourdon_intro_welcome, UTTERANCE_ID_WELCOME)
             }
             IntroState.AWAITING_EGG_CLICK -> {
-                //playVideo(R.raw.egg_pulsing, true) // L'œuf attend, en boucle.
+                Log.v(TAG, "État AWAITING_EGG_CLICK: En attente du clic sur la vidéo.")
                 videoView.setOnClickListener { updateState(IntroState.HATCHING) }
             }
             IntroState.HATCHING -> {
+                Log.v(TAG, "État HATCHING: Lancement vidéo d'éclosion et dialogue TTS.")
                 playVideo(R.raw.egg_hatching, false)
-                speak(R.string.bourdon_intro_hatching, UTTERANCE_ID_HATCHING) // Ma voix sur l'éclosion.
+                speak(R.string.bourdon_intro_hatching, UTTERANCE_ID_HATCHING)
                 videoView.setOnCompletionListener { updateState(IntroState.DOWNLOADING_SPEAKING) }
             }
             IntroState.DOWNLOADING_SPEAKING -> {
-                //playVideo(R.raw.worker_bees_arriving, true)
+                Log.v(TAG, "État DOWNLOADING_SPEAKING: Lancement du dialogue et téléchargement des modèles.")
                 speak(R.string.bourdon_intro_downloading, UTTERANCE_ID_DOWNLOADING)
                 downloadAllRequiredModels()
             }
             IntroState.DOWNLOADING_WAITING -> {
-                progressBar.visibility = View.VISIBLE // On montre qu'on bosse.
+                Log.v(TAG, "État DOWNLOADING_WAITING: Affichage de la barre de progression.")
+                progressBar.visibility = View.VISIBLE
             }
             IntroState.HIVE_READY_SPEAKING -> {
+                Log.v(TAG, "État HIVE_READY_SPEAKING: Ruche prête, dialogue TTS.")
                 progressBar.visibility = View.GONE
-                //playVideo(R.raw.queen_arriving, false)
                 speak(R.string.bourdon_intro_hive_ready, UTTERANCE_ID_HIVE_READY)
             }
             IntroState.FINAL_CHOICE_SPEAKING -> {
-                //playVideo(R.raw.bourdon_explains_choices, true) // Bourdon explique en boucle.
+                Log.v(TAG, "État FINAL_CHOICE_SPEAKING: Présentation des choix finaux via TTS.")
                 speak(R.string.bourdon_intro_choices, UTTERANCE_ID_CHOICES)
             }
             IntroState.AWAITING_FINAL_CHOICE -> {
-                buttonContainer.visibility = View.VISIBLE // Les boutons apparaissent !
+                Log.v(TAG, "État AWAITING_FINAL_CHOICE: Affichage des boutons de choix.")
+                buttonContainer.visibility = View.VISIBLE
             }
             IntroState.COMPLETED -> {
-                // Géré par les listeners des boutons.
+                Log.v(TAG, "État COMPLETED: L'introduction est terminée.")
             }
         }
     }
 
     private fun finishIntro() {
-        if (currentState == IntroState.COMPLETED) return // Pour éviter double-clic
+        if (currentState == IntroState.COMPLETED) return
+        Log.d(TAG, "finishIntro: Fin de la séquence d'introduction.")
         updateState(IntroState.COMPLETED)
 
         val sharedPref = getSharedPreferences("KikkoPrefs", Context.MODE_PRIVATE)
@@ -437,13 +1079,17 @@ class IntroActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             putBoolean("isFirstLaunch", false)
             apply()
         }
+        Log.i(TAG, "Préférence 'isFirstLaunch' mise à false.")
+
         val intent = Intent(this, HiveActivity::class.java)
         startActivity(intent)
+        Log.i(TAG, "Lancement de HiveActivity et destruction de IntroActivity.")
         finish()
     }
 
     private fun playVideo(resId: Int, loop: Boolean) {
         val path = "android.resource://" + packageName + "/" + resId
+        Log.v(TAG, "playVideo: Lecture de la ressource vidéo $path (boucle: $loop)")
         videoView.setVideoURI(Uri.parse(path))
         videoView.setOnPreparedListener { mp -> mp.isLooping = loop }
         videoView.start()
@@ -451,32 +1097,99 @@ class IntroActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun speak(textResId: Int, utteranceId: String) {
         val text = getString(textResId)
-        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
+        Log.v(TAG, "speak: Demande de lecture TTS via TtsService pour utteranceId '$utteranceId'")
+        // FRELON-ARCHITECTE: Appel à notre service centralisé
+        TtsService.speak(text, utteranceId)
     }
 
-    // ... (Les fonctions de téléchargement de modèles restent les mêmes) ...
     private fun downloadAllRequiredModels() { /* ... */ }
     private fun downloadGemmaModel() { /* ... */ }
     private fun downloadTranslationModel(language: String, modelName: String) { /* ... */ }
+
     @Synchronized
     private fun onModelDownloaded(modelName: String) {
         requiredModels.remove(modelName)
         Log.d("ModelDownload", "$modelName is ready. Remaining: ${requiredModels.size}")
         if (requiredModels.isEmpty() && currentState == IntroState.DOWNLOADING_WAITING) {
+            Log.i(TAG, "onModelDownloaded: Tous les modèles sont téléchargés. Passage à HIVE_READY_SPEAKING.")
             runOnUiThread { updateState(IntroState.HIVE_READY_SPEAKING) }
         }
     }
 
     override fun onDestroy() {
-        if (this::tts.isInitialized) {
-            tts.stop()
-            tts.shutdown()
-        }
+        Log.v(TAG, "Cycle de vie : onDestroy")
+        // FRELON-ARCHITECTE: Il n'y a plus besoin d'arrêter le TTS ici,
+        // car il est géré par la classe Application.
         super.onDestroy()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.v(TAG, "Cycle de vie : onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.v(TAG, "Cycle de vie : onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.v(TAG, "Cycle de vie : onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.v(TAG, "Cycle de vie : onStop")
     }
 }
 
 --- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/IntroActivity.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/KikkoApplication.kt ---
+
+package be.aktina.android.kikkopocnearby
+
+import android.app.Application
+import android.util.Log
+import be.aktina.android.kikkopocnearby.services.LlmService
+import be.aktina.android.kikkopocnearby.services.SttService
+import be.aktina.android.kikkopocnearby.services.TtsService
+
+/**
+ * FRELON-ARCHITECTE: Classe principale de l'application.
+ * C'est le point d'entrée de la Ruche. Son rôle est d'initialiser les services
+ * globaux et les singletons qui vivront tout au long du cycle de vie de l'application.
+ */
+class KikkoApplication : Application() {
+
+    private val TAG = "KikkoApplication"
+
+    override fun onCreate() {
+        super.onCreate()
+        Log.v(TAG, "La Ruche s'éveille... Initialisation des services globaux.")
+
+        // Éveiller notre Abeille-Annonceuse (TTS)
+        TtsService.initialize(this)
+        // Éveiller notre Abeille-Écoutante (STT)
+        SttService.initialize(this)
+        // MODIFIÉ : Éveiller notre Reine IA (LLM)
+        LlmService.initialize(this)
+    }
+
+    override fun onTerminate() {
+        Log.v(TAG, "La Ruche s'endort... Arrêt des services.")
+        // Arrêter proprement les services
+        TtsService.shutdown()
+        SttService.shutdown()
+        // MODIFIÉ : Mettre la Reine IA en sommeil
+        LlmService.shutdown()
+        super.onTerminate()
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/KikkoApplication.kt ---
 
 
 --- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/KikkoData.kt ---
@@ -1297,6 +2010,1074 @@ class RadarView @JvmOverloads constructor(
 --- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/RadarView.kt ---
 
 
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/data/Model.kt ---
+
+package be.aktina.android.kikkopocnearby.data
+
+import android.content.Context
+import java.io.File
+
+enum class DownloadStatus {
+    NOT_DOWNLOADED,
+    DOWNLOADING,
+    SUCCEEDED,
+    FAILED
+}
+
+data class Model(
+    val id: String,
+    val name: String,
+    val description: String,
+    val url: String,
+    val archiveName: String, // Nom du fichier à télécharger (ex: .zip, .tar.gz)
+    val modelFileName: String, // Nom du fichier modèle final (ex: .task) ou du dossier modèle
+    val sizeInBytes: Long,
+    val isArchive: Boolean = false,
+    // NOUVEAU : Un drapeau pour savoir si le modèle gère les images
+    val isMultimodal: Boolean = false,
+    var status: DownloadStatus = DownloadStatus.NOT_DOWNLOADED,
+    var downloadedBytes: Long = 0L,
+    var progress: Int = 0
+) {
+    /**
+     * Retourne le chemin complet où le fichier TÉLÉCHARGÉ (l'archive) doit être stocké.
+     */
+    fun getArchiveLocalPath(context: Context): File {
+        val modelDir = File(context.filesDir, id)
+        if (!modelDir.exists()) {
+            modelDir.mkdirs()
+        }
+        return File(modelDir, archiveName)
+    }
+
+    /**
+     * Retourne le chemin complet du fichier MODÈLE FINAL ou du DOSSIER MODÈLE.
+     */
+    fun getModelLocalPath(context: Context): File {
+        val modelDir = File(context.filesDir, id)
+        return File(modelDir, modelFileName)
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/data/Model.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/data/ModelCatalogue.kt ---
+
+package be.aktina.android.kikkopocnearby.data
+
+import android.content.Context
+import java.io.File
+
+object ModelCatalogue {
+
+    fun getAllModels(): List<Model> {
+        return listOf(
+            Model(
+                id = "kikko-gemma-3n-e4b-it-int4",
+                name = "Gemma 3n E4B (4B)",
+                description = "Modèle multimodal effectif 4B, hébergé par la Ruche.",
+                url = "https://kikko.be/model/gemma-3n-tflite-gemma-3n-e4b-it-int4-v1.tar.gz",
+                archiveName = "gemma-3n-tflite-gemma-3n-e4b-it-int4-v1.tar.gz",
+                modelFileName = "gemma-3n-E4B-it-int4.task",
+                sizeInBytes = 3527867275L,
+                isArchive = true,
+                // MODIFIÉ : On spécifie que ce modèle peut voir
+                isMultimodal = true
+            ),
+            Model(
+                id = "kikko-gemma-3n-e2b-it-int4",
+                name = "Gemma 3n E2B (2B)",
+                description = "Modèle multimodal effectif 2B, version légère.",
+                url = "https://kikko.be/model/gemma-3n-tflite-gemma-3n-e2b-it-int4-v1.tar.gz",
+                archiveName = "gemma-3n-tflite-gemma-3n-e2b-it-int4-v1.tar.gz",
+                modelFileName = "gemma-3n-E2B-it-int4.task",
+                sizeInBytes = 2460502690L,
+                isArchive = true,
+                // MODIFIÉ : On spécifie que ce modèle peut voir
+                isMultimodal = true
+            ),
+            Model(
+                id = "kikko-gemma3-1b-it-int4",
+                name = "Gemma3 1B-IT q4",
+                description = "Modèle compact et rapide, quantification 4-bit.",
+                url = "https://kikko.be/model/gemma3-1B-it-int4.task",
+                archiveName = "gemma3-1B-it-int4.task",
+                modelFileName = "gemma3-1B-it-int4.task",
+                sizeInBytes = 554661243L,
+                isArchive = false,
+                isMultimodal = false // Ce modèle est purement textuel
+            ),
+            Model(
+                id = "vosk-model-small-fr-0.22",
+                name = "Vosk - Français (small)",
+                description = "Modèle léger de reconnaissance vocale pour le français.",
+                url = "https://alphacephei.com/vosk/models/vosk-model-small-fr-0.22.zip",
+                archiveName = "vosk-model-small-fr-0.22.zip",
+                modelFileName = "",
+                sizeInBytes = 42991616,
+                isArchive = true
+            ),
+            Model(
+                id = "vosk-model-small-en-us-0.15",
+                name = "Vosk - Anglais US (small)",
+                description = "Modèle léger de reconnaissance vocale pour l'anglais (US).",
+                url = "https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip",
+                archiveName = "vosk-model-small-en-us-0.15.zip",
+                modelFileName = "",
+                sizeInBytes = 41943040,
+                isArchive = true
+            )
+        )
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/data/ModelCatalogue.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/data/ModelManager.kt ---
+
+package be.aktina.android.kikkopocnearby.data
+
+import android.content.Context
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.work.Constraints
+import androidx.work.Data
+import androidx.work.ExistingWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import be.aktina.android.kikkopocnearby.workers.DownloadWorker
+
+object ModelManager {
+    private const val TAG = "ModelManager"
+
+    private val _models = MutableLiveData<List<Model>>()
+    val models: LiveData<List<Model>> = _models
+
+    fun initialize(context: Context) {
+        val allModels = ModelCatalogue.getAllModels()
+        val currentModels = allModels.map { model ->
+            val finalModelFile = model.getModelLocalPath(context)
+
+            if (finalModelFile.exists() && (finalModelFile.isDirectory || finalModelFile.length() > 0)) {
+                model.status = DownloadStatus.SUCCEEDED
+                model.downloadedBytes = model.sizeInBytes
+                model.progress = 100
+            } else {
+                model.status = DownloadStatus.NOT_DOWNLOADED
+                model.downloadedBytes = 0L
+                model.progress = 0
+            }
+            model
+        }
+        _models.postValue(currentModels)
+    }
+
+    fun downloadModel(context: Context, model: Model) {
+        Log.d(TAG, "Lancement du téléchargement pour le modèle: ${model.name}")
+        val workManager = WorkManager.getInstance(context.applicationContext)
+
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
+
+        val dataBuilder = Data.Builder()
+        dataBuilder.putString(DownloadWorker.KEY_MODEL_ID, model.id)
+        dataBuilder.putString(DownloadWorker.KEY_DOWNLOAD_URL, model.url)
+        dataBuilder.putString(DownloadWorker.KEY_ARCHIVE_PATH, model.getArchiveLocalPath(context).absolutePath)
+        // FRELON-ARCHITECTE: Correction de la clé et de la propriété. isZip -> isArchive
+        dataBuilder.putBoolean(DownloadWorker.KEY_IS_ARCHIVE, model.isArchive)
+
+        val downloadWorkRequest = OneTimeWorkRequestBuilder<DownloadWorker>()
+            .setInputData(dataBuilder.build())
+            .setConstraints(constraints)
+            .addTag(model.id)
+            .build()
+
+        workManager.enqueueUniqueWork(
+            model.id,
+            ExistingWorkPolicy.REPLACE,
+            downloadWorkRequest
+        )
+    }
+
+    fun deleteModel(context: Context, model: Model) {
+        Log.d(TAG, "Suppression du modèle: ${model.name}")
+        val modelDir = model.getArchiveLocalPath(context.applicationContext).parentFile
+        if (modelDir != null && modelDir.exists() && modelDir.isDirectory) {
+            if (modelDir.deleteRecursively()) {
+                Log.i(TAG, "Dossier modèle ${modelDir.name} supprimé avec succès.")
+            } else {
+                Log.e(TAG, "Échec de la suppression du dossier modèle ${modelDir.name}.")
+            }
+        }
+        WorkManager.getInstance(context.applicationContext).cancelUniqueWork(model.id)
+        val currentList = _models.value ?: return
+        val newList = currentList.map {
+            if (it.id == model.id) {
+                it.copy(status = DownloadStatus.NOT_DOWNLOADED, progress = 0, downloadedBytes = 0L)
+            } else {
+                it
+            }
+        }
+        _models.postValue(newList)
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/data/ModelManager.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/data/VoskModelRepository.kt ---
+
+package be.aktina.android.kikkopocnearby.data
+
+import android.util.Log
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.jsoup.Jsoup
+import java.util.Locale
+
+/**
+ * FRELON-ARCHITECTE: Un repository dédié au "butinage" de la page des modèles Vosk.
+ * Il se charge de la requête réseau et de l'extraction des données depuis le HTML.
+ */
+object VoskModelRepository {
+
+    private const val TAG = "VoskModelRepository"
+    private const val VOSK_MODELS_URL = "https://alphacephei.com/vosk/models"
+
+    suspend fun fetchSmallModels(): List<Model> {
+        return withContext(Dispatchers.IO) {
+            val models = mutableListOf<Model>()
+            try {
+                Log.d(TAG, "Connexion à $VOSK_MODELS_URL pour extraire les modèles Vosk...")
+                val doc = Jsoup.connect(VOSK_MODELS_URL).get()
+                val tables = doc.select("table")
+
+                tables.forEach { table ->
+                    val rows = table.select("tr")
+                    rows.forEach { row ->
+                        val columns = row.select("td")
+                        if (columns.size >= 2) {
+                            val linkElement = columns[0].select("a").first()
+                            val modelName = linkElement?.text()
+                            val modelUrl = linkElement?.attr("abs:href")
+                            val sizeStr = columns[1].text()
+                            val notes = columns.getOrNull(3)?.text() ?: "Modèle de reconnaissance vocale Vosk."
+
+                            if (modelName != null && modelUrl != null && modelName.contains("small", ignoreCase = true)) {
+                                val sizeInBytes = parseSize(sizeStr)
+                                val fileName = modelUrl.substring(modelUrl.lastIndexOf('/') + 1)
+                                val unzipDir = fileName.removeSuffix(".zip")
+
+                                if (models.none { it.id == modelName }) {
+                                    models.add(
+                                        Model(
+                                            id = modelName,
+                                            name = "Vosk - $modelName",
+                                            description = notes,
+                                            url = modelUrl,
+                                            archiveName = fileName,
+                                            modelFileName = unzipDir,
+                                            sizeInBytes = sizeInBytes,
+                                            // FRELON-ARCHITECTE: Correction de la clé
+                                            isArchive = true
+                                        )
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+                Log.i(TAG, "${models.size} modèles Vosk 'small' uniques ont été identifiés pour recrutement.")
+            } catch (e: Exception) {
+                Log.e(TAG, "Erreur lors de la récupération des modèles Vosk", e)
+            }
+            models
+        }
+    }
+
+    private fun parseSize(sizeStr: String): Long {
+        return try {
+            val value = sizeStr.replace(Regex("[^\\d.]"), "").toDoubleOrNull() ?: 0.0
+            when {
+                sizeStr.uppercase(Locale.ROOT).endsWith("M") -> (value * 1024 * 1024).toLong()
+                sizeStr.uppercase(Locale.ROOT).endsWith("G") -> (value * 1024 * 1024 * 1024).toLong()
+                else -> 0L
+            }
+        } catch (e: NumberFormatException) {
+            Log.w(TAG, "Impossible de parser la taille: '$sizeStr'")
+            0L
+        }
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/data/VoskModelRepository.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/services/LlmService.kt ---
+
+package be.aktina.android.kikkopocnearby.services
+
+import android.annotation.SuppressLint
+import android.content.Context
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import be.aktina.android.kikkopocnearby.data.Model
+import com.google.mediapipe.tasks.genai.llminference.LlmInference
+import com.google.mediapipe.tasks.genai.llminference.LlmInferenceSession
+import com.google.mediapipe.tasks.genai.llminference.GraphOptions
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
+enum class LlmStatus {
+    IDLE,
+    THINKING,
+    ERROR
+}
+
+data class LlmResult(
+    val status: LlmStatus,
+    val text: String = ""
+)
+
+@SuppressLint("StaticFieldLeak")
+object LlmService {
+
+    private const val TAG = "LlmService"
+    private var llmInference: LlmInference? = null
+    private var session: LlmInferenceSession? = null
+    private var currentModelPath: String? = null
+    private var applicationContext: Context? = null
+
+    private val _result = MutableLiveData<LlmResult>()
+    val result: LiveData<LlmResult> = _result
+
+    fun initialize(context: Context) {
+        applicationContext = context.applicationContext
+        Log.v(TAG, "Service LLM (Reine IA) prêt à recevoir un modèle.")
+        _result.postValue(LlmResult(LlmStatus.IDLE, "Reine IA en attente."))
+    }
+
+    fun selectModel(context: Context, model: Model, onFinished: (Boolean, String?) -> Unit) {
+        val ctx = context.applicationContext
+        _result.postValue(LlmResult(LlmStatus.THINKING, "La Reine prépare ses neurones..."))
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val modelPath = model.getModelLocalPath(ctx).absolutePath
+                if (currentModelPath == modelPath && llmInference != null && session != null) {
+                    withContext(Dispatchers.Main) {
+                        _result.postValue(LlmResult(LlmStatus.IDLE, "Reine IA prête. (${model.name})"))
+                        onFinished(true, null)
+                    }
+                    return@launch
+                }
+
+                shutdown()
+
+                val options = LlmInference.LlmInferenceOptions.builder()
+                    .setModelPath(modelPath)
+                    .build()
+                llmInference = LlmInference.createFromOptions(ctx, options)
+
+                // CORRECTION 1 : On crée les options de session, y compris pour la vision
+                val sessionOptions = LlmInferenceSession.LlmInferenceSessionOptions.builder()
+                    .setGraphOptions(
+                        GraphOptions.builder()
+                            .setEnableVisionModality(model.isMultimodal)
+                            .build()
+                    ).build()
+
+                // CORRECTION 1 (suite) : On passe bien les DEUX arguments
+                session = LlmInferenceSession.createFromOptions(llmInference!!, sessionOptions)
+                currentModelPath = modelPath
+
+                withContext(Dispatchers.Main) {
+                    _result.postValue(LlmResult(LlmStatus.IDLE, "Reine IA prête. (${model.name})"))
+                    onFinished(true, null)
+                }
+            } catch (e: Exception) {
+                val errorMessage = "Échec du chargement du modèle Gemma: ${e.message}"
+                Log.e(TAG, errorMessage, e)
+                shutdown()
+                withContext(Dispatchers.Main) {
+                    _result.postValue(LlmResult(LlmStatus.ERROR, errorMessage))
+                    onFinished(false, errorMessage)
+                }
+            }
+        }
+    }
+
+    fun generateResponse(prompt: String) {
+        if (session == null) {
+            _result.postValue(LlmResult(LlmStatus.ERROR, "La Reine IA n'a pas de session active."))
+            return
+        }
+
+        _result.postValue(LlmResult(LlmStatus.THINKING, "réfléchit..."))
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // CORRECTION 2 : La génération se fait en deux temps.
+                // 1. On ajoute le prompt à la session.
+                session!!.addQueryChunk(prompt)
+                // 2. On appelle generateResponse SANS argument.
+                val response = session!!.generateResponse()
+
+                _result.postValue(LlmResult(LlmStatus.IDLE, response))
+            } catch (e: Exception) {
+                val errorMessage = "Erreur d'inférence de la Reine: ${e.message}"
+                Log.e(TAG, errorMessage, e)
+                _result.postValue(LlmResult(LlmStatus.ERROR, errorMessage))
+            }
+        }
+    }
+
+    fun shutdown() {
+        Log.v(TAG, "Arrêt du service LLM (Reine IA).")
+        session?.close()
+        llmInference?.close()
+        session = null
+        llmInference = null
+        currentModelPath = null
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/services/LlmService.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/services/SttService.kt ---
+
+package be.aktina.android.kikkopocnearby.services
+
+import android.content.Context
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
+import org.vosk.Model
+import org.vosk.Recognizer
+import org.vosk.android.RecognitionListener
+import org.vosk.android.SpeechService
+import java.io.IOException
+
+/**
+ * FRELON-ARCHITECTE: Un enum pour les statuts du service STT (Speech-to-Text).
+ */
+enum class SttStatus {
+    IDLE,       // Inactif
+    LISTENING,  // Écoute en cours
+    PROCESSING, // Traitement d'un résultat partiel/final
+    ERROR       // Une erreur est survenue
+}
+
+/**
+ * FRELON-ARCHITECTE: Une classe de données pour encapsuler le résultat du STT.
+ */
+data class SttResult(
+    val status: SttStatus,
+    val text: String = "",
+    val isFinal: Boolean = false
+)
+
+/**
+ * FRELON-ARCHITECTE: Service singleton pour gérer la reconnaissance vocale (STT).
+ * C'est notre "Abeille-Écoutante". Elle encapsule l'initialisation et l'utilisation
+ * de Vosk, le rendant réutilisable et facile à gérer.
+ */
+object SttService : RecognitionListener {
+
+    private const val TAG = "SttService"
+    private var model: Model? = null
+    private var speechService: SpeechService? = null
+    private var currentModelPath: String? = null // FRELON-ARCHITECTE: Ajout pour suivre le chemin du modèle chargé
+
+    private val _result = MutableLiveData<SttResult>()
+    val result: LiveData<SttResult> = _result
+
+    private var currentFinalText: String = ""
+
+    fun initialize(context: Context) {
+        // L'initialisation se fait via `selectModel` maintenant
+        Log.v(TAG, "Service STT prêt à recevoir un modèle.")
+    }
+
+    /**
+     * Sélectionne et charge un modèle Vosk. Doit être appelé avant `startListening`.
+     * Cette opération peut être longue et est donc exécutée dans une coroutine.
+     */
+    fun selectModel(modelPath: String, onFinished: (Boolean, String?) -> Unit) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // FRELON-ARCHITECTE: Correction de la comparaison pour le modèle déjà chargé
+                if (currentModelPath == modelPath && model != null) {
+                    Log.d(TAG, "Modèle Vosk déjà chargé: $modelPath")
+                    withContext(Dispatchers.Main) { onFinished(true, null) }
+                    return@launch
+                }
+                Log.d(TAG, "Chargement du modèle Vosk depuis: $modelPath")
+                model?.close() // S'assurer de fermer l'ancien modèle si un nouveau est chargé
+                model = Model(modelPath)
+                currentModelPath = modelPath // FRELON-ARCHITECTE: Stocke le chemin du modèle
+                withContext(Dispatchers.Main) { onFinished(true, null) }
+            } catch (e: IOException) {
+                val errorMessage = "Échec du chargement du modèle Vosk: ${e.message}"
+                Log.e(TAG, errorMessage, e)
+                withContext(Dispatchers.Main) { onFinished(false, errorMessage) }
+            }
+        }
+    }
+
+    /**
+     * Démarre l'écoute du microphone.
+     */
+    fun startListening() {
+        if (model == null) {
+            _result.postValue(SttResult(SttStatus.ERROR, "Modèle non initialisé"))
+            return
+        }
+        if (speechService != null) {
+            Log.w(TAG, "L'écoute est déjà en cours.")
+            return
+        }
+
+        try {
+            currentFinalText = ""
+            val recognizer = Recognizer(model, 16000.0f)
+            speechService = SpeechService(recognizer, 16000.0f)
+            speechService?.startListening(this)
+            _result.postValue(SttResult(SttStatus.LISTENING, "Écoute..."))
+        } catch (e: IOException) {
+            onError(e)
+        }
+    }
+
+    /**
+     * Arrête l'écoute du microphone.
+     */
+    fun stopListening() {
+        speechService?.stop()
+        speechService = null // Important pour indiquer que l'écoute est terminée
+        _result.postValue(SttResult(SttStatus.IDLE, currentFinalText, isFinal = true))
+    }
+
+    /**
+     * Libère les ressources du service STT.
+     */
+    fun shutdown() {
+        Log.v(TAG, "Arrêt du service STT.")
+        speechService?.stop()
+        speechService?.shutdown()
+        model?.close() // S'assurer de bien fermer le modèle Vosk
+        model = null
+        currentModelPath = null // Réinitialiser le chemin du modèle
+    }
+
+    // --- Implémentation de RecognitionListener ---
+
+    override fun onPartialResult(hypothesis: String?) {
+        hypothesis?.let {
+            try {
+                val partialText = JSONObject(it).getString("partial")
+                _result.postValue(SttResult(SttStatus.PROCESSING, "$currentFinalText $partialText"))
+            } catch (e: Exception) {
+                Log.e(TAG, "Erreur parsing JSON partiel Vosk", e)
+            }
+        }
+    }
+
+    override fun onResult(hypothesis: String?) {
+        hypothesis?.let {
+            try {
+                val segmentText = JSONObject(it).getString("text")
+                if (segmentText.isNotBlank()) {
+                    currentFinalText += "$segmentText "
+                    _result.postValue(SttResult(SttStatus.PROCESSING, currentFinalText))
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Erreur parsing JSON final Vosk", e)
+            }
+        }
+    }
+
+    override fun onFinalResult(hypothesis: String?) {
+        onResult(hypothesis)
+        speechService = null
+        _result.postValue(SttResult(SttStatus.IDLE, currentFinalText.trim(), isFinal = true))
+        Log.i(TAG, "Vosk onFinalResult. Texte final: \"$currentFinalText\"")
+    }
+
+    override fun onError(exception: Exception?) {
+        speechService = null
+        val errorMessage = "Erreur Vosk: ${exception?.message}"
+        Log.e(TAG, "Erreur dans le listener STT", exception)
+        _result.postValue(SttResult(SttStatus.ERROR, errorMessage))
+    }
+
+    override fun onTimeout() {
+        speechService = null
+        _result.postValue(SttResult(SttStatus.IDLE, "Timeout. $currentFinalText", isFinal = true))
+        Log.w(TAG, "Vosk onTimeout: Arrêt de l'écoute.")
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/services/SttService.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/services/TtsService.kt ---
+
+package be.aktina.android.kikkopocnearby.services
+
+import android.content.Context
+import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
+import android.util.Log
+import java.util.Locale
+import java.util.UUID
+
+/**
+ * FRELON-ARCHITECTE: Service singleton pour gérer le Text-To-Speech (TTS).
+ * Cette classe encapsule l'initialisation et l'utilisation du moteur TTS d'Android,
+ * le rendant réutilisable et facile à gérer depuis n'importe quelle Activity.
+ * C'est notre "Abeille-Annonceuse".
+ */
+object TtsService : TextToSpeech.OnInitListener {
+
+    private const val TAG = "TtsService"
+    private var tts: TextToSpeech? = null
+    private var isInitialized = false
+    private var isAvailable = false
+    private val pendingQueue = mutableListOf<Pair<String, String>>()
+
+    /**
+     * Initialise le service TTS. Doit être appelé une seule fois, idéalement depuis
+     * une classe Application ou la première Activity.
+     */
+    fun initialize(context: Context) {
+        if (isInitialized) {
+            Log.v(TAG, "TTS est déjà en cours d'initialisation ou initialisé.")
+            return
+        }
+        Log.v(TAG, "Initialisation du service TTS...")
+        tts = TextToSpeech(context.applicationContext, this)
+        isInitialized = true
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            isAvailable = true
+            tts?.language = Locale.getDefault()
+            Log.i(TAG, "TTS initialisé avec succès pour la langue: ${Locale.getDefault().displayName}")
+            // Si des messages étaient en attente, on les lit maintenant.
+            processPendingQueue()
+        } else {
+            isAvailable = false
+            Log.e(TAG, "Échec de l'initialisation du TTS. Statut: $status")
+        }
+    }
+
+    /**
+     * Fait parler le Bourdon. Si le TTS n'est pas prêt, le message est mis en file d'attente.
+     */
+    fun speak(text: String, utteranceId: String = UUID.randomUUID().toString()) {
+        if (isAvailable) {
+            Log.d(TAG, "Parole demandée: '$text' (ID: $utteranceId)")
+            tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
+        } else {
+            Log.w(TAG, "TTS non disponible, mise en file d'attente du message (ID: $utteranceId)")
+            pendingQueue.add(Pair(text, utteranceId))
+        }
+    }
+
+    /**
+     * Définit un listener pour suivre la progression de la parole.
+     */
+    fun setProgressListener(listener: UtteranceProgressListener) {
+        if (isAvailable) {
+            tts?.setOnUtteranceProgressListener(listener)
+        } else {
+            Log.w(TAG, "Impossible de définir le ProgressListener : TTS non initialisé.")
+        }
+    }
+
+    private fun processPendingQueue() {
+        if (pendingQueue.isNotEmpty()) {
+            Log.i(TAG, "Traitement de ${pendingQueue.size} message(s) en attente...")
+            val queueCopy = pendingQueue.toList()
+            pendingQueue.clear()
+            queueCopy.forEach { (text, id) ->
+                speak(text, id)
+            }
+        }
+    }
+
+    /**
+     * Libère les ressources du service TTS. À appeler dans le onDestroy de l'application.
+     */
+    fun shutdown() {
+        Log.v(TAG, "Arrêt du service TTS.")
+        isInitialized = false
+        isAvailable = false
+        tts?.stop()
+        tts?.shutdown()
+        tts = null
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/services/TtsService.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/ui/ModelAdapter.kt ---
+
+package be.aktina.android.kikkopocnearby.ui
+
+import android.annotation.SuppressLint
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import be.aktina.android.kikkopocnearby.R
+import be.aktina.android.kikkopocnearby.data.DownloadStatus
+import be.aktina.android.kikkopocnearby.data.Model
+import java.util.Locale
+
+class ModelAdapter(
+    private var models: List<Model>,
+    private val onActionClickListener: (Model) -> Unit
+) : RecyclerView.Adapter<ModelAdapter.ModelViewHolder>() {
+
+    // MODIFIÉ : Le Payload devient une classe pour transporter notre état de décompression.
+    class ProgressPayload(val isUnzipping: Boolean = false)
+
+    class ModelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val modelName: TextView = view.findViewById(R.id.model_name)
+        val modelDescription: TextView = view.findViewById(R.id.model_description)
+        val actionButton: ImageButton = view.findViewById(R.id.model_action_button)
+        val progressContainer: LinearLayout = view.findViewById(R.id.download_progress_container)
+        val progressBar: ProgressBar = view.findViewById(R.id.download_progress_bar)
+        val progressText: TextView = view.findViewById(R.id.download_progress_text)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ModelViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_model, parent, false)
+        return ModelViewHolder(view)
+    }
+
+    override fun getItemCount() = models.size
+
+    // MODIFIÉ : Logique de mise à jour partielle améliorée.
+    override fun onBindViewHolder(holder: ModelViewHolder, position: Int, payloads: MutableList<Any>) {
+        if (payloads.isEmpty()) {
+            // Si pas de payload, c'est un affichage complet.
+            super.onBindViewHolder(holder, position, payloads)
+            return
+        }
+
+        // On cherche notre payload spécifique.
+        val progressPayload = payloads.find { it is ProgressPayload } as? ProgressPayload
+        if (progressPayload != null) {
+            // Si on le trouve, on met à jour uniquement la progression.
+            bindProgress(holder, models[position], progressPayload.isUnzipping)
+        } else {
+            // Pour tout autre payload (non utilisé ici), on ferait un refresh complet.
+            super.onBindViewHolder(holder, position, payloads)
+        }
+    }
+
+    override fun onBindViewHolder(holder: ModelViewHolder, position: Int) {
+        val model = models[position]
+        bind(holder, model)
+    }
+
+    private fun bind(holder: ModelViewHolder, model: Model) {
+        holder.modelName.text = model.name
+        holder.modelDescription.text = model.description
+        holder.actionButton.setOnClickListener { onActionClickListener(model) }
+        bindProgress(holder, model)
+    }
+
+    // MODIFIÉ : La fonction accepte maintenant l'état 'isUnzipping'.
+    @SuppressLint("SetTextI18n")
+    private fun bindProgress(holder: ModelViewHolder, model: Model, isUnzipping: Boolean = false) {
+        when (model.status) {
+            DownloadStatus.NOT_DOWNLOADED -> {
+                holder.progressContainer.visibility = View.GONE
+                holder.actionButton.visibility = View.VISIBLE
+                holder.actionButton.setImageResource(R.drawable.ic_download)
+                holder.actionButton.isEnabled = true
+            }
+            DownloadStatus.DOWNLOADING -> {
+                holder.progressContainer.visibility = View.VISIBLE
+                holder.actionButton.visibility = View.GONE
+
+                // NOUVELLE LOGIQUE D'AFFICHAGE
+                if (isUnzipping) {
+                    holder.progressBar.isIndeterminate = true
+                    holder.progressText.text = "Décompression en cours..."
+                } else {
+                    holder.progressBar.isIndeterminate = model.sizeInBytes <= 0 // Indéterminé si taille inconnue
+                    holder.progressBar.progress = model.progress
+
+                    if (model.sizeInBytes > 0) {
+                        val downloadedMb = model.downloadedBytes / (1024.0 * 1024.0)
+                        val totalMb = model.sizeInBytes / (1024.0 * 1024.0)
+                        holder.progressText.text = String.format(Locale.getDefault(), "%.1f MB / %.1f MB (%d%%)", downloadedMb, totalMb, model.progress)
+                    } else {
+                        // Cas où la taille totale n'est pas connue
+                        val downloadedMb = model.downloadedBytes / (1024.0 * 1024.0)
+                        holder.progressText.text = String.format(Locale.getDefault(), "%.1f MB téléchargés", downloadedMb)
+                    }
+                }
+            }
+            DownloadStatus.SUCCEEDED -> {
+                holder.progressContainer.visibility = View.GONE
+                holder.actionButton.visibility = View.VISIBLE
+                holder.actionButton.setImageResource(R.drawable.ic_delete)
+                holder.actionButton.isEnabled = true
+            }
+            DownloadStatus.FAILED -> {
+                holder.progressContainer.visibility = View.VISIBLE
+                holder.progressBar.visibility = View.GONE
+                holder.actionButton.visibility = View.VISIBLE
+                holder.actionButton.setImageResource(R.drawable.ic_download)
+                holder.actionButton.isEnabled = true
+                holder.progressText.text = "Échec du téléchargement"
+            }
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateModels(newModels: List<Model>) {
+        this.models = newModels
+        notifyDataSetChanged()
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/ui/ModelAdapter.kt ---
+
+
+--- START OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/workers/DownloadWorker.kt ---
+
+package be.aktina.android.kikkopocnearby.workers
+
+import android.content.Context
+import android.util.Log
+import androidx.work.CoroutineWorker
+import androidx.work.WorkerParameters
+import androidx.work.workDataOf
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream
+import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream
+import java.io.BufferedInputStream
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.IOException
+import java.net.HttpURLConnection
+import java.net.URL
+import java.util.zip.ZipInputStream
+
+class DownloadWorker(
+    appContext: Context,
+    params: WorkerParameters
+) : CoroutineWorker(appContext, params) {
+
+    companion object {
+        const val KEY_MODEL_ID = "model_id"
+        const val KEY_DOWNLOAD_URL = "download_url"
+        const val KEY_ARCHIVE_PATH = "archive_path"
+        const val KEY_IS_ARCHIVE = "is_archive"
+
+        const val KEY_PROGRESS_BYTES = "progress_bytes"
+        const val KEY_PROGRESS_PERCENT = "progress_percent"
+
+        // NOUVELLE CLÉ POUR SUIVRE L'ÉTAT DE DÉCOMPRESSION
+        const val KEY_START_UNZIPPING = "start_unzipping"
+    }
+
+    private val TAG = "DownloadWorker"
+    private val PROGRESS_UPDATE_THRESHOLD = 5
+
+    override suspend fun doWork(): Result {
+        val modelId = inputData.getString(KEY_MODEL_ID) ?: return Result.failure()
+        val downloadUrl = inputData.getString(KEY_DOWNLOAD_URL) ?: return Result.failure()
+        val archivePath = inputData.getString(KEY_ARCHIVE_PATH) ?: return Result.failure()
+        val isArchive = inputData.getBoolean(KEY_IS_ARCHIVE, false)
+
+        Log.i(TAG, "Démarrage du téléchargement pour '$modelId' depuis $downloadUrl vers $archivePath")
+        val outputFile = File(archivePath)
+
+        return withContext(Dispatchers.IO) {
+            try {
+                downloadFile(downloadUrl, outputFile)
+
+                if (isArchive) {
+                    val destinationDir = outputFile.parentFile
+                    if (destinationDir == null) {
+                        Log.e(TAG, "Dossier parent invalide pour la décompression.")
+                        return@withContext Result.failure()
+                    }
+
+                    // ON PRÉVIENT L'UI QU'ON COMMENCE LA DÉCOMPRESSION
+                    setProgress(workDataOf(KEY_START_UNZIPPING to true))
+
+                    Log.i(TAG, "Le fichier est une archive. Démarrage de la décompression...")
+
+                    if (outputFile.extension.equals("zip", ignoreCase = true)) {
+                        unzip(outputFile, destinationDir)
+                        Log.i(TAG, "Décompression ZIP terminée dans ${destinationDir.absolutePath}")
+                    } else if (outputFile.name.endsWith(".tar.gz", ignoreCase = true)) {
+                        untar(outputFile, destinationDir)
+                        Log.i(TAG, "Décompression TAR.GZ terminée dans ${destinationDir.absolutePath}")
+                    }
+
+                    outputFile.delete()
+                    Log.d(TAG, "Archive ${outputFile.name} supprimée.")
+                }
+
+                Log.i(TAG, "Tâche terminée avec succès pour le modèle '$modelId'.")
+                Result.success()
+            } catch (e: Exception) {
+                Log.e(TAG, "Échec de la tâche pour le modèle '$modelId'", e)
+                if (outputFile.exists()) outputFile.deleteRecursively()
+                Result.failure()
+            }
+        }
+    }
+
+    @Throws(IOException::class)
+    private suspend fun downloadFile(downloadUrl: String, outputFile: File) {
+        var connection: HttpURLConnection? = null
+        var inputStream: java.io.InputStream? = null
+        var outputStream: FileOutputStream? = null
+
+        try {
+            val url = URL(downloadUrl)
+            connection = url.openConnection() as HttpURLConnection
+            connection.connect()
+
+            if (connection.responseCode !in 200..299) {
+                throw IOException("Erreur serveur: ${connection.responseCode} ${connection.responseMessage}")
+            }
+
+            val totalBytes = connection.contentLength.toLong()
+            inputStream = connection.inputStream
+            outputStream = FileOutputStream(outputFile)
+            val buffer = ByteArray(8 * 1024)
+            var bytesCopied: Long = 0
+            var bytesRead: Int
+            var lastReportedProgress = -1
+
+            while (inputStream.read(buffer).also { bytesRead = it } != -1) {
+                if (isStopped) throw InterruptedException("Tâche de téléchargement annulée.")
+                outputStream.write(buffer, 0, bytesRead)
+                bytesCopied += bytesRead
+                if (totalBytes > 0) {
+                    val progressPercent = ((bytesCopied * 100) / totalBytes).toInt()
+                    if (progressPercent >= lastReportedProgress + PROGRESS_UPDATE_THRESHOLD) {
+                        lastReportedProgress = progressPercent
+                        setProgress(workDataOf(KEY_PROGRESS_BYTES to bytesCopied, KEY_PROGRESS_PERCENT to progressPercent))
+                    }
+                }
+            }
+            // S'assure que la progression atteigne bien 100% si la taille est connue
+            if (totalBytes > 0) {
+                setProgress(workDataOf(KEY_PROGRESS_BYTES to totalBytes, KEY_PROGRESS_PERCENT to 100))
+            }
+        } finally {
+            outputStream?.close()
+            inputStream?.close()
+            connection?.disconnect()
+        }
+    }
+
+    @Throws(IOException::class)
+    private fun unzip(zipFile: File, targetDirectory: File) {
+        val tempUnzipDir = File(zipFile.parent, "temp_unzip_${System.currentTimeMillis()}")
+        tempUnzipDir.mkdirs()
+
+        ZipInputStream(BufferedInputStream(FileInputStream(zipFile))).use { zis ->
+            var entry = zis.nextEntry
+            while (entry != null) {
+                val newFile = File(tempUnzipDir, entry.name)
+                if (!newFile.canonicalPath.startsWith(tempUnzipDir.canonicalPath + File.separator)) {
+                    throw IOException("Zip Slip vulnerability detected!")
+                }
+
+                if (entry.isDirectory) {
+                    if (!newFile.isDirectory && !newFile.mkdirs()) {
+                        throw IOException("Failed to create directory ${newFile.absolutePath}")
+                    }
+                } else {
+                    newFile.parentFile?.mkdirs()
+                    FileOutputStream(newFile).use { fos -> zis.copyTo(fos) }
+                }
+                zis.closeEntry()
+                entry = zis.nextEntry
+            }
+        }
+
+        val filesInTemp = tempUnzipDir.listFiles()
+        if (filesInTemp != null && filesInTemp.size == 1 && filesInTemp[0].isDirectory) {
+            val rootDirInZip = filesInTemp[0]
+            rootDirInZip.listFiles()?.forEach { file ->
+                file.renameTo(File(targetDirectory, file.name))
+            }
+        } else {
+            filesInTemp?.forEach { file ->
+                file.renameTo(File(targetDirectory, file.name))
+            }
+        }
+
+        tempUnzipDir.deleteRecursively()
+    }
+
+    @Throws(IOException::class)
+    private fun untar(tarGzFile: File, targetDirectory: File) {
+        val fis = FileInputStream(tarGzFile)
+        val bis = BufferedInputStream(fis)
+        val gzis = GzipCompressorInputStream(bis)
+        val taris = TarArchiveInputStream(gzis)
+
+        taris.use {
+            var entry = it.nextEntry
+            while (entry != null) {
+                val newFile = File(targetDirectory, entry.name)
+                if (!newFile.canonicalPath.startsWith(targetDirectory.canonicalPath + File.separator)) {
+                    throw IOException("Tar Slip vulnerability detected!")
+                }
+
+                if (entry.isDirectory) {
+                    newFile.mkdirs()
+                } else {
+                    newFile.parentFile?.mkdirs()
+                    FileOutputStream(newFile).use { fos -> it.copyTo(fos) }
+                }
+                entry = it.nextEntry
+            }
+        }
+    }
+}
+
+--- END OF FILE app/src/main/java/be/aktina/android/kikkopocnearby/workers/DownloadWorker.kt ---
+
+
 --- START OF FILE app/src/main/res/drawable/dialog_background.xml ---
 
 <?xml version="1.0" encoding="utf-8"?>
@@ -1314,6 +3095,36 @@ class RadarView @JvmOverloads constructor(
 </shape>
 
 --- END OF FILE app/src/main/res/drawable/dialog_background.xml ---
+
+
+--- START OF FILE app/src/main/res/drawable/ic_delete.xml ---
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:tint="#000000" android:viewportHeight="24" android:viewportWidth="24" android:width="24dp">
+      
+    <path android:fillAlpha="0.3" android:fillColor="@android:color/white" android:pathData="M12,7H4v10h5.08C9.03,16.67 9,16.34 9,16c0,-2.38 1.19,-4.47 3,-5.74V7z" android:strokeAlpha="0.3"/>
+      
+    <path android:fillColor="@android:color/white" android:pathData="M15,2l-3.5,0l-1,-1l-5,0l-1,1l-3.5,0l0,2l14,0z"/>
+      
+    <path android:fillColor="@android:color/white" android:pathData="M16,9c-0.7,0 -1.37,0.1 -2,0.29V5H2v12c0,1.1 0.9,2 2,2h5.68c1.12,2.36 3.53,4 6.32,4c3.87,0 7,-3.13 7,-7C23,12.13 19.87,9 16,9zM9,16c0,0.34 0.03,0.67 0.08,1H4V7h8v3.26C10.19,11.53 9,13.62 9,16zM16,21c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5s5,2.24 5,5S18.76,21 16,21z"/>
+      
+    <path android:fillColor="@android:color/white" android:pathData="M16.5,12l-1.5,0l0,5l3.6,2.1l0.8,-1.2l-2.9,-1.7z"/>
+    
+</vector>
+
+
+--- END OF FILE app/src/main/res/drawable/ic_delete.xml ---
+
+
+--- START OF FILE app/src/main/res/drawable/ic_download.xml ---
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:tint="#000000" android:viewportHeight="960" android:viewportWidth="960" android:width="24dp">
+      
+    <path android:fillColor="@android:color/white" android:pathData="M280,760L680,760Q676,711 650,670Q624,629 582,605L620,537Q622,533 621,528Q620,523 615,521Q611,519 606.5,520Q602,521 600,525L561,595Q541,587 521,582.5Q501,578 480,578Q459,578 439,582.5Q419,587 399,595L360,525Q358,520 353.5,520Q349,520 344,522Q344,522 340,537L378,605Q336,629 310,670Q284,711 280,760ZM390,700Q382,700 376,694Q370,688 370,680Q370,672 376,666Q382,660 390,660Q398,660 404,666Q410,672 410,680Q410,688 404,694Q398,700 390,700ZM570,700Q562,700 556,694Q550,688 550,680Q550,672 556,666Q562,660 570,660Q578,660 584,666Q590,672 590,680Q590,688 584,694Q578,700 570,700ZM240,880Q207,880 183.5,856.5Q160,833 160,800L160,160Q160,127 183.5,103.5Q207,80 240,80L560,80L800,320L800,800Q800,833 776.5,856.5Q753,880 720,880L240,880ZM520,360L520,160L240,160Q240,160 240,160Q240,160 240,160L240,800Q240,800 240,800Q240,800 240,800L720,800Q720,800 720,800Q720,800 720,800L720,360L520,360ZM240,160L240,160L240,360L240,360L240,160L240,360L240,360L240,800Q240,800 240,800Q240,800 240,800L240,800Q240,800 240,800Q240,800 240,800L240,160Q240,160 240,160Q240,160 240,160Z"/>
+    
+</vector>
+
+
+--- END OF FILE app/src/main/res/drawable/ic_download.xml ---
 
 
 --- START OF FILE app/src/main/res/drawable/ic_launcher_background.xml ---
@@ -1611,6 +3422,235 @@ class RadarView @JvmOverloads constructor(
 --- END OF FILE app/src/main/res/drawable/ic_turtle.xml ---
 
 
+--- START OF FILE app/src/main/res/layout/activity_debug.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    tools:context=".DebugActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- SECTION 1: GESTION DES MODÈLES IA -->
+        <TextView
+            style="@style/TextAppearance.Material3.TitleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Commandement des Abeilles IA"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"/>
+        <TextView
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Recrutez vos Abeilles Spécialistes (LLM, STT, Traduction)."
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <TextView
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Modèles LLM et STT" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_models"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@layout/item_model"
+            tools:itemCount="5" />
+
+        <TextView
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Modèles de Traduction" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_translators"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:nestedScrollingEnabled="true"
+            tools:listitem="@layout/item_model"
+            tools:itemCount="2" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="?android:attr/listDivider" />
+
+        <!-- SECTION 2: ATELIER DE DÉBOGAGE -->
+        <TextView
+            style="@style/TextAppearance.Material3.TitleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atelier de Débogage de la Ruche"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/button_test_tts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Test TTS (Bourdon)" />
+
+        <!-- Test Vosk -->
+        <TextView
+            android:id="@+id/text_vosk_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Statut Vosk: Inconnu" />
+        <RadioGroup
+            android:id="@+id/radiogroup_vosk_models"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+        <Button
+            android:id="@+id/button_test_vosk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Vosk (Écoute)" />
+
+        <!-- Test Gemma -->
+        <TextView
+            android:id="@+id/text_gemma_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Gemma: non initialisée." />
+        <RadioGroup
+            android:id="@+id/radiogroup_gemma_models"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+        <EditText
+            android:id="@+id/edittext_gemma_prompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Prompt pour Gemma"
+            android:inputType="text"
+            android:autofillHints=""
+            android:text="Explique la photosynthèse en une phrase."/>
+        <Button
+            android:id="@+id/button_test_gemma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Gemma (Reine IA)" />
+        <TextView
+            android:id="@+id/text_gemma_response"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="..."/>
+
+        <!-- ... (le reste du layout reste identique) ... -->
+        <Button
+            android:id="@+id/button_launch_p2p"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Lancer Arène P2P"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="?android:attr/listDivider" />
+        <TextView
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tests des Abeilles ML Kit"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"/>
+        <ImageView
+            android:id="@+id/image_text_recognition"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/test_text"
+            android:contentDescription="Image pour test OCR"
+            android:scaleType="centerCrop"/>
+        <Button
+            android:id="@+id/button_text_recognition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Reconnaissance Texte"/>
+        <TextView
+            android:id="@+id/text_text_recognition_result"
+            style="@style/TextAppearance.Material3.BodySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/image_face_detection"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/test_face"
+            android:contentDescription="Image pour test détection visage"
+            android:scaleType="centerCrop"/>
+        <Button
+            android:id="@+id/button_face_detection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Détection Visage"/>
+        <TextView
+            android:id="@+id/text_face_detection_result"
+            style="@style/TextAppearance.Material3.BodySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/image_barcode_scanning"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/test_barcode"
+            android:contentDescription="Image pour test scan code-barres"
+            android:scaleType="centerCrop"/>
+        <Button
+            android:id="@+id/button_barcode_scanning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Scan Code-barres"/>
+        <TextView
+            android:id="@+id/text_barcode_scanning_result"
+            style="@style/TextAppearance.Material3.BodySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/image_labeling"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/test_object"
+            android:contentDescription="Image pour test labellisation"
+            android:scaleType="centerCrop"/>
+        <Button
+            android:id="@+id/button_image_labeling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Labellisation Image"/>
+        <TextView
+            android:id="@+id/text_image_labeling_result"
+            style="@style/TextAppearance.Material3.BodySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</ScrollView>
+
+--- END OF FILE app/src/main/res/layout/activity_debug.xml ---
+
+
 --- START OF FILE app/src/main/res/layout/activity_hive.xml ---
 
 <?xml version="1.0" encoding="utf-8"?>
@@ -1820,6 +3860,100 @@ class RadarView @JvmOverloads constructor(
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 --- END OF FILE app/src/main/res/layout/activity_main.xml ---
+
+
+--- START OF FILE app/src/main/res/layout/item_model.xml ---
+
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="8dp"
+    android:layout_marginBottom="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/model_name"
+                    style="@style/TextAppearance.Material3.TitleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    tools:text="Gemma 3n 4B-IT" />
+
+                <TextView
+                    android:id="@+id/model_description"
+                    style="@style/TextAppearance.Material3.BodySmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="?android:attr/textColorSecondary"
+                    tools:text="Modèle de nouvelle génération de Google." />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/model_action_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Action du modèle"
+                app:tint="?attr/colorPrimary"
+                tools:src="@drawable/ic_download" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/download_progress_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <ProgressBar
+                android:id="@+id/download_progress_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                tools:progress="60" />
+
+            <TextView
+                android:id="@+id/download_progress_text"
+                style="@style/TextAppearance.Material3.LabelSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="4dp"
+                tools:text="1.2 GB / 4.4 GB" />
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
+
+--- END OF FILE app/src/main/res/layout/item_model.xml ---
 
 
 --- START OF FILE app/src/main/res/layout/item_player_card.xml ---
@@ -2265,8 +4399,10 @@ class ExampleUnitTest {
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.kotlin.android) apply false
+    // VERSION MINIMALE REQUISE PAR LES DÉPENDANCES ANDROIDX
+    id("com.android.application") version "8.6.1" apply false
+    id("org.jetbrains.kotlin.android") version "2.0.0" apply false
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.0.0" apply false
 }
 
 --- END OF FILE build.gradle.kts ---
@@ -2276,13 +4412,7 @@ plugins {
 
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google()
         mavenCentral()
         gradlePluginPortal()
     }
@@ -2297,6 +4427,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "KikkoPocNearby"
 include(":app")
- 
 
 --- END OF FILE settings.gradle.kts ---
