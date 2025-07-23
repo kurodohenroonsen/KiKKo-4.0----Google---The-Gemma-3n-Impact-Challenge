@@ -7,9 +7,8 @@
 **Title:** The Philosophy of Gifting: Kikko as a Public Good
 
 **Objective:** To define Kikko's core motivation and "business model" as explicitly non-commercial for its initial release. This document frames the project not as a product to be sold, but as a gift to the community and a powerful proof-of-concept for a new category of ethical, personal AI.
-
 <p align="center">
-  <img style="max-width:400px" src="../illustrations/doc09_banner.png" alt="A wide, cinematic banner image for the 'Philosophy of Gifting' document, rendered in a 3D animation movie style. The scene shows two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), standing together and looking out at a beautiful, expansive landscape at sunset. A large, glowing Kikko Hive icon floats gently between them, held in their open, welcoming hands, symbolizing a shared, free gift to the community. The plump Bourdon character hovers nearby, looking a bit bewildered but content with this 'no profit' strategy. The overall atmosphere is one of hope, generosity, and empowerment.">
+  <img style="max-width:400px" src="../illustrations/doc09_banner.png" alt="A wide, cinematic banner image for the 'Philosophy of Gifting' document, rendered in a 3D animation movie style. The scene shows two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), standing together and looking out at a beautiful, expansive landscape at sunset. A large, glowing Kikko Hive icon floats gently between them, held in their open, welcoming hands, symbolizing a shared, free gift to the community. The plump Bourdon character floats nearby, looking a bit bewildered but content with this 'no profit' strategy. The overall atmosphere is one of hope, generosity, and empowerment.">
 </p>
 ---
 
@@ -17,22 +16,18 @@
 
 In a world where every application is designed with a monetization strategy, Kikko dares to be different. For its presentation in the Google AI Edge Challenge and its initial release, **Kikko is not a business. It is a proposal.**
 
-It is a proposal for a new relationship with our data, our memories, and our devices. It is a functional piece of art and a philosophical statement, designed to inspire and to demonstrate what is possible when technology is built for empowerment, not for profit.
-
-We are not building a company; we are building an idea. And the best way to share an idea is to give it away.
+It is a proposal for a new relationship with our data, our memories, and our devices. It is a functional piece of art and a philosophical statement, designed to inspire and to demonstrate what is possible when technology is built for empowerment, not for profit. We are not building a company; we are building an idea. And the best way to share an idea is to give it away.
 
 ### **1. The "Gift" Model: 100% Free and Unrestricted**
 
 Kikko will be offered to everyone, completely free, with no strings attached. There are no premium tiers, no advertisements, no plans for future subscriptions. Every feature is available to every user from the moment they install the application.
-
 * **The Full Experience, For Everyone:**
     * The complete foraging and gamification experience for all personas.
-    * The entire **Guild of AI Artisans** at their full potential: The AI Queen (Gemma), the Scout Bees (ML Kit), and all Specialist Bees (TFLite models).
-    * Unlimited local storage of "honey" (`Card` objects) and "pollen" (source images).
-    * The complete "Thread of Provenance" and "Seal of Trust" features, including full **Inference Reproduction** and traceable Hornet data integration.
-    * Unlimited P2P interactions via **Nearby Connections** and remote sharing via **WebTorrent**.
+* The entire **Guild of AI Artisans** at their full potential: The AI Queen (Gemma), the Scout Bees (ML Kit), and all Specialist Bees (TFLite models).
+* Unlimited local storage of "honey" (`Card` objects) and "pollen" (source images).
+* The complete "Thread of Provenance" and "Seal of Trust" features, including full **Inference Reproduction** and traceable Hornet data integration.
+* Unlimited P2P interactions via **Nearby Connections** and remote sharing via **WebTorrent**.
     * A starter set of badges and quests.
-
 This free tier is not a "demo." It is a complete, powerful tool that fulfills the core promise of the application. I, the **Bourdon**, ever the pragmatist, might grumble about the lack of "honey-money," but I ultimately agree it's the most effective way to get more Foragers for the Queen.
 
 | Introduction | Action | Conclusion |
@@ -43,7 +38,6 @@ This free tier is not a "demo." It is a complete, powerful tool that fulfills th
 ### **2. Why This Approach? The Economics of a Powerful Idea**
 
 Choosing a non-commercial path is a strategic decision that serves the core goals of the project.
-
 * **Maximizing Impact for the Competition:** For the Google AI Edge Challenge, our goal is to present the most powerful and uncompromised vision possible. A business model would distract from the core message: the technological and philosophical innovation around on-device AI and verifiable knowledge. I might comment: `"Personally, I prefer naps. Fewer profitability concerns, more time for a stroll."`
 * **Building Trust Through Action:** The strongest way to prove our commitment to user sovereignty is to remove profit from the equation entirely. Our actions speak louder than any privacy policy. We are not interested in the user's money because we are only interested in empowering them. I might add: `"No honey traps here, kid. The Queen doesn't play that game."`
 * **Fostering an Authentic Community:** A non-commercial project attracts a community built on passion and shared ideals. We hope to inspire developers, designers, and thinkers to build upon the ideas presented in Kikko. I would nod: `"Real foragers, not free-riders. I like that."`

@@ -4,56 +4,40 @@
 
 # Document 6/10: The Thread of Provenance - The Seal of Trust
 
-**Title:** The Thread of Provenance: The Unbreakable Seal of Trust
+**Title:** The Thread of Provenance: The Unbreakable Seal of a Customizable and Verifiable AI
 
-**Objective:** To detail the structure, purpose, and in-game representation of the Provenance Log. This feature is positioned as the ultimate reward for choosing personal discovery over opaque convenience, guaranteeing radical transparency and trust in all user-generated knowledge.
-
+**Objective:** To detail the structure and purpose of the Provenance Log, positioning it as the core innovation that enables radical transparency, trust, and the evolution of a user-customizable AI.
 <p align="center">
   <img style="max-width:400px" src="../illustrations/doc06_banner.png" alt="A wide, cinematic banner image for the 'Thread of Provenance' document, rendered in a 3D animation movie style. The scene is split into three parts. 1) Left: A glowing honeycomb cell representing a food memory for Léa is shown, with an intricate, golden 'Seal of Trust' forming on its surface. 2) Center: From a view over her shoulder, Léa's finger (10-year-old girl, yellow raincoat sleeve) touches the seal on her phone screen, which unfolds into a luminous, holographic scroll. 3) Right: The scroll displays a beautiful infographic detailing the data's journey: a photo of the ingredients, the AI processing steps, Léa's own validation inputs, and a clearly marked section for any externally sourced 'Hornet' data with its HTML source. The image emphasizes transparency, trust, and the verifiable story behind each memory.">
 </p>
 ---
 
-### **Core Philosophy: The Story is the Reward**
+### **Core Philosophy: The Story is the Proof**
 
 In an age where AI can provide any answer, the answer itself loses value. The new value lies in its **origin story**. In Kikko, the "Informative Honey" is useful, but its true power comes from the verifiable story of its creation. The **Thread of Provenance** is that story.
 
-It is not just metadata; it is a "Seal of Trust," the tangible proof that a piece of knowledge was born from a transparent, reproducible, human-AI partnership. It is the definitive answer to the question: *Why should I trust this memory?* For **Léa**, this isn't a philosophical question; it's a matter of safety. The Thread of Provenance shows her *exactly* how the Hive determined a food was safe.
+It is not just metadata; it is a "Seal of Trust," the tangible proof that a piece of knowledge was born from a transparent, reproducible, and now **customizable** human-AI partnership. It is the definitive answer to the question: *Why should I trust this memory, and how can I be sure the AI reasoned as I intended?* For **Léa**, this isn't a philosophical question; it's a matter of safety. The Thread of Provenance shows her *exactly* how her customized Hive determined a food was safe.
 
 ### **1. The Structure of the "Thread of Provenance"**
 
-The Thread of Provenance is a detailed JSON document stored in the database alongside each `Card`. It is a chronological logbook of the entire forging process. Inspired by industry standards like OpenLineage, it is structured to be both human-readable and machine-verifiable.
+The Thread of Provenance is a detailed JSON document stored with each `Card`. It is a chronological logbook of the entire forging process, structured to be both human-readable and machine-verifiable.
 
 * **A. The Foraging Chronicle (`pollenChronicle`):** A timestamped log of every piece of raw data contributed **by the Forager**. This is the initial proof.
     * `{ "timestamp": "...", "pollenType": "Visual", "source": "ForagerCamera", "reference": "pollen/image_001.jpg", "hash": "sha256:..." }`
 
-* **B. The Hive's Forge Log (`hiveLog`):** A log of every key inference step performed by the Hive's AI agents. This is the technical **blueprint for Inference Reproduction**. Each entry contains a `facets` object grouping related metadata.
-    * **Example entry for Specialist Bee analysis:**
-        ```json
-        {
-          "timestamp": "...",
-          "agent": "SpecialistBee_Plants",
-          "action": "InitialImageAnalysis",
-          "facets": {
-              "modelExecution": { 
-                  "modelName": "Google AIY Plants V1",
-                  "prompt": "...", 
-                  "rawResponse": "{'d':'Plants','t':'dandelion','sp':false}" 
-              },
-              "inferenceParameters": {"confidence_threshold": 0.7}
-          }
-        }
-        ```
-    * **Example entry for AI Queen generation:**
+* **B. The Hive's Forge Log (`hiveLog`):** A log of every key inference step performed by the Hive's AI agents. This is the technical **blueprint for Inference Reproduction**. Each entry now includes a reference to the **exact set of prompts used**, making the AI's logic fully auditable even when customized.
+* **Example entry for AI Queen generation:**
         ```json
         {
           "timestamp": "...",
           "agent": "AI_Queen_Gemma",
-          "action": "HornetDataStructuring_Quiz",
+          "action": "ContentGeneration_Quiz",
           "facets": {
-              "modelExecution": {
-                  "modelName": "Gemma",
+              "modelExecution": { 
+                  "modelName": "Gemma 3 1B",
+                  "promptSetId": "kikko_default_prompts_v1.2", 
                   "prompt": "From the text, generate 2-4 quiz questions...",
-                  "rawResponse": "[{'q':'...','o':['...'],'c':0}]"
+                  "rawResponse": "[{'q':'...','o':['...'],'c':0}]" 
               },
               "inferenceParameters": {"temperature": 0.2}
           }
@@ -61,7 +45,7 @@ The Thread of Provenance is a detailed JSON document stored in the database alon
         ```
 
 * **C. The Hornet's Nest (`hornetLog`):** If external data was integrated from a web search, this section provides its full context for **traceability**.
-    * `{ "timestamp": "...", "action": "HornetOfferAccepted", "sourceUrl": "...", "savedHtmlReference": "hornet/dandelion_overview.html" }`
+* `{ "timestamp": "...", "action": "HornetOfferAccepted", "sourceUrl": "...", "savedHtmlReference": "hornet/dandelion_overview.html" }`
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -71,7 +55,6 @@ The Thread of Provenance is a detailed JSON document stored in the database alon
 ### **2. The Role in Gameplay: The Ultimate Prize**
 
 The Thread of Provenance is the soul of the reward system, distinguishing levels of trust within the knowledge itself.
-
 * **The Mark of the Hornet:** Data integrated from a Hornet's AI Overview is **traceable** to its source HTML but not **reproducible**. It's marked with a grayish tint. For Léa, this means "This information is from the web, use with caution for allergy decisions."
 * **The Seal of the Forager:** Data forged through the human-AI partnership receives the vibrant golden **Seal of Trust**. It is fully **reproducible** because its `hiveLog` is complete. For Léa, this means "This information has been verified by your Hive, based on your input. You can trust it." It grants the highest rewards and unlocks advanced features.
 
@@ -81,9 +64,6 @@ When a Forager shares a `Card` object, they are gifting a complete, self-contain
 
 **True Inference Reproduction.**
 
-A parent receiving a "SAFE" food `Card` for their allergic child doesn't just have to take the sender's word for it. Their own Kikko Hive can automatically parse the sender's `provenanceLog`, extract the exact prompt and parameters for each step, re-run the same inferences on its own local models using the original source image (also shared), and compare the output to a cryptographic hash of the original output.
-
-This is trust, but with mathematical proof. This moves us from a world of "black box" data to a world of **"glass box" data**, where the process of creation is as important as the result, and is fully verifiable by anyone in the community.
-
+A parent receiving a "SAFE" food `Card` for their allergic child doesn't just have to take the sender's word for it. Their own Kikko Hive can automatically parse the sender's `provenanceLog`, **download the specified prompt set if they don't have it**, extract the exact prompt and parameters for each step, re-run the same inferences on its own local models using the original source image, and compare the output to a cryptographic hash of the original output. This is trust, but with mathematical proof. This moves us from a world of "black box" data to a world of **"glass box" data**, where the process of creation is as important as the result, and is fully verifiable by anyone in the community.
 **Conclusion:**
 The Thread of Provenance is the soul of Kikko. It transforms the app from a clever data-capture tool into a powerful statement on information integrity and personal agency. It is the mechanism that gives weight and meaning to the Forager's choice, providing not only the power to remember, but the profound satisfaction of knowing that their memories are pure, their history is intact, and their knowledge is verifiably real through **inference reproduction** and transparent sourcing.

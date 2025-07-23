@@ -7,7 +7,6 @@
 **Title:** The Global Swarm: Collaborative Knowledge for Trusted Groups
 
 **Objective:** To define the technology and philosophy behind Kikko's sharing features, positioning them as tools for deep collaboration within trusted groups (families, teams, hobbyists) rather than a viral social network. The focus is on practical, real-world utility enabled by peer-to-peer technology and **verifiable knowledge**.
-
 <p align="center">
   <img style="max-width:400px" src="../illustrations/doc08_banner.png" alt="A wide, cinematic banner image for the decentralized sharing document, rendered in a 3D animation movie style. The scene shows two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), sitting back-to-back in a garden. They each hold a smartphone. A swarm of golden 'data-bees' is shown flying directly from Hiro's phone to Léa's. Hiro's phone screen shows a 'Microsite' for a berry plant, while Léa's screen shows her Hive receiving and verifying it for allergens. The plump Bourdon character floats between them, proudly overseeing this 'Digital Pollination'. The image conveys a sense of trusted, private, peer-to-peer collaboration.">
 </p>
@@ -27,7 +26,6 @@ It's not about public performance; it's about genuine connection and mutual enri
 ### **1. The P2P Technologies: Two Tools for Two Use Cases**
 
 Kikko employs a dual-technology approach to peer-to-peer communication, ensuring the best tool is used for each type of interaction.
-
 #### **1.1 The Local Arena (Google Nearby Connections)**
 For real-time, synchronous interactions like the "Saga Clash," Kikko uses the **Google Nearby Connections API**.
 * **Discovery Radar:** Allows Foragers who are physically close to discover each other without needing to be on the same Wi-Fi network.
@@ -47,7 +45,6 @@ For asynchronous, remote sharing of knowledge, Kikko uses **WebTorrent**.
 ### **2. The "Trusted Package": The Unit of Verifiable Collaboration**
 
 What is shared is not just data, but a **"Trusted Package,"** a self-contained archive of verifiable knowledge that includes all components necessary for **Inference Reproduction**.
-
 * **The `Card` Object (The What):** The final, structured knowledge card.
 * **The Thread of Provenance (The How):** The complete `provenanceLog` JSON document, detailing every step of the card's creation.
 * **The Original Pollen (The Proof):** The source images (as Base64 strings or file references) that were used in the creation process.
@@ -62,10 +59,8 @@ When a group member receives this package, their Hive can independently verify t
 ### **3. The Emergent Community: Niche Swarms**
 
 Kikko's community model focuses on empowering small, private groups with shared goals.
-
 * **Use Case: The Nature & Food Club.** **Hiro** finds a wild berry bush and forages a detailed, Hive-forged `Card` about it. He shares it with **Léa**. Léa's Hive receives the package and automatically runs an **inference reproduction** on the card's `provenanceLog` to verify Hiro's identification. Only after this verification does her Queen cross-reference the now-trusted berry species with Léa's allergy profile. Léa gets a notification: "Hiro shared a 'Wild Raspberry' forage. **Verified by your Hive.** This berry is SAFE for you."
 * **Use Case: The Family Inventory.** A family can create a shared "swarm" for household items. One person forages the warranty for the new TV, another the paint codes for the living room wall. Everyone in the family receives the verified "honey" on their device.
 * **Use Case: The Hobbyist Collectors.** A couple collecting vintage cameras can build a shared, verified catalog. Each entry includes photos, purchase receipts (pollen), and notes, all reproducible.
-
 **Conclusion:**
 Kikko's sharing model is a deliberate move away from mass-market social media towards deep, meaningful collaboration. By leveraging a combination of peer-to-peer technologies and the "Trusted Package" with its reproducible provenance, we provide a powerful tool for small groups to build a shared, trusted knowledge base. It's a community built not on "likes," but on mutual goals and the power of a shared, transparent memory.

@@ -4,10 +4,9 @@
 
 # Document 10/10: The Kikko Project - Synopsis for the Google AI Edge Challenge
 
-**Title:** Kikko: Your Personal Memory Hive - A Verifiable Knowledge Game Built on Trust
+**Title:** Kikko's Saga Forge: A Verifiable & Evolvable Knowledge Game Built on Trust
 
-**Objective:** To provide a comprehensive summary of the Kikko project for the Google AI Edge Challenge, highlighting its innovative concept, its sophisticated use of Google's on-device AI to tackle a modern-day dilemma, and its profound potential for real-world impact.
-
+**Objective:** To provide a comprehensive summary of the Kikko project for the Google AI Edge Challenge, highlighting its innovative concept, its sophisticated use of Google's on-device AI to tackle a modern-day dilemma, and its profound potential for real-world impact through a fully customizable AI architecture.
 <p align="center">
   <img style="max-width:400px" src="../illustrations/doc10_banner.png" alt="A wide, cinematic triptych banner summarizing the Kikko project, rendered in a 3D animation movie style. On the left panel (The Dilemma), Hiro stands at a crossroads, with a cold, menacing Hornet offering a quick 'AI Overview' on one path, and the warm, inviting Kikko Hive on the other. In the center panel (The Process), the interior of the Hive is shown with the AI Queen (Gemma) and Worker Bees (ML Kit) collaboratively forging golden 'pollen' into honey, while the Bourdon manages a dialogue quiz. On the right panel (The Reward), a magnificent, fully grown Kikkō Guardian glows, its shell a beautiful mosaic of verified memories, symbolizing the ultimate prize of a trusted, sovereign AI companion.">
 </p>
@@ -15,16 +14,15 @@
 
 ### **1. High-Concept Pitch**
 
-In an age where AI offers instant but opaque answers, **Kikko** introduces a new genre: the **Verifiable Knowledge RPG**. It reframes the smartphone not as a window to the cloud, but as a private, intelligent **Memory Hive** that helps you forge a rich, verifiable graph of your own life. In a **true human-AI partnership**, you (the **Forager**) and your on-device "Guild of AI Artisans"—the wise **AI Queen (Gemma)** and her diligent **Specialist Bees (TFLite Models & ML Kit)**—collaborate to turn personal experiences into **trusted knowledge**. Our core innovation is the **"Thread of Provenance"**, a comprehensive log that makes every piece of user-forged knowledge **verifiably reproducible**, turning the AI from a black box into a glass box.
+In an age where AI offers instant but opaque answers, **Kikko's Saga Forge** introduces a new genre: the **Verifiable & Evolvable Knowledge RPG**. It reframes the smartphone not as a window to the cloud, but as a private, intelligent **Memory Hive** whose very logic can be shaped by the user. In a **true human-AI partnership**, you (the **Forager**) and your on-device "Guild of AI Artisans"—the wise **AI Queen (Gemma)** and her diligent **Specialist Bees (TFLite Models & ML Kit)**—collaborate to turn personal experiences into **trusted knowledge**. Our core innovations are twofold: the **"Thread of Provenance"**, a log that makes every inference **verifiably reproducible**, and a **Dynamic Prompting System**, which allows the entire AI personality and logic to be modified and updated by the user or the community, turning the AI from a black box into a living, adaptable glass box.
 
 ### **2. The Vision & Impact (40 Points)**
 
-Kikko's vision is to combat **assisted digital amnesia** by empowering individuals with **sovereignty over their digital memory**.
-
+Kikko's vision is to combat **assisted digital amnesia** by empowering individuals with **sovereignty over their digital memory and the very AI that helps them forge it.**
 * **Tackling a Modern Dilemma: The Hornet's Temptation.** Kikko gamifies the "convenience vs. truth" problem. It presents a choice between accepting opaque "AI Overviews" from external sources (the "Hornet's Offer") and the rewarding effort of forging personal, verifiable knowledge. This subtly educates users on digital literacy and the critical importance of **inference reproduction**.
-* **A New Paradigm for Personal AI: Human-AI Partnership.** The AI Queen (Gemma) doesn't just answer, she orchestrates. Our `v5.0` workflow introduces a **Human Refinement** step, where the Forager validates or specifies the initial identification made by the Specialist Bees. This collaboration is fundamental to building a knowledge graph built on ground truth.
-* **Radical Privacy & Trust:** With a **100% on-device architecture**, all user data and AI models remain private. The "Thread of Provenance" for every user-created memory is an auditable, locally generated log that contains the full blueprint for **inference reproduction**, ensuring unparalleled transparency and trust.
-* **A Gift to the Community: Non-Commercial Vision.** Kikko is a **non-commercial project**, offered entirely free. Its sole focus is on impact and demonstrating a viable, ethical model for personal AI built on verifiable knowledge.
+* **A New Paradigm for Personal AI: The User as AI Trainer.** The AI Queen (Gemma) doesn't just answer, she orchestrates. Our workflow introduces a **Human Refinement** step, where the Forager validates the AI's identification. More profoundly, our architecture allows users to **edit the prompts** that define the AI's behavior or **download new "personality packs"** from the community, making them active participants in their AI's evolution.
+* **Radical Privacy, Trust & Evolvability:** With a **100% on-device architecture**, all user data and AI models remain private. The "Thread of Provenance" now includes a version hash of the prompt and question sets used for an inference, making even a **customized AI's reasoning fully reproducible**.
+* **A Gift to the Community: Non-Commercial Vision.** Kikko is a **non-commercial project**, offered entirely free. Its sole focus is on impact and demonstrating a viable, ethical, and community-driven model for personal AI.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -33,18 +31,17 @@ Kikko's vision is to combat **assisted digital amnesia** by empowering individua
 
 ### **3. Technical Depth & Execution (30 Points & Google AI Edge Prize)**
 
-Kikko is a sophisticated showcase of how Google's on-device technologies can be orchestrated to create a novel, privacy-first experience.
-
+Kikko is a sophisticated showcase of how Google's on-device technologies can be orchestrated to create a novel, privacy-first, and user-modifiable experience.
 * **The Guild of AI Artisans (Multi-Stage Inference):**
-    1.  **Live Perception (ML Kit & TFLite):** A suite of **Specialist Bees** (optimized TFLite models for Plants, Animals, etc.) and **Scout Bees (ML Kit)** analyze the camera feed in real-time, providing live AR overlays.
-    2.  **Human-in-the-Loop:** The Forager captures a "pollen package" (image + initial analysis) and is prompted to **refine** the specialist's identification, providing crucial ground truth.
-    3.  **Generative Orchestration (Gemma):** The **AI Queen (Gemma)** receives this high-quality, human-verified input. Her task is not raw classification, but **generative content creation**: she crafts the `bourdonTTS` script, the `quiz`, and the `stats` for the final `Card` object.
-    4.  **Inference Reproduction Blueprint:** Gemma logs her entire reasoning chain—prompts, parameters, and raw responses—within the "Thread of Provenance," creating a verifiable blueprint for other Hives to reproduce the inference locally and confirm its validity.
-
+    1.  **Live Perception (ML Kit & TFLite):** A suite of **Specialist Bees** (optimized TFLite models) and **Scout Bees (ML Kit)** analyze the camera feed in real-time.
+    2.  **Human-in-the-Loop:** The Forager captures a "pollen package" (image + initial analysis) and is prompted to **refine** the specialist's identification.
+    3.  **Generative Orchestration (Gemma):** The **AI Queen (Gemma)** receives this high-quality, human-verified input. Her task is **generative content creation**: she crafts the `bourdonTTS` script, the `quiz`, and the `stats` for the final `Card` object, using a set of prompts that can be dynamically loaded.
+    4.  **Inference Reproduction Blueprint:** Gemma logs her entire reasoning chain—including the **ID of the prompt set used**—within the "Thread of Provenance," creating a verifiable blueprint for other Hives to reproduce the inference locally.
 * **The Architecture of Trust & Digital Pollination:**
     * **Core App & UI:** Built on Android (Kotlin).
-    * **Local P2P:** **Google Nearby Connections** for offline discovery and battle initiation.
-    * **Remote Decentralized Sharing:** **WebTorrent** integrated for secure, P2P sharing of "Trusted Packages" (the `Card` object with its full `provenanceLog` and source images) via QR codes.
+* **Local P2P:** **Google Nearby Connections** for offline discovery and battle initiation.
+* **Remote Decentralized Sharing:** **WebTorrent** integrated for secure, P2P sharing of "Trusted Packages" (the `Card` object with its full `provenanceLog` and source images) via QR codes.
+    * **Dynamic Asset Loading:** The application is designed to load its core AI logic (`prompts.json`) and game content (`clash_questions.json`) from local files, which can be updated from a remote server (`kikko.be`) without requiring an app update. This allows for continuous improvement and community-driven content expansion.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -53,7 +50,7 @@ Kikko is a sophisticated showcase of how Google's on-device technologies can be 
 
 ### **4. Video Pitch & Storytelling (30 Points)**
 
-Our 5-minute animated short film, **"Hiro's Choice,"** will bring the core dilemma to life, showcasing the problem of fleeting memory, the magic of the human-AI partnership, the temptation of the Hornet's offer, and the profound satisfaction of forging verifiable truth. The video will visually explain the revolutionary concept of **Inference Reproduction** and highlight the long-term utility of having a proactive, trusted AI companion.
+Our 5-minute animated short film, **"Hiro's Choice,"** will bring the core dilemma to life, showcasing the problem of fleeting memory, the magic of the human-AI partnership, the temptation of the Hornet's offer, and the profound satisfaction of forging verifiable truth. The video will visually explain the revolutionary concept of **Inference Reproduction** and highlight the long-term utility of having a proactive, trusted, and **personally customizable** AI companion.
 
 **Conclusion:**
-Kikko is more than an application; it is a timely and necessary response to the evolution of AI. By masterfully combining the on-device power of **Gemma** and **specialized TFLite models** within an engaging, gamified, and ethically-uncompromising framework, Kikko doesn't just showcase what the technology can do—it makes a powerful statement about how it *should* be used to create a truly personal AI built on verifiable, reproducible knowledge.
+Kikko is more than an application; it is a timely and necessary response to the evolution of AI. By masterfully combining the on-device power of **Gemma** and **specialized TFLite models** within an engaging, gamified, and ethically-uncompromising framework, Kikko doesn't just showcase what the technology can do—it makes a powerful statement about how it *should* be used to create a truly personal and evolvable AI built on verifiable, reproducible knowledge.

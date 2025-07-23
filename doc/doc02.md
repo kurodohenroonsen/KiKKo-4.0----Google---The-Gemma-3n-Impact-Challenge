@@ -7,26 +7,23 @@
 **Title:** The World of Kikko: The Interface as a Living Companion
 
 **Objective:** To define the fundamental principles of Kikko's User Interface (UI) and User Experience (UX), emphasizing simplicity, immersion, and the unique communication partnership between the Forager, their Guardian, and the Hive.
-
 <p align="center">
-  <img style="max-width:400px" src="../illustrations/doc02_banner.png" alt="A wide, cinematic banner image for a UI/UX document, rendered in a 3D animation movie style. The scene is viewed from over the shoulder of a 10-year-old girl, Léa (braided pigtails, glasses, bright yellow raincoat). She holds her smartphone like a magical window. Through the screen, she sees a vivid, augmented view of a supermarket shelf. Translucent hexagonal UI elements highlight a specific cookie box. Floating beside her is her personal Kikkō Guardian turtle, its shell glowing softly. The plump Bourdon character hovers near the phone, gesturing towards the screen, acting as the friendly guide for the interface. The scene is lit with clean, bright light, emphasizing simplicity, clarity, and a human-AI partnership.">
+  <img style="max-width:400px" src="../illustrations/doc02_banner.png" alt="A wide, cinematic banner image for a UI/UX document, rendered in a 3D animation movie style. The scene is viewed from over the shoulder of a 10-year-old girl, Léa (braided pigtails, glasses, bright yellow raincoat). She holds her smartphone like a magical window. Through the screen, she sees a vivid, augmented view of a supermarket shelf. Translucent hexagonal UI elements highlight a specific cookie box. Floating beside her is her personal Kikkō Guardian turtle, its shell glowing softly. The plump Bourdon character hovers near the phone, gesturing towards the screen, acting as the friendly 
+guide for the interface. The scene is lit with clean, bright light, emphasizing simplicity, clarity, and a human-AI partnership.">
 </p>
 ---
 
 ### **Core Philosophy: The Anti-App**
 
-Kikko's interface is designed around a radical principle: **it should not feel like an application**. We reject complex menus and data-entry forms. The experience must be fluid, intuitive, and almost invisible, acting as a layer of understanding superposed on the real world, not as a destination in itself.
-
-Our goal is to erase the boundary between the user's physical world and their digital ecosystem. The smartphone is no longer a portal to another place (cyberspace), but a **magical lens** to better see, understand, and interact with the place one already is. For a user like **Léa**, who has allergies, this lens becomes a crucial tool for navigating the world of food safely with her Kikkō Guardian.
+Kikko's interface is designed around a radical principle: **it should not feel like an application**. We reject complex menus and data-entry forms. The experience must be fluid, intuitive, and almost invisible, acting as a layer of understanding superposed on the real world, not as a destination in itself. Our goal is to erase the boundary between the user's physical world and their digital ecosystem. The smartphone is no longer a portal to another place (cyberspace), but a **magical lens** to better see, understand, and interact with the place one already is. For a user like **Léa**, who has allergies, this lens becomes a crucial tool for navigating the world of food safely with her Kikkō Guardian.
 
 ### **Component 1: The Great Bay Window (The Augmented Camera View)**
 
 Kikko's "default mode" is the camera view. This is the heart of the experience, the Hive's window to the world.
-
 * **Live Specialist Analysis:** The camera view is a constantly active augmented reality layer. The Hive's **Specialist Bees** (on-device TFLite models) perpetually analyze the video stream, overlaying their findings directly onto the view. As Léa points her phone at a cookie box, the Text Recognition Bee might highlight the ingredients in real-time.
 * **Contextual Overlays:** The Hive communicates visually by superimposing minimalist, translucent graphic elements onto real-world objects.
-    * **The Identification Tag:** When a Specialist Bee identifies an object with high confidence, a subtle, glowing tag with its name might appear.
-    * **The Quest Honeycomb:** When the **AI Queen** needs more information (e.g., "I see nuts, but I need a clearer picture of the allergen warning"), a simple, glowing hexagon with a '?' icon appears and "latches" onto the object of interest, issuing a new foraging quest.
+* **The Identification Tag:** When a Specialist Bee identifies an object with high confidence, a subtle, glowing tag with its name might appear.
+* **The Quest Honeycomb:** When the **AI Queen** needs more information (e.g., "I see nuts, but I need a clearer picture of the allergen warning"), a simple, glowing hexagon with a '?' icon appears and "latches" onto the object of interest, issuing a new foraging quest.
 * **The Touch of Intent:** The user's tap on the screen is a direct command, telling the Hive: "This is what I'm interested in. Capture this 'pollen' and let's forge some honey."
 
 | Introduction | Action | Conclusion |
@@ -50,7 +47,6 @@ With a simple gesture, the user can transition from the "window" to a view of th
 ### **Component 3: The Dialogue (Human-AI Partnership)**
 
 All communication occurs through a minimalist, non-intrusive dialogue interface, primarily driven by the **Bourdon's unique personality**.
-
 * **The Bourdon's Delivery:** I am the primary voice and visual representation of the Hive's communication. I present quests, relay the Queen's questions, and deliver the finished "honey" to the Kikkō Guardian.
 * **Refine, Confirm & Forge:** This is the core interactive loop.
     1.  A **Specialist Bee** provides an initial identification (e.g., "apple, 85%").

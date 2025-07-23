@@ -7,29 +7,25 @@
 **Title:** The Alchemy of Honey: The Symbiotic Partnership of AI Agents
 
 **Objective:** To define the conceptual technical architecture of Kikko's on-device AI system, detailing the distinct responsibilities of the different AI agents and how their "Guild of Experts" collaborates to create structured, verifiable knowledge.
-
 <p align="center">
-  <img style="max-width:400px" src="../illustrations/doc04_banner.png" alt="A wide, cinematic banner image for a technical architecture document, rendered in a 3D animation movie style. The scene is set inside the high-tech, glowing Kikko Hive. In the center, a stream of 'pollen' from a food label (for heroine Léa) is being processed. 1) On the left, a team of specialized robot Worker Bees (representing ML Kit) are shown using light beams to extract text (OCR) and barcode data. 2) In the center, the wise AI Queen (Gemma) orchestrates the process, her glowing spectacles analyzing the data streams. 3) On the right, the plump Bourdon character is shown with a quiz screen and a speech bubble, managing the user dialogue. The scene uses vibrant cyan and gold light to illustrate the flow of data between the different AI agents, showing their symbiotic partnership.">
+  <img style="max-width:400px" src="../illustrations/doc04_banner.png" alt="A wide, cinematic banner image for a technical architecture document, rendered in a 3D animation movie style. The scene is set inside the high-tech, glowing Kikko Hive. In the center, a stream of 'pollen' from a food label (for heroine Léa) is being processed. 1) On the left, a team of specialized robot Worker Bees (representing ML Kit) are shown using light beams to extract text (OCR) and barcode data. 2) In the center, the wise AI Queen (Gemma) orchestrates the process, her glowing spectacles analyzing the data streams. 3) On the right, the 
+plump Bourdon character is shown with a quiz screen and a speech bubble, managing the user dialogue. The scene uses vibrant cyan and gold light to illustrate the flow of data between the different AI agents, showing their symbiotic partnership.">
 </p>
 ---
 
 ### **Core Philosophy: A Guild of Experts, Not a Monolith**
 
-Kikko's intelligence is not a single, monolithic AI. It is a **symbiotic swarm** of specialized agents, each with a precise function. This "Guild of Experts" architecture is more efficient, more modular, and allows us to use the best tool for each job. For a critical task like verifying allergens for **Léa**, this specialization ensures accuracy and reliability.
-
-The process follows our refined pipeline: **Live Explore (Scout & Specialist Bees) -> Capture -> Human Refinement -> Forge (AI Queen).**
+Kikko's intelligence is not a single, monolithic AI. It is a **symbiotic swarm** of specialized agents, each with a precise function. This "Guild of Experts" architecture is more efficient, more modular, and allows us to use the best tool for each job. For a critical task like verifying allergens for **Léa**, this specialization ensures accuracy and reliability. The process follows our refined pipeline: **Live Explore (Scout & Specialist Bees) -> Capture -> Human Refinement -> Forge (AI Queen).**
 
 ### **1. The Worker Bees: A Two-Tiered System**
 
 The Worker Bees are the tireless laborers of the Hive. They are now organized into two distinct tiers with complementary roles.
-
 #### **1.1 The Scout Bees (Real-Time Perception with ML Kit)**
 These Bees are constantly active, analyzing the live camera feed to provide real-time augmented reality overlays.
 * **The Eyes (Text Recognition v2):** Reads any text in the camera's view.
 * **The Scanner (Barcode Scanning):** Instantly deciphers barcodes.
 * **The Lookout (Object Detection):** Identifies the presence and location of generic objects to help guide the Specialist Bees or the Forager.
 * **The Scribe (and other NL Bees):** Can identify language, suggest smart replies, and extract basic entities from recognized text on the fly.
-
 #### **1.2 The Specialist Bees (High-Accuracy Classification with TFLite)**
 These are our elite, pre-trained experts. They are called upon during the "Explore" phase to provide high-confidence labels for their specific domain.
 * **The Botanist Bee (e.g., Google AIY Plants V1):** An expert in identifying thousands of plant species.
@@ -45,7 +41,6 @@ These are our elite, pre-trained experts. They are called upon during the "Explo
 ### **2. The Bourdon: The Facilitator of Partnership**
 
 I am the primary interface between the internal workings of the Hive and the Forager. My role is to make the human-AI collaboration feel natural and engaging.
-
 * **Function 1: Relaying the Specialist's Opinion:** After a "Capture", I present the Specialist Bee's initial finding to the Forager. *"My Botanist Bee is 89% sure this is a Dandelion."*
 * **Function 2: Initiating Human Refinement:** This is my key role in the `v5.0` workflow. I then ask the crucial question: *"Is that correct? Can you be more specific?"*. This invites the user to confirm or correct the AI's finding, providing the ground-truth data that makes our system so trustworthy.
 * **Function 3: Managing Quests & Rewards:** I still present quests from the Queen and deliver the Honey Points and Badges.
@@ -58,11 +53,10 @@ I am the primary interface between the internal workings of the Hive and the For
 ### **3. The AI Queen: The Generative Orchestrator**
 
 The AI Queen (Gemma) is the master artisan, the true brain of the Hive. Her role is not to perform raw classification, but to use her powerful generative capabilities to transform verified data into rich knowledge.
-
 * **Function 1: Final Validation:** She receives the "pollen package" containing the image and the now human-verified label. This is her high-quality source material.
 * **Function 2: Generative Content Creation:** This is her core task. Based on the verified label, she generates all the "soft" content for the `Card`:
     * The engaging `bourdonTTS` script.
-    * The challenging `quiz` questions and answers.
+* The challenging `quiz` questions and answers.
     * The relevant `stats`.
 * **Function 3: Proactive Questing:** If more context is needed to generate rich content (e.g., "To generate nutritional stats, I need a picture of the product's label"), she formulates a new sub-quest for the Forager.
 
