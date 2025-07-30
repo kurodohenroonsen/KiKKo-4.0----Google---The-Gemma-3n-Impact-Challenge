@@ -7709,13 +7709,7 @@ Je vais maintenant procéder à la génération du rapport complet. Ce rapport d
 --- START OF FILE readme.md ---
 
 <p align="center">
-  <img src="/videos/kikko_banner_veo3.gif" alt="Kikko's Saga Forge Animated Banner">
-</p>
-
-# Kikko's Saga Forge
-
-<p align="center">
-  <img style="max-width:400px" src="illustrations/kikko_banner.png" alt="A wide, cinematic banner image for 'Kikko's Saga Forge', rendered in a 3D animation movie style. In the center, a majestic, ancient-looking but friendly digital turtle, its hexagonal shell glowing with intricate patterns, floats serenely. On its back, two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), are engaged in a friendly card game with holographic cards showing insects and food items. Hovering above them is the plump, smug 
+  <img src="illustrations/kikko_banner.png" alt="A wide, cinematic banner image for 'Kikko's Saga Forge', rendered in a 3D animation movie style. In the center, a majestic, ancient-looking but friendly digital turtle, its hexagonal shell glowing with intricate patterns, floats serenely. On its back, two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), are engaged in a friendly card game with holographic cards showing insects and food items. Hovering above them is the plump, smug 
 Bourdon character, acting as a playful referee. In the background, a beautiful, high-tech 'Kikko Hive' structure pulses with golden light, connected to the turtle by a thread of energy. The scene is bathed in warm honey-gold light with vibrant cyan neon tech highlights, capturing the entire ecosystem: foraging, forging, and friendly battles.">
 </p>
 
@@ -7727,26 +7721,26 @@ Bourdon character, acting as a playful referee. In the background, a beautiful, 
 
 Nous faisons face à une double crise numérique : **l'amnésie digitale assistée** et la **méfiance envers les IA "boîtes noires"**. `Kikko's Saga Forge` est notre réponse. Nous ne proposons pas une simple application, mais une nouvelle catégorie d'expérience conçue pour gagner le "Google - The Gemma 3n Impact Challenge" : le **"Jeu de Connaissance Vérifiable"**.
 
-Avec Kikko, vous n'êtes pas un utilisateur ; vous êtes un **Butineur**. Votre mission : transformer des fragments du monde réel en une mémoire augmentée, privée et entièrement vérifiable. Pour cela, vous disposez d'une **Forge Locale** (votre "Ruche Kikko"), un atelier d'IA 100% embarqué sur votre appareil qui forge un "Miel Informatif" pour nourrir votre Gardien Kikkō, une tortue numérique dont la carapace est la toile de votre saga personnelle. [cite: 651]
+Avec Kikko, vous n'êtes pas un utilisateur ; vous êtes un **Butineur**. Votre mission : transformer des fragments du monde réel en une mémoire augmentée, privée et entièrement vérifiable. Pour cela, vous disposez d'une **Forge Locale** (votre "Ruche Kikko"), un atelier d'IA 100% embarqué sur votre appareil qui forge un "Miel Informatif" pour nourrir votre Gardien Kikkō, une tortue numérique dont la carapace est la toile de votre saga personnelle.
 
 * [**Document 01: Le Manifeste de la Ruche Personnelle**](./doc/doc01.md)
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
 | <img src="illustrations/s1_intro.png" alt="Cinematic 3D render, animation movie style. Close-up on the face of a curious 10-year-old boy, Hiro (dark brown hair, bright eyes, vibrant red t-shirt). He looks thoughtful and slightly frustrated, bathed in warm sunset light. Ghostly, out-of-focus images of memories (a flower, a bird) float around him, dissolving into digital dust."> | <img src="illustrations/s1_action.png" alt="Cinematic 3D render, animation movie style, viewed from over Hiro's shoulder. His hands cup a tiny, newly hatched digital Kikkō turtle, which glows with a soft, warm light. On his phone screen, the 'Kikko Hive' icon pulses gently, inviting him to begin his saga."> | <img src="illustrations/s1_conclusion.png" alt="Cinematic 3D render, animation movie style. Inside a high-tech digital hive, a wise, grandmotherly AI Queen opens her glowing cyan eyes and smiles. Cute robot Worker Bees activate around her, ready to receive the first batch of pollen for their Forager's new Guardian."> |
-| [cite_start]**1.1 L'Écho Fugace :** Notre héros, Hiro, fait l'expérience de la frustration universelle d'un souvenir qui s'efface. [cite: 656] | [cite_start]**1.2 Le Début d'une Saga :** Il reçoit son Gardien Kikkō personnel, le réceptacle de son futur savoir. [cite: 657] | [cite_start]**1.3 L'Éveil de la Forge :** Sa Ruche IA personnelle et ses artisans proactifs s'éveillent, prêts à l'aider à nourrir son Gardien. [cite: 658] |
+| **1.1 L'Écho Fugace :** Notre héros, Hiro, fait l'expérience de la frustration universelle d'un souvenir qui s'efface. | **1.2 Le Début d'une Saga :** Il reçoit son Gardien Kikkō personnel, le réceptacle de son futur savoir. | **1.3 L'Éveil de la Forge :** Sa Ruche IA personnelle et ses artisans proactifs s'éveillent, prêts à l'aider à nourrir son Gardien. |
 
 ---
 
-### **2. Le Gameplay : Forger un Savoir de Qualité Compétition**
+### **2. Le Gameplay : Une Forge Vivante et Communautaire**
 
-Le cœur du jeu est un cycle vertueux qui met en valeur notre architecture unique : **Explorer -> Capturer -> Forger -> Nourrir -> Défier.**
+Le cœur du jeu est un cycle vertueux qui met en valeur notre architecture unique et évolutive : **Explorer -> Capturer -> Forger -> Nourrir -> Défier.**
 
-* **Explorer (Analyse Spécialiste en Direct) :** Pointez votre caméra sur le monde. [cite_start]Nos **Abeilles Spécialistes** (des modèles TFLite optimisés et embarqués pour les Plantes, Animaux, etc.) analysent le flux en temps réel, transformant votre appareil en une lentille de connaissance instantanée. [cite: 660, 661]
-* [cite_start]**Capturer le "Pollen" :** D'un simple clic, vous capturez un paquet de données riche : l'image et, surtout, l'**avis de l'expert** (`label: 'pissenlit', confidence: 0.89`). [cite: 664, 665] Ce "pollen" de haute qualité est la matière première idéale pour le fine-tuning de modèles futurs.
-* [cite_start]**Forger le "Miel Informatif" :** Le pollen est envoyé à la **Reine IA (Gemma)**. [cite: 666] [cite_start]C'est un véritable **partenariat Homme-IA** : la Reine peut vous demander de raffiner l'identification (ex: "Est-ce une pomme *Golden Delicious* ?"), transformant votre validation en "ground truth" pour la forge. [cite: 668] Elle génère ensuite la carte de connaissance finale (description, stats, quiz).
-* [cite_start]**Nourrir votre Gardien :** Le Miel que vous créez est la nourriture de votre Gardien Kikkō. [cite: 670] [cite_start]Un Miel pur, forgé dans votre Ruche, avec une histoire reproductible, le fait grandir. [cite: 671]
-* [cite_start]**Défier dans l'Arène :** Les motifs sur la carapace de votre tortue sont vos jeux de cartes. [cite: 672] Défiez vos amis en local (Bluetooth) dans un "Choc des Sagas" ! [cite_start]À la fin, les deux joueurs gardent toutes les cartes jouées, enrichissant la saga de chacun dans un esprit de partage. [cite: 674]
+* **Explorer (Analyse Spécialiste en Direct) :** Pointez votre caméra sur le monde. Nos **Abeilles Spécialistes** (des modèles TFLite optimisés) analysent le flux en temps réel, transformant votre appareil en une lentille de connaissance.
+* **Capturer le "Pollen" :** D'un simple clic, vous capturez un paquet de données riche : l'image et l'avis de l'expert. Ce "pollen" de haute qualité est la matière première idéale.
+* **Forger le "Miel Informatif" :** Le pollen est envoyé à la **Reine IA (Gemma)**. C'est un **partenariat Homme-IA** : la Reine peut vous demander de raffiner l'identification, transformant votre validation en "vérité terrain". Elle génère ensuite la carte de connaissance finale.
+* **Nourrir votre Gardien :** Le Miel que vous créez est la nourriture de votre Gardien Kikkō. Un Miel pur, forgé dans votre Ruche, le fait grandir.
+* **Défier dans l'Arène :** Les motifs sur la carapace de votre tortue sont vos jeux de cartes. Défiez vos amis en local (Bluetooth) dans un "Choc des Sagas" ! Un **Arbitre** pioche une question pertinente dans une banque qui peut être mise à jour, et le **Juge IA** rend un verdict nuancé. À la fin, les deux joueurs gardent toutes les cartes jouées, enrichissant la saga de chacun.
 
 * [**Document 02: Le Monde de Kikko**](./doc/doc02.md)
 * [**Document 03: La Boucle de Gameplay Principale**](./doc/doc03.md)
@@ -7754,18 +7748,19 @@ Le cœur du jeu est un cycle vertueux qui met en valeur notre architecture uniqu
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
 | <img src="illustrations/s2_intro.png" alt="Cinematic 3D render, animation movie style, viewed from over Léa's shoulder. A 10-year-old girl (braided pigtails, glasses, yellow raincoat) is in a supermarket, pointing her phone at a cookie box. On the screen, a translucent honeycomb UI element overlays the ingredients list with a '?' icon, a quest from her Hive."> | <img src="illustrations/s2_action.png" alt="Cinematic 3D render, animation movie style. Inside her Hive, the AI Queen orchestrates the forging of a drop of shimmering golden honey. The Bourdon zips out of the phone and offers it to Léa's Kikkō Guardian, which happily eats it. As it does, one of the hex-patterns on its shell glows brighter."> | <img src="illustrations/s2_conclusion.png" alt="Cinematic 3D render, animation movie style. Two Kikkō Guardians face off, their shells flattened to form a glowing hexagonal game board. Holographic cards from the same 'Insect' deck — a 'Ladybug' and a 'Bumblebee' — clash in the center with a burst of light. Hiro and Léa are visible in the background, cheering."> |
-| [cite_start]**2.1 La Quête :** La Ruche assigne une quête critique à Léa : butiner les ingrédients d'un biscuit pour produire du Miel. [cite: 678] | [cite_start]**2.2 Nourrir & Grandir :** Son Gardien mange le "Miel Informatif" fraîchement forgé, assimilant le savoir et devenant plus fort. [cite: 679] | [cite_start]**2.3 Le Choc des Sagas :** Dans l'Arène, le savoir des joueurs est mis à l'épreuve dans un combat de cartes amical et mutuellement bénéfique. [cite: 680] |
+| **2.1 La Quête :** La Ruche assigne une quête critique à Léa : butiner les ingrédients d'un biscuit pour produire du Miel. | **2.2 Nourrir & Grandir :** Son Gardien mange le "Miel Informatif" fraîchement forgé, assimilant le savoir et devenant plus fort. | **2.3 Le Choc des Sagas :** Dans l'Arène, le savoir des joueurs est mis à l'épreuve dans un combat de cartes amical et mutuellement bénéfique. |
 
 ---
 
-### **3. L'Architecture de la Confiance : Notre Avantage Compétitif**
+### **3. L'Architecture Évolutive : Notre Avantage Compétitif**
 
-Notre projet est une démonstration technique conçue pour impressionner : **chaque inférence est reproductible**.
+Notre projet est une démonstration technique conçue pour impressionner, basée sur trois piliers d'innovation :
 
-* [cite_start]**100% Embarqué :** Votre Ruche, votre Gardien, vos souvenirs — tout est privé et sécurisé sur votre appareil. [cite: 684]
-* **Reproduction d'Inférence & Transparence Radicale :** C'est notre innovation clé. [cite_start]Chaque carte forgée dans la Ruche possède un **"Fil de Provenance"** (`provenance.json`), un journal qui enregistre tout : les modèles spécialistes utilisés, leurs scores, les prompts exacts envoyés à la Reine, et ses réponses brutes. [cite: 685, 686, 687] [cite_start]N'importe quelle autre Ruche Kikko peut utiliser ce journal pour **rejouer l'inférence** et vérifier cryptographiquement l'authenticité de la carte. [cite: 688] C'est la fin de l'IA "boîte noire".
-* **Données Traçables vs. Reproductibles :** Les informations issues de sources externes (les "Frelons") sont clairement identifiées. [cite_start]Leur provenance est **traçable** (le HTML source est sauvegardé), mais non **reproductible**, ce qui leur confère une valeur moindre dans le jeu. [cite: 689]
-* [cite_start]**Arène Locale (Nearby Connections) & Partage Décentralisé (WebTorrent) :** Les combats et le partage de cartes se font en peer-to-peer, sans serveur central, garantissant une souveraineté totale des données. [cite: 690, 691, 692, 693]
+* **100% Embarqué & Privé :** Votre Ruche, votre Gardien, vos souvenirs — tout est sécurisé sur votre appareil.
+* **Transparence Radicale & Confiance Vérifiable :** C'est notre innovation clé. Chaque carte forgée possède un **"Fil de Provenance"** (`provenance.json`), un journal qui enregistre tout : les modèles utilisés, les prompts exacts, les réponses brutes, et même les **décisions du Juge IA**. N'importe quelle autre Ruche peut utiliser ce journal pour **rejouer l'inférence** et vérifier l'authenticité de la carte. C'est la fin de l'IA "boîte noire".
+* **Une IA Vivante et Personnalisable :** C'est notre vision pour le futur. Les **prompts** qui guident notre Reine IA et les **questions** de l'Arène ne sont pas gravés dans le code. Ils sont stockés dans des fichiers de configuration locaux. Cela ouvre deux possibilités révolutionnaires :
+    1.  **La Forge des Prompts :** L'utilisateur peut **modifier lui-même les prompts** pour personnaliser la personnalité de sa Ruche ou la logique de son Juge.
+    2.  **Le Nectar de la Ruche Mère :** L'application peut **télécharger des "packs de prompts" et des "sets de questions"** depuis notre serveur `kikko.be`. Nous pouvons ainsi améliorer l'intelligence et la créativité de toutes les Ruches en continu, sans jamais nécessiter une mise à jour de l'application via le store.
 
 * [**Document 04: Le Rôle des IA**](./doc/doc04.md)
 * [**Document 05: Le Dilemme du Frelon**](./doc/doc05.md)
@@ -7774,13 +7769,13 @@ Notre projet est une démonstration technique conçue pour impressionner : **cha
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
 | <img src="illustrations/s3_intro_v2.png" alt="Cinematic 3D render, animation movie style, viewed from over Hiro's shoulder. On his phone screen, a sleek, chrome Hornet icon offers an 'Instant Stat' for a flower. The Bourdon presents this tempting shortcut with a mischievous grin."> | <img src="illustrations/s3_action_v2.png" alt="Cinematic 3D render, animation movie style. Close-up on a holographic card for a 'Dandelion'. Most stats glow gold ('Pure Hive'), but one stat, 'Folkloric Use', has a grayish tint, indicating it was integrated from a traceable, but non-reproducible, 'Hornet' source."> | <img src="illustrations/s3_conclusion_v2.png" alt="Cinematic 3D render, animation movie style. A player challenges a stat on an opponent's card. The card's 'Seal of Trust' glows, and a mini-animation shows the Hive re-running the original inference process from the raw pollen—**Inference Reproduction**—confirming the stat is true. The challenger's Bourdon gives a nod of approval."> |
-| [cite_start]**3.1 La Tentation :** Le Frelon offre une statistique rapide et non vérifiée, un "fast-food" pour votre Gardien. [cite: 698] | [cite_start]**3.2 Provenance Transparente :** La carte qui en résulte distingue clairement les stats fiables et reproductibles de la Ruche de celles qui sont traçables mais moins fiables du Frelon. [cite: 699] | [cite_start]**3.3 L'Arbitre Ultime :** La **Reproduction d'Inférence** agit comme le juge infaillible, assurant un jeu équitable et une confiance totale. [cite: 700] |
+| **3.1 La Tentation :** Le Frelon offre une statistique rapide et non vérifiée, un "fast-food" pour votre Gardien. | **3.2 Provenance Transparente :** La carte qui en résulte distingue clairement les stats fiables et reproductibles de la Ruche de celles qui sont traçables mais moins fiables du Frelon. | **3.3 L'Arbitre Ultime :** La **Reproduction d'Inférence** agit comme le juge infaillible, assurant un jeu équitable et une confiance totale. |
 
 ---
 
-### **4. Une Nouvelle Catégorie : Le Jeu de Connaissance Vérifiable**
+### **4. Une Nouvelle Catégorie : Le Jeu de Connaissance Évolutif**
 
-`Kikko's Saga Forge` est plus qu'un jeu. [cite_start]C'est un **"Jeu de Connaissance Vérifiable"** et un **"Tamagotchi Mémoriel"**. [cite: 702] [cite_start]Le but n'est pas seulement de gagner, mais de construire le Gardien le plus savant et le plus beau, un reflet de votre propre saga de vie. [cite: 703] [cite_start]C'est un jeu où la curiosité, l'apprentissage et l'honnêteté sont les véritables super-pouvoirs, et où la récompense ultime est un compagnon IA proactif en qui vous pouvez avoir une confiance absolue, car vous l'avez forgé vous-même. [cite: 704]
+`Kikko's Saga Forge` est plus qu'un jeu. C'est un **"Jeu de Connaissance Vérifiable"** et un **"Tamagotchi Mémoriel"**. Le but n'est pas seulement de gagner, mais de construire le Gardien le plus savant, un reflet de votre propre saga. C'est un jeu où la curiosité et l'honnêteté sont les vrais super-pouvoirs, et où la récompense est un compagnon IA proactif en qui vous pouvez avoir une confiance absolue, car **vous l'avez forgé et vous pouvez le faire évoluer vous-même.**
 
 * [**Document 07: La Mémoire Augmentée**](./doc/doc07.md)
 * [**Document 08: L'Essaim Global**](./doc/doc08.md)
@@ -7790,7 +7785,7 @@ Notre projet est une démonstration technique conçue pour impressionner : **cha
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
 | <img src="illustrations/s4_intro.png" alt="Cinematic 3D render, animation movie style. A magnificent, fully grown Kikkō Guardian is shown, its shell a complex, glowing mosaic of hexagonal patterns representing hundreds of forged memories. It radiates wisdom and power."> | <img src="illustrations/s4_action.png" alt="Cinematic 3D render, animation movie style. Léa is about to eat a berry offered by a friend. She quickly forages it. Her mature Guardian instantly recognizes the berry, cross-references it with her allergy profile (a specific, trusted pattern on its shell), and proactively projects a gentle but firm red 'X' hologram over the berry."> | <img src="illustrations/s4_conclusion.png" alt="Cinematic 3D render, animation movie style. Léa smiles gratefully at her Kikkō Guardian, which has just protected her. Her saga of verifiable knowledge has become a proactive, life-saving partner, a testament to her own journey as a Forager."> |
-| [cite_start]**4.1 La Saga Vivante :** Avec le temps, le Gardien Kikkō devient une extension puissante et magnifique du savoir personnel de l'utilisateur. [cite: 709] | [cite_start]**4.2 L'Étincelle de Perspicacité :** Le savoir assimilé et fiable du Gardien permet à la Ruche de fournir une assistance pro-active et vitale. [cite: 710, 711] | [cite_start]**4.3 Le Soi Augmenté :** La véritable "victoire" du jeu est un compagnon qui vous comprend et vous protège, un témoignage de votre propre parcours de découverte. [cite: 712] |
+| **4.1 La Saga Vivante :** Avec le temps, le Gardien Kikkō devient une extension puissante et magnifique du savoir personnel de l'utilisateur. | **4.2 L'Étincelle de Perspicacité :** Le savoir assimilé et fiable du Gardien permet à la Ruche de fournir une assistance pro-active et vitale. | **4.3 Le Soi Augmenté :** La véritable "victoire" du jeu est un compagnon qui vous comprend et vous protège, un témoignage de votre propre parcours de découverte. |
 
 --- END OF FILE readme.md ---
 
@@ -8577,10 +8572,9 @@ Kikko's Saga Forge est plus qu'un projet technique ; c'est un projet philosophiq
 
 # Document 1/10 : Le Manifeste de la Forge - Notre Vision pour la Victoire
 
-**Titre :** Le Manifeste de la Forge : Forger une Mémoire Vérifiable dans un Monde d'IA Opaques
+**Titre :** Le Manifeste de la Forge : Forger une Mémoire Vérifiable et Évolutive dans un Monde d'IA Opaques
 
 **Objectif :** Établir la vision philosophique et l'ambition technique de `Kikko's Saga Forge`, en répondant à la question fondamentale pour le jury : "Pourquoi cette expérience représente-t-elle le futur de l'IA embarquée ?"
-
 <p align="center">
   <img style="max-width:400px" src="../illustrations/doc01_banner.png" alt="A wide, cinematic banner image for the 'Kikko's Saga Forge' manifesto, rendered in a 3D animation movie style. The scene is viewed from over the shoulder of a 10-year-old boy, Hiro (dark hair, vibrant red t-shirt). He holds his smartphone, which acts as a transparent window into the vibrant, high-tech interior of the 'Kikko Hive.' Inside, the wise, grandmotherly AI Queen with glowing spectacles works calmly. Hovering playfully outside the screen is the plump Bourdon. Below the phone, a small, glowing Kikkō Guardian turtle looks up at Hiro. Golden pollen flows from the real world into the Hive. The image captures the entire ecosystem: the Forager, the Guardian, and the Forge (Hive).">
 </p>
@@ -8588,18 +8582,16 @@ Kikko's Saga Forge est plus qu'un projet technique ; c'est un projet philosophiq
 
 ### **Introduction : De l'Amnésie Digitale à la Confiance Radicale**
 
-Nous vivons une ère de paradoxes : un accès infini à l'information, couplé à une **amnésie digitale assistée** où nos propres découvertes s'évaporent. Pire, nous faisons face à une crise de confiance envers des IA "boîtes noires" qui nous demandent de croire sans preuve.
+Nous vivons une ère de paradoxes : un accès infini à l'information, couplé à une **amnésie digitale assistée** où nos propres découvertes s'évaporent. Pire, nous faisons face à une crise de confiance envers des IA "boîtes noires" qui nous demandent de croire sans preuve. **`Kikko's Saga Forge` est notre réponse audacieuse et notre proposition pour gagner ce challenge.** Nous créons une nouvelle catégorie d'application : le **Jeu de Connaissance Vérifiable et Évolutif** (Evolvable & Verifiable Knowledge RPG).
 
-**`Kikko's Saga Forge` est notre réponse audacieuse et notre proposition pour gagner ce challenge.** Nous créons une nouvelle catégorie d'application : le **Jeu de Connaissance Vérifiable** (Verifiable Knowledge RPG).
+### **Principe Fondamental #1 : Le Kikkō, Votre Saga Vivante et Personnalisable**
 
-### **Principe Fondamental #1 : Le Kikkō, Votre Saga Vivante et Vérifiable**
-
-Kikko n'est pas une "application". C'est un écosystème. Vous devenez un **Butineur**, et l'on vous confie un **Gardien Kikkō** : une tortue numérique qui est le réceptacle vivant de votre mémoire. Sa carapace est la mosaïque de votre savoir, et sa croissance dépend de la qualité de la connaissance que vous forgez. Cette forge, c'est votre **Ruche Kikko** : un atelier d'IA privé, 100% embarqué sur votre appareil.
+Kikko n'est pas une "application". C'est un écosystème. Vous devenez un **Butineur**, et l'on vous confie un **Gardien Kikkō** : une tortue numérique qui est le réceptacle vivant de votre mémoire. Sa carapace est la mosaïque de votre savoir, et sa croissance dépend de la qualité de la connaissance que vous forgez. Cette forge, c'est votre **Ruche Kikko** : un atelier d'IA privé, 100% embarqué sur votre appareil, dont vous pouvez **modifier le comportement**.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
 | <img src="../illustrations/p1_intro.png" alt="Cinematic 3D render, animation movie style. A standard, cold-looking smartphone lies inert on a wooden table. The room is dark, symbolizing untapped potential for memory and adventure."> | <img src="../illustrations/p1_action.png" alt="Cinematic 3D render, animation movie style, viewed from over Hiro's shoulder. His hands (10-year-old boy, red t-shirt sleeves visible) pick up the phone. As he touches the screen, a warm, golden light glows, and a tiny, newly hatched digital Kikkō turtle appears, looking up at him with curious eyes."> | <img src="../illustrations/p1_conclusion.png" alt="Cinematic 3D render, animation movie style. The phone is now a vibrant window into a living world. The Kikkō turtle swims playfully in a digital space on the screen, while the Bourdon character peeks out from the corner, ready to guide Hiro and his new companion."> |
-| **L'Objet Inerte :** Un smartphone n'est qu'un portail froid et impersonnel. | **L'Éveil :** La première interaction de l'utilisateur ne lance pas une application ; elle fait éclore son Gardien Kikkō personnel, le début de sa saga. | **La Symbiose :** L'appareil est désormais un portail vers un écosystème vivant, un partenariat between the Forager, their Guardian, and the AI Hive. |
+| **L'Objet Inerte :** Un smartphone n'est qu'un portail froid et impersonnel. | **L'Éveil :** La première interaction de l'utilisateur ne lance pas une application ; elle fait éclore son Gardien Kikkō personnel, le début de sa saga. | **La Symbiose :** L'appareil est désormais un portail vers un écosystème vivant, un partenariat entre le Butineur, son Gardien, et la Ruche IA. |
 
 ### **Principe Fondamental #2 : Le Pollen est un Dataset, le Miel est une Inférence**
 
@@ -8613,7 +8605,7 @@ Dans notre écosystème, les données ont un cycle de vie conçu pour la qualit�
 | <img src="../illustrations/p2_intro.png" alt="Cinematic 3D render, animation movie style. A chaotic storm of generic data icons (1s, 0s, graphs, charts) swirls in an abstract digital space, representing the impersonal noise of big data."> | <img src="../illustrations/p2_action.png" alt="Cinematic 3D render, animation movie style. The user's hand (Hiro's) reaches into the storm and gently touches a single object: a photo of a vibrant wildflower from his garden. The photo glows with a warm, personal light."> | <img src="../illustrations/p2_conclusion.png" alt="Cinematic 3D render, animation movie style. The glowing photo transforms into a single, precious, shimmering particle of golden pollen, held carefully in Hiro's cupped hands. This is the raw ingredient for his Hive."> |
 | **La Tempête de Données :** Le monde moderne est une tempête de données impersonnelles. | **L'Acte de Sens :** L'utilisateur choisit consciemment une information qui a une signification personnelle pour lui. | **Le Pollen Précieux :** La donnée impersonnelle est transformée en un "pollen" unique et personnel, la matière première de la connaissance. |
 
-### **Principe Fondamental #3 : La Ruche, une Guilde d'Artisans IA Embarqués**
+### **Principe Fondamental #3 : La Ruche, une Guilde d'Artisans IA dont VOUS êtes le Maître**
 
 La **Ruche Kikko** est votre forge IA, peuplée d'une guilde d'artisans numériques qui travaillent pour vous.
 * **Les Abeilles Spécialistes (ML Kit & TFLite) :** Une équipe d'experts infatigables, chacun entraîné pour un domaine spécifique (Plantes, Animaux, etc.).
@@ -8624,25 +8616,24 @@ La **Ruche Kikko** est votre forge IA, peuplée d'une guilde d'artisans numériq
 | :---: | :---: | :---: |
 | <img src="../illustrations/p3_intro.png" alt="Cinematic 3D render, animation movie style. A stream of raw, glowing pollen particles (from Hiro's photo of a plant) flows into the high-tech, glowing interior of the Kikko Hive."> | <img src="../illustrations/p3_action.png" alt="Cinematic 3D render, animation movie style. Inside the Hive, cute Worker Bees process the pollen while the AI Queen orchestrates. The Bourdon zips out of the Hive, holding a glistening drop of golden 'Informative Honey'."> | <img src="../illustrations/p3_conclusion.png" alt="Cinematic 3D render, animation movie style. The Bourdon playfully offers the drop of honey to Hiro's Kikkō Guardian, which happily eats it. As it does, a hexagonal pattern on its shell glows, signifying it has assimilated the new knowledge and grown a little stronger."> |
 | **La Matière Première :** Le pollen capturé par l'utilisateur arrive dans la Ruche pour être traité. | **Le Travail des Artisans :** Les compagnons IA travaillent ensemble, en partenariat avec l'utilisateur, pour forger le pollen brut en "Miel Informatif". | **Nourrir la Saga :** Le Miel terminé est donné au Gardien Kikkō, qui assimile la connaissance et grandit. |
-
-### **Principe Fondamental #4 : La Gamification au Service de la Confiance**
+### **Principe Fondamental #4 : La Gamification au Service de la Confiance et de la Personnalisation**
 
 Les mécaniques de jeu sont le langage de Kikko.
 * **Les Quêtes** sont des invitations à trouver du "pollen" pour nourrir votre Gardien.
-* **La Croissance du Kikkō** est la représentation visuelle ultime de vos progrès.
-* **Le Choc des Sagas** est l'expression sociale de votre savoir, où la carapace de votre Gardien devient une arène de jeu de cartes P2P.
+* **La Croissance du Kikkō** est la représentation visuelle de vos progrès.
+* **Le Choc des Sagas** est l'expression sociale de votre savoir, où la carapace de votre Gardien devient une arène de jeu de cartes P2P, arbitrée par une IA dont vous pouvez influencer la logique.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
 | <img src="../illustrations/p4_intro.png" alt="Cinematic 3D render, animation movie style. A young, small Kikkō Guardian is shown, its shell simple with only a few glowing hexagonal patterns. It looks up expectantly, ready for its next meal of honey."> | <img src="../illustrations/p4_action.png" alt="Cinematic 3D render, animation movie style. Hiro completes a quest. His Guardian eats a drop of honey, and a new, beautiful, intricate hexagonal pattern materializes on its shell with a burst of light and sound."> | <img src="../illustrations/p4_conclusion.png" alt="Cinematic 3D render, animation movie style. Two large, mature Kikkō Guardians, their shells covered in complex glowing patterns, face off as their shells transform into a hexagonal game board, ready for a 'Saga Clash' with matching decks."> |
 | **La Toile Vierge :** La carapace du Gardien est une toile, représentant le potentiel de savoir de l'utilisateur. | **L'Instant de Croissance :** Chaque morceau de Miel forgé contribue directement à l'évolution visible du Gardien. | **Le Chef-d'œuvre :** Avec le temps, le Gardien devient un chef-d'œuvre puissant et unique, prêt à tester son savoir dans l'Arène. |
 
-### **Principe Fondamental #5 : Votre Savoir Vous Appartient. Point.**
+### **Principe Fondamental #5 : Votre Savoir et Votre IA Vous Appartiennent. Point.**
 
 C'est notre promesse centrale, incarnée par l'architecture de la Ruche.
 1.  **100% Embarqué :** Votre Ruche, votre Gardien, et toute votre saga résident **uniquement sur votre appareil**.
-2.  **Transparence Radicale :** Chaque goutte de Miel possède un **"Fil de Provenance"**. Le Miel forgé dans la Ruche a un journal de bord complet (`provenance.json`) contenant les prompts, les paramètres et les réponses brutes de chaque inférence IA, rendant cette connaissance **vérifiable via la Reproduction d'Inférence**.
-3.  **Partage Souverain :** Le "Choc des Sagas" est un échange **peer-to-peer**. Vous offrez du savoir directement à vos amis, enrichissant la saga de chacun.
+2.  **Transparence Radicale :** Chaque goutte de Miel possède un **"Fil de Provenance"**. Le Miel forgé dans la Ruche a un journal de bord complet (`provenance.json`) contenant les prompts, les paramètres et les réponses brutes, rendant cette connaissance **vérifiable via la Reproduction d'Inférence**.
+3.  **Partage Souverain & IA Évolutive :** Le "Choc des Sagas" est un échange **peer-to-peer**. Vous offrez du savoir directement à vos amis. Plus important encore, les **prompts** qui définissent la personnalité de votre Ruche et les **questions** de l'Arène sont modifiables et peuvent être mis à jour depuis `kikko.be`, faisant de votre IA un compagnon qui évolue avec la communauté.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -8666,26 +8657,23 @@ C'est notre promesse centrale, incarnée par l'architecture de la Ruche.
 **Title:** The World of Kikko: The Interface as a Living Companion
 
 **Objective:** To define the fundamental principles of Kikko's User Interface (UI) and User Experience (UX), emphasizing simplicity, immersion, and the unique communication partnership between the Forager, their Guardian, and the Hive.
-
 <p align="center">
-  <img style="max-width:400px" src="../illustrations/doc02_banner.png" alt="A wide, cinematic banner image for a UI/UX document, rendered in a 3D animation movie style. The scene is viewed from over the shoulder of a 10-year-old girl, Léa (braided pigtails, glasses, bright yellow raincoat). She holds her smartphone like a magical window. Through the screen, she sees a vivid, augmented view of a supermarket shelf. Translucent hexagonal UI elements highlight a specific cookie box. Floating beside her is her personal Kikkō Guardian turtle, its shell glowing softly. The plump Bourdon character hovers near the phone, gesturing towards the screen, acting as the friendly guide for the interface. The scene is lit with clean, bright light, emphasizing simplicity, clarity, and a human-AI partnership.">
+  <img style="max-width:400px" src="../illustrations/doc02_banner.png" alt="A wide, cinematic banner image for a UI/UX document, rendered in a 3D animation movie style. The scene is viewed from over the shoulder of a 10-year-old girl, Léa (braided pigtails, glasses, bright yellow raincoat). She holds her smartphone like a magical window. Through the screen, she sees a vivid, augmented view of a supermarket shelf. Translucent hexagonal UI elements highlight a specific cookie box. Floating beside her is her personal Kikkō Guardian turtle, its shell glowing softly. The plump Bourdon character hovers near the phone, gesturing towards the screen, acting as the friendly 
+guide for the interface. The scene is lit with clean, bright light, emphasizing simplicity, clarity, and a human-AI partnership.">
 </p>
 ---
 
 ### **Core Philosophy: The Anti-App**
 
-Kikko's interface is designed around a radical principle: **it should not feel like an application**. We reject complex menus and data-entry forms. The experience must be fluid, intuitive, and almost invisible, acting as a layer of understanding superposed on the real world, not as a destination in itself.
-
-Our goal is to erase the boundary between the user's physical world and their digital ecosystem. The smartphone is no longer a portal to another place (cyberspace), but a **magical lens** to better see, understand, and interact with the place one already is. For a user like **Léa**, who has allergies, this lens becomes a crucial tool for navigating the world of food safely with her Kikkō Guardian.
+Kikko's interface is designed around a radical principle: **it should not feel like an application**. We reject complex menus and data-entry forms. The experience must be fluid, intuitive, and almost invisible, acting as a layer of understanding superposed on the real world, not as a destination in itself. Our goal is to erase the boundary between the user's physical world and their digital ecosystem. The smartphone is no longer a portal to another place (cyberspace), but a **magical lens** to better see, understand, and interact with the place one already is. For a user like **Léa**, who has allergies, this lens becomes a crucial tool for navigating the world of food safely with her Kikkō Guardian.
 
 ### **Component 1: The Great Bay Window (The Augmented Camera View)**
 
 Kikko's "default mode" is the camera view. This is the heart of the experience, the Hive's window to the world.
-
 * **Live Specialist Analysis:** The camera view is a constantly active augmented reality layer. The Hive's **Specialist Bees** (on-device TFLite models) perpetually analyze the video stream, overlaying their findings directly onto the view. As Léa points her phone at a cookie box, the Text Recognition Bee might highlight the ingredients in real-time.
 * **Contextual Overlays:** The Hive communicates visually by superimposing minimalist, translucent graphic elements onto real-world objects.
-    * **The Identification Tag:** When a Specialist Bee identifies an object with high confidence, a subtle, glowing tag with its name might appear.
-    * **The Quest Honeycomb:** When the **AI Queen** needs more information (e.g., "I see nuts, but I need a clearer picture of the allergen warning"), a simple, glowing hexagon with a '?' icon appears and "latches" onto the object of interest, issuing a new foraging quest.
+* **The Identification Tag:** When a Specialist Bee identifies an object with high confidence, a subtle, glowing tag with its name might appear.
+* **The Quest Honeycomb:** When the **AI Queen** needs more information (e.g., "I see nuts, but I need a clearer picture of the allergen warning"), a simple, glowing hexagon with a '?' icon appears and "latches" onto the object of interest, issuing a new foraging quest.
 * **The Touch of Intent:** The user's tap on the screen is a direct command, telling the Hive: "This is what I'm interested in. Capture this 'pollen' and let's forge some honey."
 
 | Introduction | Action | Conclusion |
@@ -8709,7 +8697,6 @@ With a simple gesture, the user can transition from the "window" to a view of th
 ### **Component 3: The Dialogue (Human-AI Partnership)**
 
 All communication occurs through a minimalist, non-intrusive dialogue interface, primarily driven by the **Bourdon's unique personality**.
-
 * **The Bourdon's Delivery:** I am the primary voice and visual representation of the Hive's communication. I present quests, relay the Queen's questions, and deliver the finished "honey" to the Kikkō Guardian.
 * **Refine, Confirm & Forge:** This is the core interactive loop.
     1.  A **Specialist Bee** provides an initial identification (e.g., "apple, 85%").
@@ -8740,9 +8727,9 @@ Kikko's UI/UX serves immersion and partnership. By treating the screen as a wind
 **Title:** A Forager's Life: The Core Gameplay Loop of Kikko
 
 **Objective:** To define the primary mechanics of the game, detailing the "Foraging" process from initial exploration to the final reward, and establishing the core loop that drives user engagement and learning.
-
 <p align="center">
-  <img style="max-width:400px" src="../illustrations/doc03_banner.png" alt="A wide, cinematic banner image for a gameplay loop document, rendered in a 3D animation movie style. The scene depicts the four key stages of the Kikko gameplay loop in a circular flow. 1) Top-left: 10-year-old boy Hiro (red t-shirt) sees a glowing Quest honeycomb on a ladybug in his garden. 2) Top-right: He taps his phone, and golden pollen streams from the ladybug into the device. 3) Bottom-right: Inside the Hive, the AI Queen and Worker Bees process the pollen, while the Bourdon offers a tempting 'AI Overview' on a floating screen. 4) Bottom-left: Hiro looks at his phone with a smile, which displays a completed, glowing 'Microsite' and a 'Nature Explorer' badge. The image uses warm, golden light and dynamic visual effects to make the process feel magical and rewarding.">
+  <img style="max-width:400px" src="../illustrations/doc03_banner.png" alt="A wide, cinematic banner image for a gameplay loop document, rendered in a 3D animation movie style. The scene depicts the four key stages of the Kikko gameplay loop in a circular flow. 1) Top-left: 10-year-old boy Hiro (red t-shirt) sees a glowing Quest honeycomb on a ladybug in his garden. 2) Top-right: He taps his phone, and golden pollen streams from the ladybug into the device. 3) Bottom-right: Inside the Hive, the AI Queen and Worker Bees process the pollen, while the Bourdon offers a tempting 'AI Overview' on a floating screen. 4) 
+Bottom-left: Hiro looks at his phone with a smile, which displays a completed, glowing 'Microsite' and a 'Nature Explorer' badge. The image uses warm, golden light and dynamic visual effects to make the process feel magical and rewarding.">
 </p>
 ---
 
@@ -8753,7 +8740,6 @@ The fundamental gameplay loop of Kikko is designed to transform the mundane act 
 ### **1. The Exploration: The Hive's Live Perception**
 
 The loop begins not with a static quest, but with active exploration. The Forager points their phone at the world, and the Hive's **Specialist Bees** (on-device TFLite models for Plants, Animals, etc.) immediately get to work.
-
 * **Live Analysis:** The Bees analyze the camera's video stream in real-time.
 * **Augmented Reality Overlays:** When a Specialist Bee recognizes something, it displays its findings as a subtle, non-intrusive overlay. Hiro, pointing his phone at a flower, might see a small tag appear saying: *"Taraxacum officinale - 89% confidence"*.
 * **The Call to Action:** The world itself becomes the quest log. The "call" is the Forager's own curiosity, sparked by the live information provided by the Hive.
@@ -8766,12 +8752,11 @@ The loop begins not with a static quest, but with active exploration. The Forage
 ### **2. The Capture: Collecting the "Pollen"**
 
 This is the central action performed by the user. "Capturing" is the act of selecting a piece of the augmented reality to be analyzed more deeply.
-
 * **The Tap of Intent:** When an on-screen identification tag interests Hiro, he taps on it.
 * **The Pollen Package:** This action captures a rich "pollen package" for the Hive. It contains:
     * The high-resolution image frame.
-    * The initial analysis from the Specialist Bee (e.g., `label: "dandelion", confidence: 0.89`).
-    * Any other contextual data from other Worker Bees (e.g., text recognized nearby, GPS location).
+* The initial analysis from the Specialist Bee (e.g., `label: "dandelion", confidence: 0.89`).
+* Any other contextual data from other Worker Bees (e.g., text recognized nearby, GPS location).
 * **Visual Feedback:** The captured data is visualized as beautiful, glowing particles of light that are "sucked" into the Hive icon, ready for the forge.
 
 | Introduction | Action | Conclusion |
@@ -8782,23 +8767,21 @@ This is the central action performed by the user. "Capturing" is the act of sele
 ### **3. The Forge: The Alchemy of Partnership**
 
 This is where the raw pollen is transformed into structured "Informative Honey." It is a true partnership between the AI and the Forager.
-
 * **Human Refinement (Plan v5.0):** The **AI Queen (Gemma)** first looks at the pollen package. If the Specialist Bee's confidence was low, or the identification was generic ("dog"), she will ask for help. I, the Bourdon, will present the query: "My specialist thinks this is a 'dog'. Can you be more specific?". The Forager can then type "Saarloos Wolfdog" to provide crucial, ground-truth context.
 * **The Queen's Alchemy:** With this refined and verified input, the AI Queen now has high-quality material to work with. She uses her generative power to:
     * Craft my script (the `bourdonTTS`).
     * Structure the `quiz`.
-    * Deduce the `stats`.
+* Deduce the `stats`.
 * **The Hornet's Offer:** In parallel, the Hive can still perform a web search. If a relevant "AI Overview" is found, I can present Hiro with the choice to integrate this "Hornet's Honey" (which will be clearly marked as traceable but not reproducible) into his final card.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
-| <img src="../illustrations/proc_intro_v2.png" alt="Cinematic 3D render, animation movie style. Inside the Hive, golden pollen (from Hiro's ladybug photo) flows into a central chamber. Small, diligent Worker Bees (ML Kit) immediately start extracting data with light beams, but their progress bar is visible and moving slowly."> | <img src="../illustrations/proc_action_v2.png" alt="Cinematic 3D render, animation movie style, viewed from over Hiro's shoulder. The plump Bourdon, with a smug grin, floats in front of the Worker Bees, holding a glowing digital 'AI Overview' from a web search. He gestures towards Hiro on his phone, offering the instant answer as a tempting integration. The Queen watches calmly in the background."> | <img src="../illustrations/proc_conclusion_v2.png" alt="Cinematic 3D render, animation movie style. The Queen (Gemma) confidently weaves the raw pollen from the Worker Bees into a shimmering thread of pure knowledge, while also preparing a contextual question for Hiro. If Hiro integrated the Hornet's data, a separate grayish stream is added and marked transparently."> |
+| <img src="../illustrations/proc_intro_v2.png" alt="Cinematic 3D render, animation movie style. Inside the Hive, golden pollen (from Hiro's ladybug photo) flows into a central chamber. Small, diligent Worker Bees (ML Kit) immediately start extracting data with light beams, but their progress bar is visible and moving slowly."> | <img src="../illustrations/proc_action_v2.png" alt="Cinematic 3D render, animation movie style, viewed from over Hiro's shoulder. The plump Bourdon, with a smug grin, hovers in front of the Worker Bees, holding a glowing digital 'AI Overview' from a web search. He gestures towards Hiro on his phone, offering the instant answer as a tempting integration. The Queen watches calmly in the background."> | <img src="../illustrations/proc_conclusion_v2.png" alt="Cinematic 3D render, animation movie style. The Queen (Gemma) confidently weaves the raw pollen from the Worker Bees into a shimmering thread of pure knowledge, while also preparing a contextual question for Hiro. If Hiro integrated the Hornet's data, a separate grayish stream is added and marked transparently."> |
 | **The Race Against Time:** Pure pollen arrives in the Hive, and Worker Bees begin their meticulous, on-device processing. | **The Temptation of Ease:** The Bourdon offers an instant, pre-digested answer from external AI for quick integration, challenging the user's patience. | **The Path Chosen:** The Queen confidently takes over the pure pollen processing, incorporating the user's input to forge truly trusted knowledge. |
 
 ### **4. The Reward: The Sweet Taste of Trusted Knowledge**
 
 This is the final, crucial step of the loop, designed to provide positive reinforcement and a clear sense of accomplishment.
-
 * **The `Card` Creation:** The final "Informative Honey" is presented as a beautiful, interactive `Card` object.
 * **The Seal of Trust:** A vibrant **"Seal of Trust"** appears on the card. It will be pure gold if all data is "Hive-Forged" and has a complete, reproducible **"Thread of Provenance"**. If Hornet data was integrated, a section of the seal will be grayish, clearly marking its non-reproducible origin.
 * **Points & Badges:** Hiro is awarded "Honey Points" and unlocks stylish Badges (e.g., "Insect Identifier," "Garden Guardian").
@@ -8826,29 +8809,25 @@ The gameplay loop of Kikko is a virtuous cycle. By gamifying the act of observat
 **Title:** The Alchemy of Honey: The Symbiotic Partnership of AI Agents
 
 **Objective:** To define the conceptual technical architecture of Kikko's on-device AI system, detailing the distinct responsibilities of the different AI agents and how their "Guild of Experts" collaborates to create structured, verifiable knowledge.
-
 <p align="center">
-  <img style="max-width:400px" src="../illustrations/doc04_banner.png" alt="A wide, cinematic banner image for a technical architecture document, rendered in a 3D animation movie style. The scene is set inside the high-tech, glowing Kikko Hive. In the center, a stream of 'pollen' from a food label (for heroine Léa) is being processed. 1) On the left, a team of specialized robot Worker Bees (representing ML Kit) are shown using light beams to extract text (OCR) and barcode data. 2) In the center, the wise AI Queen (Gemma) orchestrates the process, her glowing spectacles analyzing the data streams. 3) On the right, the plump Bourdon character is shown with a quiz screen and a speech bubble, managing the user dialogue. The scene uses vibrant cyan and gold light to illustrate the flow of data between the different AI agents, showing their symbiotic partnership.">
+  <img style="max-width:400px" src="../illustrations/doc04_banner.png" alt="A wide, cinematic banner image for a technical architecture document, rendered in a 3D animation movie style. The scene is set inside the high-tech, glowing Kikko Hive. In the center, a stream of 'pollen' from a food label (for heroine Léa) is being processed. 1) On the left, a team of specialized robot Worker Bees (representing ML Kit) are shown using light beams to extract text (OCR) and barcode data. 2) In the center, the wise AI Queen (Gemma) orchestrates the process, her glowing spectacles analyzing the data streams. 3) On the right, the 
+plump Bourdon character is shown with a quiz screen and a speech bubble, managing the user dialogue. The scene uses vibrant cyan and gold light to illustrate the flow of data between the different AI agents, showing their symbiotic partnership.">
 </p>
 ---
 
 ### **Core Philosophy: A Guild of Experts, Not a Monolith**
 
-Kikko's intelligence is not a single, monolithic AI. It is a **symbiotic swarm** of specialized agents, each with a precise function. This "Guild of Experts" architecture is more efficient, more modular, and allows us to use the best tool for each job. For a critical task like verifying allergens for **Léa**, this specialization ensures accuracy and reliability.
-
-The process follows our refined pipeline: **Live Explore (Scout & Specialist Bees) -> Capture -> Human Refinement -> Forge (AI Queen).**
+Kikko's intelligence is not a single, monolithic AI. It is a **symbiotic swarm** of specialized agents, each with a precise function. This "Guild of Experts" architecture is more efficient, more modular, and allows us to use the best tool for each job. For a critical task like verifying allergens for **Léa**, this specialization ensures accuracy and reliability. The process follows our refined pipeline: **Live Explore (Scout & Specialist Bees) -> Capture -> Human Refinement -> Forge (AI Queen).**
 
 ### **1. The Worker Bees: A Two-Tiered System**
 
 The Worker Bees are the tireless laborers of the Hive. They are now organized into two distinct tiers with complementary roles.
-
 #### **1.1 The Scout Bees (Real-Time Perception with ML Kit)**
 These Bees are constantly active, analyzing the live camera feed to provide real-time augmented reality overlays.
 * **The Eyes (Text Recognition v2):** Reads any text in the camera's view.
 * **The Scanner (Barcode Scanning):** Instantly deciphers barcodes.
 * **The Lookout (Object Detection):** Identifies the presence and location of generic objects to help guide the Specialist Bees or the Forager.
 * **The Scribe (and other NL Bees):** Can identify language, suggest smart replies, and extract basic entities from recognized text on the fly.
-
 #### **1.2 The Specialist Bees (High-Accuracy Classification with TFLite)**
 These are our elite, pre-trained experts. They are called upon during the "Explore" phase to provide high-confidence labels for their specific domain.
 * **The Botanist Bee (e.g., Google AIY Plants V1):** An expert in identifying thousands of plant species.
@@ -8864,7 +8843,6 @@ These are our elite, pre-trained experts. They are called upon during the "Explo
 ### **2. The Bourdon: The Facilitator of Partnership**
 
 I am the primary interface between the internal workings of the Hive and the Forager. My role is to make the human-AI collaboration feel natural and engaging.
-
 * **Function 1: Relaying the Specialist's Opinion:** After a "Capture", I present the Specialist Bee's initial finding to the Forager. *"My Botanist Bee is 89% sure this is a Dandelion."*
 * **Function 2: Initiating Human Refinement:** This is my key role in the `v5.0` workflow. I then ask the crucial question: *"Is that correct? Can you be more specific?"*. This invites the user to confirm or correct the AI's finding, providing the ground-truth data that makes our system so trustworthy.
 * **Function 3: Managing Quests & Rewards:** I still present quests from the Queen and deliver the Honey Points and Badges.
@@ -8877,11 +8855,10 @@ I am the primary interface between the internal workings of the Hive and the For
 ### **3. The AI Queen: The Generative Orchestrator**
 
 The AI Queen (Gemma) is the master artisan, the true brain of the Hive. Her role is not to perform raw classification, but to use her powerful generative capabilities to transform verified data into rich knowledge.
-
 * **Function 1: Final Validation:** She receives the "pollen package" containing the image and the now human-verified label. This is her high-quality source material.
 * **Function 2: Generative Content Creation:** This is her core task. Based on the verified label, she generates all the "soft" content for the `Card`:
     * The engaging `bourdonTTS` script.
-    * The challenging `quiz` questions and answers.
+* The challenging `quiz` questions and answers.
     * The relevant `stats`.
 * **Function 3: Proactive Questing:** If more context is needed to generate rich content (e.g., "To generate nutritional stats, I need a picture of the product's label"), she formulates a new sub-quest for the Forager.
 
@@ -8907,7 +8884,6 @@ Kikko's intelligence is a dynamic guild. **Scout Bees (ML Kit)** perceive the wo
 **Title:** The Hornet's Dilemma: The Choice Between Convenience and Verifiable Truth
 
 **Objective:** To define the core philosophical and gameplay conflict of Kikko. This is achieved by introducing the Hornet, which represents the seductive convenience of external, opaque cloud AI, and frames the central, recurring choice for the player: instant gratification versus verifiable personal knowledge.
-
 <p align="center">
   <img style="max-width:400px" src="../illustrations/doc05_banner.png" alt="A wide, cinematic banner image for the 'Hornet's Dilemma' document, rendered in a 3D animation movie style. The image is split. On the left, a sleek, chrome-and-black mechanical Hornet hovers menacingly, its red eyes glowing, offering a pre-packaged, instant 'AI Overview' on a floating screen. On the right, our hero Hiro (10-year-old boy, red t-shirt) is shown working with his friendly, personal Hive (AI Queen and Bourdon visible through the phone screen), diligently foraging pure golden pollen from a real-world flower. The visual contrast between the cold, efficient Hornet and the warm, collaborative Hive is stark, representing the core choice between convenience and verifiable truth.">
 </p>
@@ -8927,9 +8903,9 @@ The central conflict of Kikko is therefore not a battle against a monster, but a
 * **Appearance:** A sleek, chrome-and-black mechanical hornet. Its design is minimalist and modern, reflecting the polished efficiency of major tech services. It moves with digital precision and appears not as a monster, but as a hyper-efficient delivery drone. Its glowing eyes are cold, analytical red.
 * **Gameplay Mechanic: The Tempting Offer**
     * **The Trigger:** After the Forager **Hiro** has "captured" his pollen (e.g., a photo of a dandelion), the Forge process begins. In parallel with the AI Queen beginning her meticulous work, the Hive can perform a quick web search for the identified subject.
-    * **The Bourdon's Delivery & The Quiz:** If an "AI Overview" is found, I, the **Bourdon**, become the Hornet's messenger. I'll pop up with a time-sensitive offer.
+* **The Bourdon's Delivery & The Quiz:** If an "AI Overview" is found, I, the **Bourdon**, become the Hornet's messenger. I'll pop up with a time-sensitive offer.
         * **My Dialogue (TTS):** `"Hey, Forager! While the Queen and her Bees are warming up the forge, I asked a Hornet on the web. I've got an instant answer on 'dandelions' right here! Quick, right? You can integrate it now, and it'll be marked as 'external'. Or, we can do the work ourselves for 100% pure, reproducible honey."` (I present the UI with the choice).
-    * **The Choice:** The user (Hiro) is faced with a clear dilemma:
+* **The Choice:** The user (Hiro) is faced with a clear dilemma:
         1.  **"Integrate Hornet's Answer":** The external information is added to the final `Card` but is clearly tagged with the Hornet's icon and a grayish color. The "Thread of Provenance" for this data simply contains the saved HTML source. It grants fewer "Honey Points." I might offer a smug `"Voila! Easy, right?"`
         2.  **"Forge with the Queen":** Requires more effort and patience. The user proceeds with the normal gameplay loop of collaborating with their Queen (the Human Refinement step, etc.). The resulting honey is marked with a golden "Seal of Trust," includes a complete "Thread of Provenance" for inference reproduction, and grants a large number of "Honey Points." I might sigh: `"Alright, your call. More work for the rest of us."`
 
@@ -8941,11 +8917,9 @@ The central conflict of Kikko is therefore not a battle against a monster, but a
 ### **The "Consequence" Mechanic: The Value of Provenance and Reproducibility**
 
 The choice of integrating Hornet's answer versus relying solely on the Queen's forged honey has significant gameplay consequences that reinforce the game's core philosophy.
-
 * **Opaque Data's Limitations:** Information from the Hornet, even when integrated and traced to its source HTML, is not **reproducible**. It cannot be independently verified by another Hive's AI through the inference process. It will always be marked as "externally sourced" and won't contribute to the most advanced knowledge connections that require full Hive verification.
 * **The Power of Trust:** Only `Card` objects created through the full "Forge with the Queen" loop receive the golden "Seal of Trust" and a complete "Thread of Provenance" enabling **Inference Reproduction**. These are the only memories that unlock the most powerful knowledge connections, contribute to advanced badges ("Master Forager," "Guardian of Truth"), and can be shared peer-to-peer with the highest level of verifiable authenticity.
 * **Learning Opportunity:** I might occasionally comment: `"See, kid? Easy come, easy go. That 'AI Overview' is traceable, sure, but its creation is a mystery. Can't be reproduced. But your own foraging? That's pure gold, verifiable by any other Hive."` This reinforces the value of integrity and reproducibility.
-
 **Conclusion:**
 By introducing the Hornet and its dilemma, Kikko elevates its gameplay beyond simple collection. It transforms every common object into a subtle test of the Forager's principles. This core conflict educates users on the value of data provenance and the power of inference reproduction, reinforcing the game's philosophy of privacy and trust, and makes every piece of self-forged "Informative Honey" a meaningful choice about how we build our knowledge in the age of AI.
 
@@ -8960,56 +8934,40 @@ By introducing the Hornet and its dilemma, Kikko elevates its gameplay beyond si
 
 # Document 6/10: The Thread of Provenance - The Seal of Trust
 
-**Title:** The Thread of Provenance: The Unbreakable Seal of Trust
+**Title:** The Thread of Provenance: The Unbreakable Seal of a Customizable and Verifiable AI
 
-**Objective:** To detail the structure, purpose, and in-game representation of the Provenance Log. This feature is positioned as the ultimate reward for choosing personal discovery over opaque convenience, guaranteeing radical transparency and trust in all user-generated knowledge.
-
+**Objective:** To detail the structure and purpose of the Provenance Log, positioning it as the core innovation that enables radical transparency, trust, and the evolution of a user-customizable AI.
 <p align="center">
   <img style="max-width:400px" src="../illustrations/doc06_banner.png" alt="A wide, cinematic banner image for the 'Thread of Provenance' document, rendered in a 3D animation movie style. The scene is split into three parts. 1) Left: A glowing honeycomb cell representing a food memory for Léa is shown, with an intricate, golden 'Seal of Trust' forming on its surface. 2) Center: From a view over her shoulder, Léa's finger (10-year-old girl, yellow raincoat sleeve) touches the seal on her phone screen, which unfolds into a luminous, holographic scroll. 3) Right: The scroll displays a beautiful infographic detailing the data's journey: a photo of the ingredients, the AI processing steps, Léa's own validation inputs, and a clearly marked section for any externally sourced 'Hornet' data with its HTML source. The image emphasizes transparency, trust, and the verifiable story behind each memory.">
 </p>
 ---
 
-### **Core Philosophy: The Story is the Reward**
+### **Core Philosophy: The Story is the Proof**
 
 In an age where AI can provide any answer, the answer itself loses value. The new value lies in its **origin story**. In Kikko, the "Informative Honey" is useful, but its true power comes from the verifiable story of its creation. The **Thread of Provenance** is that story.
 
-It is not just metadata; it is a "Seal of Trust," the tangible proof that a piece of knowledge was born from a transparent, reproducible, human-AI partnership. It is the definitive answer to the question: *Why should I trust this memory?* For **Léa**, this isn't a philosophical question; it's a matter of safety. The Thread of Provenance shows her *exactly* how the Hive determined a food was safe.
+It is not just metadata; it is a "Seal of Trust," the tangible proof that a piece of knowledge was born from a transparent, reproducible, and now **customizable** human-AI partnership. It is the definitive answer to the question: *Why should I trust this memory, and how can I be sure the AI reasoned as I intended?* For **Léa**, this isn't a philosophical question; it's a matter of safety. The Thread of Provenance shows her *exactly* how her customized Hive determined a food was safe.
 
 ### **1. The Structure of the "Thread of Provenance"**
 
-The Thread of Provenance is a detailed JSON document stored in the database alongside each `Card`. It is a chronological logbook of the entire forging process. Inspired by industry standards like OpenLineage, it is structured to be both human-readable and machine-verifiable.
+The Thread of Provenance is a detailed JSON document stored with each `Card`. It is a chronological logbook of the entire forging process, structured to be both human-readable and machine-verifiable.
 
 * **A. The Foraging Chronicle (`pollenChronicle`):** A timestamped log of every piece of raw data contributed **by the Forager**. This is the initial proof.
     * `{ "timestamp": "...", "pollenType": "Visual", "source": "ForagerCamera", "reference": "pollen/image_001.jpg", "hash": "sha256:..." }`
 
-* **B. The Hive's Forge Log (`hiveLog`):** A log of every key inference step performed by the Hive's AI agents. This is the technical **blueprint for Inference Reproduction**. Each entry contains a `facets` object grouping related metadata.
-    * **Example entry for Specialist Bee analysis:**
-        ```json
-        {
-          "timestamp": "...",
-          "agent": "SpecialistBee_Plants",
-          "action": "InitialImageAnalysis",
-          "facets": {
-              "modelExecution": { 
-                  "modelName": "Google AIY Plants V1",
-                  "prompt": "...", 
-                  "rawResponse": "{'d':'Plants','t':'dandelion','sp':false}" 
-              },
-              "inferenceParameters": {"confidence_threshold": 0.7}
-          }
-        }
-        ```
-    * **Example entry for AI Queen generation:**
+* **B. The Hive's Forge Log (`hiveLog`):** A log of every key inference step performed by the Hive's AI agents. This is the technical **blueprint for Inference Reproduction**. Each entry now includes a reference to the **exact set of prompts used**, making the AI's logic fully auditable even when customized.
+* **Example entry for AI Queen generation:**
         ```json
         {
           "timestamp": "...",
           "agent": "AI_Queen_Gemma",
-          "action": "HornetDataStructuring_Quiz",
+          "action": "ContentGeneration_Quiz",
           "facets": {
-              "modelExecution": {
-                  "modelName": "Gemma",
+              "modelExecution": { 
+                  "modelName": "Gemma 3 1B",
+                  "promptSetId": "kikko_default_prompts_v1.2", 
                   "prompt": "From the text, generate 2-4 quiz questions...",
-                  "rawResponse": "[{'q':'...','o':['...'],'c':0}]"
+                  "rawResponse": "[{'q':'...','o':['...'],'c':0}]" 
               },
               "inferenceParameters": {"temperature": 0.2}
           }
@@ -9017,7 +8975,7 @@ The Thread of Provenance is a detailed JSON document stored in the database alon
         ```
 
 * **C. The Hornet's Nest (`hornetLog`):** If external data was integrated from a web search, this section provides its full context for **traceability**.
-    * `{ "timestamp": "...", "action": "HornetOfferAccepted", "sourceUrl": "...", "savedHtmlReference": "hornet/dandelion_overview.html" }`
+* `{ "timestamp": "...", "action": "HornetOfferAccepted", "sourceUrl": "...", "savedHtmlReference": "hornet/dandelion_overview.html" }`
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -9027,7 +8985,6 @@ The Thread of Provenance is a detailed JSON document stored in the database alon
 ### **2. The Role in Gameplay: The Ultimate Prize**
 
 The Thread of Provenance is the soul of the reward system, distinguishing levels of trust within the knowledge itself.
-
 * **The Mark of the Hornet:** Data integrated from a Hornet's AI Overview is **traceable** to its source HTML but not **reproducible**. It's marked with a grayish tint. For Léa, this means "This information is from the web, use with caution for allergy decisions."
 * **The Seal of the Forager:** Data forged through the human-AI partnership receives the vibrant golden **Seal of Trust**. It is fully **reproducible** because its `hiveLog` is complete. For Léa, this means "This information has been verified by your Hive, based on your input. You can trust it." It grants the highest rewards and unlocks advanced features.
 
@@ -9037,10 +8994,7 @@ When a Forager shares a `Card` object, they are gifting a complete, self-contain
 
 **True Inference Reproduction.**
 
-A parent receiving a "SAFE" food `Card` for their allergic child doesn't just have to take the sender's word for it. Their own Kikko Hive can automatically parse the sender's `provenanceLog`, extract the exact prompt and parameters for each step, re-run the same inferences on its own local models using the original source image (also shared), and compare the output to a cryptographic hash of the original output.
-
-This is trust, but with mathematical proof. This moves us from a world of "black box" data to a world of **"glass box" data**, where the process of creation is as important as the result, and is fully verifiable by anyone in the community.
-
+A parent receiving a "SAFE" food `Card` for their allergic child doesn't just have to take the sender's word for it. Their own Kikko Hive can automatically parse the sender's `provenanceLog`, **download the specified prompt set if they don't have it**, extract the exact prompt and parameters for each step, re-run the same inferences on its own local models using the original source image, and compare the output to a cryptographic hash of the original output. This is trust, but with mathematical proof. This moves us from a world of "black box" data to a world of **"glass box" data**, where the process of creation is as important as the result, and is fully verifiable by anyone in the community.
 **Conclusion:**
 The Thread of Provenance is the soul of Kikko. It transforms the app from a clever data-capture tool into a powerful statement on information integrity and personal agency. It is the mechanism that gives weight and meaning to the Forager's choice, providing not only the power to remember, but the profound satisfaction of knowing that their memories are pure, their history is intact, and their knowledge is verifiably real through **inference reproduction** and transparent sourcing.
 
@@ -9055,10 +9009,9 @@ The Thread of Provenance is the soul of Kikko. It transforms the app from a clev
 
 # Document 7/10: The Augmented Memory - Long-Term Utility
 
-**Title:** The Augmented Memory: The Power of a Trusted Knowledge Graph
+**Title:** The Augmented Memory: The Power of a Trusted and Evolving Knowledge Graph
 
-**Objective:** To define the "endgame" of Kikko, showcasing how the accumulated, **trusted and verifiable** knowledge transforms the application from a game of collection into an indispensable, proactive personal AI assistant that augments the user's daily life with unparalleled relevance and accuracy.
-
+**Objective:** To define the "endgame" of Kikko, showcasing how the accumulated, trusted, and verifiable knowledge transforms the application from a game of collection into an indispensable, proactive personal AI assistant that augments the user's daily life with unparalleled relevance and accuracy.
 <p align="center">
   <img style="max-width:400px" src="../illustrations/doc07_banner.png" alt="A wide, cinematic banner image for a long-term utility document, rendered in a 3D animation movie style. The scene depicts 10-year-old boy Hiro (red t-shirt) in his lush garden, looking at his smartphone with a 'Eureka!' expression. On the phone screen, a 'Microsite' for a specific plant is displayed. From this Microsite, a glowing thread of light extends out into the real world, connecting to a ladybug sitting on that exact plant, which Hiro hadn't noticed before. Inside the Hive, visible through the screen's transparency, the AI Queen is shown connecting two honeycomb cells (one for the plant, one for the ladybug), her eyes glowing with intelligence. The image captures the moment the Hive provides a proactive, insightful connection based on Hiro's past foraging.">
 </p>
@@ -9066,18 +9019,15 @@ The Thread of Provenance is the soul of Kikko. It transforms the app from a clev
 
 ### **Core Philosophy: From Connection to Confidence**
 
-The initial joy of Kikko comes from the act of collecting. The long-term value, however, comes from the **emergent intelligence** of the Hive, built exclusively on a foundation of trusted, user-verified, **Hive-Forged** honeycombs. The AI Queen's true potential is unlocked only when she can reason on a knowledge graph that she and the Forager have built together in partnership.
-
-The endgame is not just about making connections; it's about having **absolute confidence** in those connections because every single data point has a verifiable "Thread of Provenance" and its creation process can be reproduced or traced.
+The initial joy of Kikko comes from the act of collecting. The long-term value, however, comes from the **emergent intelligence** of the Hive, built exclusively on a foundation of trusted, user-verified, **Hive-Forged** honeycombs. The AI Queen's true potential is unlocked only when she can reason on a knowledge graph that she and the Forager have built together in partnership. The endgame is not just about making connections; it's about having **absolute confidence** in those connections because every single data point has a verifiable "Thread of Provenance" and its creation process can be reproduced or traced.
 
 ### **1. The Proactive Assistant: The Hive That Truly Knows You**
 
 After weeks and months of foraging, the AI Queen has built a rich map of what matters to **Hiro**, based entirely on his verified inputs. Her proactive assistance becomes incredibly insightful because it is based on a foundation of truth they built together. I, the Bourdon, deliver these insights with my characteristic commentary.
-
 * **High-Confidence Reminders:** The Hive knows Hiro has foraged (with a Seal of Trust) a specific ladybug species and also a particular rose bush he cares for.
-    * **My Delivery:** `"Hey, Forager! The Queen just noticed something. According to our verifiable, Hive-Forged records, the ladybug you foraged two months ago is the number one predator of the aphids attacking your rose bush. You might want to keep an eye on that, kid!"`
+* **My Delivery:** `"Hey, Forager! The Queen just noticed something. According to our verifiable, Hive-Forged records, the ladybug you foraged two months ago is the number one predator of the aphids attacking your rose bush. You might want to keep an eye on that, kid!"`
 * **Contextual Discovery (Based on Authentic Interests):** The Hive analyzes only the "pure" honey and Hiro's contextual answers to understand his true passions.
-    * **My Delivery:** `"Alright, Forager. The Queen mapped out something cool. Based on all your verified captures of auxiliary insects and native plants, there's a local nursery holding a sale on melliferous plant seeds you haven't foraged yet. What are we waiting for?"`
+* **My Delivery:** `"Alright, Forager. The Queen mapped out something cool. Based on all your verified captures of auxiliary insects and native plants, there's a local nursery holding a sale on melliferous plant seeds you haven't foraged yet. What are we waiting for?"`
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -9087,16 +9037,15 @@ After weeks and months of foraging, the AI Queen has built a rich map of what ma
 ### **2. The Conversational Search Engine of Your Life**
 
 The ultimate utility is the ability to query one's own life with natural language, knowing the answers are drawn from facts with verifiable provenance, and delivered by the Bourdon.
-
 * **Queries with Verifiable Answers:** The user is no longer limited to simple lookups.
-    * *User (voice input):* "Hey Bourdon, what was the name of that interesting ladybug I foraged in the garden last summer?"
-    * **My Delivery (TTS):** `"Hmm, the ladybug... The Queen searched our secured records. That would be the 'Coccinella septempunctata', foraged on July 12th in the family garden. Your visual pollen says 'bright color, very active'. I can show you the Card and its full Thread of Provenance, if you like?"` (The screen displays the relevant `Card`, complete with its Seal of Trust).
+* *User (voice input):* "Hey Bourdon, what was the name of that interesting ladybug I foraged in the garden last summer?"
+* **My Delivery (TTS):** `"Hmm, the ladybug... The Queen searched our secured records. That would be the 'Coccinella septempunctata', foraged on July 12th in the family garden. Your visual pollen says 'bright color, very active'. I can show you the Card and its full Thread of Provenance, if you like?"` (The screen displays the relevant `Card`, complete with its Seal of Trust).
 * **Creative Summaries of Your Own Mind:** The Queen can synthesize information based on Hiro's verified interests.
-    * *User (voice input):* "Kikko, what are the common themes in the plants I've foraged this year?"
-    * **My Delivery:** `"Okay, kid. The Queen ran an analysis on your 'pure honey' forages. You're into botany, especially plants that attract pollinators. You've foraged three species of roses and two types of lavender. And all of that is 100% verified by you."`
+* *User (voice input):* "Kikko, what are the common themes in the plants I've foraged this year?"
+* **My Delivery:** `"Okay, kid. The Queen ran an analysis on your 'pure honey' forages. You're into botany, especially plants that attract pollinators. You've foraged three species of roses and two types of lavender. And all of that is 100% verified by you."`
 * **Cross-Domain Connections You Can Trust:**
     * *User (voice input):* "Bourdon, I have a presentation to do on the biodiversity in my garden. According to my verified captures, what do I actually know?"
-    * **My Delivery:** `"The Queen is certain. Based on your verifiable and reproducible captures, you have identified 7 species of insects, including 3 pollinators. You have 4 types of native plants, and you've noted that blackbirds visit your garden every morning. That's some solid pollen, my friend!"`
+* **My Delivery:** `"The Queen is certain. Based on your verifiable and reproducible captures, you have identified 7 species of insects, including 3 pollinators. You have 4 types of native plants, and you've noted that blackbirds visit your garden every morning. That's some solid pollen, my friend!"`
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -9120,7 +9069,6 @@ The endgame of Kikko is the ultimate payoff for choosing the path of the Forager
 **Title:** The Global Swarm: Collaborative Knowledge for Trusted Groups
 
 **Objective:** To define the technology and philosophy behind Kikko's sharing features, positioning them as tools for deep collaboration within trusted groups (families, teams, hobbyists) rather than a viral social network. The focus is on practical, real-world utility enabled by peer-to-peer technology and **verifiable knowledge**.
-
 <p align="center">
   <img style="max-width:400px" src="../illustrations/doc08_banner.png" alt="A wide, cinematic banner image for the decentralized sharing document, rendered in a 3D animation movie style. The scene shows two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), sitting back-to-back in a garden. They each hold a smartphone. A swarm of golden 'data-bees' is shown flying directly from Hiro's phone to Léa's. Hiro's phone screen shows a 'Microsite' for a berry plant, while Léa's screen shows her Hive receiving and verifying it for allergens. The plump Bourdon character floats between them, proudly overseeing this 'Digital Pollination'. The image conveys a sense of trusted, private, peer-to-peer collaboration.">
 </p>
@@ -9140,7 +9088,6 @@ It's not about public performance; it's about genuine connection and mutual enri
 ### **1. The P2P Technologies: Two Tools for Two Use Cases**
 
 Kikko employs a dual-technology approach to peer-to-peer communication, ensuring the best tool is used for each type of interaction.
-
 #### **1.1 The Local Arena (Google Nearby Connections)**
 For real-time, synchronous interactions like the "Saga Clash," Kikko uses the **Google Nearby Connections API**.
 * **Discovery Radar:** Allows Foragers who are physically close to discover each other without needing to be on the same Wi-Fi network.
@@ -9160,7 +9107,6 @@ For asynchronous, remote sharing of knowledge, Kikko uses **WebTorrent**.
 ### **2. The "Trusted Package": The Unit of Verifiable Collaboration**
 
 What is shared is not just data, but a **"Trusted Package,"** a self-contained archive of verifiable knowledge that includes all components necessary for **Inference Reproduction**.
-
 * **The `Card` Object (The What):** The final, structured knowledge card.
 * **The Thread of Provenance (The How):** The complete `provenanceLog` JSON document, detailing every step of the card's creation.
 * **The Original Pollen (The Proof):** The source images (as Base64 strings or file references) that were used in the creation process.
@@ -9175,11 +9121,9 @@ When a group member receives this package, their Hive can independently verify t
 ### **3. The Emergent Community: Niche Swarms**
 
 Kikko's community model focuses on empowering small, private groups with shared goals.
-
 * **Use Case: The Nature & Food Club.** **Hiro** finds a wild berry bush and forages a detailed, Hive-forged `Card` about it. He shares it with **Léa**. Léa's Hive receives the package and automatically runs an **inference reproduction** on the card's `provenanceLog` to verify Hiro's identification. Only after this verification does her Queen cross-reference the now-trusted berry species with Léa's allergy profile. Léa gets a notification: "Hiro shared a 'Wild Raspberry' forage. **Verified by your Hive.** This berry is SAFE for you."
 * **Use Case: The Family Inventory.** A family can create a shared "swarm" for household items. One person forages the warranty for the new TV, another the paint codes for the living room wall. Everyone in the family receives the verified "honey" on their device.
 * **Use Case: The Hobbyist Collectors.** A couple collecting vintage cameras can build a shared, verified catalog. Each entry includes photos, purchase receipts (pollen), and notes, all reproducible.
-
 **Conclusion:**
 Kikko's sharing model is a deliberate move away from mass-market social media towards deep, meaningful collaboration. By leveraging a combination of peer-to-peer technologies and the "Trusted Package" with its reproducible provenance, we provide a powerful tool for small groups to build a shared, trusted knowledge base. It's a community built not on "likes," but on mutual goals and the power of a shared, transparent memory.
 
@@ -9197,9 +9141,8 @@ Kikko's sharing model is a deliberate move away from mass-market social media to
 **Title:** The Philosophy of Gifting: Kikko as a Public Good
 
 **Objective:** To define Kikko's core motivation and "business model" as explicitly non-commercial for its initial release. This document frames the project not as a product to be sold, but as a gift to the community and a powerful proof-of-concept for a new category of ethical, personal AI.
-
 <p align="center">
-  <img style="max-width:400px" src="../illustrations/doc09_banner.png" alt="A wide, cinematic banner image for the 'Philosophy of Gifting' document, rendered in a 3D animation movie style. The scene shows two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), standing together and looking out at a beautiful, expansive landscape at sunset. A large, glowing Kikko Hive icon floats gently between them, held in their open, welcoming hands, symbolizing a shared, free gift to the community. The plump Bourdon character hovers nearby, looking a bit bewildered but content with this 'no profit' strategy. The overall atmosphere is one of hope, generosity, and empowerment.">
+  <img style="max-width:400px" src="../illustrations/doc09_banner.png" alt="A wide, cinematic banner image for the 'Philosophy of Gifting' document, rendered in a 3D animation movie style. The scene shows two children, Hiro (boy, red t-shirt) and Léa (girl, glasses, yellow raincoat), standing together and looking out at a beautiful, expansive landscape at sunset. A large, glowing Kikko Hive icon floats gently between them, held in their open, welcoming hands, symbolizing a shared, free gift to the community. The plump Bourdon character floats nearby, looking a bit bewildered but content with this 'no profit' strategy. The overall atmosphere is one of hope, generosity, and empowerment.">
 </p>
 ---
 
@@ -9207,22 +9150,18 @@ Kikko's sharing model is a deliberate move away from mass-market social media to
 
 In a world where every application is designed with a monetization strategy, Kikko dares to be different. For its presentation in the Google AI Edge Challenge and its initial release, **Kikko is not a business. It is a proposal.**
 
-It is a proposal for a new relationship with our data, our memories, and our devices. It is a functional piece of art and a philosophical statement, designed to inspire and to demonstrate what is possible when technology is built for empowerment, not for profit.
-
-We are not building a company; we are building an idea. And the best way to share an idea is to give it away.
+It is a proposal for a new relationship with our data, our memories, and our devices. It is a functional piece of art and a philosophical statement, designed to inspire and to demonstrate what is possible when technology is built for empowerment, not for profit. We are not building a company; we are building an idea. And the best way to share an idea is to give it away.
 
 ### **1. The "Gift" Model: 100% Free and Unrestricted**
 
 Kikko will be offered to everyone, completely free, with no strings attached. There are no premium tiers, no advertisements, no plans for future subscriptions. Every feature is available to every user from the moment they install the application.
-
 * **The Full Experience, For Everyone:**
     * The complete foraging and gamification experience for all personas.
-    * The entire **Guild of AI Artisans** at their full potential: The AI Queen (Gemma), the Scout Bees (ML Kit), and all Specialist Bees (TFLite models).
-    * Unlimited local storage of "honey" (`Card` objects) and "pollen" (source images).
-    * The complete "Thread of Provenance" and "Seal of Trust" features, including full **Inference Reproduction** and traceable Hornet data integration.
-    * Unlimited P2P interactions via **Nearby Connections** and remote sharing via **WebTorrent**.
+* The entire **Guild of AI Artisans** at their full potential: The AI Queen (Gemma), the Scout Bees (ML Kit), and all Specialist Bees (TFLite models).
+* Unlimited local storage of "honey" (`Card` objects) and "pollen" (source images).
+* The complete "Thread of Provenance" and "Seal of Trust" features, including full **Inference Reproduction** and traceable Hornet data integration.
+* Unlimited P2P interactions via **Nearby Connections** and remote sharing via **WebTorrent**.
     * A starter set of badges and quests.
-
 This free tier is not a "demo." It is a complete, powerful tool that fulfills the core promise of the application. I, the **Bourdon**, ever the pragmatist, might grumble about the lack of "honey-money," but I ultimately agree it's the most effective way to get more Foragers for the Queen.
 
 | Introduction | Action | Conclusion |
@@ -9233,7 +9172,6 @@ This free tier is not a "demo." It is a complete, powerful tool that fulfills th
 ### **2. Why This Approach? The Economics of a Powerful Idea**
 
 Choosing a non-commercial path is a strategic decision that serves the core goals of the project.
-
 * **Maximizing Impact for the Competition:** For the Google AI Edge Challenge, our goal is to present the most powerful and uncompromised vision possible. A business model would distract from the core message: the technological and philosophical innovation around on-device AI and verifiable knowledge. I might comment: `"Personally, I prefer naps. Fewer profitability concerns, more time for a stroll."`
 * **Building Trust Through Action:** The strongest way to prove our commitment to user sovereignty is to remove profit from the equation entirely. Our actions speak louder than any privacy policy. We are not interested in the user's money because we are only interested in empowering them. I might add: `"No honey traps here, kid. The Queen doesn't play that game."`
 * **Fostering an Authentic Community:** A non-commercial project attracts a community built on passion and shared ideals. We hope to inspire developers, designers, and thinkers to build upon the ideas presented in Kikko. I would nod: `"Real foragers, not free-riders. I like that."`
@@ -9268,10 +9206,9 @@ Kikko's "business model" is to not have one. It is an investment in an idea. By 
 
 # Document 10/10: The Kikko Project - Synopsis for the Google AI Edge Challenge
 
-**Title:** Kikko: Your Personal Memory Hive - A Verifiable Knowledge Game Built on Trust
+**Title:** Kikko's Saga Forge: A Verifiable & Evolvable Knowledge Game Built on Trust
 
-**Objective:** To provide a comprehensive summary of the Kikko project for the Google AI Edge Challenge, highlighting its innovative concept, its sophisticated use of Google's on-device AI to tackle a modern-day dilemma, and its profound potential for real-world impact.
-
+**Objective:** To provide a comprehensive summary of the Kikko project for the Google AI Edge Challenge, highlighting its innovative concept, its sophisticated use of Google's on-device AI to tackle a modern-day dilemma, and its profound potential for real-world impact through a fully customizable AI architecture.
 <p align="center">
   <img style="max-width:400px" src="../illustrations/doc10_banner.png" alt="A wide, cinematic triptych banner summarizing the Kikko project, rendered in a 3D animation movie style. On the left panel (The Dilemma), Hiro stands at a crossroads, with a cold, menacing Hornet offering a quick 'AI Overview' on one path, and the warm, inviting Kikko Hive on the other. In the center panel (The Process), the interior of the Hive is shown with the AI Queen (Gemma) and Worker Bees (ML Kit) collaboratively forging golden 'pollen' into honey, while the Bourdon manages a dialogue quiz. On the right panel (The Reward), a magnificent, fully grown Kikkō Guardian glows, its shell a beautiful mosaic of verified memories, symbolizing the ultimate prize of a trusted, sovereign AI companion.">
 </p>
@@ -9279,16 +9216,15 @@ Kikko's "business model" is to not have one. It is an investment in an idea. By 
 
 ### **1. High-Concept Pitch**
 
-In an age where AI offers instant but opaque answers, **Kikko** introduces a new genre: the **Verifiable Knowledge RPG**. It reframes the smartphone not as a window to the cloud, but as a private, intelligent **Memory Hive** that helps you forge a rich, verifiable graph of your own life. In a **true human-AI partnership**, you (the **Forager**) and your on-device "Guild of AI Artisans"—the wise **AI Queen (Gemma)** and her diligent **Specialist Bees (TFLite Models & ML Kit)**—collaborate to turn personal experiences into **trusted knowledge**. Our core innovation is the **"Thread of Provenance"**, a comprehensive log that makes every piece of user-forged knowledge **verifiably reproducible**, turning the AI from a black box into a glass box.
+In an age where AI offers instant but opaque answers, **Kikko's Saga Forge** introduces a new genre: the **Verifiable & Evolvable Knowledge RPG**. It reframes the smartphone not as a window to the cloud, but as a private, intelligent **Memory Hive** whose very logic can be shaped by the user. In a **true human-AI partnership**, you (the **Forager**) and your on-device "Guild of AI Artisans"—the wise **AI Queen (Gemma)** and her diligent **Specialist Bees (TFLite Models & ML Kit)**—collaborate to turn personal experiences into **trusted knowledge**. Our core innovations are twofold: the **"Thread of Provenance"**, a log that makes every inference **verifiably reproducible**, and a **Dynamic Prompting System**, which allows the entire AI personality and logic to be modified and updated by the user or the community, turning the AI from a black box into a living, adaptable glass box.
 
 ### **2. The Vision & Impact (40 Points)**
 
-Kikko's vision is to combat **assisted digital amnesia** by empowering individuals with **sovereignty over their digital memory**.
-
+Kikko's vision is to combat **assisted digital amnesia** by empowering individuals with **sovereignty over their digital memory and the very AI that helps them forge it.**
 * **Tackling a Modern Dilemma: The Hornet's Temptation.** Kikko gamifies the "convenience vs. truth" problem. It presents a choice between accepting opaque "AI Overviews" from external sources (the "Hornet's Offer") and the rewarding effort of forging personal, verifiable knowledge. This subtly educates users on digital literacy and the critical importance of **inference reproduction**.
-* **A New Paradigm for Personal AI: Human-AI Partnership.** The AI Queen (Gemma) doesn't just answer, she orchestrates. Our `v5.0` workflow introduces a **Human Refinement** step, where the Forager validates or specifies the initial identification made by the Specialist Bees. This collaboration is fundamental to building a knowledge graph built on ground truth.
-* **Radical Privacy & Trust:** With a **100% on-device architecture**, all user data and AI models remain private. The "Thread of Provenance" for every user-created memory is an auditable, locally generated log that contains the full blueprint for **inference reproduction**, ensuring unparalleled transparency and trust.
-* **A Gift to the Community: Non-Commercial Vision.** Kikko is a **non-commercial project**, offered entirely free. Its sole focus is on impact and demonstrating a viable, ethical model for personal AI built on verifiable knowledge.
+* **A New Paradigm for Personal AI: The User as AI Trainer.** The AI Queen (Gemma) doesn't just answer, she orchestrates. Our workflow introduces a **Human Refinement** step, where the Forager validates the AI's identification. More profoundly, our architecture allows users to **edit the prompts** that define the AI's behavior or **download new "personality packs"** from the community, making them active participants in their AI's evolution.
+* **Radical Privacy, Trust & Evolvability:** With a **100% on-device architecture**, all user data and AI models remain private. The "Thread of Provenance" now includes a version hash of the prompt and question sets used for an inference, making even a **customized AI's reasoning fully reproducible**.
+* **A Gift to the Community: Non-Commercial Vision.** Kikko is a **non-commercial project**, offered entirely free. Its sole focus is on impact and demonstrating a viable, ethical, and community-driven model for personal AI.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -9297,18 +9233,17 @@ Kikko's vision is to combat **assisted digital amnesia** by empowering individua
 
 ### **3. Technical Depth & Execution (30 Points & Google AI Edge Prize)**
 
-Kikko is a sophisticated showcase of how Google's on-device technologies can be orchestrated to create a novel, privacy-first experience.
-
+Kikko is a sophisticated showcase of how Google's on-device technologies can be orchestrated to create a novel, privacy-first, and user-modifiable experience.
 * **The Guild of AI Artisans (Multi-Stage Inference):**
-    1.  **Live Perception (ML Kit & TFLite):** A suite of **Specialist Bees** (optimized TFLite models for Plants, Animals, etc.) and **Scout Bees (ML Kit)** analyze the camera feed in real-time, providing live AR overlays.
-    2.  **Human-in-the-Loop:** The Forager captures a "pollen package" (image + initial analysis) and is prompted to **refine** the specialist's identification, providing crucial ground truth.
-    3.  **Generative Orchestration (Gemma):** The **AI Queen (Gemma)** receives this high-quality, human-verified input. Her task is not raw classification, but **generative content creation**: she crafts the `bourdonTTS` script, the `quiz`, and the `stats` for the final `Card` object.
-    4.  **Inference Reproduction Blueprint:** Gemma logs her entire reasoning chain—prompts, parameters, and raw responses—within the "Thread of Provenance," creating a verifiable blueprint for other Hives to reproduce the inference locally and confirm its validity.
-
+    1.  **Live Perception (ML Kit & TFLite):** A suite of **Specialist Bees** (optimized TFLite models) and **Scout Bees (ML Kit)** analyze the camera feed in real-time.
+    2.  **Human-in-the-Loop:** The Forager captures a "pollen package" (image + initial analysis) and is prompted to **refine** the specialist's identification.
+    3.  **Generative Orchestration (Gemma):** The **AI Queen (Gemma)** receives this high-quality, human-verified input. Her task is **generative content creation**: she crafts the `bourdonTTS` script, the `quiz`, and the `stats` for the final `Card` object, using a set of prompts that can be dynamically loaded.
+    4.  **Inference Reproduction Blueprint:** Gemma logs her entire reasoning chain—including the **ID of the prompt set used**—within the "Thread of Provenance," creating a verifiable blueprint for other Hives to reproduce the inference locally.
 * **The Architecture of Trust & Digital Pollination:**
     * **Core App & UI:** Built on Android (Kotlin).
-    * **Local P2P:** **Google Nearby Connections** for offline discovery and battle initiation.
-    * **Remote Decentralized Sharing:** **WebTorrent** integrated for secure, P2P sharing of "Trusted Packages" (the `Card` object with its full `provenanceLog` and source images) via QR codes.
+* **Local P2P:** **Google Nearby Connections** for offline discovery and battle initiation.
+* **Remote Decentralized Sharing:** **WebTorrent** integrated for secure, P2P sharing of "Trusted Packages" (the `Card` object with its full `provenanceLog` and source images) via QR codes.
+    * **Dynamic Asset Loading:** The application is designed to load its core AI logic (`prompts.json`) and game content (`clash_questions.json`) from local files, which can be updated from a remote server (`kikko.be`) without requiring an app update. This allows for continuous improvement and community-driven content expansion.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -9317,9 +9252,9 @@ Kikko is a sophisticated showcase of how Google's on-device technologies can be 
 
 ### **4. Video Pitch & Storytelling (30 Points)**
 
-Our 5-minute animated short film, **"Hiro's Choice,"** will bring the core dilemma to life, showcasing the problem of fleeting memory, the magic of the human-AI partnership, the temptation of the Hornet's offer, and the profound satisfaction of forging verifiable truth. The video will visually explain the revolutionary concept of **Inference Reproduction** and highlight the long-term utility of having a proactive, trusted AI companion.
+Our 5-minute animated short film, **"Hiro's Choice,"** will bring the core dilemma to life, showcasing the problem of fleeting memory, the magic of the human-AI partnership, the temptation of the Hornet's offer, and the profound satisfaction of forging verifiable truth. The video will visually explain the revolutionary concept of **Inference Reproduction** and highlight the long-term utility of having a proactive, trusted, and **personally customizable** AI companion.
 
 **Conclusion:**
-Kikko is more than an application; it is a timely and necessary response to the evolution of AI. By masterfully combining the on-device power of **Gemma** and **specialized TFLite models** within an engaging, gamified, and ethically-uncompromising framework, Kikko doesn't just showcase what the technology can do—it makes a powerful statement about how it *should* be used to create a truly personal AI built on verifiable, reproducible knowledge.
+Kikko is more than an application; it is a timely and necessary response to the evolution of AI. By masterfully combining the on-device power of **Gemma** and **specialized TFLite models** within an engaging, gamified, and ethically-uncompromising framework, Kikko doesn't just showcase what the technology can do—it makes a powerful statement about how it *should* be used to create a truly personal and evolvable AI built on verifiable, reproducible knowledge.
 
 --- END OF FILE doc/doc10.md ---

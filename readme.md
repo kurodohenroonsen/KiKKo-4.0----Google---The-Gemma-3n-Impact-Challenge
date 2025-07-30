@@ -28,7 +28,7 @@ Le cœur du jeu est un cycle vertueux qui met en valeur notre architecture uniqu
 
 * **Explorer (Analyse Spécialiste en Direct) :** Pointez votre caméra sur le monde. Nos **Abeilles Spécialistes** (des modèles TFLite optimisés) analysent le flux en temps réel, transformant votre appareil en une lentille de connaissance.
 * **Capturer le "Pollen" :** D'un simple clic, vous capturez un paquet de données riche : l'image et l'avis de l'expert. Ce "pollen" de haute qualité est la matière première idéale.
-* **Forger le "Miel Informatif" :** Le pollen est envoyé à la **Reine IA (Gemma)**. C'est un **partenariat Homme-IA** : la Reine peut vous demander de raffiner l'identification, transformant votre validation en "vérité terrain". Elle génère ensuite la carte de connaissance finale.
+* **Forger le "Miel Informatif" :** Le pollen est confié à la Forge de votre Ruche, qui travaille pour vous en arrière-plan. Dans un **partenariat Homme-IA**, la **Reine IA (Gemma)** peut solliciter votre aide pour raffiner une identification. Une fois validé, le processus de forge continue de manière autonome pour générer la carte de connaissance finale.
 * **Nourrir votre Gardien :** Le Miel que vous créez est la nourriture de votre Gardien Kikkō. Un Miel pur, forgé dans votre Ruche, le fait grandir.
 * **Défier dans l'Arène :** Les motifs sur la carapace de votre tortue sont vos jeux de cartes. Défiez vos amis en local (Bluetooth) dans un "Choc des Sagas" ! Un **Arbitre** pioche une question pertinente dans une banque qui peut être mise à jour, et le **Juge IA** rend un verdict nuancé. À la fin, les deux joueurs gardent toutes les cartes jouées, enrichissant la saga de chacun.
 
