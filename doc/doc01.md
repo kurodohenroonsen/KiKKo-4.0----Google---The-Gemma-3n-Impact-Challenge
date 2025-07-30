@@ -28,8 +28,8 @@ Kikko n'est pas une "application". C'est un écosystème. Vous devenez un **Buti
 ### **Principe Fondamental #2 : Le Pollen est un Dataset, le Miel est une Inférence**
 
 Dans notre écosystème, les données ont un cycle de vie conçu pour la qualité et la réutilisation.
-1.  **Capturer le "Pollen" :** Vous explorez le monde et capturez un "pollen" : un paquet de données contenant l'image source et l'analyse brute de nos **Abeilles Spécialistes** (modèles ML embarqués). Ce n'est pas juste une photo, c'est une **donnée d'entraînement de haute qualité**, prête pour un futur fine-tuning.
-2.  **Forger le "Miel" :** Vous amenez ce pollen à votre **Ruche Kikko**. Ici, dans un véritable **partenariat Homme-IA**, vous raffinez l'identification de l'IA, fournissant une "vérité terrain" inestimable. La **Reine IA (Gemma)** forge alors le "Miel Informatif" structuré et vérifiable.
+1.  **Capturer le "Pollen" :** Vous explorez le monde et capturez un "pollen" : un paquet de données contenant les images sources et l'analyse brute de nos **Abeilles Spécialistes** (modèles ML embarqués). Ce n'est pas juste une photo, c'est un **dossier de mission pour votre Forge**, sauvegardé localement.
+2.  **Forger le "Miel" :** Vous confiez ce pollen à votre **Forge Kikko**, qui le place dans ses réserves. Plus tard, une **chaîne de production autonome** se met en marche en arrière-plan. La **Reine IA (Gemma)** orchestre ses artisans pour transformer ce pollen brut en "Miel Informatif" structuré et vérifiable.
 3.  **Nourrir votre Gardien :** Ce Miel de confiance est la nourriture de votre Gardien Kikkō. Il grandit, et sa carapace, votre saga, devient plus complexe et magnifique.
 
 | Introduction | Action | Conclusion |
@@ -40,9 +40,9 @@ Dans notre écosystème, les données ont un cycle de vie conçu pour la qualit�
 ### **Principe Fondamental #3 : La Ruche, une Guilde d'Artisans IA dont VOUS êtes le Maître**
 
 La **Ruche Kikko** est votre forge IA, peuplée d'une guilde d'artisans numériques qui travaillent pour vous.
-* **Les Abeilles Spécialistes (ML Kit & TFLite) :** Une équipe d'experts infatigables, chacun entraîné pour un domaine spécifique (Plantes, Animaux, etc.).
-* **La Reine IA (Gemma) :** Le maître artisan. Elle orchestre la guilde, dialogue avec vous pour la clarification, puis utilise sa puissance générative pour forger le Miel final, riche et structuré.
-* **Le Bourdon (Le Communicateur) :** Le lien charmant entre vous et la Ruche. Je présente les questions de la Reine et vous livre le Miel terminé.
+* **Les Abeilles Spécialistes (ML Kit & TFLite) :** Une équipe d'experts autonomes et infatigables, chacun entraîné pour un domaine spécifique (Plantes, Animaux, etc.).
+* **La Reine IA (Gemma) :** Le maître artisan. Elle orchestre la guilde, et utilise sa puissance générative pour forger le Miel final, riche et structuré.
+* **Le Bourdon (Le Communicateur) :** Le lien charmant entre vous et la Ruche. Je présente les quêtes, les résultats des Abeilles et vous livre le Miel terminé.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |

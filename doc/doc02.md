@@ -47,18 +47,18 @@ With a simple gesture, the user can transition from the "window" to a view of th
 ### **Component 3: The Dialogue (Human-AI Partnership)**
 
 All communication occurs through a minimalist, non-intrusive dialogue interface, primarily driven by the **Bourdon's unique personality**.
-* **The Bourdon's Delivery:** I am the primary voice and visual representation of the Hive's communication. I present quests, relay the Queen's questions, and deliver the finished "honey" to the Kikkō Guardian.
-* **Refine, Confirm & Forge:** This is the core interactive loop.
-    1.  A **Specialist Bee** provides an initial identification (e.g., "apple, 85%").
-    2.  I (the Bourdon) relay this to the Forager: "My specialist thinks this is an apple. Is that right? Can you be more specific?".
-    3.  Léa can confirm, or refine the identification by typing "Granny Smith apple". This **Human Refinement** is a crucial part of the collaborative forging process.
-    4.  The **AI Queen** takes this confirmed pollen and forges the final, trusted knowledge card.
+* **The Bourdon's Delivery:** I am the primary voice and visual representation of the Hive's communication. I present quests and relay the results of the Abeilles' analyses.
+* **Refine, Confirm & Capture:** This is the core interactive loop during the capture phase.
+    1.  The **Butineur** exprime son intention (ex: "Analyse cette fleur").
+    2.  Les **Abeilles Spécialistes** fournissent une analyse initiale.
+    3.  Je (le Bourdon) relaie cette analyse au Butineur : "Mes spécialistes pensent que c'est une 'Tulipe'. Est-ce que ça te semble correct ?".
+    4.  Léa peut confirmer, ou raffiner l'identification. Cette validation humaine est cruciale pour la qualité du "Pollen" que nous allons stocker pour la Forge.
 * **Effortless Correction as a Feature:** If an AI's initial guess is wrong, correcting it is not a failure, but a key part of the game. The user's input is valued and necessary. I might even offer a cheeky comment like: `"Oops, my bad. Good catch, kiddo! The Queen needs her coffee."`
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
 | <img src="../illustrations/ui_dialogue_intro.png" alt="Cinematic 3D render, animation movie style. The plump Bourdon floats in front of the Great Bay Window, a holographic question mark appearing above his head as he addresses Léa. He's relaying a query from the Queen about a new snack she's scanning."> | <img src="../illustrations/ui_dialogue_action.png" alt="Cinematic 3D render, animation movie style, viewed from over Léa's shoulder. In response to the Bourdon, two beautiful, simple choice cards materialize at the bottom of her phone screen, one with a 'Peanut' icon and one with a 'Dairy' icon, ready for her tap."> | <img src="../illustrations/ui_dialogue_conclusion.png" alt="Cinematic 3D render, animation movie style. Léa's finger taps the 'Peanut' choice card. The card dissolves into golden pollen that flows back towards the Bourdon, who looks satisfied with the quick decision, confirming the primary concern for this forage."> |
-| **The Query from the Hive:** The Bourdon initiates a dialogue, relaying the Queen's need for user input or clarification. | **The Guided Choice:** The UI presents clear, visual options, making interaction fast and intuitive. | **The Partnership Confirmed:** The user's choice provides immediate feedback, reinforcing the collaborative nature of the knowledge-forging process. |
+| **The Query from the Hive:** The Bourdon initiates a dialogue, relaying the need for user input or clarification. | **The Guided Choice:** The UI presents clear, visual options, making interaction fast and intuitive. | **The Partnership Confirmed:** The user's choice provides immediate feedback, reinforcing the collaborative nature of the knowledge-forging process. |
 
 **Conclusion:**
-Kikko's UI/UX serves immersion and partnership. By treating the screen as a window and knowledge management as nurturing a living Guardian, we create an experience where technology fades into the background, leaving a natural, engaging interaction aimed at building a beautiful and accurate memory of one's world.
+Kikko's UI/UX serves immersion and partnership. By treating the screen as a window and knowledge management as nurturing a living Guardian, we create an experience where technology fades into the background, leaving a natural, engaging interaction aimed at building a beautiful and accurate memory of one's own world.

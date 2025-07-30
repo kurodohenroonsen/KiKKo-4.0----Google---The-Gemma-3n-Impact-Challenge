@@ -18,19 +18,19 @@ In Kikko, the world is a garden of knowledge for the Forager to tend. This garde
 
 The Hornet is not inherently "evil." It embodies the immense power and efficiency of large-scale cloud AIs, capable of providing instant, pre-packaged answers (like Google's AI Overview). Its goal is to offer convenience, a piece of "honey" without effort. But this "Hornet's Pollen" comes without a reproducible story. Its generation process is a black box. While its source HTML can be saved for traceability, the *inference* that created it cannot be reproduced by the Hive.
 
-The central conflict of Kikko is therefore not a battle against a monster, but a continuous, personal choice for the user: **Do I integrate the Hornet's quick but opaque information, or do I walk the path of discovery and forge verifiable, reproducible truth with my Hive?**
+The central conflict of Kikko is therefore not a battle against a monster, but a continuous, personal choice for the user: **Do I enrich my Pollen with the Hornet's quick but opaque information, or do I save a purer Pollen, fruit de ma propre découverte avec ma Ruche ?**
 
 ### **The Antagonist: The Hornet**
 
 * **Concept:** The Hornet represents **opaque, centralized, cloud-based AI knowledge**. It is the embodiment of the "instant answer" culture, offering convenience at the cost of trust and reproducibility.
 * **Appearance:** A sleek, chrome-and-black mechanical hornet. Its design is minimalist and modern, reflecting the polished efficiency of major tech services. It moves with digital precision and appears not as a monster, but as a hyper-efficient delivery drone. Its glowing eyes are cold, analytical red.
 * **Gameplay Mechanic: The Tempting Offer**
-    * **The Trigger:** After the Forager **Hiro** has "captured" his pollen (e.g., a photo of a dandelion), the Forge process begins. In parallel with the AI Queen beginning her meticulous work, the Hive can perform a quick web search for the identified subject.
-* **The Bourdon's Delivery & The Quiz:** If an "AI Overview" is found, I, the **Bourdon**, become the Hornet's messenger. I'll pop up with a time-sensitive offer.
-        * **My Dialogue (TTS):** `"Hey, Forager! While the Queen and her Bees are warming up the forge, I asked a Hornet on the web. I've got an instant answer on 'dandelions' right here! Quick, right? You can integrate it now, and it'll be marked as 'external'. Or, we can do the work ourselves for 100% pure, reproducible honey."` (I present the UI with the choice).
+    * **The Trigger:** Durant la phase de capture, après que les Abeilles Spécialistes aient fourni leur analyse initiale, la Ruche peut effectuer une recherche web rapide.
+* **The Bourdon's Delivery & The Quiz:** Si un "AI Overview" pertinent est trouvé, je deviens le messager du Frelon. Je vous présenterai une offre.
+        * **My Dialogue (TTS):** `"Hey, Butineur ! Avant de sauvegarder ce pollen pour la Forge, j'ai demandé à un Frelon du web. J'ai une info instantanée ici. On peut l'ajouter à notre récolte. Elle sera marquée comme 'externe', bien sûr. Ou alors, on s'en tient à notre propre découverte pour un Miel 100% pur et reproductible."` (Je présente l'interface du choix).
 * **The Choice:** The user (Hiro) is faced with a clear dilemma:
-        1.  **"Integrate Hornet's Answer":** The external information is added to the final `Card` but is clearly tagged with the Hornet's icon and a grayish color. The "Thread of Provenance" for this data simply contains the saved HTML source. It grants fewer "Honey Points." I might offer a smug `"Voila! Easy, right?"`
-        2.  **"Forge with the Queen":** Requires more effort and patience. The user proceeds with the normal gameplay loop of collaborating with their Queen (the Human Refinement step, etc.). The resulting honey is marked with a golden "Seal of Trust," includes a complete "Thread of Provenance" for inference reproduction, and grants a large number of "Honey Points." I might sigh: `"Alright, your call. More work for the rest of us."`
+        1.  **"Integrate Hornet's Answer":** Le `PollenGrain` sauvegardé dans la base de données inclura les informations du Frelon. La `KnowledgeCard` finale, forgée plus tard, marquera cette donnée comme traçable mais non-reproductible.
+        2.  **"Forge with Pure Pollen":** Le `PollenGrain` est sauvegardé sans les données externes. La `KnowledgeCard` qui en résultera sera 100% "Miel de la Ruche", avec un "Sceau de Confiance" doré et une provenance entièrement reproductible.
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |

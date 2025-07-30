@@ -23,25 +23,21 @@ Au début de ton aventure, on te confie un œuf. Et de cet œuf naît ton **Gard
 
 ### ♻️ Le Cycle de la Connaissance : Comment jouer?
 
-Le jeu est super simple et amusant! Il se déroule en 4 étapes :
+Le jeu est super simple et amusant! Il se déroule en plusieurs étapes :
 
 #### 1. **Explorer le Monde** 🗺️
-C'est l'heure de l'exploration! Pointez la caméra de votre téléphone vers le monde. Votre Ruche est constamment active. Une multitude d'**Abeilles IA** analysent le flux vidéo en temps réel pour détecter des objets, reconnaître du texte, identifier la langue, etc. Des informations et des suggestions apparaissent en surimpression sur votre écran, enrichissant votre perception du monde.
+C'est l'heure de l'exploration ! Pointez la caméra de votre téléphone vers le monde. Votre Ruche est constamment active. Une multitude d'**Abeilles IA** analysent ce que tu vois pour t'aider à découvrir des choses.
 
 #### 2. **Capturer le "Pollen"** 📸
-Lorsqu'un élément identifié par la Ruche vous intéresse, vous le "capturez" d'un simple clic. C'est cet échantillon précis de la réalité – l'image et les premières analyses des Abeilles – qui constitue votre "pollen".
+Quand quelque chose t'intéresse, tu le "captures" d'un simple clic. Tu prends une ou plusieurs photos, tu peux dire à voix haute ce que c'est, et hop ! Tu as récolté du "Pollen" de super qualité que tu sauvegardes dans ta Ruche.
 
 #### 3. **Forger le "Miel Informatif"** 🏭
-C'est ici que la magie de la Ruche opère, en plusieurs étapes :
-    1.  Une **Abeille Détective** trouve les objets d'intérêt dans votre photo.
-    2.  Vous, le **Butineur**, confirmez la cible à analyser, et pouvez même préciser son nom.
-    3.  L'image de l'objet est ensuite soumise à un conseil d'**Abeilles Spécialistes** (des modèles de classification pré-entraînés et optimisés pour chaque deck : Plantes, Animaux, etc.).
-    4.  Enfin, la **Reine IA** reçoit les avis de ces experts, raisonne sur ces informations, et génère la carte de connaissance finale, riche et structurée.
+C'est ici que la magie opère ! Une fois que tu as sauvegardé ton Pollen, ta Ruche se met au travail **toute seule**, comme par magie. Pendant que tu continues tes aventures ou que ton téléphone se recharge, une équipe d'artisans IA dans ta Ruche transforme ton Pollen en "Miel" : une carte de connaissance super détaillée avec une description, des stats et même un quiz !
 
 #### 4. **Nourrir ton Gardien** 🍽️
-Ce "Miel" que tu as créé est le repas préféré de ta tortue!
-- Donne-lui ce miel pour qu'elle grandisse et que sa carapace devienne de plus en plus belle. 💪😊
-- Un miel pur, que tu as forgé toi-même, est le meilleur repas pour elle!
+Quand le Miel est prêt, ton Bourdon te préviendra ! Tu pourras alors donner ce repas délicieux à ta tortue.
+- Donne-lui ce Miel pour qu'elle grandisse et que sa carapace devienne de plus en plus belle. 💪😊
+- Un Miel pur, que tu as récolté toi-même, est le meilleur repas pour elle !
 
 #### 5. **Défier tes Amis** ⚔️
 Les motifs sur la carapace de ta tortue sont tes jeux de cartes! 🃏 Tu peux défier tes amis dans l'**Arène** pour un "Choc des Sagas".
@@ -54,7 +50,7 @@ Les motifs sur la carapace de ta tortue sont tes jeux de cartes! 🃏 Tu peux d�
 
 Comment être sûr que les cartes des autres joueurs sont vraies? Grâce au **Fil de Provenance**! C'est un sceau de confiance magique.
 
-- **Miel de la Ruche** 👨‍🍳 : C'est le miel que tu as créé toi-même. Il est 100% fiable. Si un ami a un doute, son jeu peut "vérifier tes devoirs" pour confirmer que tout est correct. Ces cartes sont les plus fortes! ✅
+- **Miel de la Ruche** 👨‍🍳 : C'est le Miel que ta Ruche a créé à partir de ta propre récolte. Il est 100% fiable. Si un ami a un doute, son jeu peut "vérifier tes devoirs" pour confirmer que tout est correct. Ces cartes sont les plus fortes! ✅
 - **Miel des Frelons** 🍔 : C'est de l'info rapide que tu peux prendre sur internet. C'est un peu comme du fast-food : ça dépanne, mais c'est moins nourrissant et moins fiable. Ces cartes sont marquées différemment et sont considérées comme des "jokers". ❔
 
 ---

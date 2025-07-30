@@ -33,8 +33,8 @@ For real-time, synchronous interactions like the "Saga Clash," Kikko uses the **
 
 #### **1.2 Remote Gifting (WebTorrent & QR Codes)**
 For asynchronous, remote sharing of knowledge, Kikko uses **WebTorrent**.
-* **The Gift:** A Forager can choose to "gift" a specific `Card` or an entire Deck to a friend anywhere in the world.
-* **The Mechanism:** The app bundles the `Card` data (including its detailed `provenanceLog` and source images) into a "Trusted Package" and generates a **QR Code** containing a magnet link.
+* **The Gift:** A Forager can choose to "gift" a specific `KnowledgeCard` or an entire Deck to a friend anywhere in the world.
+* **The Mechanism:** The app bundles the `KnowledgeCard` data (including its detailed `provenanceLog` and source images) into a "Trusted Package" and generates a **QR Code** containing a magnet link.
 * **The Transfer:** The recipient scans the QR code with their Kikko app to initiate a direct, decentralized P2P transfer over the internet, without the data ever being stored on a central server.
 
 | Introduction | Action | Conclusion |
@@ -45,9 +45,9 @@ For asynchronous, remote sharing of knowledge, Kikko uses **WebTorrent**.
 ### **2. The "Trusted Package": The Unit of Verifiable Collaboration**
 
 What is shared is not just data, but a **"Trusted Package,"** a self-contained archive of verifiable knowledge that includes all components necessary for **Inference Reproduction**.
-* **The `Card` Object (The What):** The final, structured knowledge card.
-* **The Thread of Provenance (The How):** The complete `provenanceLog` JSON document, detailing every step of the card's creation.
-* **The Original Pollen (The Proof):** The source images (as Base64 strings or file references) that were used in the creation process.
+* **The `KnowledgeCard` Object (The Miel):** The final, structured knowledge card.
+* **The Thread of Provenance (The Recipe):** The complete `provenanceLog` JSON document, which itself contains a copy of the `PollenGrain` used.
+* **The Original Pollen (The Proof):** The source images, referenced by the paths inside the `PollenGrain` and included in the shared package.
 
 When a group member receives this package, their Hive can independently verify the information. It doesn't just check a digital signature; it actively **reproduces the inference** using the provided log and source pollen. This creates a shared "ground truth" for the group, built on mathematical certainty.
 
@@ -59,7 +59,7 @@ When a group member receives this package, their Hive can independently verify t
 ### **3. The Emergent Community: Niche Swarms**
 
 Kikko's community model focuses on empowering small, private groups with shared goals.
-* **Use Case: The Nature & Food Club.** **Hiro** finds a wild berry bush and forages a detailed, Hive-forged `Card` about it. He shares it with **Léa**. Léa's Hive receives the package and automatically runs an **inference reproduction** on the card's `provenanceLog` to verify Hiro's identification. Only after this verification does her Queen cross-reference the now-trusted berry species with Léa's allergy profile. Léa gets a notification: "Hiro shared a 'Wild Raspberry' forage. **Verified by your Hive.** This berry is SAFE for you."
+* **Use Case: The Nature & Food Club.** **Hiro** finds a wild berry bush and forages a detailed, Hive-forged `KnowledgeCard` about it. He shares it with **Léa**. Léa's Hive receives the package and automatically runs an **inference reproduction** on the card's `provenanceLog` to verify Hiro's identification. Only after this verification does her Queen cross-reference the now-trusted berry species with Léa's allergy profile. Léa gets a notification: "Hiro shared a 'Wild Raspberry' forage. **Verified by your Hive.** This berry is SAFE for you."
 * **Use Case: The Family Inventory.** A family can create a shared "swarm" for household items. One person forages the warranty for the new TV, another the paint codes for the living room wall. Everyone in the family receives the verified "honey" on their device.
 * **Use Case: The Hobbyist Collectors.** A couple collecting vintage cameras can build a shared, verified catalog. Each entry includes photos, purchase receipts (pollen), and notes, all reproducible.
 **Conclusion:**

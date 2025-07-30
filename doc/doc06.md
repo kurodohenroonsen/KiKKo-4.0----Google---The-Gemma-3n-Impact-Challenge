@@ -20,32 +20,32 @@ It is not just metadata; it is a "Seal of Trust," the tangible proof that a piec
 
 ### **1. The Structure of the "Thread of Provenance"**
 
-The Thread of Provenance is a detailed JSON document stored with each `Card`. It is a chronological logbook of the entire forging process, structured to be both human-readable and machine-verifiable.
+The Thread of Provenance is a detailed JSON document stored with each `KnowledgeCard`. Il documente la **chaîne de production autonome** qui a transformé un `PollenGrain` en Miel.
 
-* **A. The Foraging Chronicle (`pollenChronicle`):** A timestamped log of every piece of raw data contributed **by the Forager**. This is the initial proof.
-    * `{ "timestamp": "...", "pollenType": "Visual", "source": "ForagerCamera", "reference": "pollen/image_001.jpg", "hash": "sha256:..." }`
+* **A. La Matière Première (`pollenGrain`):** Le log commence par une copie du `PollenGrain` original qui a servi de base. C'est la preuve de la matière première utilisée.
+    *   `"pollenGrain": { "id": "...", "timestamp": ..., "userIntent": "...", "pollenImagePaths": [...], "swarmAnalysisReportJson": "{...}" }`
 
-* **B. The Hive's Forge Log (`hiveLog`):** A log of every key inference step performed by the Hive's AI agents. This is the technical **blueprint for Inference Reproduction**. Each entry now includes a reference to the **exact set of prompts used**, making the AI's logic fully auditable even when customized.
-* **Example entry for AI Queen generation:**
+* **B. Le Journal de la Forge (`forgeLog`):** Un log de chaque étape exécutée par nos **workers autonomes**. C'est le **plan de reproduction d'inférence**.
+    * **Exemple d'entrée pour le `DescriptionWorker`:**
         ```json
         {
           "timestamp": "...",
-          "agent": "AI_Queen_Gemma",
-          "action": "ContentGeneration_Quiz",
+          "worker": "DescriptionWorker",
+          "action": "ContentGeneration_Description",
           "facets": {
               "modelExecution": { 
                   "modelName": "Gemma 3 1B",
                   "promptSetId": "kikko_default_prompts_v1.2", 
-                  "prompt": "From the text, generate 2-4 quiz questions...",
-                  "rawResponse": "[{'q':'...','o':['...'],'c':0}]" 
+                  "prompt": "Write a descriptive paragraph about \"Plant - Dandelion\"...",
+                  "rawResponse": "The dandelion is a common wildflower..." 
               },
               "inferenceParameters": {"temperature": 0.2}
           }
         }
         ```
 
-* **C. The Hornet's Nest (`hornetLog`):** If external data was integrated from a web search, this section provides its full context for **traceability**.
-* `{ "timestamp": "...", "action": "HornetOfferAccepted", "sourceUrl": "...", "savedHtmlReference": "hornet/dandelion_overview.html" }`
+* **C. Le Nid du Frelon (`hornetLog`):** Si des données externes ont été incluses dans le `PollenGrain` initial, cette section fournit le contexte pour la **traçabilité**.
+    *   `{ "timestamp": "...", "action": "HornetOfferAccepted", "sourceUrl": "...", "savedHtmlReference": "hornet/dandelion_overview.html" }`
 
 | Introduction | Action | Conclusion |
 | :---: | :---: | :---: |
@@ -56,11 +56,11 @@ The Thread of Provenance is a detailed JSON document stored with each `Card`. It
 
 The Thread of Provenance is the soul of the reward system, distinguishing levels of trust within the knowledge itself.
 * **The Mark of the Hornet:** Data integrated from a Hornet's AI Overview is **traceable** to its source HTML but not **reproducible**. It's marked with a grayish tint. For Léa, this means "This information is from the web, use with caution for allergy decisions."
-* **The Seal of the Forager:** Data forged through the human-AI partnership receives the vibrant golden **Seal of Trust**. It is fully **reproducible** because its `hiveLog` is complete. For Léa, this means "This information has been verified by your Hive, based on your input. You can trust it." It grants the highest rewards and unlocks advanced features.
+* **The Seal of the Forager:** Data forged à partir d'un `PollenGrain` pur reçoit le **Sceau de Confiance** doré. C'est entièrement **reproductible** car son `forgeLog` est complet. For Léa, this means "This information has been verified by your Hive, based on your input. You can trust it." It grants the highest rewards and unlocks advanced features.
 
 ### **3. The Impact on Sharing: The Gift of Verifiable Trust**
 
-When a Forager shares a `Card` object, they are gifting a complete, self-contained package of knowledge, including its detailed Thread of Provenance. This enables our core innovation:
+When a Forager shares a `KnowledgeCard` object, they are gifting a complete, self-contained package of knowledge, including its detailed Thread of Provenance. This enables our core innovation:
 
 **True Inference Reproduction.**
 
