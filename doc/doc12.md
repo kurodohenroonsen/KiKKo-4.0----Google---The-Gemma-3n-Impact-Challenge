@@ -1,57 +1,61 @@
-# Document 12/10 : L'Orchestration de la Forge Royale
+# Document 12/10 (v2.0) : L'Atelier de la Forge Royale
 
-**Titre :** La Forge Royale : Architecture d'un Processus de Génération de Connaissance Fiable et Managé
+**Titre :** L'Atelier de la Forge : Une Interface de Commandement pour la Création de Connaissance sur Mesure
 
-**Objectif :** Détailler l'architecture et le fonctionnement de la "Forge", le processus asynchrone qui transforme un `PollenGrain` brut en un `Pollen de Connaissance` structuré et vérifié. Ce document décrit le modèle multi-ouvrières, la gestion des états du processus, et l'interface de commandement pour le Maître de la Ruche.
+**Objectif :** Détailler l'architecture et le fonctionnement de la "Forge", l'environnement interactif qui transforme un `PollenGrain` brut en un `Pollen de Connaissance` structuré. Ce document décrit le modèle de **tâches à la demande**, la gestion des états, et l'interface de commandement qui vous place au centre du processus créatif.
 
 ---
 
-### **1. Philosophie : De l'Inférence Unique au Tournoi d'IA**
+### **1. Philosophie : Le Maître Forgeron au Cœur du Processus 🧑‍🔬**
 
-Pour garantir une fiabilité maximale, nous rejetons le modèle simpliste où une seule IA génère une information. Chaque propriété critique d'un Pollen est le résultat d'un **tournoi d'intelligences**, un processus délibératif et compétitif qui se déroule en plusieurs étapes au sein de la Forge.
+Nous abandonnons le modèle de la chaîne de montage automatique pour une approche plus fine et contrôlée. La forge n'est pas un processus passif, mais un **atelier interactif**. Chaque `PollenGrain` est une pièce brute, et pour chaque propriété à ciseler (la description, une statistique...), vous disposez d'une panoplie d'outils (les "tâches") que vous pouvez déployer à votre guise.
 
-Ce processus garantit :
-* **Robustesse :** En confrontant les résultats de plusieurs "ouvrières" avec des configurations différentes, nous minimisons le risque d'hallucination ou d'erreur isolée.
-* **Richesse :** La synthèse des différentes perspectives produit un résultat plus nuancé et complet.
-* **Traçabilité :** L'ensemble du processus, incluant les "opinions" de chaque ouvrière, est enregistré dans la Trace de Genèse, offrant un audit sans précédent.
+Ce modèle vous donne un contrôle absolu :
+* **Contrôle des Ressources 🔋:** C'est vous qui décidez quand lancer un calcul, évitant ainsi de surcharger votre appareil.
+* **Contrôle Expérimental 🧪:** Vous pouvez lancer différentes "ouvrières" (avec des modèles et des paramètres variés) sur la même tâche et comparer directement leurs résultats, transformant chaque forge en une session de benchmark.
+* **Contrôle Qualitatif ✨:** Vous n'êtes pas obligé de tout forger. Vous pouvez vous concentrer sur le raffinage d'une seule propriété qui vous semble importante, et ne lancer la synthèse que lorsque vous êtes satisfait des analyses.
 
-### **2. Les Acteurs de la Forge**
+### **2. Les Composants de l'Atelier**
 
-La Forge est une chaîne de montage peuplée d'agents spécialisés (les "Workers").
-
-| Acteur | Rôle | Description |
+| Composant | Rôle | Description |
 | :--- | :--- | :--- |
-| **Le Grain de Pollen (`PollenGrain`)** | La Matière Première | Objet de données contenant les informations brutes à traiter : l'image source, les métadonnées initiales, et la liste des propriétés à forger. C'est l'unité de travail qui traverse la forge. |
-| **L'Ouvrière Analyste** | La Spécialiste | Agent IA configuré pour une tâche précise sur une seule propriété. Il existe de multiples Analystes pour chaque propriété, chacune avec une configuration unique (ex: `ReineIA=Gemma3-2B`, `température=0.9` vs. `ReineIA=Qwen`, `température=0.2`). Elles travaillent en parallèle. |
-| **L'Ouvrière Synthétiseur** | La Sage | Agent IA qui reçoit les résultats des différentes Ouvrières Analystes pour une même propriété. Son rôle est de comparer, de consolider et de produire la "meilleure" version possible de l'information. |
-| **L'Ouvrière Juge** | La Gardienne de la Qualité | Agent IA final, configuré avec les paramètres les plus stricts (`température=0.0`). Elle reçoit la proposition du Synthétiseur et lui donne son sceau d'approbation final, ou la rejette si la qualité est insuffisante. |
+| **Le Grain de Pollen (`PollenGrain`)** | La Pièce à Forger | L'objet de données contenant l'image source et la liste des propriétés à définir. Il est au centre de l'atelier. |
+| **La Tâche d'Analyse (`AnalysisTask`)** | L'Outil Potentiel | Une **définition de travail en attente**. Pour chaque propriété, une liste de tâches est disponible, chacune encapsulant une configuration unique (ex: `modèle=Gemma3-2B`, `température=0.9`). **Ces tâches ne sont pas lancées automatiquement.** |
+| **L'Ouvrière Synthétiseur** | L'Artisan Consolideur | Agent IA qui, **sur votre ordre**, prend les résultats des tâches d'analyse que vous avez choisi d'exécuter pour les synthétiser en une proposition unique et cohérente. |
+| **L'Ouvrière Juge** | Le Contrôle Qualité Final | Agent IA qui valide la proposition du Synthétiseur avant l'intégration finale. |
 
-### **3. Le Cycle de Vie d'un Grain : Les 4 États de la Forge**
+### **3. Le Flux de Travail de l'Atelier : Un Processus sous Votre Contrôle**
 
-Chaque `PollenGrain` soumis à la Forge traverse un cycle de vie en quatre états, permettant au Maître de la Ruche de suivre sa progression en temps réel.
+Le processus n'est plus une séquence linéaire, mais un ensemble d'états gérés depuis l'interface détaillée de chaque carte.
 
-| État | Icône | Description du Processus |
+| État du Grain | Icône | Description du Processus |
 | :--- | :---: | :--- |
-| **1. EN ATTENTE (`QUEUE`)** | ⏳ | Le `PollenGrain` a été accepté par la Forge. Il est dans la file d'attente, attendant que des ressources de calcul (CPU/GPU) se libèrent. |
-| **2. ANALYSE (`ANALYZING`)** | 🔬 | Le travail a commencé. Pour chaque propriété à forger (ex: `description`, `stats.lifespan`), plusieurs Ouvrières Analystes sont lancées en parallèle. Chacune produit sa propre version de la réponse. L'interface affiche la progression pour chaque propriété. |
-| **3. SYNTHÈSE (`SYNTHESIZING`)** | ⚖️ | Toutes les analyses pour une propriété sont terminées. L'Ouvrière Synthétiseur est activée. Elle compare les différentes versions et rédige sa proposition finale. Cette étape est suivie par le jugement rapide de l'Ouvrière Juge. |
-| **4. TERMINÉ (`COMPLETE`)** | ✅ | Toutes les propriétés ont passé avec succès l'étape de Synthèse et de Jugement. Le `Pollen de Connaissance` final est assemblé, sa Trace de Genèse complète est scellée, et il est prêt à être sauvegardé dans la Ruche. |
+| **1. À FORGER (`TODO`)** | 📋 | Le `PollenGrain` est créé. Dans sa vue détaillée, la liste des propriétés à définir est affichée. Pour chaque propriété, la liste des **tâches d'analyse disponibles** est visible, chacune avec un bouton "Lancer". |
+| **2. EN COURS (`FORGING`)** | 🔥 | Vous avez lancé une ou plusieurs tâches. L'interface affiche en temps réel l'état de chaque tâche (En attente ⏳, En cours 🔬, Terminé ✅, Erreur ❌). Vous pouvez lancer plusieurs tâches pour la même propriété et voir les résultats arriver au fur et à mesure. |
+| **3. EN SYNTHÈSE (`SYNTHESIZING`)**| ⚖️ | Une fois qu'au moins une tâche d'analyse est terminée pour une propriété, le bouton "Synthétiser" devient actif pour celle-ci. En cliquant dessus, vous activez l'Ouvrière Synthétiseur, puis le Juge. |
+| **4. FORGÉ (`FORGED`)** | ✅ | Une propriété (ou l'ensemble des propriétés) a passé avec succès l'étape de Synthèse. Le résultat est "verrouillé" et le `Pollen de Connaissance` est progressivement assemblé. |
 
 ### **4. L'Interface de Commandement de la Forge**
 
-Le Maître de la Ruche n'est pas un spectateur passif. Il dispose d'une interface de commandement pour gérer le flux de travail de la Forge. Cette interface se présente comme un tableau de bord avec la liste de tous les `PollenGrains` en cours de traitement.
+L'écran principal de la Forge liste les `PollenGrains`. Cliquer sur un grain ouvre l'**Atelier**, une vue détaillée où le véritable travail s'effectue.
 
-Pour chaque `PollenGrain` dans la liste, l'interface affiche :
-* Une miniature de l'image source.
-* Le nom de l'entité identifiée.
-* Son **état actuel** (⏳, 🔬, ⚖️, ✅).
-* Une barre de progression globale.
+**Vue de l'Atelier pour un `PollenGrain` :**
 
-En sélectionnant un `PollenGrain`, le Maître de la Ruche accède à une vue détaillée qui lui offre les contrôles suivants :
+* **En-tête :** Image, nom identifié, statut global.
+* **Liste des Propriétés :** Une section pour chaque propriété (`description`, `stats.lifespan`, etc.).
 
-| Action | État(s) où l'action est possible | Description |
-| :--- | :--- | :--- |
-| **⏸️ Stopper / Mettre en Pause** | `ANALYZING`, `SYNTHESIZING` | Interrompt immédiatement tous les workers actifs pour ce grain. L'état passe à `PAUSED`. Utile si le processus consomme trop de ressources. |
-| **▶️ Relancer / Reprendre** | `PAUSED`, `ERROR` | Reprend le travail là où il s'était arrêté. Si un worker spécifique était en erreur, cette action tente de le relancer. |
-| **🗑️ Supprimer / Annuler** | Tous les états | Annule définitivement le processus de forge pour ce grain. Le `PollenGrain` est supprimé de la file d'attente et toutes les ressources sont libérées. C'est un acte irréversible. |
-| **🔍 Inspecter** | `ANALYZING`, `SYNTHESIZING`, `COMPLETE` | Permet d'ouvrir une vue détaillée montrant le travail de chaque ouvrière. En état `ANALYZING`, on peut voir en temps réel les différentes propositions des Analystes arriver. C'est l'outil de supervision ultime. |
+**Pour chaque propriété dans la liste :**
+
+* **État de la Propriété :** (ex: "À définir", "Analyse en cours", "Synthèse prête", "Terminé").
+* **Section "Tâches Disponibles" :**
+    * Tâche 1: "Analyse Créative (Gemma 2B, T°0.9)" - [**Lancer ▶️**]
+    * Tâche 2: "Analyse Factuelle (Qwen, T°0.2)" - [**Lancer ▶️**]
+    * ...
+* **Section "Résultats d'Analyse" :**
+    * Une fois une tâche terminée, son résultat apparaît ici, avec le nom de l'ouvrière. Vous pouvez inspecter chaque résultat individuellement.
+* **Bouton d'Action Principal :**
+    * Le bouton **[Synthétiser ⚖️]** apparaît dès qu'au moins un résultat est disponible.
+* **Contrôles Globaux du Grain :**
+    * **🗑️ Supprimer le Grain :** Annule tout le travail et supprime le grain de la forge.
+
+Ce design vous donne un contrôle granulaire sans précédent et transforme le processus de forge en une exploration fascinante des capacités des différentes IA.
