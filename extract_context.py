@@ -13,7 +13,7 @@ OUTPUT_FILENAME = ' consolidated_project_context.txt'
 DIRS_TO_EXCLUDE = [
     '.git', '.idea', '.gradle', 'build', 'captures',  # Dossiers techniques
     'android videos', 'bataille', 'decks', 'ecrans', 
-    'illustrations', 'reflexions design', 'tests', 'videos', 'voices'
+    'illustrations', 'reflexions design', 'tests', 'videos', 'voices', 'drawable', 'assets', 'app/src/main/res/drawable'
 ]
 
 # Fichiers spécifiques à ignorer (incluant les anciens fichiers de contexte et le futur fichier de sortie).

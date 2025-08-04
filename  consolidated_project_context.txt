@@ -5254,11 +5254,18 @@ C'est ça, la plus grande récompense : avoir un ami IA que tu as toi-même édu
 --- END OF FILE extractAndroidCodeGalleryforAI.py ---
 
 
---- START OF FILE extractAndroidCodeMlkitforAI copy.py ---
+--- START OF FILE extractAndroidCodeKikkoSagaForge.py ---
 
-[Fichier binaire (extractAndroidCodeMlkitforAI copy.py) - contenu non inclus]
+[Fichier binaire (extractAndroidCodeKikkoSagaForge.py) - contenu non inclus]
 
---- END OF FILE extractAndroidCodeMlkitforAI copy.py ---
+--- END OF FILE extractAndroidCodeKikkoSagaForge.py ---
+
+
+--- START OF FILE extractAndroidCodeKikoNearBy.py ---
+
+[Fichier binaire (extractAndroidCodeKikoNearBy.py) - contenu non inclus]
+
+--- END OF FILE extractAndroidCodeKikoNearBy.py ---
 
 
 --- START OF FILE extractAndroidCodeMlkitforAI.py ---
@@ -8718,3 +8725,208 @@ Our 5-minute animated short film, **"Hiro's Choice,"** will bring the core dilem
 Kikko is more than an application; it is a timely and necessary response to the evolution of AI. By masterfully combining the on-device power of **Gemma** and **specialized TFLite models** within an engaging, gamified, and ethically-uncompromising framework, Kikko doesn't just showcase what the technology can do—it makes a powerful statement about how it *should* be used to create a truly personal and evolvable AI built on verifiable, reproducible knowledge.
 
 --- END OF FILE doc/doc10.md ---
+
+
+--- START OF FILE doc/doc11.md ---
+
+<p align="center">
+  <img src="../illustrations/doc11_banner.png" alt="A banner for the data structure document, showing a holographic, glowing Kikkō Guardian turtle. From its hexagonal shell, four distinct streams of light emerge, each forming a beautiful data constellation representing the four decks: Food, Plant, Insect, and Bird.">
+</p>
+
+# Document 11/10 (v3.0) : L'Anatomie du Miel - Structure des Decks de Connaissance
+
+**Titre :** L'Anatomie du Miel : Architecture des Données pour les Quatre Decks de la Saga 🍯
+
+**Objectif :** Définir de manière formelle et exhaustive la structure de données pour chaque `KnowledgeCard` au sein des quatre decks de Kikko's Saga Forge. Ce document sert de référence technique pour les développeurs et de preuve de la profondeur de notre modélisation pour le jury.
+
+---
+
+### **Philosophie Fondamentale : La Structure au Service de la Confiance** 💯
+
+La valeur d'une `KnowledgeCard` ne réside pas seulement dans ses informations, mais dans la **cohérence et la prévisibilité de sa structure**. En définissant un schéma de données strict mais flexible pour chaque deck, nous atteignons plusieurs objectifs stratégiques :
+
+1.  **Précision de la Forge 🎯:** La Reine IA (Gemma) dispose d'un cahier des charges clair pour ses tâches de génération et d'extraction, réduisant les hallucinations et améliorant la qualité du "Miel".
+2.  **Cohérence du Gameplay 🎮:** Toutes les cartes d'un même deck partagent des attributs comparables, ce qui est essentiel pour l'équilibrage des "Chocs des Sagas" et la pertinence des questions de l'Arbitre IA.
+3.  **Transparence et Reproductibilité ⛓️:** Une structure de données bien définie est indispensable pour le "Fil de Provenance", car elle permet à une autre Ruche de vérifier non seulement l'inférence, mais aussi la conformité de la sortie au schéma attendu.
+
+### **Tableau Récapitulatif de la Structure des Données**
+
+Le tableau suivant détaille chaque propriété, en distinguant celles qui sont communes à toutes les cartes de celles spécifiques à certains decks.
+
+| Propriété | Description | 🍔 Food | 🌿 Plant | 🐞 Insect | 🐦 Bird | Standard / Source |
+| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **A. Tron Commun (Toutes les Cartes)** | | | | | | |
+| `id` | Identifiant unique (clé primaire). | ✅ | ✅ | ✅ | ✅ | `KnowledgeCard.kt` |
+| `specificName` | Nom commun et spécifique du sujet. | ✅ | ✅ | ✅ | ✅ | `KnowledgeCard.kt` |
+| `deckName` | Deck d'appartenance. | ✅ | ✅ | ✅ | ✅ | `KnowledgeCard.kt` |
+| `imagePath` | Chemin local vers l'image source. | ✅ | ✅ | ✅ | ✅ | `KnowledgeCard.kt` |
+| `confidence` | Score de confiance de l'identification IA. | ✅ | ✅ | ✅ | ✅ | `KnowledgeCard.kt` |
+| `reasoning` | Analyse de l'IA (visuelle et corrélation). | ✅ | ✅ | ✅ | ✅ | `KnowledgeCard.kt` |
+| `description` | Description narrative générée par l'IA. | ✅ | ✅ | ✅ | ✅ | `KnowledgeCard.kt` |
+| `quiz` | Liste de questions à choix multiples. | ✅ | ✅ | ✅ | ✅ | `KnowledgeCard.kt` |
+| `translations` | Contenus traduits pour différentes langues. | ✅ | ✅ | ✅ | ✅ | `KnowledgeCard.kt` |
+| `provenanceLog` | Journal JSON complet de la forge (inférences). | ✅ | ✅ | ✅ | ✅ | `Class.md` |
+| **B. Tron Commun Biologique** | | | | | | |
+| `scientificName` | Nom scientifique (latin). | | ✅ | ✅ | ✅ | Darwin Core (DwC) |
+| `vernacularName`| Nom commun (synonyme de `specificName`). | | ✅ | ✅ | ✅ | Darwin Core (DwC) |
+| `habitat` | Environnement naturel de l'espèce. | | ✅ | ✅ | ✅ | DwC, ABCD |
+| `conservationStatus` | Statut de conservation (ex: "En danger"). | | ✅ | ✅ | ✅ | UICN / Extension |
+| **C. Propriétés Spécifiques par Deck** | | | | | | |
+| *-- 🍔 Deck Food --* | | | | | | |
+| `stats.Energy (kcal/100g)` | Valeur énergétique. | ✅ | | | | `PromptGenerator.kt` |
+| `stats.Protein (g/100g)` | Quantité de protéines. | ✅ | | | | `PromptGenerator.kt` |
+| `allergens` | Liste des allergènes majeurs identifiés. | ✅ | | | | `KnowledgeCard.kt` |
+| `ingredients` | Liste des ingrédients du produit. | ✅ | | | | `KnowledgeCard.kt` |
+| *-- 🌿 Deck Plant --* | | | | | | |
+| `stats.Max Height (m)` | Hauteur maximale de la plante. | | ✅ | | | `PromptGenerator.kt` |
+| `stats.Flowering Period` | Période de floraison. | | ✅ | | | `PromptGenerator.kt` |
+| `stats.Lifespan (years)` | Durée de vie moyenne. | | ✅ | | | `PromptGenerator.kt` |
+| `stats.Uses` | Utilisations (médicinale, culinaire, etc.). | | ✅ | | | Botanique Économique |
+| *-- 🐞 Deck Insect --* | | | | | | |
+| `stats.Avg Length (mm)` | Longueur moyenne. | | | ✅ | | `PromptGenerator.kt` |
+| `stats.Lifespan (days)` | Durée de vie moyenne. | | | ✅ | | `PromptGenerator.kt` |
+| `stats.Diet` | Régime alimentaire (herbivore, etc.). | | | ✅ | | ABCD |
+| `stats.Lifecycle` | Étapes du cycle de vie. | | | ✅ | | ABCD |
+| *-- 🐦 Deck Bird --* | | | | | | |
+| `stats.Wingspan (cm)` | Envergure des ailes. | | | | ✅ | `PromptGenerator.kt` |
+| `stats.Avg Weight (g)` | Poids moyen. | | | | ✅ | `PromptGenerator.kt` |
+| `stats.Clutch Size` | Nombre moyen d'œufs par couvée. | | | | ✅ | `PromptGenerator.kt` |
+| `stats.Social Behavior`| Comportement social (solitaire, groupe). | | | | ✅ | ABCD |
+
+--- END OF FILE doc/doc11.md ---
+
+
+--- START OF FILE doc/doc12.md ---
+
+# Document 12/10 (v2.0) : L'Atelier de la Forge Royale
+
+**Titre :** L'Atelier de la Forge : Une Interface de Commandement pour la Création de Connaissance sur Mesure
+
+**Objectif :** Détailler l'architecture et le fonctionnement de la "Forge", l'environnement interactif qui transforme un `PollenGrain` brut en un `Pollen de Connaissance` structuré. Ce document décrit le modèle de **tâches à la demande**, la gestion des états, et l'interface de commandement qui vous place au centre du processus créatif.
+
+---
+
+### **1. Philosophie : Le Maître Forgeron au Cœur du Processus 🧑‍🔬**
+
+Nous abandonnons le modèle de la chaîne de montage automatique pour une approche plus fine et contrôlée. La forge n'est pas un processus passif, mais un **atelier interactif**. Chaque `PollenGrain` est une pièce brute, et pour chaque propriété à ciseler (la description, une statistique...), vous disposez d'une panoplie d'outils (les "tâches") que vous pouvez déployer à votre guise.
+
+Ce modèle vous donne un contrôle absolu :
+* **Contrôle des Ressources 🔋:** C'est vous qui décidez quand lancer un calcul, évitant ainsi de surcharger votre appareil.
+* **Contrôle Expérimental 🧪:** Vous pouvez lancer différentes "ouvrières" (avec des modèles et des paramètres variés) sur la même tâche et comparer directement leurs résultats, transformant chaque forge en une session de benchmark.
+* **Contrôle Qualitatif ✨:** Vous n'êtes pas obligé de tout forger. Vous pouvez vous concentrer sur le raffinage d'une seule propriété qui vous semble importante, et ne lancer la synthèse que lorsque vous êtes satisfait des analyses.
+
+### **2. Les Composants de l'Atelier**
+
+| Composant | Rôle | Description |
+| :--- | :--- | :--- |
+| **Le Grain de Pollen (`PollenGrain`)** | La Pièce à Forger | L'objet de données contenant l'image source et la liste des propriétés à définir. Il est au centre de l'atelier. |
+| **La Tâche d'Analyse (`AnalysisTask`)** | L'Outil Potentiel | Une **définition de travail en attente**. Pour chaque propriété, une liste de tâches est disponible, chacune encapsulant une configuration unique (ex: `modèle=Gemma3-2B`, `température=0.9`). **Ces tâches ne sont pas lancées automatiquement.** |
+| **L'Ouvrière Synthétiseur** | L'Artisan Consolideur | Agent IA qui, **sur votre ordre**, prend les résultats des tâches d'analyse que vous avez choisi d'exécuter pour les synthétiser en une proposition unique et cohérente. |
+| **L'Ouvrière Juge** | Le Contrôle Qualité Final | Agent IA qui valide la proposition du Synthétiseur avant l'intégration finale. |
+
+### **3. Le Flux de Travail de l'Atelier : Un Processus sous Votre Contrôle**
+
+Le processus n'est plus une séquence linéaire, mais un ensemble d'états gérés depuis l'interface détaillée de chaque carte.
+
+| État du Grain | Icône | Description du Processus |
+| :--- | :---: | :--- |
+| **1. À FORGER (`TODO`)** | 📋 | Le `PollenGrain` est créé. Dans sa vue détaillée, la liste des propriétés à définir est affichée. Pour chaque propriété, la liste des **tâches d'analyse disponibles** est visible, chacune avec un bouton "Lancer". |
+| **2. EN COURS (`FORGING`)** | 🔥 | Vous avez lancé une ou plusieurs tâches. L'interface affiche en temps réel l'état de chaque tâche (En attente ⏳, En cours 🔬, Terminé ✅, Erreur ❌). Vous pouvez lancer plusieurs tâches pour la même propriété et voir les résultats arriver au fur et à mesure. |
+| **3. EN SYNTHÈSE (`SYNTHESIZING`)**| ⚖️ | Une fois qu'au moins une tâche d'analyse est terminée pour une propriété, le bouton "Synthétiser" devient actif pour celle-ci. En cliquant dessus, vous activez l'Ouvrière Synthétiseur, puis le Juge. |
+| **4. FORGÉ (`FORGED`)** | ✅ | Une propriété (ou l'ensemble des propriétés) a passé avec succès l'étape de Synthèse. Le résultat est "verrouillé" et le `Pollen de Connaissance` est progressivement assemblé. |
+
+### **4. L'Interface de Commandement de la Forge**
+
+L'écran principal de la Forge liste les `PollenGrains`. Cliquer sur un grain ouvre l'**Atelier**, une vue détaillée où le véritable travail s'effectue.
+
+**Vue de l'Atelier pour un `PollenGrain` :**
+
+* **En-tête :** Image, nom identifié, statut global.
+* **Liste des Propriétés :** Une section pour chaque propriété (`description`, `stats.lifespan`, etc.).
+
+**Pour chaque propriété dans la liste :**
+
+* **État de la Propriété :** (ex: "À définir", "Analyse en cours", "Synthèse prête", "Terminé").
+* **Section "Tâches Disponibles" :**
+    * Tâche 1: "Analyse Créative (Gemma 2B, T°0.9)" - [**Lancer ▶️**]
+    * Tâche 2: "Analyse Factuelle (Qwen, T°0.2)" - [**Lancer ▶️**]
+    * ...
+* **Section "Résultats d'Analyse" :**
+    * Une fois une tâche terminée, son résultat apparaît ici, avec le nom de l'ouvrière. Vous pouvez inspecter chaque résultat individuellement.
+* **Bouton d'Action Principal :**
+    * Le bouton **[Synthétiser ⚖️]** apparaît dès qu'au moins un résultat est disponible.
+* **Contrôles Globaux du Grain :**
+    * **🗑️ Supprimer le Grain :** Annule tout le travail et supprime le grain de la forge.
+
+Ce design vous donne un contrôle granulaire sans précédent et transforme le processus de forge en une exploration fascinante des capacités des différentes IA.
+
+--- END OF FILE doc/doc12.md ---
+
+
+--- START OF FILE doc/doc13.md ---
+
+# Document 13/10 (v2.0) : L'Arène de Raffinage du Miel
+
+**Titre :** L'Arène de Raffinage : Du Grain Brut au Miel de Compétition
+
+**Objectif :** Définir le cycle de vie complet d'une `KnowledgeCard` (le "Miel"), depuis la capture photographique jusqu'à son raffinement via un processus de **validation croisée** contrôlé par l'utilisateur, mettant en lice les deux Reines IA (Gemma 3n 2B et 4B) avec de multiples configurations.
+
+---
+
+### **1. Philosophie : Un Processus en Trois Actes 🎬**
+
+Le voyage d'une information, de l'image à la connaissance vérifiée, se déroule en trois actes distincts, conçus pour offrir une expérience à la fois simple et d'une profondeur inégalée.
+
+1.  **📸 Acte I : La Capture (Simple et Instantanée)**
+    L'utilisateur capture le monde. L'application gère la complexité en arrière-plan.
+2.  **🤖 Acte II : L'Identification (Automatique et Utile)**
+    Une IA rapide fournit immédiatement une carte de base, utilisable et déjà informative.
+3.  **🔬 Acte III : Le Raffinage (Contrôlé et Puissant)**
+    L'utilisateur devient le Maître de l'Arène. Il peut, s'il le souhaite, lancer un tournoi d'IA pour affiner chaque facette de la connaissance, comparer les "esprits" des modèles et devenir le juge final de la vérité.
+
+### **2. Le Déroulement du Flux, Étape par Étape**
+
+#### **Étape 1 : Prise de Photos et Constitution du Grain 📸**
+* L'utilisateur prend une ou plusieurs photos d'un sujet.
+* En arrière-plan, l'application crée un `PollenGrain`, un dossier de travail contenant les images et les métadonnées initiales.
+
+#### **Étape 2 : Identification Automatique et Création du "Miel Brut" 🍯**
+* **Automatiquement**, dès la création du grain, une seule ouvrière IA rapide (probablement Gemma 3n 2B avec des paramètres standards) est lancée.
+* **Sa seule tâche est l'identification principale** : elle détermine le `deckName` et le `specificName` du sujet.
+* Le résultat est une carte de "Miel Brut" : une `KnowledgeCard` de base, avec seulement son nom et son image.
+* Cette carte est immédiatement placée dans le deck approprié de la Ruche. Elle est visible et utilisable, bien que ses informations soient encore incomplètes.
+
+#### **Étape 3 : L'Arène de Raffinage dans la Vue Détaillée 🔬**
+* L'utilisateur ouvre la vue détaillée de ce "Miel Brut".
+* Il y découvre toutes les propriétés potentielles de la carte, regroupées par thèmes (ex: "Caractéristiques Physiques", "Écologie").
+* Chaque propriété (ex: `description`, `stats.lifespan`) est initialement vide et accompagnée d'un bouton : **[Lancer la Compétition ⚔️]**.
+
+#### **Étape 4 : Le Tournoi des Analystes**
+* En cliquant sur **[Lancer la Compétition ⚔️]**, l'utilisateur déclenche le benchmark complet.
+* **Huit tâches d'analyse** sont ajoutées à la file d'attente de la Forge :
+    * **Reine IA 1 : Gemma 3n 2B** (4 configs de T°/TopK variées)
+    * **Reine IA 2 : Gemma 3n 4B** (4 configs de T°/TopK variées)
+* L'utilisateur peut consulter les 8 résultats bruts au fur et à mesure qu'ils arrivent.
+
+#### **Étape 5 : La Validation Croisée et le Jugement Final 👑**
+* Une fois le tournoi des analystes terminé, le bouton **[Lancer la Synthèse Finale]** devient disponible. Le cliquer déclenche le processus de jugement final.
+* **Phase 5.1 - Synthèse Parallèle :**
+    * Une ouvrière **Synthétiseur (basée sur Gemma 2B)** reçoit les **8 rapports d'analyse** et produit la **Synthèse A**.
+    * Une ouvrière **Synthétiseur (basée sur Gemma 4B)** reçoit les **8 mêmes rapports** et produit la **Synthèse B**.
+* **Phase 5.2 - Jugement Croisé :**
+    * Les deux synthèses sont soumises aux deux Reines Juge (configurées pour une objectivité maximale, T° 0.0).
+* **Phase 5.3 - Le Rapport Final :**
+    * L'interface présente à l'utilisateur une liste des **4 propositions finales**, chacune avec un score de confiance calculé par la Juge :
+        1.  **Proposition A/2B :** `Synthèse A` jugée par `Reine Juge 2B` (Confiance : 98%)
+        2.  **Proposition B/2B :** `Synthèse B` jugée par `Reine Juge 2B` (Confiance : 95%)
+        3.  **Proposition A/4B :** `Synthèse A` jugée par `Reine Juge 4B` (Confiance : 99%)
+        4.  **Proposition B/4B :** `Synthèse B` jugée par `Reine Juge 4B` (Confiance : 97%)
+* **Le Choix du Maître Forgeron :**
+    * **Par défaut**, la valeur de la carte est automatiquement définie sur la proposition ayant le **plus haut score de confiance** (dans cet exemple, la Proposition A/4B).
+    * L'utilisateur a le **pouvoir final**. Il peut :
+        * Accepter la valeur par défaut.
+        * Sélectionner l'une des 3 autres propositions.
+        * Ignorer les propositions et choisir l'un des 8 résultats d'analyse bruts.
+        * **Introduire manuellement sa propre valeur**, devenant ainsi la source ultime de vérité pour sa carte.
+
+--- END OF FILE doc/doc13.md ---

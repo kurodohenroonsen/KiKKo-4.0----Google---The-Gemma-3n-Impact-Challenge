@@ -18,7 +18,7 @@ def consolidate_android_project(project_path, output_file):
     )
     
     # Dossiers à ignorer complètement
-    excluded_dirs = ('.git', '.idea', 'build', '.gradle', 'captures')
+    excluded_dirs = ('.git', '.idea', 'build', '.gradle', 'captures', 'drawable')
 
     print(f"Démarrage de la consolidation du projet : {project_path}")
     
