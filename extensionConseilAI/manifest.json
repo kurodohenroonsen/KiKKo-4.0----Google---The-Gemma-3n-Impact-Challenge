@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "AI Council Orchestrator",
+  "description": "Side panel pour orchestrer plusieurs onglets IA (ChatGPT, Gemini, AI Studio) et router les prompts/réponses.",
+  "version": "0.1.0",
+  "permissions": [
+    "tabs",
+    "storage",
+    "scripting",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://gemini.google.com/*",
+    "https://aistudio.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+
+}

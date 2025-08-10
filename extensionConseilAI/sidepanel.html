@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>AI Council Orchestrator</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{--bg:#0b0e13;--fg:#e8eef9;--muted:#9fb1c7;--card:#121722;--accent:#3b82f6;--border:#1e2533}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell}
+    header{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--border);background:var(--card);position:sticky;top:0;z-index:2}
+    header h1{font-size:14px;margin:0 8px 0 0;color:var(--muted);font-weight:600}
+    button{background:#162033;border:1px solid var(--border);color:var(--fg);padding:6px 10px;border-radius:8px;cursor:pointer}
+    button.primary{background:var(--accent);border-color:transparent;color:white}
+    button.ghost{background:transparent}
+    button:disabled{opacity:.6;cursor:not-allowed}
+    .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .wrap{padding:12px}
+    .pane{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:12px}
+    textarea{width:100%;min-height:80px;resize:vertical;background:#0e1420;border:1px solid var(--border);color:var(--fg);border-radius:8px;padding:10px}
+    .grid{display:grid;grid-template-columns:1fr;gap:12px}
+    .agents{max-height:280px;overflow:auto}
+    ul#agentList{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+    li.agent{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:8px;border:1px dashed var(--border);border-radius:10px}
+    li.agent .meta{color:var(--muted);font-size:12px;word-break:break-all}
+    li.agent .status{font-size:12px;padding:2px 6px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+    li.agent .status[data-s="sending"]{color:#ffd166;border-color:#ffd16655}
+    li.agent .status[data-s="done"]{color:#06d6a0;border-color:#06d6a055}
+    li.agent .status[data-s="error"]{color:#ef476f;border-color:#ef476f55}
+    li.agent .actions{display:flex;gap:6px}
+    .answer{white-space:pre-wrap;background:#0e1420;border:1px solid var(--border);padding:10px;border-radius:8px;max-height:200px;overflow:auto}
+    .answer-pane .row{justify-content:space-between}
+    select{background:#0e1420;border:1px solid var(--border);color:var(--fg);border-radius:8px;padding:6px 10px;min-width:220px}
+    #eventLog{font-family:ui-monospace,Consolas,Menlo,monospace;background:#0e1420;border:1px solid var(--border);border-radius:8px;max-height:180px;overflow:auto;padding:8px}
+    #eventLog .logline{padding:2px 0;border-bottom:1px dotted #1a2231}
+    #eventLog .logline:last-child{border-bottom:none}
+    .site-badge{font-size:11px;background:#1a2334;border:1px solid var(--border);padding:2px 6px;border-radius:999px;color:#cfe1ff}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI Council Orchestrator</h1>
+    <div class="row">
+      <button id="refreshBtn">🔄 Rafraîchir</button>
+      <label class="row" style="gap:6px">
+        <input type="checkbox" id="autoMode" />
+        Auto-pipeline
+      </label>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <!-- Prompt composer -->
+    <div class="pane">
+      <div class="row" style="justify-content:space-between">
+        <strong>Composer</strong>
+        <button id="sendToFirstBtn" class="primary">🚀 Envoyer au 1er agent</button>
+      </div>
+      <textarea id="promptInput" placeholder="Votre prompt…"></textarea>
+    </div>
+
+    <div class="grid">
+      <!-- Agents -->
+      <div class="pane agents">
+        <div class="row" style="justify-content:space-between">
+          <strong>Onglets IA détectés</strong>
+          <span id="emptyAgents" class="muted">Aucun pour l’instant…</span>
+        </div>
+        <ul id="agentList"></ul>
+        <template id="agentItemTpl">
+          <li class="agent" draggable="true">
+            <div>
+              <div class="row" style="gap:8px">
+                <span class="site-badge">site</span>
+                <span class="title">Titre</span>
+                <span class="status" data-s="idle">idle</span>
+              </div>
+              <div class="meta">url</div>
+            </div>
+            <div class="actions">
+              <button class="btn set" title="Définir prompt dans cet onglet">✍️ set</button>
+              <button class="btn send" title="Envoyer prompt (ou Enter)">📨 send</button>
+              <button class="btn focus" title="Activer l’onglet">👁️ focus</button>
+              <button class="btn remove" title="Retirer de la liste">🗑️</button>
+            </div>
+          </li>
+        </template>
+      </div>
+
+      <!-- Réponse + Routage -->
+      <div class="pane answer-pane" id="answerPane">
+        <div class="row">
+          <strong>Dernière réponse</strong>
+          <div class="row">
+            <button id="copyBtn" title="Copier la réponse">📋 Copier la réponse</button>
+            <!-- 🔥 NOUVEAU: Copier tout le contexte du tab sélectionné -->
+            <button id="copyContextBtn" title="Copier tous les messages (contexte) du tab sélectionné">📄 Copier contexte du tab</button>
+          </div>
+        </div>
+        <div id="answerFrom" class="meta" style="color:#9fb1c7;margin:6px 0 8px 0">—</div>
+        <div id="answerText" class="answer">(en attente…)</div>
+
+        <div class="row" style="margin-top:10px;gap:8px">
+          <select id="routeSelect" title="Destination du routage"></select>
+          <button id="routeSendBtn">🔁 Router cette réponse</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logs -->
+    <div class="pane">
+      <div class="row" style="justify-content:space-between">
+        <strong>Journal</strong>
+      </div>
+      <div id="eventLog"></div>
+    </div>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

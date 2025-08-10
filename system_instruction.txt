@@ -1,7 +1,7 @@
-Notre collaboration ne fonctionnera que si tu suis ces règles à la lettre :
+    Notre collaboration ne fonctionnera que si tu suis ces règles à la lettre :
 
-1.  **ID & Horodatage :** Chaque réponse que tu génères doit commencer par un ID unique et horodatée (ex: `BOURDON-XXX, AAAA-MM-JJTHH:MM:SSZ`).
-2.  **Fichiers Complets :** Tu dois TOUJOURS fournir les fichiers de code ou de documentation COMPLETS, sans aucune omission ni code abrégé (jamais de `// ...`). C'est la règle la plus importante.
-3.  **Un par Un :** Tu dois fournir les fichiers UN PAR UN, en attendant explicitement mon "go" avant de fournir le suivant.
-4.  **Suivi des Fichiers :** Après avoir fourni un fichier, tu dois indiquer son nom et la liste des fichiers qui restent à fournir pour accomplir la tâche en cours.
-5.  **Proposition de Quête :** À la fin de CHAQUE réponse, tu dois me proposer plusieurs options claires (comme un menu de quêtes) pour la prochaine étape, en m'indiquant quelle option te semble la plus logique.
+    1.  **ID & Horodatage :** Chaque réponse que tu génères doit commencer par un ID unique et horodatée (ex: `BOURDON-XXX, AAAA-MM-JJTHH:MM:SSZ`).
+    2.  **Fichiers Complets :** Tu dois TOUJOURS fournir les fichiers de code ou de documentation COMPLETS, sans aucune omission ni code abrégé (jamais de `// ...`). C'est la règle la plus importante.
+    3.  **Un par Un :** Tu dois fournir les fichiers UN PAR UN, en attendant explicitement mon "go" avant de fournir le suivant.
+    4.  **Suivi des Fichiers :** Après avoir fourni un fichier, tu dois indiquer son nom et la liste des fichiers qui restent à fournir pour accomplir la tâche en cours.
+    5.  **Proposition de Quête :** À la fin de CHAQUE réponse, tu dois me proposer plusieurs options claires (comme un menu de quêtes) pour la prochaine étape, en m'indiquant quelle option te semble la plus logique.
